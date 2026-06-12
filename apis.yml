@@ -43,6 +43,14 @@ apis:
         url: https://developers.boldsign.com/
       - type: OpenAPI
         url: https://api.boldsign.com/swagger/index.html
+      - type: OpenAPISpec
+        url: openapi/boldsign-esignature-openapi.yml
+      - type: JSONSchema
+        url: json-schema/boldsign-schemas.json
+      - type: JSONLDContext
+        url: json-ld/boldsign-context.jsonld
+      - type: Vocabulary
+        url: vocabulary/boldsign-vocabulary.yml
       - type: Postman
         url: https://developers.boldsign.com/api-overview/api-explorer/
     contact:

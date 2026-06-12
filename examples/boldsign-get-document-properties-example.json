@@ -1,0 +1,37 @@
+{
+  "title": "BoldSign - Get Document Properties",
+  "description": "Example request for GET /v1/document/properties",
+  "request": {
+    "method": "GET",
+    "url": "https://api.boldsign.com/v1/document/properties?documentId=doc_abc123xyz",
+    "headers": {
+      "X-API-KEY": "{{apiKey}}"
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "documentId": "doc_abc123xyz",
+      "senderDetail": {
+        "name": "Jane Smith",
+        "emailAddress": "jane.smith@company.com",
+        "isViewed": true
+      },
+      "signerDetails": [
+        {
+          "signerName": "John Doe",
+          "signerEmail": "john.doe@example.com",
+          "status": "Sent",
+          "isViewed": false,
+          "order": 1
+        }
+      ],
+      "status": "WaitingForOthers",
+      "createdDate": 1718100000,
+      "expiryDate": 1720692000,
+      "enableSigningOrder": false,
+      "isDeleted": false,
+      "activityDate": 1718100000
+    }
+  }
+}

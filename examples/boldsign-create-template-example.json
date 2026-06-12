@@ -1,0 +1,31 @@
+{
+  "title": "BoldSign - Create Template",
+  "description": "Example request body for POST /v1/template/create",
+  "request": {
+    "method": "POST",
+    "url": "https://api.boldsign.com/v1/template/create",
+    "headers": {
+      "X-API-KEY": "{{apiKey}}",
+      "Content-Type": "multipart/form-data"
+    },
+    "body": {
+      "Title": "NDA Template",
+      "Description": "Standard Non-Disclosure Agreement",
+      "DocumentTitle": "Non-Disclosure Agreement",
+      "Roles[0][Name]": "Employee",
+      "Roles[0][Index]": "1",
+      "Roles[0][DefaultSignerName]": "",
+      "Roles[0][DefaultSignerEmail]": "",
+      "Roles[0][SignerType]": "Signer",
+      "Files": "(binary PDF file)",
+      "AllowMessageEditing": "true",
+      "AllowNewFiles": "false"
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "templateId": "tpl_xyz789abc"
+    }
+  }
+}

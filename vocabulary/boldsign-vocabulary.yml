@@ -1,0 +1,241 @@
+vocabulary:
+  name: BoldSign eSignature API Vocabulary
+  description: >
+    Domain vocabulary for the BoldSign eSignature REST API, covering core concepts
+    for electronic signature workflows, document management, template reuse,
+    embedded signing, identity verification, and user/team administration.
+  url: https://developers.boldsign.com/
+  version: "1"
+
+terms:
+
+  # Core document concepts
+  - term: Document
+    definition: >
+      A file (PDF or other supported format) sent to one or more signers for
+      electronic signature. Each document is identified by a unique documentId
+      and progresses through a lifecycle of statuses.
+    relatedPaths:
+      - /v1/document/send
+      - /v1/document/properties
+      - /v1/document/list
+    seeAlso: https://developers.boldsign.com/api-overview/document/
+
+  - term: Envelope
+    definition: >
+      A container wrapping one or more documents sent in a single signing request.
+      Synonymous with Document in the BoldSign data model; each send operation
+      creates one envelope identified by documentId.
+    relatedPaths:
+      - /v1/document/send
+
+  - term: Signer
+    definition: >
+      A recipient who is required to apply an electronic signature or complete
+      form fields in a document. Signers are identified by name and email address
+      and may be assigned a signing order.
+    schemaRef: "Signer"
+    relatedPaths:
+      - /v1/document/send
+      - /v1/document/changeRecipient
+
+  - term: SignerType
+    definition: >
+      Classification of a document recipient. Values include Signer (must sign),
+      Viewer (read-only), and InPersonSigner (signs in person via a host).
+    schemaRef: "SignerType"
+
+  - term: FormField
+    definition: >
+      An interactive element placed on a document page for a signer to complete.
+      Types include Signature, Initials, TextBox, CheckBox, RadioButton, Date,
+      Dropdown, Image, and more.
+    schemaRef: "DocumentFormFields"
+    relatedPaths:
+      - /v1/document/prefillFields
+
+  - term: Template
+    definition: >
+      A reusable document configuration that predefines roles, form fields, and
+      settings. Templates allow repeated sending of the same document type without
+      re-uploading files each time.
+    relatedPaths:
+      - /v1/template/create
+      - /v1/template/list
+      - /v1/template/send
+      - /v1/template/properties
+    seeAlso: https://developers.boldsign.com/api-overview/template/
+
+  - term: Role
+    definition: >
+      A named placeholder in a template representing a category of signer.
+      Roles are filled with actual signer details when a document is sent from
+      a template.
+    schemaRef: "Roles"
+
+  - term: EmbeddedSignLink
+    definition: >
+      A short-lived URL that allows a signer to complete the signing ceremony
+      directly within a third-party application via an iFrame or redirect,
+      without navigating to the BoldSign portal.
+    relatedPaths:
+      - /v1/document/getEmbeddedSignLink
+      - /v1/document/createEmbeddedRequestUrl
+
+  - term: EmbeddedRequestUrl
+    definition: >
+      A URL embedding the document-send workflow inside a host application,
+      allowing end-users to upload files and configure signers without leaving
+      the host interface.
+    relatedPaths:
+      - /v1/document/createEmbeddedRequestUrl
+      - /v1/template/createEmbeddedRequestUrl
+
+  - term: AuditTrail
+    definition: >
+      A tamper-evident log of all events for a document (sent, viewed, signed,
+      declined, revoked, etc.) used for legal compliance. Downloadable as a PDF.
+    schemaRef: "AuditTrail"
+    relatedPaths:
+      - /v1/document/downloadAuditLog
+
+  - term: Brand
+    definition: >
+      A customization profile applied to emails and the signing page, including
+      logo, colors, custom domain, and email sender display name.
+    relatedPaths:
+      - /v1/brand/create
+      - /v1/brand/edit
+      - /v1/brand/get
+      - /v1/brand/list
+
+  - term: CustomField
+    definition: >
+      An organization-defined metadata field attached to documents for internal
+      tracking or workflow automation.
+    relatedPaths:
+      - /v1/customField/create
+      - /v1/customField/list
+
+  - term: Contact
+    definition: >
+      A stored recipient profile (name and email) enabling fast selection of
+      frequent signers without re-entering details on each send.
+    relatedPaths:
+      - /v1/contacts/create
+      - /v1/contacts/list
+      - /v1/contacts/get
+
+  - term: ContactGroup
+    definition: >
+      A named collection of contacts that can be added as a group to a signing
+      request, where any one member of the group may fulfill the signing role.
+    relatedPaths:
+      - /v1/contactGroups/create
+      - /v1/contactGroups/list
+
+  - term: SenderIdentity
+    definition: >
+      A verified sender email address that can be used to send documents on
+      behalf of another user or organization identity.
+    relatedPaths:
+      - /v1/senderIdentities/create
+      - /v1/senderIdentities/list
+
+  - term: IdentityVerification
+    definition: >
+      A process that verifies a signer's government-issued ID before allowing
+      them to sign, producing a report and captured images.
+    relatedPaths:
+      - /v1/identityVerification/report
+      - /v1/identityVerification/image
+      - /v1/identityVerification/createEmbeddedVerificationUrl
+
+  - term: Team
+    definition: >
+      A group of users within an organization that can share document management
+      responsibilities and access.
+    relatedPaths:
+      - /v1/teams/create
+      - /v1/teams/list
+      - /v1/teams/get
+
+  - term: User
+    definition: >
+      An account holder within a BoldSign organization, with roles determining
+      permissions for sending and managing documents.
+    relatedPaths:
+      - /v1/users/create
+      - /v1/users/list
+      - /v1/users/get
+
+  - term: Webhook
+    definition: >
+      An HTTP callback triggered by document lifecycle events (sent, viewed,
+      signed, declined, revoked, completed) sent to a configured endpoint URL.
+    seeAlso: https://developers.boldsign.com/api-overview/webhooks/
+
+  - term: AccessCode
+    definition: >
+      A passcode required from a signer before they can access and sign a
+      document, providing an additional authentication layer.
+    schemaRef: "AccessCodeDetail"
+    relatedPaths:
+      - /v1/document/changeAccessCode
+
+  - term: DocumentStatus
+    definition: >
+      The current state of a document in the signing lifecycle. Common values
+      include WaitingForOthers, Completed, Declined, Expired, and Revoked.
+
+  - term: ExpirySettings
+    definition: >
+      Configuration controlling when a document signing request automatically
+      expires, measured in days from send date.
+    schemaRef: "DocumentExpirySettings"
+
+  - term: BehalfOf
+    definition: >
+      A feature allowing one user to send documents on behalf of another
+      authorized user within the same organization.
+    schemaRef: "BehalfOf"
+    relatedPaths:
+      - /v1/document/behalfList
+
+  - term: PrefillField
+    definition: >
+      Pre-populated form field values set by the sender before sending the
+      document, which signers may or may not be allowed to modify.
+    relatedPaths:
+      - /v1/document/prefillFields
+
+  - term: APIKey
+    definition: >
+      An authentication credential passed in the X-API-KEY header to authorize
+      requests to the BoldSign API.
+    seeAlso: https://developers.boldsign.com/api-overview/authentication/
+
+  - term: OAuthToken
+    definition: >
+      A Bearer token obtained via OAuth 2.0 authorization code flow, passed in
+      the Authorization header as an alternative to API key authentication.
+    seeAlso: https://developers.boldsign.com/api-overview/authentication/
+
+authentication:
+  - type: APIKey
+    header: X-API-KEY
+    description: Pass your API key in the X-API-KEY request header.
+  - type: OAuth2
+    header: Authorization
+    format: "Bearer {token}"
+    description: Pass an OAuth 2.0 Bearer token obtained from the BoldSign authorization server.
+
+regions:
+  - name: United States
+    baseUrl: https://api.boldsign.com
+  - name: European Union
+    baseUrl: https://eu.boldsign.com
+  - name: Canada
+    baseUrl: https://ca.boldsign.com
+  - name: Australia
+    baseUrl: https://au.boldsign.com

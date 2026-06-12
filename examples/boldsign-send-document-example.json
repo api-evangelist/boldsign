@@ -1,0 +1,37 @@
+{
+  "title": "BoldSign - Send Document for Signature",
+  "description": "Example request body for POST /v1/document/send",
+  "request": {
+    "method": "POST",
+    "url": "https://api.boldsign.com/v1/document/send",
+    "headers": {
+      "X-API-KEY": "{{apiKey}}",
+      "Content-Type": "multipart/form-data"
+    },
+    "body": {
+      "Title": "Service Agreement",
+      "Message": "Please review and sign the attached document.",
+      "Signers[0][Name]": "John Doe",
+      "Signers[0][EmailAddress]": "john.doe@example.com",
+      "Signers[0][SignerOrder]": "1",
+      "Signers[0][SignerType]": "Signer",
+      "Signers[0][FormFields][0][Id]": "signature_field",
+      "Signers[0][FormFields][0][FieldType]": "Signature",
+      "Signers[0][FormFields][0][PageNumber]": "1",
+      "Signers[0][FormFields][0][Bounds][X]": "100",
+      "Signers[0][FormFields][0][Bounds][Y]": "200",
+      "Signers[0][FormFields][0][Bounds][Width]": "200",
+      "Signers[0][FormFields][0][Bounds][Height]": "50",
+      "Files": "(binary PDF file)",
+      "ExpiryDays": "30",
+      "EnableSigningOrder": "false",
+      "SendLinkValidTill": "2026-12-31T23:59:59Z"
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "documentId": "doc_abc123xyz"
+    }
+  }
+}

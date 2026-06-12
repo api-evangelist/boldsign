@@ -1,0 +1,28 @@
+{
+  "title": "BoldSign - Create Embedded Request URL",
+  "description": "Example request body for POST /v1/document/createEmbeddedRequestUrl",
+  "request": {
+    "method": "POST",
+    "url": "https://api.boldsign.com/v1/document/createEmbeddedRequestUrl",
+    "headers": {
+      "X-API-KEY": "{{apiKey}}",
+      "Content-Type": "multipart/form-data"
+    },
+    "body": {
+      "Title": "Embedded Signing Request",
+      "Signers[0][Name]": "Alice Johnson",
+      "Signers[0][EmailAddress]": "alice@example.com",
+      "Signers[0][SignerType]": "Signer",
+      "Files": "(binary PDF file)",
+      "ExpiresIn": "3600"
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "documentId": "doc_embed456",
+      "signerToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+      "embeddedSigningLink": "https://app.boldsign.com/sign/embed?token=eyJhbGciOi..."
+    }
+  }
+}

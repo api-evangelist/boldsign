@@ -1,0 +1,199 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "schema": "https://schema.org/",
+    "boldsign": "https://developers.boldsign.com/vocabulary#",
+
+    "BoldSignAPI": "boldsign:BoldSignAPI",
+    "Document": "boldsign:Document",
+    "Envelope": "boldsign:Envelope",
+    "Signer": "boldsign:Signer",
+    "Template": "boldsign:Template",
+    "Role": "boldsign:Role",
+    "FormField": "boldsign:FormField",
+    "Brand": "boldsign:Brand",
+    "AuditTrail": "boldsign:AuditTrail",
+    "Contact": "boldsign:Contact",
+    "ContactGroup": "boldsign:ContactGroup",
+    "Team": "boldsign:Team",
+    "User": "boldsign:User",
+    "Webhook": "boldsign:Webhook",
+    "SenderIdentity": "boldsign:SenderIdentity",
+    "IdentityVerification": "boldsign:IdentityVerification",
+    "EmbeddedSignLink": "boldsign:EmbeddedSignLink",
+    "EmbeddedRequestUrl": "boldsign:EmbeddedRequestUrl",
+    "AccessCode": "boldsign:AccessCode",
+    "CustomField": "boldsign:CustomField",
+    "BehalfOf": "boldsign:BehalfOf",
+    "PrefillField": "boldsign:PrefillField",
+
+    "documentId": {
+      "@id": "boldsign:documentId",
+      "@type": "xsd:string"
+    },
+    "templateId": {
+      "@id": "boldsign:templateId",
+      "@type": "xsd:string"
+    },
+    "signerEmail": {
+      "@id": "boldsign:signerEmail",
+      "@type": "xsd:string"
+    },
+    "signerName": {
+      "@id": "boldsign:signerName",
+      "@type": "xsd:string"
+    },
+    "documentStatus": {
+      "@id": "boldsign:documentStatus",
+      "@type": "xsd:string"
+    },
+    "signerType": {
+      "@id": "boldsign:signerType",
+      "@type": "xsd:string"
+    },
+    "signerOrder": {
+      "@id": "boldsign:signerOrder",
+      "@type": "xsd:integer"
+    },
+    "expiryDays": {
+      "@id": "boldsign:expiryDays",
+      "@type": "xsd:integer"
+    },
+    "createdDate": {
+      "@id": "boldsign:createdDate",
+      "@type": "xsd:integer"
+    },
+    "activityDate": {
+      "@id": "boldsign:activityDate",
+      "@type": "xsd:integer"
+    },
+    "enableSigningOrder": {
+      "@id": "boldsign:enableSigningOrder",
+      "@type": "xsd:boolean"
+    },
+    "isDeleted": {
+      "@id": "boldsign:isDeleted",
+      "@type": "xsd:boolean"
+    },
+    "isViewed": {
+      "@id": "boldsign:isViewed",
+      "@type": "xsd:boolean"
+    },
+    "title": {
+      "@id": "schema:name"
+    },
+    "message": {
+      "@id": "schema:description"
+    },
+    "emailAddress": {
+      "@id": "schema:email"
+    },
+    "name": {
+      "@id": "schema:name"
+    },
+    "brandName": {
+      "@id": "schema:name"
+    },
+    "brandLogo": {
+      "@id": "schema:logo"
+    },
+    "apiKey": {
+      "@id": "boldsign:apiKey",
+      "@type": "xsd:string"
+    },
+    "bearerToken": {
+      "@id": "boldsign:bearerToken",
+      "@type": "xsd:string"
+    },
+
+    "senderDetail": {
+      "@id": "boldsign:senderDetail",
+      "@type": "boldsign:User"
+    },
+    "signerDetails": {
+      "@id": "boldsign:signerDetails",
+      "@container": "@set"
+    },
+    "formFields": {
+      "@id": "boldsign:formFields",
+      "@container": "@set"
+    },
+    "ccDetails": {
+      "@id": "boldsign:ccDetails",
+      "@container": "@set"
+    },
+
+    "fieldType": {
+      "@id": "boldsign:fieldType",
+      "@type": "xsd:string"
+    },
+    "pageNumber": {
+      "@id": "boldsign:pageNumber",
+      "@type": "xsd:integer"
+    },
+    "bounds": {
+      "@id": "boldsign:bounds"
+    },
+    "x": {
+      "@id": "boldsign:x",
+      "@type": "xsd:number"
+    },
+    "y": {
+      "@id": "boldsign:y",
+      "@type": "xsd:number"
+    },
+    "width": {
+      "@id": "boldsign:width",
+      "@type": "xsd:number"
+    },
+    "height": {
+      "@id": "boldsign:height",
+      "@type": "xsd:number"
+    },
+
+    "webhookUrl": {
+      "@id": "boldsign:webhookUrl",
+      "@type": "xsd:anyURI"
+    },
+    "webhookEvents": {
+      "@id": "boldsign:webhookEvents",
+      "@container": "@set"
+    },
+
+    "baseUrl": {
+      "@id": "boldsign:baseUrl",
+      "@type": "xsd:anyURI"
+    },
+    "region": {
+      "@id": "boldsign:region",
+      "@type": "xsd:string"
+    },
+
+    "apiCreditsCount": {
+      "@id": "boldsign:apiCreditsCount",
+      "@type": "xsd:integer"
+    }
+  },
+  "@graph": [
+    {
+      "@id": "boldsign:BoldSignAPI",
+      "@type": "schema:WebAPI",
+      "schema:name": "BoldSign eSignature API",
+      "schema:description": "REST API for sending documents for electronic signature, managing templates, embedding signing workflows, and tracking document status.",
+      "schema:url": "https://developers.boldsign.com/",
+      "schema:provider": {
+        "@type": "schema:Organization",
+        "schema:name": "BoldSign (Syncfusion)",
+        "schema:url": "https://boldsign.com/",
+        "schema:email": "support@boldsign.com"
+      },
+      "schema:documentation": "https://developers.boldsign.com/",
+      "schema:termsOfService": "https://boldsign.com/terms-of-use/",
+      "boldsign:baseUrl": "https://api.boldsign.com",
+      "boldsign:region": "US",
+      "boldsign:version": "1",
+      "boldsign:specUrl": "https://api.boldsign.com/swagger/v1/swagger.json"
+    }
+  ]
+}
