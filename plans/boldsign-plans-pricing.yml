@@ -1,0 +1,149 @@
+specification: API Commons Plans 0.1
+provider: BoldSign
+providerId: boldsign
+created: 2026-06-12
+modified: 2026-06-12
+reconciled: true
+url: https://boldsign.com/electronic-signature-pricing/
+plans:
+  - name: Essential
+    description: Free plan for individuals with basic e-signature needs.
+    type: free
+    pricing:
+      amount: 0
+      currency: USD
+      period: month
+    quotas:
+      - name: Envelopes per month
+        type: quota
+        limit: 25
+        unit: envelopes
+      - name: Templates
+        type: quota
+        limit: 2
+        unit: templates
+      - name: Users
+        type: quota
+        limit: 1
+        unit: users
+    features:
+      - Audit trail with complete document history
+      - Signer authentication
+      - Automated reminders
+      - Custom branding
+
+  - name: Growth
+    description: Plan for growing teams needing more envelopes and collaboration features.
+    type: paid
+    pricing:
+      amount: 15
+      currency: USD
+      period: month
+      perUnit: user
+      note: "$15/user/month billed yearly; $5/user/month billed monthly for lower tier"
+    quotas:
+      - name: Envelopes per month
+        type: quota
+        limit: 50
+        unit: envelopes
+        perUnit: user
+      - name: Templates
+        type: quota
+        limit: 10
+        unit: templates
+    features:
+      - Template sharing
+      - In-person signing
+      - Team management
+      - Unlimited envelopes (with additional billing)
+
+  - name: Business
+    description: Full-featured plan for businesses requiring SSO, HIPAA, and AI-powered features.
+    type: paid
+    pricing:
+      amount: 25
+      currency: USD
+      period: month
+      perUnit: user
+      note: "$25/user/month billed yearly; $15/user/month billed monthly"
+    quotas:
+      - name: Envelopes per month
+        type: quota
+        limit: -1
+        unit: envelopes
+        note: Unlimited
+      - name: Templates
+        type: quota
+        limit: -1
+        unit: templates
+        note: Unlimited
+    features:
+      - Single sign-on (SSO)
+      - Custom roles
+      - AI-powered field detection
+      - HIPAA compliance
+      - Dedicated account manager
+
+  - name: Premium
+    description: All-inclusive plan for large teams with unlimited users.
+    type: paid
+    pricing:
+      amount: 138
+      currency: USD
+      period: month
+      note: "$138/month billed yearly; $99/month billed monthly"
+    quotas:
+      - name: Envelopes per month
+        type: quota
+        limit: 250
+        unit: envelopes
+      - name: Users
+        type: quota
+        limit: -1
+        unit: users
+        note: Unlimited
+    features:
+      - All Business plan features
+      - Unlimited users
+
+  - name: Enterprise API
+    description: API-first plan for developers embedding e-signature into applications.
+    type: metered
+    pricing:
+      amount: 30
+      currency: USD
+      period: month
+      note: Starts at $30/month for 40 envelopes; additional at $0.75 per envelope
+    quotas:
+      - name: Envelopes included
+        type: quota
+        limit: 40
+        unit: envelopes
+      - name: Additional envelopes
+        type: metered
+        price: 0.75
+        currency: USD
+        unit: envelope
+    features:
+      - Embedded signing
+      - Embedded requesting
+      - Webhooks
+      - Unlimited templates
+      - API dashboard
+      - Advanced authentication
+      - Free sandbox environment
+      - Postman collection
+      - Interactive API Explorer
+
+  - name: Free Sandbox
+    description: Developer sandbox for testing API integration without charges.
+    type: free
+    pricing:
+      amount: 0
+      currency: USD
+      period: month
+    features:
+      - Full API access
+      - Documents watermarked as test
+      - Documents auto-deleted after 14 days
+      - No credit card required

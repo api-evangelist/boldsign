@@ -1,0 +1,71 @@
+specification: FinOps Framework 1.0
+provider: BoldSign
+providerId: boldsign
+created: 2026-06-12
+modified: 2026-06-12
+focusVersion: "1.0"
+billingModel: hybrid
+description: >
+  BoldSign uses a hybrid billing model combining subscription tiers (flat monthly fee
+  for fixed envelope quotas) and metered pay-as-you-go billing for the Enterprise API
+  plan (per-envelope pricing after the included allocation is consumed).
+focusColumns:
+  - column: ProviderName
+    value: BoldSign
+  - column: ServiceName
+    value: BoldSign eSignature API
+  - column: ServiceCategory
+    value: Software as a Service (SaaS)
+  - column: ChargeType
+    value: Usage
+  - column: BillingCurrency
+    value: USD
+  - column: BillingPeriod
+    value: Monthly
+meters:
+  - name: Envelope
+    description: >
+      A single envelope containing one or more documents sent for signature.
+      Multiple documents within a single envelope count as one billable unit.
+    unit: envelope
+    billingModel: metered
+    price: 0.75
+    currency: USD
+    notes: >
+      Charges apply once the envelope is sent. Draft envelopes are not billed.
+      Charges are reversed if an unsigned envelope is revoked. Charges are not
+      reversed if a recipient declines after signing has begun.
+  - name: Monthly Subscription
+    description: >
+      Flat monthly subscription fee covering a fixed allocation of envelopes
+      depending on plan tier (Essential free, Growth 50/user, Business unlimited,
+      Premium 250, Enterprise API 40 included).
+    unit: month
+    billingModel: subscription
+    price: 30
+    currency: USD
+    notes: Enterprise API base subscription includes 40 envelopes per month.
+principles:
+  - name: Cost Visibility
+    description: >
+      BoldSign provides an API dashboard and real-time usage monitoring within
+      the developer console so teams can track envelope consumption and API usage.
+  - name: Usage Optimization
+    description: >
+      Draft status documents incur no charges; teams should finalize workflows
+      before sending to avoid unnecessary billable envelope creation. Sandbox
+      environment allows full testing at no cost.
+  - name: Allocation Management
+    description: >
+      Enterprise API plan includes a baseline monthly allocation. Once exhausted,
+      pay-as-you-go billing activates at $0.75/envelope. Teams can monitor
+      X-RateLimit-Remaining headers to track API usage versus rate limit quotas.
+  - name: Refund Policy
+    description: >
+      Charges for envelopes are reversed if an unsigned document is revoked
+      or revocation occurs after partial signing; charges are not reversed
+      if a recipient actively declines after partial completion.
+  - name: Regional Billing
+    description: >
+      BoldSign operates regional API endpoints (US, EU, CA, AU). Billing
+      currency is USD regardless of region.

@@ -1,0 +1,78 @@
+aid: boldsign
+name: BoldSign
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+url: https://raw.githubusercontent.com/api-evangelist/boldsign/refs/heads/main/apis.yml
+created: 2026-06-12
+modified: 2026-06-12
+specificationVersion: "0.19"
+description: >
+  BoldSign is an e-signature platform built by Syncfusion that provides a REST API
+  for sending documents for electronic signature, managing reusable templates, tracking
+  envelope status, and embedding signing and requesting workflows directly into third-party
+  applications. The API supports both API key and OAuth 2.0 authentication and outputs
+  JSON responses across US, EU, CA, and AU regional endpoints. BoldSign offers official
+  SDKs for .NET, Python, Java, Node.js, and PHP, along with a free sandbox environment,
+  a Postman collection, and an interactive API Explorer. The platform is SOC 2 Type II,
+  HIPAA, GDPR, and eIDAS compliant, and supports webhooks for real-time event notifications.
+tags:
+  - E-Signature
+  - Electronic Signature
+  - Document Management
+  - Embedded Signing
+  - Webhooks
+  - Templates
+  - Identity Verification
+  - Compliance
+apis:
+  - name: BoldSign eSignature API
+    description: >
+      REST API for sending documents for signature, managing templates, embedding
+      signing and requesting workflows, retrieving audit trails, prefilling form fields,
+      configuring webhooks, and managing users and teams.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://developers.boldsign.com/
+    baseURL: https://api.boldsign.com
+    tags:
+      - E-Signature
+      - Documents
+      - Templates
+      - Webhooks
+    properties:
+      - type: Documentation
+        url: https://developers.boldsign.com/
+      - type: OpenAPI
+        url: https://api.boldsign.com/swagger/index.html
+      - type: Postman
+        url: https://developers.boldsign.com/api-overview/api-explorer/
+    contact:
+      - FN: BoldSign Support
+        email: support@boldsign.com
+common:
+  - type: Website
+    url: https://boldsign.com/esignature-api/
+  - type: Documentation
+    url: https://developers.boldsign.com/
+  - type: GitHubOrganization
+    url: https://github.com/boldsign
+  - type: LinkedIn
+    url: https://www.linkedin.com/showcase/bold-sign-app/
+  - type: X
+    url: https://twitter.com/boldsignapp
+  - type: Blog
+    url: https://boldsign.com/blogs/
+  - type: Pricing
+    url: https://boldsign.com/electronic-signature-pricing/
+  - type: StatusPage
+    url: https://status.boldsign.com/
+  - type: Sandbox
+    url: https://developers.boldsign.com/api-overview/getting-started/
+  - type: Plans
+    url: plans/boldsign-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/boldsign-rate-limits.yml
+  - type: FinOps
+    url: finops/boldsign-finops.yml
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

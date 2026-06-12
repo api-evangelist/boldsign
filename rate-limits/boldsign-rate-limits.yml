@@ -1,0 +1,50 @@
+specification: API Commons Rate Limits 0.1
+provider: BoldSign
+providerId: boldsign
+created: 2026-06-12
+modified: 2026-06-12
+url: https://developers.boldsign.com/api-overview/rate-limit/
+rateLimits:
+  - name: Production Rate Limit
+    description: Maximum number of API requests allowed per hour in the production environment.
+    environment: production
+    scope: account
+    limit: 2000
+    period: hour
+    periodUnit: hour
+    throttled: true
+    throttleStatusCode: 429
+    throttleMessage: Too Many Requests
+    headers:
+      - name: X-RateLimit-Remaining
+        description: Number of requests remaining in the current rate limit window.
+      - name: X-RateLimit-Reset
+        description: Timestamp indicating when the rate limit window resets.
+    retryAfter: true
+    notes: >
+      Rate limits apply at the account level, not per OAuth app or individual user.
+      When exceeded, a 429 Too Many Requests response is returned.
+
+  - name: Sandbox Rate Limit
+    description: Maximum number of API requests allowed per hour in the sandbox/testing environment.
+    environment: sandbox
+    scope: account
+    limit: 50
+    period: hour
+    periodUnit: hour
+    throttled: true
+    throttleStatusCode: 429
+    throttleMessage: Too Many Requests
+    notes: >
+      Sandbox rate limits are significantly lower than production. Sandbox documents
+      are watermarked and auto-deleted after 14 days. No charges apply in sandbox.
+
+regionalEndpoints:
+  - region: US
+    baseURL: https://api.boldsign.com
+  - region: EU
+    baseURL: https://api-eu.boldsign.com
+  - region: CA
+    baseURL: https://api-ca.boldsign.com
+  - region: AU
+    baseURL: https://api-au.boldsign.com
