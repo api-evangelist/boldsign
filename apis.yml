@@ -1,7 +1,7 @@
 aid: boldsign
 name: BoldSign
 type: Index
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/boldsign/refs/heads/main/apis.yml
 created: 2026-06-12
 modified: 2026-06-12
@@ -30,7 +30,7 @@ apis:
       REST API for sending documents for signature, managing templates, embedding
       signing and requesting workflows, retrieving audit trails, prefilling form fields,
       configuring webhooks, and managing users and teams.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://developers.boldsign.com/
     baseURL: https://api.boldsign.com
     tags:
