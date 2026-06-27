@@ -2,6 +2,13 @@
   "repo": "boldsign",
   "feeds": [
     {
+      "source": "https://boldsign.com/blogs/feed/",
+      "feed_url": "https://boldsign.com/blogs/feed/",
+      "title": "",
+      "saved": 0,
+      "method": "feed"
+    },
+    {
       "source": "https://twitter.com/boldsignapp",
       "feed_url": "https://twitter.com/boldsignapp",
       "title": "",
@@ -9,6 +16,6 @@
       "method": "none"
     }
   ],
-  "post_count": 0,
-  "fetched": "2026-06-14T20:42:17Z"
+  "post_count": 3,
+  "fetched": "2026-06-27T12:03:07Z"
 }
