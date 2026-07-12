@@ -57,6 +57,10 @@ apis:
       - FN: BoldSign Support
         email: support@boldsign.com
 common:
+  - type: DomainSecurity
+    url: security/boldsign-domain-security.yml
+  - type: Authentication
+    url: authentication/boldsign-authentication.yml
   - type: Website
     url: https://boldsign.com/esignature-api/
   - type: Documentation

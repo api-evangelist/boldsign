@@ -1,0 +1,23 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/boldsign-esignature-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: Bearer
+  type: apiKey
+  in: header
+  parameter: Authorization
+  description: 'Format ''Bearer'' [space] [TOKEN]. Ex: ''Bearer eyJhbGciOiJIUzI1N'''
+  sources:
+  - openapi/boldsign-esignature-openapi.yml
+- name: X-API-KEY
+  type: apiKey
+  in: header
+  parameter: X-API-KEY
+  description: 'Format [API-KEY]. Ex: ''abcdef12345'''
+  sources:
+  - openapi/boldsign-esignature-openapi.yml
