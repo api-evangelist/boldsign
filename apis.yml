@@ -57,6 +57,8 @@ apis:
       - FN: BoldSign Support
         email: support@boldsign.com
 common:
+  - type: AgenticAccess
+    url: agentic-access/boldsign-agentic-access.yml
   - type: DomainSecurity
     url: security/boldsign-domain-security.yml
   - type: Authentication
