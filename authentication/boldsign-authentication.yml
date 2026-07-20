@@ -11,7 +11,7 @@ schemes:
   type: apiKey
   in: header
   parameter: Authorization
-  description: 'Format ''Bearer'' [space] [TOKEN]. Ex: ''Bearer eyJhbGciOiJIUzI1N'''
+  description: 'Format ''Bearer'' [space] [TOKEN]. Ex: ''Bearer [example key]'''
   sources:
   - openapi/boldsign-esignature-openapi.yml
 - name: X-API-KEY
