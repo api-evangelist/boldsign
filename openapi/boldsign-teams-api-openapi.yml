@@ -1,0 +1,581 @@
+openapi: 3.0.3
+info:
+  title: BoldSign Branding Teams API
+  version: '1'
+  description: BoldSign eSignature REST API for sending documents for electronic signature, managing reusable templates, tracking envelope status, embedding signing and requesting workflows into third-party applications. Supports API key and OAuth 2.0 authentication. Regional endpoints available for US, EU, CA, and AU.
+  contact:
+    name: BoldSign Support
+    url: https://developers.boldsign.com/
+    email: support@boldsign.com
+  license:
+    name: Proprietary
+    url: https://boldsign.com/terms-of-use/
+  termsOfService: https://boldsign.com/terms-of-use/
+servers:
+- url: https://api.boldsign.com
+  description: US production
+- url: https://eu.boldsign.com
+  description: EU production
+- url: https://ca.boldsign.com
+  description: CA production
+- url: https://au.boldsign.com
+  description: AU production
+security:
+- Bearer: []
+- X-API-KEY: []
+tags:
+- name: Teams
+paths:
+  /v1/teams/get:
+    get:
+      tags:
+      - Teams
+      summary: Get Team details.
+      operationId: GetTeam
+      parameters:
+      - name: teamId
+        in: query
+        required: true
+        schema:
+          title: String
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TeamResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+  /v1/teams/list:
+    get:
+      tags:
+      - Teams
+      summary: List Teams.
+      operationId: ListTeams
+      parameters:
+      - name: Page
+        in: query
+        description: Page index specified in get team list request.
+        required: true
+        schema:
+          title: Int32
+          type: integer
+          format: int32
+          default: 1
+      - name: PageSize
+        in: query
+        description: Page size specified in get team list request.
+        schema:
+          title: Int32
+          type: integer
+          format: int32
+          default: 10
+      - name: SearchKey
+        in: query
+        description: Teams can be listed by the search key
+        schema:
+          title: String
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TeamListResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+  /v1/teams/create:
+    post:
+      tags:
+      - Teams
+      summary: Create Team.
+      operationId: CreateTeam
+      requestBody:
+        description: team creation.
+        content:
+          application/json;odata.metadata=minimal;odata.streaming=true:
+            schema:
+              $ref: '#/components/schemas/CreateTeamRequest'
+          application/json;odata.metadata=minimal;odata.streaming=false:
+            schema:
+              $ref: '#/components/schemas/CreateTeamRequest'
+          application/json;odata.metadata=minimal:
+            schema:
+              $ref: '#/components/schemas/CreateTeamRequest'
+          application/json;odata.metadata=full;odata.streaming=true:
+            schema:
+              $ref: '#/components/schemas/CreateTeamRequest'
+          application/json;odata.metadata=full;odata.streaming=false:
+            schema:
+              $ref: '#/components/schemas/CreateTeamRequest'
+          application/json;odata.metadata=full:
+            schema:
+              $ref: '#/components/schemas/CreateTeamRequest'
+          application/json;odata.metadata=none;odata.streaming=true:
+            schema:
+              $ref: '#/components/schemas/CreateTeamRequest'
+          application/json;odata.metadata=none;odata.streaming=false:
+            schema:
+              $ref: '#/components/schemas/CreateTeamRequest'
+          application/json;odata.metadata=none:
+            schema:
+              $ref: '#/components/schemas/CreateTeamRequest'
+          application/json;odata.streaming=true:
+            schema:
+              $ref: '#/components/schemas/CreateTeamRequest'
+          application/json;odata.streaming=false:
+            schema:
+              $ref: '#/components/schemas/CreateTeamRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateTeamRequest'
+          application/json;odata.metadata=minimal;odata.streaming=true;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/CreateTeamRequest'
+          application/json;odata.metadata=minimal;odata.streaming=true;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/CreateTeamRequest'
+          application/json;odata.metadata=minimal;odata.streaming=false;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/CreateTeamRequest'
+          application/json;odata.metadata=minimal;odata.streaming=false;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/CreateTeamRequest'
+          application/json;odata.metadata=minimal;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/CreateTeamRequest'
+          application/json;odata.metadata=minimal;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/CreateTeamRequest'
+          application/json;odata.metadata=full;odata.streaming=true;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/CreateTeamRequest'
+          application/json;odata.metadata=full;odata.streaming=true;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/CreateTeamRequest'
+          application/json;odata.metadata=full;odata.streaming=false;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/CreateTeamRequest'
+          application/json;odata.metadata=full;odata.streaming=false;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/CreateTeamRequest'
+          application/json;odata.metadata=full;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/CreateTeamRequest'
+          application/json;odata.metadata=full;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/CreateTeamRequest'
+          application/json;odata.metadata=none;odata.streaming=true;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/CreateTeamRequest'
+          application/json;odata.metadata=none;odata.streaming=true;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/CreateTeamRequest'
+          application/json;odata.metadata=none;odata.streaming=false;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/CreateTeamRequest'
+          application/json;odata.metadata=none;odata.streaming=false;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/CreateTeamRequest'
+          application/json;odata.metadata=none;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/CreateTeamRequest'
+          application/json;odata.metadata=none;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/CreateTeamRequest'
+          application/json;odata.streaming=true;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/CreateTeamRequest'
+          application/json;odata.streaming=true;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/CreateTeamRequest'
+          application/json;odata.streaming=false;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/CreateTeamRequest'
+          application/json;odata.streaming=false;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/CreateTeamRequest'
+          application/json;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/CreateTeamRequest'
+          application/json;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/CreateTeamRequest'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/CreateTeamRequest'
+          text/plain:
+            schema:
+              $ref: '#/components/schemas/CreateTeamRequest'
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/CreateTeamRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/CreateTeamRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/CreateTeamRequest'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TeamCreated'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+  /v1/teams/update:
+    put:
+      tags:
+      - Teams
+      summary: Update Team.
+      operationId: UpdateTeam
+      requestBody:
+        description: update team.
+        content:
+          application/json;odata.metadata=minimal;odata.streaming=true:
+            schema:
+              $ref: '#/components/schemas/TeamUpdateRequest'
+          application/json;odata.metadata=minimal;odata.streaming=false:
+            schema:
+              $ref: '#/components/schemas/TeamUpdateRequest'
+          application/json;odata.metadata=minimal:
+            schema:
+              $ref: '#/components/schemas/TeamUpdateRequest'
+          application/json;odata.metadata=full;odata.streaming=true:
+            schema:
+              $ref: '#/components/schemas/TeamUpdateRequest'
+          application/json;odata.metadata=full;odata.streaming=false:
+            schema:
+              $ref: '#/components/schemas/TeamUpdateRequest'
+          application/json;odata.metadata=full:
+            schema:
+              $ref: '#/components/schemas/TeamUpdateRequest'
+          application/json;odata.metadata=none;odata.streaming=true:
+            schema:
+              $ref: '#/components/schemas/TeamUpdateRequest'
+          application/json;odata.metadata=none;odata.streaming=false:
+            schema:
+              $ref: '#/components/schemas/TeamUpdateRequest'
+          application/json;odata.metadata=none:
+            schema:
+              $ref: '#/components/schemas/TeamUpdateRequest'
+          application/json;odata.streaming=true:
+            schema:
+              $ref: '#/components/schemas/TeamUpdateRequest'
+          application/json;odata.streaming=false:
+            schema:
+              $ref: '#/components/schemas/TeamUpdateRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TeamUpdateRequest'
+          application/json;odata.metadata=minimal;odata.streaming=true;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/TeamUpdateRequest'
+          application/json;odata.metadata=minimal;odata.streaming=true;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/TeamUpdateRequest'
+          application/json;odata.metadata=minimal;odata.streaming=false;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/TeamUpdateRequest'
+          application/json;odata.metadata=minimal;odata.streaming=false;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/TeamUpdateRequest'
+          application/json;odata.metadata=minimal;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/TeamUpdateRequest'
+          application/json;odata.metadata=minimal;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/TeamUpdateRequest'
+          application/json;odata.metadata=full;odata.streaming=true;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/TeamUpdateRequest'
+          application/json;odata.metadata=full;odata.streaming=true;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/TeamUpdateRequest'
+          application/json;odata.metadata=full;odata.streaming=false;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/TeamUpdateRequest'
+          application/json;odata.metadata=full;odata.streaming=false;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/TeamUpdateRequest'
+          application/json;odata.metadata=full;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/TeamUpdateRequest'
+          application/json;odata.metadata=full;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/TeamUpdateRequest'
+          application/json;odata.metadata=none;odata.streaming=true;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/TeamUpdateRequest'
+          application/json;odata.metadata=none;odata.streaming=true;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/TeamUpdateRequest'
+          application/json;odata.metadata=none;odata.streaming=false;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/TeamUpdateRequest'
+          application/json;odata.metadata=none;odata.streaming=false;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/TeamUpdateRequest'
+          application/json;odata.metadata=none;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/TeamUpdateRequest'
+          application/json;odata.metadata=none;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/TeamUpdateRequest'
+          application/json;odata.streaming=true;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/TeamUpdateRequest'
+          application/json;odata.streaming=true;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/TeamUpdateRequest'
+          application/json;odata.streaming=false;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/TeamUpdateRequest'
+          application/json;odata.streaming=false;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/TeamUpdateRequest'
+          application/json;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/TeamUpdateRequest'
+          application/json;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/TeamUpdateRequest'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/TeamUpdateRequest'
+          text/plain:
+            schema:
+              $ref: '#/components/schemas/TeamUpdateRequest'
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/TeamUpdateRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/TeamUpdateRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/TeamUpdateRequest'
+        required: true
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+components:
+  schemas:
+    TeamPageDetails:
+      title: TeamPageDetails
+      type: object
+      properties:
+        pageSize:
+          title: Int32
+          type: integer
+          format: int32
+        page:
+          title: Int32
+          type: integer
+          format: int32
+      additionalProperties: false
+    ErrorResult:
+      title: ErrorResult
+      type: object
+      properties:
+        error:
+          title: String
+          type: string
+          nullable: true
+      additionalProperties: false
+    TeamUsers:
+      title: TeamUsers
+      type: object
+      properties:
+        userId:
+          title: String
+          type: string
+          nullable: true
+        email:
+          title: String
+          type: string
+          nullable: true
+        firstName:
+          title: String
+          type: string
+          nullable: true
+        lastName:
+          title: String
+          type: string
+          nullable: true
+        userRole:
+          title: UserRole
+          enum:
+          - AccountAdmin
+          - TeamAdmin
+          - TeamMember
+          type: string
+        userStatus:
+          title: UserStatus
+          enum:
+          - Active
+          - InvitationPending
+          - Deactivated
+          type: string
+      additionalProperties: false
+    TeamUpdateRequest:
+      title: TeamUpdateRequest
+      required:
+      - teamId
+      - teamName
+      type: object
+      properties:
+        teamId:
+          title: String
+          minLength: 1
+          type: string
+        teamName:
+          title: String
+          maxLength: 255
+          minLength: 0
+          type: string
+      additionalProperties: false
+    TeamListResponse:
+      title: TeamListResponse
+      type: object
+      properties:
+        pageDetails:
+          $ref: '#/components/schemas/TeamPageDetails'
+        results:
+          title: List`1
+          type: array
+          items:
+            $ref: '#/components/schemas/Teams'
+          nullable: true
+      additionalProperties: false
+    CreateTeamRequest:
+      title: CreateTeamRequest
+      required:
+      - teamName
+      type: object
+      properties:
+        teamName:
+          title: String
+          maxLength: 255
+          minLength: 0
+          type: string
+      additionalProperties: false
+    TeamCreated:
+      title: TeamCreated
+      type: object
+      properties:
+        teamId:
+          title: String
+          type: string
+          nullable: true
+      additionalProperties: false
+    TeamResponse:
+      title: TeamResponse
+      type: object
+      properties:
+        teamId:
+          title: String
+          type: string
+          nullable: true
+        teamName:
+          title: String
+          type: string
+          nullable: true
+        users:
+          title: List`1
+          type: array
+          items:
+            $ref: '#/components/schemas/TeamUsers'
+          nullable: true
+        createdDate:
+          title: Int64
+          type: integer
+          format: int64
+        modifiedDate:
+          title: Int64
+          type: integer
+          format: int64
+      additionalProperties: false
+    Teams:
+      title: Teams
+      type: object
+      properties:
+        teamName:
+          title: String
+          type: string
+          nullable: true
+        teamId:
+          title: String
+          type: string
+          nullable: true
+        createdDate:
+          title: Int64
+          type: integer
+          format: int64
+        modifiedDate:
+          title: Int64
+          type: integer
+          format: int64
+      additionalProperties: false
+  securitySchemes:
+    Bearer:
+      type: apiKey
+      description: 'Format ''Bearer'' [space] [TOKEN]. Ex: ''Bearer eyJhbGciOiJIUzI1N'''
+      name: Authorization
+      in: header
+    X-API-KEY:
+      type: apiKey
+      description: 'Format [API-KEY]. Ex: ''abcdef12345'''
+      name: X-API-KEY
+      in: header
+externalDocs:
+  description: BoldSign Developer Documentation
+  url: https://developers.boldsign.com/

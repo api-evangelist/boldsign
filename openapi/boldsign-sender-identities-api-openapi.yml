@@ -1,0 +1,815 @@
+openapi: 3.0.3
+info:
+  title: BoldSign Branding Sender Identities API
+  version: '1'
+  description: BoldSign eSignature REST API for sending documents for electronic signature, managing reusable templates, tracking envelope status, embedding signing and requesting workflows into third-party applications. Supports API key and OAuth 2.0 authentication. Regional endpoints available for US, EU, CA, and AU.
+  contact:
+    name: BoldSign Support
+    url: https://developers.boldsign.com/
+    email: support@boldsign.com
+  license:
+    name: Proprietary
+    url: https://boldsign.com/terms-of-use/
+  termsOfService: https://boldsign.com/terms-of-use/
+servers:
+- url: https://api.boldsign.com
+  description: US production
+- url: https://eu.boldsign.com
+  description: EU production
+- url: https://ca.boldsign.com
+  description: CA production
+- url: https://au.boldsign.com
+  description: AU production
+security:
+- Bearer: []
+- X-API-KEY: []
+tags:
+- name: Sender Identities
+paths:
+  /v1/senderIdentities/create:
+    post:
+      tags:
+      - Sender Identities
+      summary: Creates sender identity.
+      operationId: CreateSenderIdentities
+      requestBody:
+        description: The create sender identity request.
+        content:
+          application/json;odata.metadata=minimal;odata.streaming=true:
+            schema:
+              $ref: '#/components/schemas/CreateSenderIdentityRequest'
+          application/json;odata.metadata=minimal;odata.streaming=false:
+            schema:
+              $ref: '#/components/schemas/CreateSenderIdentityRequest'
+          application/json;odata.metadata=minimal:
+            schema:
+              $ref: '#/components/schemas/CreateSenderIdentityRequest'
+          application/json;odata.metadata=full;odata.streaming=true:
+            schema:
+              $ref: '#/components/schemas/CreateSenderIdentityRequest'
+          application/json;odata.metadata=full;odata.streaming=false:
+            schema:
+              $ref: '#/components/schemas/CreateSenderIdentityRequest'
+          application/json;odata.metadata=full:
+            schema:
+              $ref: '#/components/schemas/CreateSenderIdentityRequest'
+          application/json;odata.metadata=none;odata.streaming=true:
+            schema:
+              $ref: '#/components/schemas/CreateSenderIdentityRequest'
+          application/json;odata.metadata=none;odata.streaming=false:
+            schema:
+              $ref: '#/components/schemas/CreateSenderIdentityRequest'
+          application/json;odata.metadata=none:
+            schema:
+              $ref: '#/components/schemas/CreateSenderIdentityRequest'
+          application/json;odata.streaming=true:
+            schema:
+              $ref: '#/components/schemas/CreateSenderIdentityRequest'
+          application/json;odata.streaming=false:
+            schema:
+              $ref: '#/components/schemas/CreateSenderIdentityRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateSenderIdentityRequest'
+          application/json;odata.metadata=minimal;odata.streaming=true;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/CreateSenderIdentityRequest'
+          application/json;odata.metadata=minimal;odata.streaming=true;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/CreateSenderIdentityRequest'
+          application/json;odata.metadata=minimal;odata.streaming=false;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/CreateSenderIdentityRequest'
+          application/json;odata.metadata=minimal;odata.streaming=false;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/CreateSenderIdentityRequest'
+          application/json;odata.metadata=minimal;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/CreateSenderIdentityRequest'
+          application/json;odata.metadata=minimal;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/CreateSenderIdentityRequest'
+          application/json;odata.metadata=full;odata.streaming=true;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/CreateSenderIdentityRequest'
+          application/json;odata.metadata=full;odata.streaming=true;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/CreateSenderIdentityRequest'
+          application/json;odata.metadata=full;odata.streaming=false;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/CreateSenderIdentityRequest'
+          application/json;odata.metadata=full;odata.streaming=false;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/CreateSenderIdentityRequest'
+          application/json;odata.metadata=full;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/CreateSenderIdentityRequest'
+          application/json;odata.metadata=full;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/CreateSenderIdentityRequest'
+          application/json;odata.metadata=none;odata.streaming=true;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/CreateSenderIdentityRequest'
+          application/json;odata.metadata=none;odata.streaming=true;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/CreateSenderIdentityRequest'
+          application/json;odata.metadata=none;odata.streaming=false;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/CreateSenderIdentityRequest'
+          application/json;odata.metadata=none;odata.streaming=false;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/CreateSenderIdentityRequest'
+          application/json;odata.metadata=none;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/CreateSenderIdentityRequest'
+          application/json;odata.metadata=none;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/CreateSenderIdentityRequest'
+          application/json;odata.streaming=true;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/CreateSenderIdentityRequest'
+          application/json;odata.streaming=true;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/CreateSenderIdentityRequest'
+          application/json;odata.streaming=false;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/CreateSenderIdentityRequest'
+          application/json;odata.streaming=false;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/CreateSenderIdentityRequest'
+          application/json;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/CreateSenderIdentityRequest'
+          application/json;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/CreateSenderIdentityRequest'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/CreateSenderIdentityRequest'
+          text/plain:
+            schema:
+              $ref: '#/components/schemas/CreateSenderIdentityRequest'
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/CreateSenderIdentityRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/CreateSenderIdentityRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/CreateSenderIdentityRequest'
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SenderIdentityCreated'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+  /v1/senderIdentities/update:
+    post:
+      tags:
+      - Sender Identities
+      summary: Updates sender identity.
+      operationId: UpdateSenderIdentities
+      parameters:
+      - name: email
+        in: query
+        required: true
+        schema:
+          title: String
+          type: string
+      requestBody:
+        description: The create sender identity request.
+        content:
+          application/json;odata.metadata=minimal;odata.streaming=true:
+            schema:
+              $ref: '#/components/schemas/EditSenderIdentityRequest'
+          application/json;odata.metadata=minimal;odata.streaming=false:
+            schema:
+              $ref: '#/components/schemas/EditSenderIdentityRequest'
+          application/json;odata.metadata=minimal:
+            schema:
+              $ref: '#/components/schemas/EditSenderIdentityRequest'
+          application/json;odata.metadata=full;odata.streaming=true:
+            schema:
+              $ref: '#/components/schemas/EditSenderIdentityRequest'
+          application/json;odata.metadata=full;odata.streaming=false:
+            schema:
+              $ref: '#/components/schemas/EditSenderIdentityRequest'
+          application/json;odata.metadata=full:
+            schema:
+              $ref: '#/components/schemas/EditSenderIdentityRequest'
+          application/json;odata.metadata=none;odata.streaming=true:
+            schema:
+              $ref: '#/components/schemas/EditSenderIdentityRequest'
+          application/json;odata.metadata=none;odata.streaming=false:
+            schema:
+              $ref: '#/components/schemas/EditSenderIdentityRequest'
+          application/json;odata.metadata=none:
+            schema:
+              $ref: '#/components/schemas/EditSenderIdentityRequest'
+          application/json;odata.streaming=true:
+            schema:
+              $ref: '#/components/schemas/EditSenderIdentityRequest'
+          application/json;odata.streaming=false:
+            schema:
+              $ref: '#/components/schemas/EditSenderIdentityRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EditSenderIdentityRequest'
+          application/json;odata.metadata=minimal;odata.streaming=true;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/EditSenderIdentityRequest'
+          application/json;odata.metadata=minimal;odata.streaming=true;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/EditSenderIdentityRequest'
+          application/json;odata.metadata=minimal;odata.streaming=false;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/EditSenderIdentityRequest'
+          application/json;odata.metadata=minimal;odata.streaming=false;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/EditSenderIdentityRequest'
+          application/json;odata.metadata=minimal;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/EditSenderIdentityRequest'
+          application/json;odata.metadata=minimal;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/EditSenderIdentityRequest'
+          application/json;odata.metadata=full;odata.streaming=true;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/EditSenderIdentityRequest'
+          application/json;odata.metadata=full;odata.streaming=true;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/EditSenderIdentityRequest'
+          application/json;odata.metadata=full;odata.streaming=false;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/EditSenderIdentityRequest'
+          application/json;odata.metadata=full;odata.streaming=false;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/EditSenderIdentityRequest'
+          application/json;odata.metadata=full;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/EditSenderIdentityRequest'
+          application/json;odata.metadata=full;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/EditSenderIdentityRequest'
+          application/json;odata.metadata=none;odata.streaming=true;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/EditSenderIdentityRequest'
+          application/json;odata.metadata=none;odata.streaming=true;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/EditSenderIdentityRequest'
+          application/json;odata.metadata=none;odata.streaming=false;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/EditSenderIdentityRequest'
+          application/json;odata.metadata=none;odata.streaming=false;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/EditSenderIdentityRequest'
+          application/json;odata.metadata=none;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/EditSenderIdentityRequest'
+          application/json;odata.metadata=none;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/EditSenderIdentityRequest'
+          application/json;odata.streaming=true;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/EditSenderIdentityRequest'
+          application/json;odata.streaming=true;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/EditSenderIdentityRequest'
+          application/json;odata.streaming=false;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/EditSenderIdentityRequest'
+          application/json;odata.streaming=false;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/EditSenderIdentityRequest'
+          application/json;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/EditSenderIdentityRequest'
+          application/json;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/EditSenderIdentityRequest'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/EditSenderIdentityRequest'
+          text/plain:
+            schema:
+              $ref: '#/components/schemas/EditSenderIdentityRequest'
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/EditSenderIdentityRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/EditSenderIdentityRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/EditSenderIdentityRequest'
+        required: true
+      responses:
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+  /v1/senderIdentities/delete:
+    delete:
+      tags:
+      - Sender Identities
+      summary: Deletes sender identity.
+      operationId: DeleteSenderIdentities
+      parameters:
+      - name: email
+        in: query
+        required: true
+        schema:
+          title: String
+          type: string
+      responses:
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+  /v1/senderIdentities/resendInvitation:
+    post:
+      tags:
+      - Sender Identities
+      summary: Resends sender identity invitation.
+      operationId: ResendInvitationSenderIdentities
+      parameters:
+      - name: email
+        in: query
+        required: true
+        schema:
+          title: String
+          type: string
+      responses:
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+  /v1/senderIdentities/rerequest:
+    post:
+      tags:
+      - Sender Identities
+      summary: Rerequests denied sender identity.
+      operationId: ReRequestSenderIdentities
+      parameters:
+      - name: email
+        in: query
+        required: true
+        schema:
+          title: String
+          type: string
+      responses:
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+  /v1/senderIdentities/list:
+    get:
+      tags:
+      - Sender Identities
+      summary: Lists sender identity.
+      operationId: ListSenderIdentities
+      parameters:
+      - name: PageSize
+        in: query
+        description: Page size specified in get sender identity list request.
+        schema:
+          title: Int32
+          type: integer
+          format: int32
+          default: 10
+      - name: Page
+        in: query
+        description: Page index specified in get sender identity request.
+        required: true
+        schema:
+          title: Int32
+          type: integer
+          format: int32
+          default: 1
+      - name: Search
+        in: query
+        description: Users can be listed by the search key present in the sender identity like sender identity name and email address
+        schema:
+          title: String
+          type: string
+      - name: BrandIds
+        in: query
+        description: A list of brand IDs to filter associated with the sender identity.
+        schema:
+          title: List`1
+          type: array
+          items:
+            title: String
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SenderIdentityList'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+  /v1/senderIdentities/properties:
+    get:
+      tags:
+      - Sender Identities
+      summary: Gets sender identity by ID or email.
+      operationId: GetSenderIdentityProperties
+      parameters:
+      - name: id
+        in: query
+        schema:
+          title: String
+          type: string
+      - name: email
+        in: query
+        schema:
+          title: String
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SenderIdentityViewModel'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+components:
+  schemas:
+    PageDetails:
+      title: PageDetails
+      type: object
+      properties:
+        pageSize:
+          title: Int32
+          type: integer
+          format: int32
+        page:
+          title: Int32
+          type: integer
+          format: int32
+        totalRecordsCount:
+          title: Int32
+          type: integer
+          format: int32
+        totalPages:
+          title: Int32
+          type: integer
+          format: int32
+        sortedColumn:
+          title: String
+          type: string
+          nullable: true
+        sortDirection:
+          title: String
+          type: string
+          nullable: true
+      additionalProperties: false
+    CreateSenderIdentityRequest:
+      title: CreateSenderIdentityRequest
+      required:
+      - email
+      type: object
+      properties:
+        name:
+          title: String
+          maxLength: 80
+          minLength: 0
+          type: string
+          nullable: true
+        email:
+          title: String
+          maxLength: 250
+          minLength: 0
+          type: string
+        notificationSettings:
+          $ref: '#/components/schemas/NotificationSettings'
+        brandId:
+          title: String
+          type: string
+          nullable: true
+        redirectUrl:
+          title: Uri
+          type: string
+          format: uri
+          nullable: true
+        metaData:
+          title: Dictionary`2
+          maxLength: 50
+          type: object
+          additionalProperties:
+            title: String
+            type: string
+            nullable: true
+          nullable: true
+        locale:
+          title: Locales
+          enum:
+          - EN
+          - 'NO'
+          - FR
+          - DE
+          - ES
+          - BG
+          - CS
+          - DA
+          - IT
+          - NL
+          - PL
+          - PT
+          - RO
+          - RU
+          - SV
+          - Default
+          - JA
+          - TH
+          - ZH_CN
+          - ZH_TW
+          - KO
+          type: string
+      additionalProperties: false
+    ErrorResult:
+      title: ErrorResult
+      type: object
+      properties:
+        error:
+          title: String
+          type: string
+          nullable: true
+      additionalProperties: false
+    SenderIdentityCreated:
+      title: SenderIdentityCreated
+      type: object
+      properties:
+        senderIdentityId:
+          title: String
+          type: string
+          nullable: true
+      additionalProperties: false
+    SenderIdentityList:
+      title: SenderIdentityList
+      type: object
+      properties:
+        result:
+          title: List`1
+          type: array
+          items:
+            $ref: '#/components/schemas/SenderIdentityViewModel'
+          nullable: true
+        pageDetails:
+          $ref: '#/components/schemas/PageDetails'
+      additionalProperties: false
+    EditSenderIdentityRequest:
+      title: EditSenderIdentityRequest
+      type: object
+      properties:
+        name:
+          title: String
+          maxLength: 80
+          minLength: 0
+          type: string
+          nullable: true
+        notificationSettings:
+          $ref: '#/components/schemas/NotificationSettings'
+        redirectUrl:
+          title: Uri
+          type: string
+          format: uri
+          nullable: true
+        metaData:
+          title: Dictionary`2
+          maxLength: 50
+          type: object
+          additionalProperties:
+            title: String
+            type: string
+            nullable: true
+          nullable: true
+        locale:
+          title: Nullable`1
+          enum:
+          - EN
+          - 'NO'
+          - FR
+          - DE
+          - ES
+          - BG
+          - CS
+          - DA
+          - IT
+          - NL
+          - PL
+          - PT
+          - RO
+          - RU
+          - SV
+          - Default
+          - JA
+          - TH
+          - ZH_CN
+          - ZH_TW
+          - KO
+          type: string
+          nullable: true
+      additionalProperties: false
+    SenderIdentityViewModel:
+      title: SenderIdentityViewModel
+      type: object
+      properties:
+        id:
+          title: String
+          type: string
+          nullable: true
+        name:
+          title: String
+          type: string
+          nullable: true
+        email:
+          title: String
+          type: string
+          nullable: true
+        status:
+          title: String
+          type: string
+          nullable: true
+        createdBy:
+          title: String
+          type: string
+          nullable: true
+        approvedDate:
+          title: String
+          type: string
+          nullable: true
+        notificationSettings:
+          $ref: '#/components/schemas/NotificationSettings'
+        brandId:
+          title: String
+          type: string
+          nullable: true
+        redirectUrl:
+          title: String
+          type: string
+          nullable: true
+        metaData:
+          title: Dictionary`2
+          type: object
+          additionalProperties:
+            title: String
+            type: string
+            nullable: true
+          nullable: true
+        locale:
+          title: String
+          type: string
+          nullable: true
+      additionalProperties: false
+    NotificationSettings:
+      title: NotificationSettings
+      type: object
+      properties:
+        viewed:
+          title: Boolean
+          type: boolean
+          default: true
+        sent:
+          title: Boolean
+          type: boolean
+          default: false
+        deliveryFailed:
+          title: Boolean
+          type: boolean
+          default: true
+        declined:
+          title: Boolean
+          type: boolean
+          default: true
+        revoked:
+          title: Boolean
+          type: boolean
+          default: true
+        reassigned:
+          title: Boolean
+          type: boolean
+          default: true
+        completed:
+          title: Boolean
+          type: boolean
+          default: true
+        signed:
+          title: Boolean
+          type: boolean
+          default: true
+        expired:
+          title: Boolean
+          type: boolean
+          default: true
+        authenticationFailed:
+          title: Boolean
+          type: boolean
+          default: true
+        reminders:
+          title: Boolean
+          type: boolean
+          default: true
+        attachSignedDocument:
+          title: Boolean
+          type: boolean
+          default: false
+      additionalProperties: false
+  securitySchemes:
+    Bearer:
+      type: apiKey
+      description: 'Format ''Bearer'' [space] [TOKEN]. Ex: ''Bearer eyJhbGciOiJIUzI1N'''
+      name: Authorization
+      in: header
+    X-API-KEY:
+      type: apiKey
+      description: 'Format [API-KEY]. Ex: ''abcdef12345'''
+      name: X-API-KEY
+      in: header
+externalDocs:
+  description: BoldSign Developer Documentation
+  url: https://developers.boldsign.com/

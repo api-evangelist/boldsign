@@ -1,0 +1,652 @@
+openapi: 3.0.3
+info:
+  title: BoldSign Branding GroupContacts API
+  version: '1'
+  description: BoldSign eSignature REST API for sending documents for electronic signature, managing reusable templates, tracking envelope status, embedding signing and requesting workflows into third-party applications. Supports API key and OAuth 2.0 authentication. Regional endpoints available for US, EU, CA, and AU.
+  contact:
+    name: BoldSign Support
+    url: https://developers.boldsign.com/
+    email: support@boldsign.com
+  license:
+    name: Proprietary
+    url: https://boldsign.com/terms-of-use/
+  termsOfService: https://boldsign.com/terms-of-use/
+servers:
+- url: https://api.boldsign.com
+  description: US production
+- url: https://eu.boldsign.com
+  description: EU production
+- url: https://ca.boldsign.com
+  description: CA production
+- url: https://au.boldsign.com
+  description: AU production
+security:
+- Bearer: []
+- X-API-KEY: []
+tags:
+- name: GroupContacts
+paths:
+  /v1/contactGroups/list:
+    get:
+      tags:
+      - GroupContacts
+      summary: List Group Contacts.
+      operationId: GroupContactList
+      parameters:
+      - name: PageSize
+        in: query
+        description: Page size specified in get user group contact list request. Default value is 10.
+        schema:
+          title: Int32
+          type: integer
+          format: int32
+          default: 10
+      - name: Page
+        in: query
+        description: Page index specified in get user group contact list request. Default value is 1.
+        required: true
+        schema:
+          title: Int32
+          type: integer
+          format: int32
+          default: 1
+      - name: SearchKey
+        in: query
+        description: Group Contacts can be listed by the search  based on the Name or Email
+        schema:
+          title: String
+          type: string
+      - name: ContactType
+        in: query
+        description: Group Contact type whether the contact is my contacts or all contacts. Default value is AllContacts.
+        schema:
+          title: ContactType
+          enum:
+          - MyContacts
+          - AllContacts
+          type: string
+      - name: Directories
+        in: query
+        description: Group Contacts can be listed by the search  based on the directories
+        schema:
+          title: List`1
+          type: array
+          items:
+            title: String
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupContactsList'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+  /v1/contactGroups/create:
+    post:
+      tags:
+      - GroupContacts
+      summary: Create a new Group Contact.
+      operationId: CreateGroupContact
+      requestBody:
+        description: The group contact details.
+        content:
+          application/json;odata.metadata=minimal;odata.streaming=true:
+            schema:
+              $ref: '#/components/schemas/GroupContactDetails'
+          application/json;odata.metadata=minimal;odata.streaming=false:
+            schema:
+              $ref: '#/components/schemas/GroupContactDetails'
+          application/json;odata.metadata=minimal:
+            schema:
+              $ref: '#/components/schemas/GroupContactDetails'
+          application/json;odata.metadata=full;odata.streaming=true:
+            schema:
+              $ref: '#/components/schemas/GroupContactDetails'
+          application/json;odata.metadata=full;odata.streaming=false:
+            schema:
+              $ref: '#/components/schemas/GroupContactDetails'
+          application/json;odata.metadata=full:
+            schema:
+              $ref: '#/components/schemas/GroupContactDetails'
+          application/json;odata.metadata=none;odata.streaming=true:
+            schema:
+              $ref: '#/components/schemas/GroupContactDetails'
+          application/json;odata.metadata=none;odata.streaming=false:
+            schema:
+              $ref: '#/components/schemas/GroupContactDetails'
+          application/json;odata.metadata=none:
+            schema:
+              $ref: '#/components/schemas/GroupContactDetails'
+          application/json;odata.streaming=true:
+            schema:
+              $ref: '#/components/schemas/GroupContactDetails'
+          application/json;odata.streaming=false:
+            schema:
+              $ref: '#/components/schemas/GroupContactDetails'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GroupContactDetails'
+          application/json;odata.metadata=minimal;odata.streaming=true;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/GroupContactDetails'
+          application/json;odata.metadata=minimal;odata.streaming=true;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/GroupContactDetails'
+          application/json;odata.metadata=minimal;odata.streaming=false;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/GroupContactDetails'
+          application/json;odata.metadata=minimal;odata.streaming=false;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/GroupContactDetails'
+          application/json;odata.metadata=minimal;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/GroupContactDetails'
+          application/json;odata.metadata=minimal;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/GroupContactDetails'
+          application/json;odata.metadata=full;odata.streaming=true;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/GroupContactDetails'
+          application/json;odata.metadata=full;odata.streaming=true;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/GroupContactDetails'
+          application/json;odata.metadata=full;odata.streaming=false;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/GroupContactDetails'
+          application/json;odata.metadata=full;odata.streaming=false;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/GroupContactDetails'
+          application/json;odata.metadata=full;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/GroupContactDetails'
+          application/json;odata.metadata=full;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/GroupContactDetails'
+          application/json;odata.metadata=none;odata.streaming=true;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/GroupContactDetails'
+          application/json;odata.metadata=none;odata.streaming=true;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/GroupContactDetails'
+          application/json;odata.metadata=none;odata.streaming=false;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/GroupContactDetails'
+          application/json;odata.metadata=none;odata.streaming=false;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/GroupContactDetails'
+          application/json;odata.metadata=none;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/GroupContactDetails'
+          application/json;odata.metadata=none;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/GroupContactDetails'
+          application/json;odata.streaming=true;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/GroupContactDetails'
+          application/json;odata.streaming=true;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/GroupContactDetails'
+          application/json;odata.streaming=false;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/GroupContactDetails'
+          application/json;odata.streaming=false;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/GroupContactDetails'
+          application/json;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/GroupContactDetails'
+          application/json;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/GroupContactDetails'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/GroupContactDetails'
+          text/plain:
+            schema:
+              $ref: '#/components/schemas/GroupContactDetails'
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/GroupContactDetails'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/GroupContactDetails'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/GroupContactDetails'
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateGroupContactResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+  /v1/contactGroups/update:
+    put:
+      tags:
+      - GroupContacts
+      summary: Update the Group Contact.
+      operationId: UpdateGroupContact
+      parameters:
+      - name: groupId
+        in: query
+        required: true
+        schema:
+          title: String
+          type: string
+      requestBody:
+        description: The group contact details.
+        content:
+          application/json;odata.metadata=minimal;odata.streaming=true:
+            schema:
+              $ref: '#/components/schemas/UpdateGroupContact'
+          application/json;odata.metadata=minimal;odata.streaming=false:
+            schema:
+              $ref: '#/components/schemas/UpdateGroupContact'
+          application/json;odata.metadata=minimal:
+            schema:
+              $ref: '#/components/schemas/UpdateGroupContact'
+          application/json;odata.metadata=full;odata.streaming=true:
+            schema:
+              $ref: '#/components/schemas/UpdateGroupContact'
+          application/json;odata.metadata=full;odata.streaming=false:
+            schema:
+              $ref: '#/components/schemas/UpdateGroupContact'
+          application/json;odata.metadata=full:
+            schema:
+              $ref: '#/components/schemas/UpdateGroupContact'
+          application/json;odata.metadata=none;odata.streaming=true:
+            schema:
+              $ref: '#/components/schemas/UpdateGroupContact'
+          application/json;odata.metadata=none;odata.streaming=false:
+            schema:
+              $ref: '#/components/schemas/UpdateGroupContact'
+          application/json;odata.metadata=none:
+            schema:
+              $ref: '#/components/schemas/UpdateGroupContact'
+          application/json;odata.streaming=true:
+            schema:
+              $ref: '#/components/schemas/UpdateGroupContact'
+          application/json;odata.streaming=false:
+            schema:
+              $ref: '#/components/schemas/UpdateGroupContact'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateGroupContact'
+          application/json;odata.metadata=minimal;odata.streaming=true;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/UpdateGroupContact'
+          application/json;odata.metadata=minimal;odata.streaming=true;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/UpdateGroupContact'
+          application/json;odata.metadata=minimal;odata.streaming=false;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/UpdateGroupContact'
+          application/json;odata.metadata=minimal;odata.streaming=false;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/UpdateGroupContact'
+          application/json;odata.metadata=minimal;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/UpdateGroupContact'
+          application/json;odata.metadata=minimal;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/UpdateGroupContact'
+          application/json;odata.metadata=full;odata.streaming=true;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/UpdateGroupContact'
+          application/json;odata.metadata=full;odata.streaming=true;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/UpdateGroupContact'
+          application/json;odata.metadata=full;odata.streaming=false;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/UpdateGroupContact'
+          application/json;odata.metadata=full;odata.streaming=false;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/UpdateGroupContact'
+          application/json;odata.metadata=full;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/UpdateGroupContact'
+          application/json;odata.metadata=full;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/UpdateGroupContact'
+          application/json;odata.metadata=none;odata.streaming=true;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/UpdateGroupContact'
+          application/json;odata.metadata=none;odata.streaming=true;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/UpdateGroupContact'
+          application/json;odata.metadata=none;odata.streaming=false;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/UpdateGroupContact'
+          application/json;odata.metadata=none;odata.streaming=false;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/UpdateGroupContact'
+          application/json;odata.metadata=none;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/UpdateGroupContact'
+          application/json;odata.metadata=none;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/UpdateGroupContact'
+          application/json;odata.streaming=true;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/UpdateGroupContact'
+          application/json;odata.streaming=true;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/UpdateGroupContact'
+          application/json;odata.streaming=false;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/UpdateGroupContact'
+          application/json;odata.streaming=false;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/UpdateGroupContact'
+          application/json;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/UpdateGroupContact'
+          application/json;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/UpdateGroupContact'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/UpdateGroupContact'
+          text/plain:
+            schema:
+              $ref: '#/components/schemas/UpdateGroupContact'
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/UpdateGroupContact'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/UpdateGroupContact'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/UpdateGroupContact'
+        required: true
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+  /v1/contactGroups/get:
+    get:
+      tags:
+      - GroupContacts
+      summary: Get Summary of the Group Contact.
+      operationId: GetGroupContact
+      parameters:
+      - name: groupId
+        in: query
+        required: true
+        schema:
+          title: String
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetGroupContactDetails'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+  /v1/contactGroups/delete:
+    delete:
+      tags:
+      - GroupContacts
+      summary: Deletes a Group Contact.
+      operationId: DeleteGroupContact
+      parameters:
+      - name: groupId
+        in: query
+        required: true
+        schema:
+          title: String
+          type: string
+      responses:
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+components:
+  schemas:
+    Creators:
+      title: Creators
+      type: object
+      properties:
+        userId:
+          title: String
+          type: string
+          nullable: true
+        createdBy:
+          title: String
+          type: string
+          nullable: true
+      additionalProperties: false
+    ContactPageDetails:
+      title: ContactPageDetails
+      type: object
+      properties:
+        pageSize:
+          title: Int32
+          type: integer
+          format: int32
+        page:
+          title: Int32
+          type: integer
+          format: int32
+        totalRecordsCount:
+          title: Int32
+          type: integer
+          format: int32
+      additionalProperties: false
+    GetGroupContactDetails:
+      title: GetGroupContactDetails
+      type: object
+      properties:
+        groupName:
+          title: String
+          type: string
+          nullable: true
+        groupId:
+          title: String
+          type: string
+          nullable: true
+        contacts:
+          title: List`1
+          type: array
+          items:
+            $ref: '#/components/schemas/GroupUser'
+          nullable: true
+        creator:
+          $ref: '#/components/schemas/Creators'
+        directories:
+          title: List`1
+          type: array
+          items:
+            title: String
+            type: string
+          nullable: true
+      additionalProperties: false
+    ErrorResult:
+      title: ErrorResult
+      type: object
+      properties:
+        error:
+          title: String
+          type: string
+          nullable: true
+      additionalProperties: false
+    UpdateGroupContact:
+      title: UpdateGroupContact
+      type: object
+      properties:
+        groupName:
+          title: String
+          type: string
+          nullable: true
+        directories:
+          title: List`1
+          type: array
+          items:
+            title: String
+            type: string
+          nullable: true
+        contacts:
+          title: List`1
+          type: array
+          items:
+            $ref: '#/components/schemas/GroupUser'
+          nullable: true
+      additionalProperties: false
+    GroupContact:
+      title: GroupContact
+      type: object
+      properties:
+        groupName:
+          title: String
+          type: string
+          nullable: true
+        groupId:
+          title: String
+          type: string
+          nullable: true
+        contacts:
+          title: List`1
+          type: array
+          items:
+            $ref: '#/components/schemas/GroupUser'
+          nullable: true
+        directories:
+          title: List`1
+          type: array
+          items:
+            title: String
+            type: string
+          nullable: true
+      additionalProperties: false
+    GroupContactsList:
+      title: GroupContactsList
+      type: object
+      properties:
+        pageDetails:
+          $ref: '#/components/schemas/ContactPageDetails'
+        result:
+          title: List`1
+          type: array
+          items:
+            $ref: '#/components/schemas/GroupContact'
+          nullable: true
+      additionalProperties: false
+    GroupContactDetails:
+      title: GroupContactDetails
+      required:
+      - contacts
+      - groupName
+      type: object
+      properties:
+        groupName:
+          title: String
+          minLength: 1
+          type: string
+        directories:
+          title: List`1
+          type: array
+          items:
+            title: String
+            type: string
+          nullable: true
+        contacts:
+          title: List`1
+          type: array
+          items:
+            $ref: '#/components/schemas/GroupUser'
+      additionalProperties: false
+    CreateGroupContactResponse:
+      title: CreateGroupContactResponse
+      type: object
+      properties:
+        groupId:
+          title: String
+          type: string
+          nullable: true
+        groupName:
+          title: String
+          type: string
+          nullable: true
+      additionalProperties: false
+    GroupUser:
+      title: GroupUser
+      required:
+      - email
+      - name
+      type: object
+      properties:
+        name:
+          title: String
+          minLength: 1
+          type: string
+        email:
+          title: String
+          minLength: 1
+          type: string
+      additionalProperties: false
+  securitySchemes:
+    Bearer:
+      type: apiKey
+      description: 'Format ''Bearer'' [space] [TOKEN]. Ex: ''Bearer eyJhbGciOiJIUzI1N'''
+      name: Authorization
+      in: header
+    X-API-KEY:
+      type: apiKey
+      description: 'Format [API-KEY]. Ex: ''abcdef12345'''
+      name: X-API-KEY
+      in: header
+externalDocs:
+  description: BoldSign Developer Documentation
+  url: https://developers.boldsign.com/

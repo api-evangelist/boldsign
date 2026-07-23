@@ -1,0 +1,2500 @@
+openapi: 3.0.3
+info:
+  title: BoldSign Branding API
+  version: '1'
+  description: BoldSign eSignature REST API for sending documents for electronic signature, managing reusable templates, tracking envelope status, embedding signing and requesting workflows into third-party applications. Supports API key and OAuth 2.0 authentication. Regional endpoints available for US, EU, CA, and AU.
+  contact:
+    name: BoldSign Support
+    url: https://developers.boldsign.com/
+    email: support@boldsign.com
+  license:
+    name: Proprietary
+    url: https://boldsign.com/terms-of-use/
+  termsOfService: https://boldsign.com/terms-of-use/
+servers:
+- url: https://api.boldsign.com
+  description: US production
+- url: https://eu.boldsign.com
+  description: EU production
+- url: https://ca.boldsign.com
+  description: CA production
+- url: https://au.boldsign.com
+  description: AU production
+security:
+- Bearer: []
+- X-API-KEY: []
+tags:
+- name: Branding
+paths:
+  /v1/brand/create:
+    post:
+      tags:
+      - Branding
+      summary: Create the brand.
+      operationId: CreateBrand
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              required:
+              - BrandLogo
+              - BrandName
+              type: object
+              properties:
+                BrandName:
+                  title: String
+                  type: string
+                BrandLogo:
+                  title: IFormFile
+                  type: string
+                  format: binary
+                BackgroundColor:
+                  title: String
+                  type: string
+                ButtonColor:
+                  title: String
+                  type: string
+                ButtonTextColor:
+                  title: String
+                  type: string
+                EmailDisplayName:
+                  title: String
+                  type: string
+                DisclaimerDescription:
+                  title: String
+                  type: string
+                DisclaimerTitle:
+                  title: String
+                  type: string
+                RedirectUrl:
+                  title: String
+                  type: string
+                IsDefault:
+                  title: Boolean
+                  type: boolean
+                  default: false
+                CanHideTagLine:
+                  title: Boolean
+                  type: boolean
+                  default: false
+                CombineAuditTrail:
+                  title: Boolean
+                  type: boolean
+                  default: false
+                CombineAttachments:
+                  title: Boolean
+                  type: boolean
+                  default: false
+                ExcludeAuditTrailFromEmail:
+                  title: Boolean
+                  type: boolean
+                  default: false
+                EmailSignedDocument:
+                  title: EmailSignedDocument
+                  enum:
+                  - Attachment
+                  - DocumentLink
+                  type: string
+                  default: Attachment
+                DocumentTimeZone:
+                  title: String
+                  type: string
+                ShowBuiltInFormFields:
+                  title: Boolean
+                  type: boolean
+                  default: true
+                AllowCustomFieldCreation:
+                  title: Boolean
+                  type: boolean
+                  default: false
+                ShowSharedCustomFields:
+                  title: Boolean
+                  type: boolean
+                  default: false
+                HideDecline:
+                  title: Nullable`1
+                  type: boolean
+                  description: This option prevents signers to decline the document during the signing process.
+                HideSave:
+                  title: Nullable`1
+                  type: boolean
+                  description: This option prevents signers to save their changes during the signing process and continue signing later.
+                DocumentExpirySettings.ExpiryDateType:
+                  title: Nullable`1
+                  enum:
+                  - Days
+                  - Hours
+                  - SpecificDateTime
+                  type: string
+                  description: This property represents the type for the expiry date
+                  format: Enumeration
+                DocumentExpirySettings.ExpiryValue:
+                  title: Nullable`1
+                  type: integer
+                  description: This property is used to set the expiry value based on the expiry type
+                  format: int32
+                DocumentExpirySettings.EnableDefaultExpiryAlert:
+                  title: Nullable`1
+                  type: boolean
+                  description: This property will send the expiry alert email before the day of expiry for the pending signers.
+                DocumentExpirySettings.EnableAutoReminder:
+                  title: Nullable`1
+                  type: boolean
+                  description: When auto reminder is enabled, you can select how often to remind in terms of days and select the maximum number of reminders.
+                DocumentExpirySettings.ReminderDays:
+                  title: Nullable`1
+                  maximum: 180
+                  minimum: 1
+                  type: integer
+                  description: Remind in terms of days.
+                  format: int32
+                DocumentExpirySettings.ReminderCount:
+                  title: Nullable`1
+                  type: integer
+                  description: Number of reminder count.
+                  format: int32
+                CustomDomainSettings.DomainName:
+                  title: String
+                  type: string
+                CustomDomainSettings.FromName:
+                  title: String
+                  type: string
+                SignatureFrameSettings.EnableSignatureFrame:
+                  title: Boolean
+                  type: boolean
+                  default: false
+                SignatureFrameSettings.ShowRecipientName:
+                  title: Boolean
+                  type: boolean
+                  default: false
+                SignatureFrameSettings.ShowRecipientEmail:
+                  title: Boolean
+                  type: boolean
+                  default: false
+                SignatureFrameSettings.ShowTimeStamp:
+                  title: Boolean
+                  type: boolean
+                  default: false
+            encoding:
+              BrandName:
+                style: form
+              BrandLogo:
+                style: form
+              BackgroundColor:
+                style: form
+              ButtonColor:
+                style: form
+              ButtonTextColor:
+                style: form
+              EmailDisplayName:
+                style: form
+              DisclaimerDescription:
+                style: form
+              DisclaimerTitle:
+                style: form
+              RedirectUrl:
+                style: form
+              IsDefault:
+                style: form
+              CanHideTagLine:
+                style: form
+              CombineAuditTrail:
+                style: form
+              CombineAttachments:
+                style: form
+              ExcludeAuditTrailFromEmail:
+                style: form
+              EmailSignedDocument:
+                style: form
+              DocumentTimeZone:
+                style: form
+              ShowBuiltInFormFields:
+                style: form
+              AllowCustomFieldCreation:
+                style: form
+              ShowSharedCustomFields:
+                style: form
+              HideDecline:
+                style: form
+              HideSave:
+                style: form
+              DocumentExpirySettings.ExpiryDateType:
+                style: form
+              DocumentExpirySettings.ExpiryValue:
+                style: form
+              DocumentExpirySettings.EnableDefaultExpiryAlert:
+                style: form
+              DocumentExpirySettings.EnableAutoReminder:
+                style: form
+              DocumentExpirySettings.ReminderDays:
+                style: form
+              DocumentExpirySettings.ReminderCount:
+                style: form
+              CustomDomainSettings.DomainName:
+                style: form
+              CustomDomainSettings.FromName:
+                style: form
+              SignatureFrameSettings.EnableSignatureFrame:
+                style: form
+              SignatureFrameSettings.ShowRecipientName:
+                style: form
+              SignatureFrameSettings.ShowRecipientEmail:
+                style: form
+              SignatureFrameSettings.ShowTimeStamp:
+                style: form
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json;odata.metadata=minimal;odata.streaming=true:
+              schema:
+                $ref: '#/components/schemas/BrandCreated'
+            application/json;odata.metadata=minimal;odata.streaming=false:
+              schema:
+                $ref: '#/components/schemas/BrandCreated'
+            application/json;odata.metadata=minimal:
+              schema:
+                $ref: '#/components/schemas/BrandCreated'
+            application/json;odata.metadata=full;odata.streaming=true:
+              schema:
+                $ref: '#/components/schemas/BrandCreated'
+            application/json;odata.metadata=full;odata.streaming=false:
+              schema:
+                $ref: '#/components/schemas/BrandCreated'
+            application/json;odata.metadata=full:
+              schema:
+                $ref: '#/components/schemas/BrandCreated'
+            application/json;odata.metadata=none;odata.streaming=true:
+              schema:
+                $ref: '#/components/schemas/BrandCreated'
+            application/json;odata.metadata=none;odata.streaming=false:
+              schema:
+                $ref: '#/components/schemas/BrandCreated'
+            application/json;odata.metadata=none:
+              schema:
+                $ref: '#/components/schemas/BrandCreated'
+            application/json;odata.streaming=true:
+              schema:
+                $ref: '#/components/schemas/BrandCreated'
+            application/json;odata.streaming=false:
+              schema:
+                $ref: '#/components/schemas/BrandCreated'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BrandCreated'
+            application/json;odata.metadata=minimal;odata.streaming=true;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/BrandCreated'
+            application/json;odata.metadata=minimal;odata.streaming=true;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/BrandCreated'
+            application/json;odata.metadata=minimal;odata.streaming=false;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/BrandCreated'
+            application/json;odata.metadata=minimal;odata.streaming=false;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/BrandCreated'
+            application/json;odata.metadata=minimal;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/BrandCreated'
+            application/json;odata.metadata=minimal;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/BrandCreated'
+            application/json;odata.metadata=full;odata.streaming=true;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/BrandCreated'
+            application/json;odata.metadata=full;odata.streaming=true;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/BrandCreated'
+            application/json;odata.metadata=full;odata.streaming=false;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/BrandCreated'
+            application/json;odata.metadata=full;odata.streaming=false;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/BrandCreated'
+            application/json;odata.metadata=full;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/BrandCreated'
+            application/json;odata.metadata=full;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/BrandCreated'
+            application/json;odata.metadata=none;odata.streaming=true;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/BrandCreated'
+            application/json;odata.metadata=none;odata.streaming=true;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/BrandCreated'
+            application/json;odata.metadata=none;odata.streaming=false;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/BrandCreated'
+            application/json;odata.metadata=none;odata.streaming=false;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/BrandCreated'
+            application/json;odata.metadata=none;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/BrandCreated'
+            application/json;odata.metadata=none;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/BrandCreated'
+            application/json;odata.streaming=true;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/BrandCreated'
+            application/json;odata.streaming=true;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/BrandCreated'
+            application/json;odata.streaming=false;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/BrandCreated'
+            application/json;odata.streaming=false;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/BrandCreated'
+            application/json;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/BrandCreated'
+            application/json;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/BrandCreated'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/BrandCreated'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/BrandCreated'
+            application/octet-stream:
+              schema:
+                $ref: '#/components/schemas/BrandCreated'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/BrandCreated'
+        '401':
+          description: Unauthorized
+          content:
+            application/json;odata.metadata=minimal;odata.streaming=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal;odata.streaming=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;odata.streaming=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;odata.streaming=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;odata.streaming=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;odata.streaming=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.streaming=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.streaming=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal;odata.streaming=true;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal;odata.streaming=true;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal;odata.streaming=false;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal;odata.streaming=false;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;odata.streaming=true;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;odata.streaming=true;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;odata.streaming=false;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;odata.streaming=false;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;odata.streaming=true;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;odata.streaming=true;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;odata.streaming=false;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;odata.streaming=false;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.streaming=true;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.streaming=true;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.streaming=false;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.streaming=false;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/octet-stream:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+        '403':
+          description: Forbidden
+          content:
+            application/json;odata.metadata=minimal;odata.streaming=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal;odata.streaming=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;odata.streaming=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;odata.streaming=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;odata.streaming=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;odata.streaming=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.streaming=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.streaming=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal;odata.streaming=true;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal;odata.streaming=true;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal;odata.streaming=false;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal;odata.streaming=false;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;odata.streaming=true;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;odata.streaming=true;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;odata.streaming=false;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;odata.streaming=false;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;odata.streaming=true;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;odata.streaming=true;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;odata.streaming=false;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;odata.streaming=false;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.streaming=true;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.streaming=true;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.streaming=false;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.streaming=false;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/octet-stream:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+        '422':
+          description: Unprocessable Content
+          content:
+            application/json;odata.metadata=minimal;odata.streaming=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal;odata.streaming=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;odata.streaming=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;odata.streaming=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;odata.streaming=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;odata.streaming=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.streaming=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.streaming=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal;odata.streaming=true;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal;odata.streaming=true;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal;odata.streaming=false;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal;odata.streaming=false;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;odata.streaming=true;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;odata.streaming=true;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;odata.streaming=false;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;odata.streaming=false;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;odata.streaming=true;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;odata.streaming=true;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;odata.streaming=false;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;odata.streaming=false;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.streaming=true;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.streaming=true;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.streaming=false;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.streaming=false;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/octet-stream:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+  /v1/brand/edit:
+    post:
+      tags:
+      - Branding
+      summary: Edit the brand.
+      operationId: EditBrand
+      parameters:
+      - name: brandId
+        in: query
+        required: true
+        schema:
+          title: String
+          type: string
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                BrandName:
+                  title: String
+                  type: string
+                BrandLogo:
+                  title: IFormFile
+                  type: string
+                  format: binary
+                BackgroundColor:
+                  title: String
+                  type: string
+                ButtonColor:
+                  title: String
+                  type: string
+                ButtonTextColor:
+                  title: String
+                  type: string
+                EmailDisplayName:
+                  title: String
+                  type: string
+                DisclaimerDescription:
+                  title: String
+                  type: string
+                DisclaimerTitle:
+                  title: String
+                  type: string
+                RedirectUrl:
+                  title: String
+                  type: string
+                IsDefault:
+                  title: Boolean
+                  type: boolean
+                  default: false
+                CanHideTagLine:
+                  title: Boolean
+                  type: boolean
+                  default: false
+                CombineAuditTrail:
+                  title: Boolean
+                  type: boolean
+                  default: false
+                CombineAttachments:
+                  title: Boolean
+                  type: boolean
+                  default: false
+                ExcludeAuditTrailFromEmail:
+                  title: Boolean
+                  type: boolean
+                  default: false
+                EmailSignedDocument:
+                  title: EmailSignedDocument
+                  enum:
+                  - Attachment
+                  - DocumentLink
+                  type: string
+                  default: Attachment
+                DocumentTimeZone:
+                  title: String
+                  type: string
+                ShowBuiltInFormFields:
+                  title: Boolean
+                  type: boolean
+                  default: true
+                AllowCustomFieldCreation:
+                  title: Boolean
+                  type: boolean
+                  default: false
+                ShowSharedCustomFields:
+                  title: Boolean
+                  type: boolean
+                  default: false
+                HideDecline:
+                  title: Nullable`1
+                  type: boolean
+                  description: This option prevents signers to decline the document during the signing process.
+                HideSave:
+                  title: Nullable`1
+                  type: boolean
+                  description: This option prevents signers to save their changes during the signing process and continue signing later.
+                DocumentExpirySettings.ExpiryDateType:
+                  title: Nullable`1
+                  enum:
+                  - Days
+                  - Hours
+                  - SpecificDateTime
+                  type: string
+                  description: This property represents the type for the expiry date
+                  format: Enumeration
+                DocumentExpirySettings.ExpiryValue:
+                  title: Nullable`1
+                  type: integer
+                  description: This property is used to set the expiry value based on the expiry type
+                  format: int32
+                DocumentExpirySettings.EnableDefaultExpiryAlert:
+                  title: Nullable`1
+                  type: boolean
+                  description: This property will send the expiry alert email before the day of expiry for the pending signers.
+                DocumentExpirySettings.EnableAutoReminder:
+                  title: Nullable`1
+                  type: boolean
+                  description: When auto reminder is enabled, you can select how often to remind in terms of days and select the maximum number of reminders.
+                DocumentExpirySettings.ReminderDays:
+                  title: Nullable`1
+                  maximum: 180
+                  minimum: 1
+                  type: integer
+                  description: Remind in terms of days.
+                  format: int32
+                DocumentExpirySettings.ReminderCount:
+                  title: Nullable`1
+                  type: integer
+                  description: Number of reminder count.
+                  format: int32
+                CustomDomainSettings.DomainName:
+                  title: String
+                  type: string
+                CustomDomainSettings.FromName:
+                  title: String
+                  type: string
+                SignatureFrameSettings.EnableSignatureFrame:
+                  title: Boolean
+                  type: boolean
+                  default: false
+                SignatureFrameSettings.ShowRecipientName:
+                  title: Boolean
+                  type: boolean
+                  default: false
+                SignatureFrameSettings.ShowRecipientEmail:
+                  title: Boolean
+                  type: boolean
+                  default: false
+                SignatureFrameSettings.ShowTimeStamp:
+                  title: Boolean
+                  type: boolean
+                  default: false
+            encoding:
+              BrandName:
+                style: form
+              BrandLogo:
+                style: form
+              BackgroundColor:
+                style: form
+              ButtonColor:
+                style: form
+              ButtonTextColor:
+                style: form
+              EmailDisplayName:
+                style: form
+              DisclaimerDescription:
+                style: form
+              DisclaimerTitle:
+                style: form
+              RedirectUrl:
+                style: form
+              IsDefault:
+                style: form
+              CanHideTagLine:
+                style: form
+              CombineAuditTrail:
+                style: form
+              CombineAttachments:
+                style: form
+              ExcludeAuditTrailFromEmail:
+                style: form
+              EmailSignedDocument:
+                style: form
+              DocumentTimeZone:
+                style: form
+              ShowBuiltInFormFields:
+                style: form
+              AllowCustomFieldCreation:
+                style: form
+              ShowSharedCustomFields:
+                style: form
+              HideDecline:
+                style: form
+              HideSave:
+                style: form
+              DocumentExpirySettings.ExpiryDateType:
+                style: form
+              DocumentExpirySettings.ExpiryValue:
+                style: form
+              DocumentExpirySettings.EnableDefaultExpiryAlert:
+                style: form
+              DocumentExpirySettings.EnableAutoReminder:
+                style: form
+              DocumentExpirySettings.ReminderDays:
+                style: form
+              DocumentExpirySettings.ReminderCount:
+                style: form
+              CustomDomainSettings.DomainName:
+                style: form
+              CustomDomainSettings.FromName:
+                style: form
+              SignatureFrameSettings.EnableSignatureFrame:
+                style: form
+              SignatureFrameSettings.ShowRecipientName:
+                style: form
+              SignatureFrameSettings.ShowRecipientEmail:
+                style: form
+              SignatureFrameSettings.ShowTimeStamp:
+                style: form
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json;odata.metadata=minimal;odata.streaming=true:
+              schema:
+                $ref: '#/components/schemas/BrandCreated'
+            application/json;odata.metadata=minimal;odata.streaming=false:
+              schema:
+                $ref: '#/components/schemas/BrandCreated'
+            application/json;odata.metadata=minimal:
+              schema:
+                $ref: '#/components/schemas/BrandCreated'
+            application/json;odata.metadata=full;odata.streaming=true:
+              schema:
+                $ref: '#/components/schemas/BrandCreated'
+            application/json;odata.metadata=full;odata.streaming=false:
+              schema:
+                $ref: '#/components/schemas/BrandCreated'
+            application/json;odata.metadata=full:
+              schema:
+                $ref: '#/components/schemas/BrandCreated'
+            application/json;odata.metadata=none;odata.streaming=true:
+              schema:
+                $ref: '#/components/schemas/BrandCreated'
+            application/json;odata.metadata=none;odata.streaming=false:
+              schema:
+                $ref: '#/components/schemas/BrandCreated'
+            application/json;odata.metadata=none:
+              schema:
+                $ref: '#/components/schemas/BrandCreated'
+            application/json;odata.streaming=true:
+              schema:
+                $ref: '#/components/schemas/BrandCreated'
+            application/json;odata.streaming=false:
+              schema:
+                $ref: '#/components/schemas/BrandCreated'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BrandCreated'
+            application/json;odata.metadata=minimal;odata.streaming=true;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/BrandCreated'
+            application/json;odata.metadata=minimal;odata.streaming=true;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/BrandCreated'
+            application/json;odata.metadata=minimal;odata.streaming=false;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/BrandCreated'
+            application/json;odata.metadata=minimal;odata.streaming=false;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/BrandCreated'
+            application/json;odata.metadata=minimal;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/BrandCreated'
+            application/json;odata.metadata=minimal;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/BrandCreated'
+            application/json;odata.metadata=full;odata.streaming=true;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/BrandCreated'
+            application/json;odata.metadata=full;odata.streaming=true;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/BrandCreated'
+            application/json;odata.metadata=full;odata.streaming=false;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/BrandCreated'
+            application/json;odata.metadata=full;odata.streaming=false;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/BrandCreated'
+            application/json;odata.metadata=full;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/BrandCreated'
+            application/json;odata.metadata=full;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/BrandCreated'
+            application/json;odata.metadata=none;odata.streaming=true;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/BrandCreated'
+            application/json;odata.metadata=none;odata.streaming=true;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/BrandCreated'
+            application/json;odata.metadata=none;odata.streaming=false;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/BrandCreated'
+            application/json;odata.metadata=none;odata.streaming=false;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/BrandCreated'
+            application/json;odata.metadata=none;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/BrandCreated'
+            application/json;odata.metadata=none;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/BrandCreated'
+            application/json;odata.streaming=true;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/BrandCreated'
+            application/json;odata.streaming=true;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/BrandCreated'
+            application/json;odata.streaming=false;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/BrandCreated'
+            application/json;odata.streaming=false;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/BrandCreated'
+            application/json;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/BrandCreated'
+            application/json;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/BrandCreated'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/BrandCreated'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/BrandCreated'
+            application/octet-stream:
+              schema:
+                $ref: '#/components/schemas/BrandCreated'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/BrandCreated'
+        '401':
+          description: Unauthorized
+          content:
+            application/json;odata.metadata=minimal;odata.streaming=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal;odata.streaming=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;odata.streaming=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;odata.streaming=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;odata.streaming=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;odata.streaming=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.streaming=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.streaming=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal;odata.streaming=true;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal;odata.streaming=true;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal;odata.streaming=false;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal;odata.streaming=false;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;odata.streaming=true;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;odata.streaming=true;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;odata.streaming=false;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;odata.streaming=false;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;odata.streaming=true;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;odata.streaming=true;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;odata.streaming=false;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;odata.streaming=false;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.streaming=true;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.streaming=true;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.streaming=false;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.streaming=false;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/octet-stream:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+        '403':
+          description: Forbidden
+          content:
+            application/json;odata.metadata=minimal;odata.streaming=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal;odata.streaming=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;odata.streaming=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;odata.streaming=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;odata.streaming=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;odata.streaming=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.streaming=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.streaming=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal;odata.streaming=true;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal;odata.streaming=true;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal;odata.streaming=false;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal;odata.streaming=false;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;odata.streaming=true;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;odata.streaming=true;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;odata.streaming=false;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;odata.streaming=false;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;odata.streaming=true;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;odata.streaming=true;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;odata.streaming=false;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;odata.streaming=false;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.streaming=true;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.streaming=true;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.streaming=false;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.streaming=false;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/octet-stream:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+        '422':
+          description: Unprocessable Content
+          content:
+            application/json;odata.metadata=minimal;odata.streaming=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal;odata.streaming=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;odata.streaming=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;odata.streaming=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;odata.streaming=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;odata.streaming=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.streaming=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.streaming=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal;odata.streaming=true;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal;odata.streaming=true;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal;odata.streaming=false;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal;odata.streaming=false;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;odata.streaming=true;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;odata.streaming=true;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;odata.streaming=false;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;odata.streaming=false;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;odata.streaming=true;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;odata.streaming=true;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;odata.streaming=false;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;odata.streaming=false;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.streaming=true;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.streaming=true;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.streaming=false;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.streaming=false;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/octet-stream:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+  /v1/brand/get:
+    get:
+      tags:
+      - Branding
+      summary: Get the specific brand details.
+      operationId: GetBrand
+      parameters:
+      - name: brandId
+        in: query
+        required: true
+        schema:
+          title: String
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ViewBrandDetails'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+        '422':
+          description: Unprocessable Content
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+  /v1/brand/delete:
+    delete:
+      tags:
+      - Branding
+      summary: Delete the brand.
+      operationId: DeleteBrand
+      parameters:
+      - name: brandId
+        in: query
+        required: true
+        schema:
+          title: String
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json;odata.metadata=minimal;odata.streaming=true:
+              schema:
+                $ref: '#/components/schemas/BrandingMessage'
+            application/json;odata.metadata=minimal;odata.streaming=false:
+              schema:
+                $ref: '#/components/schemas/BrandingMessage'
+            application/json;odata.metadata=minimal:
+              schema:
+                $ref: '#/components/schemas/BrandingMessage'
+            application/json;odata.metadata=full;odata.streaming=true:
+              schema:
+                $ref: '#/components/schemas/BrandingMessage'
+            application/json;odata.metadata=full;odata.streaming=false:
+              schema:
+                $ref: '#/components/schemas/BrandingMessage'
+            application/json;odata.metadata=full:
+              schema:
+                $ref: '#/components/schemas/BrandingMessage'
+            application/json;odata.metadata=none;odata.streaming=true:
+              schema:
+                $ref: '#/components/schemas/BrandingMessage'
+            application/json;odata.metadata=none;odata.streaming=false:
+              schema:
+                $ref: '#/components/schemas/BrandingMessage'
+            application/json;odata.metadata=none:
+              schema:
+                $ref: '#/components/schemas/BrandingMessage'
+            application/json;odata.streaming=true:
+              schema:
+                $ref: '#/components/schemas/BrandingMessage'
+            application/json;odata.streaming=false:
+              schema:
+                $ref: '#/components/schemas/BrandingMessage'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BrandingMessage'
+            application/json;odata.metadata=minimal;odata.streaming=true;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/BrandingMessage'
+            application/json;odata.metadata=minimal;odata.streaming=true;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/BrandingMessage'
+            application/json;odata.metadata=minimal;odata.streaming=false;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/BrandingMessage'
+            application/json;odata.metadata=minimal;odata.streaming=false;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/BrandingMessage'
+            application/json;odata.metadata=minimal;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/BrandingMessage'
+            application/json;odata.metadata=minimal;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/BrandingMessage'
+            application/json;odata.metadata=full;odata.streaming=true;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/BrandingMessage'
+            application/json;odata.metadata=full;odata.streaming=true;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/BrandingMessage'
+            application/json;odata.metadata=full;odata.streaming=false;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/BrandingMessage'
+            application/json;odata.metadata=full;odata.streaming=false;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/BrandingMessage'
+            application/json;odata.metadata=full;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/BrandingMessage'
+            application/json;odata.metadata=full;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/BrandingMessage'
+            application/json;odata.metadata=none;odata.streaming=true;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/BrandingMessage'
+            application/json;odata.metadata=none;odata.streaming=true;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/BrandingMessage'
+            application/json;odata.metadata=none;odata.streaming=false;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/BrandingMessage'
+            application/json;odata.metadata=none;odata.streaming=false;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/BrandingMessage'
+            application/json;odata.metadata=none;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/BrandingMessage'
+            application/json;odata.metadata=none;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/BrandingMessage'
+            application/json;odata.streaming=true;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/BrandingMessage'
+            application/json;odata.streaming=true;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/BrandingMessage'
+            application/json;odata.streaming=false;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/BrandingMessage'
+            application/json;odata.streaming=false;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/BrandingMessage'
+            application/json;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/BrandingMessage'
+            application/json;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/BrandingMessage'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/BrandingMessage'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/BrandingMessage'
+            application/octet-stream:
+              schema:
+                $ref: '#/components/schemas/BrandingMessage'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/BrandingMessage'
+        '401':
+          description: Unauthorized
+          content:
+            application/json;odata.metadata=minimal;odata.streaming=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal;odata.streaming=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;odata.streaming=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;odata.streaming=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;odata.streaming=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;odata.streaming=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.streaming=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.streaming=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal;odata.streaming=true;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal;odata.streaming=true;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal;odata.streaming=false;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal;odata.streaming=false;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;odata.streaming=true;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;odata.streaming=true;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;odata.streaming=false;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;odata.streaming=false;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;odata.streaming=true;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;odata.streaming=true;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;odata.streaming=false;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;odata.streaming=false;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.streaming=true;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.streaming=true;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.streaming=false;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.streaming=false;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/octet-stream:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+        '403':
+          description: Forbidden
+          content:
+            application/json;odata.metadata=minimal;odata.streaming=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal;odata.streaming=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;odata.streaming=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;odata.streaming=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;odata.streaming=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;odata.streaming=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.streaming=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.streaming=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal;odata.streaming=true;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal;odata.streaming=true;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal;odata.streaming=false;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal;odata.streaming=false;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;odata.streaming=true;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;odata.streaming=true;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;odata.streaming=false;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;odata.streaming=false;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;odata.streaming=true;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;odata.streaming=true;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;odata.streaming=false;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;odata.streaming=false;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.streaming=true;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.streaming=true;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.streaming=false;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.streaming=false;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/octet-stream:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+  /v1/brand/resetdefault:
+    post:
+      tags:
+      - Branding
+      summary: Reset default brand.
+      operationId: ResetDefaultBrand
+      parameters:
+      - name: brandId
+        in: query
+        required: true
+        schema:
+          title: String
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json;odata.metadata=minimal;odata.streaming=true:
+              schema:
+                $ref: '#/components/schemas/BrandingMessage'
+            application/json;odata.metadata=minimal;odata.streaming=false:
+              schema:
+                $ref: '#/components/schemas/BrandingMessage'
+            application/json;odata.metadata=minimal:
+              schema:
+                $ref: '#/components/schemas/BrandingMessage'
+            application/json;odata.metadata=full;odata.streaming=true:
+              schema:
+                $ref: '#/components/schemas/BrandingMessage'
+            application/json;odata.metadata=full;odata.streaming=false:
+              schema:
+                $ref: '#/components/schemas/BrandingMessage'
+            application/json;odata.metadata=full:
+              schema:
+                $ref: '#/components/schemas/BrandingMessage'
+            application/json;odata.metadata=none;odata.streaming=true:
+              schema:
+                $ref: '#/components/schemas/BrandingMessage'
+            application/json;odata.metadata=none;odata.streaming=false:
+              schema:
+                $ref: '#/components/schemas/BrandingMessage'
+            application/json;odata.metadata=none:
+              schema:
+                $ref: '#/components/schemas/BrandingMessage'
+            application/json;odata.streaming=true:
+              schema:
+                $ref: '#/components/schemas/BrandingMessage'
+            application/json;odata.streaming=false:
+              schema:
+                $ref: '#/components/schemas/BrandingMessage'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BrandingMessage'
+            application/json;odata.metadata=minimal;odata.streaming=true;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/BrandingMessage'
+            application/json;odata.metadata=minimal;odata.streaming=true;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/BrandingMessage'
+            application/json;odata.metadata=minimal;odata.streaming=false;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/BrandingMessage'
+            application/json;odata.metadata=minimal;odata.streaming=false;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/BrandingMessage'
+            application/json;odata.metadata=minimal;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/BrandingMessage'
+            application/json;odata.metadata=minimal;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/BrandingMessage'
+            application/json;odata.metadata=full;odata.streaming=true;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/BrandingMessage'
+            application/json;odata.metadata=full;odata.streaming=true;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/BrandingMessage'
+            application/json;odata.metadata=full;odata.streaming=false;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/BrandingMessage'
+            application/json;odata.metadata=full;odata.streaming=false;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/BrandingMessage'
+            application/json;odata.metadata=full;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/BrandingMessage'
+            application/json;odata.metadata=full;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/BrandingMessage'
+            application/json;odata.metadata=none;odata.streaming=true;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/BrandingMessage'
+            application/json;odata.metadata=none;odata.streaming=true;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/BrandingMessage'
+            application/json;odata.metadata=none;odata.streaming=false;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/BrandingMessage'
+            application/json;odata.metadata=none;odata.streaming=false;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/BrandingMessage'
+            application/json;odata.metadata=none;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/BrandingMessage'
+            application/json;odata.metadata=none;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/BrandingMessage'
+            application/json;odata.streaming=true;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/BrandingMessage'
+            application/json;odata.streaming=true;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/BrandingMessage'
+            application/json;odata.streaming=false;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/BrandingMessage'
+            application/json;odata.streaming=false;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/BrandingMessage'
+            application/json;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/BrandingMessage'
+            application/json;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/BrandingMessage'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/BrandingMessage'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/BrandingMessage'
+            application/octet-stream:
+              schema:
+                $ref: '#/components/schemas/BrandingMessage'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/BrandingMessage'
+        '401':
+          description: Unauthorized
+          content:
+            application/json;odata.metadata=minimal;odata.streaming=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal;odata.streaming=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;odata.streaming=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;odata.streaming=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;odata.streaming=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;odata.streaming=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.streaming=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.streaming=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal;odata.streaming=true;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal;odata.streaming=true;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal;odata.streaming=false;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal;odata.streaming=false;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;odata.streaming=true;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;odata.streaming=true;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;odata.streaming=false;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;odata.streaming=false;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;odata.streaming=true;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;odata.streaming=true;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;odata.streaming=false;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;odata.streaming=false;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.streaming=true;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.streaming=true;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.streaming=false;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.streaming=false;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/octet-stream:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+        '403':
+          description: Forbidden
+          content:
+            application/json;odata.metadata=minimal;odata.streaming=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal;odata.streaming=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;odata.streaming=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;odata.streaming=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;odata.streaming=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;odata.streaming=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.streaming=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.streaming=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal;odata.streaming=true;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal;odata.streaming=true;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal;odata.streaming=false;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal;odata.streaming=false;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;odata.streaming=true;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;odata.streaming=true;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;odata.streaming=false;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;odata.streaming=false;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;odata.streaming=true;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;odata.streaming=true;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;odata.streaming=false;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;odata.streaming=false;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.streaming=true;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.streaming=true;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.streaming=false;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.streaming=false;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/octet-stream:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+  /v1/brand/list:
+    get:
+      tags:
+      - Branding
+      summary: List all the brands.
+      operationId: BrandList
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BrandingRecords'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+components:
+  schemas:
+    CustomDomainSettings:
+      title: CustomDomainSettings
+      type: object
+      properties:
+        domainName:
+          title: String
+          type: string
+          nullable: true
+        fromName:
+          title: String
+          type: string
+          nullable: true
+      additionalProperties: false
+    DocumentExpirySettings:
+      title: DocumentExpirySettings
+      type: object
+      properties:
+        expiryDateType:
+          title: Nullable`1
+          enum:
+          - Days
+          - Hours
+          - SpecificDateTime
+          type: string
+          format: Enumeration
+          nullable: true
+        expiryValue:
+          title: Nullable`1
+          type: integer
+          format: int32
+          nullable: true
+        enableDefaultExpiryAlert:
+          title: Nullable`1
+          type: boolean
+          nullable: true
+        enableAutoReminder:
+          title: Nullable`1
+          type: boolean
+          nullable: true
+        reminderDays:
+          title: Nullable`1
+          maximum: 180
+          minimum: 1
+          type: integer
+          format: int32
+          nullable: true
+        reminderCount:
+          title: Nullable`1
+          type: integer
+          format: int32
+          nullable: true
+      additionalProperties: false
+    SignatureFrameSettings:
+      title: SignatureFrameSettings
+      type: object
+      properties:
+        enableSignatureFrame:
+          title: Boolean
+          type: boolean
+          default: false
+        showRecipientName:
+          title: Boolean
+          type: boolean
+          default: false
+        showRecipientEmail:
+          title: Boolean
+          type: boolean
+          default: false
+        showTimeStamp:
+          title: Boolean
+          type: boolean
+          default: false
+      additionalProperties: false
+    ErrorResult:
+      title: ErrorResult
+      type: object
+      properties:
+        error:
+          title: String
+          type: string
+          nullable: true
+      additionalProperties: false
+    BrandingRecords:
+      title: BrandingRecords
+      type: object
+      properties:
+        result:
+          title: List`1
+          type: array
+          items:
+            $ref: '#/components/schemas/ViewBrandDetails'
+          nullable: true
+      additionalProperties: false
+    BrandingMessage:
+      title: BrandingMessage
+      type: object
+      properties:
+        message:
+          title: String
+          type: string
+          nullable: true
+      additionalProperties: false
+    ViewBrandDetails:
+      title: ViewBrandDetails
+      type: object
+      properties:
+        brandId:
+          title: String
+          type: string
+          nullable: true
+        brandLogo:
+          title: String
+          type: string
+          nullable: true
+        brandName:
+          title: String
+          type: string
+          nullable: true
+        backgroundColor:
+          title: String
+          type: string
+          nullable: true
+        buttonColor:
+          title: String
+          type: string
+          nullable: true
+        buttonTextColor:
+          title: String
+          type: string
+          nullable: true
+        emailDisplayName:
+          title: String
+          type: string
+          nullable: true
+        disclaimerTitle:
+          title: String
+          type: string
+          nullable: true
+        disclaimerDescription:
+          title: String
+          type: string
+          nullable: true
+        redirectUrl:
+          title: String
+          type: string
+          nullable: true
+        isDefault:
+          title: Boolean
+          type: boolean
+        canHideTagLine:
+          title: Boolean
+          type: boolean
+        combineAuditTrail:
+          title: Boolean
+          type: boolean
+        combineAttachments:
+          title: Boolean
+          type: boolean
+        excludeAuditTrailFromEmail:
+          title: Boolean
+          type: boolean
+        emailSignedDocument:
+          title: EmailSignedDocument
+          enum:
+          - Attachment
+          - DocumentLink
+          type: string
+        documentTimeZone:
+          title: String
+          type: string
+          nullable: true
+        showBuiltInFormFields:
+          title: Boolean
+          type: boolean
+        allowCustomFieldCreation:
+          title: Boolean
+          type: boolean
+        showSharedCustomFields:
+          title: Boolean
+          type: boolean
+        hideDecline:
+          title: Boolean
+          type: boolean
+        hideSave:
+          title: Boolean
+          type: boolean
+        documentExpirySettings:
+          $ref: '#/components/schemas/DocumentExpirySettings'
+        customDomainSettings:
+          $ref: '#/components/schemas/CustomDomainSettings'
+        isDomainVerified:
+          title: Boolean
+          type: boolean
+        signatureFrameSettings:
+          $ref: '#/components/schemas/SignatureFrameSettings'
+      additionalProperties: false
+    BrandCreated:
+      title: BrandCreated
+      type: object
+      properties:
+        brandId:
+          title: String
+          type: string
+          nullable: true
+      additionalProperties: false
+  securitySchemes:
+    Bearer:
+      type: apiKey
+      description: 'Format ''Bearer'' [space] [TOKEN]. Ex: ''Bearer eyJhbGciOiJIUzI1N'''
+      name: Authorization
+      in: header
+    X-API-KEY:
+      type: apiKey
+      description: 'Format [API-KEY]. Ex: ''abcdef12345'''
+      name: X-API-KEY
+      in: header
+externalDocs:
+  description: BoldSign Developer Documentation
+  url: https://developers.boldsign.com/

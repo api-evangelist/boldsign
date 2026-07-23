@@ -1,0 +1,5540 @@
+openapi: 3.0.3
+info:
+  title: BoldSign Branding Template API
+  version: '1'
+  description: BoldSign eSignature REST API for sending documents for electronic signature, managing reusable templates, tracking envelope status, embedding signing and requesting workflows into third-party applications. Supports API key and OAuth 2.0 authentication. Regional endpoints available for US, EU, CA, and AU.
+  contact:
+    name: BoldSign Support
+    url: https://developers.boldsign.com/
+    email: support@boldsign.com
+  license:
+    name: Proprietary
+    url: https://boldsign.com/terms-of-use/
+  termsOfService: https://boldsign.com/terms-of-use/
+servers:
+- url: https://api.boldsign.com
+  description: US production
+- url: https://eu.boldsign.com
+  description: EU production
+- url: https://ca.boldsign.com
+  description: CA production
+- url: https://au.boldsign.com
+  description: AU production
+security:
+- Bearer: []
+- X-API-KEY: []
+tags:
+- name: Template
+paths:
+  /v1/template/list:
+    get:
+      tags:
+      - Template
+      summary: List all the templates.
+      operationId: ListTemplates
+      parameters:
+      - name: TemplateType
+        in: query
+        schema:
+          title: TemplateType
+          enum:
+          - mytemplates
+          - sharedtemplate
+          - all
+          type: string
+      - name: PageSize
+        in: query
+        schema:
+          title: Int32
+          type: integer
+          format: int32
+          default: 10
+      - name: Page
+        in: query
+        required: true
+        schema:
+          title: Int32
+          type: integer
+          format: int32
+          default: 1
+      - name: SearchKey
+        in: query
+        schema:
+          title: String
+          type: string
+      - name: OnBehalfOf
+        in: query
+        description: The sender identity's email used to filter the templates returned in the API. The API will return templates that were sent on behalf of the specified email address.
+        schema:
+          title: List`1
+          type: array
+          items:
+            title: String
+            type: string
+      - name: CreatedBy
+        in: query
+        description: The templates can be listed by the creator of the template.
+        schema:
+          title: List`1
+          type: array
+          items:
+            title: String
+            type: string
+      - name: TemplateLabels
+        in: query
+        description: Labels of the template.
+        schema:
+          title: List`1
+          type: array
+          items:
+            title: String
+            type: string
+      - name: StartDate
+        in: query
+        description: Start date of the template
+        schema:
+          title: Nullable`1
+          type: string
+          format: date-time
+      - name: EndDate
+        in: query
+        description: End date of the template
+        schema:
+          title: Nullable`1
+          type: string
+          format: date-time
+      - name: BrandIds
+        in: query
+        description: BrandId(s) of the template.
+        schema:
+          title: List`1
+          type: array
+          items:
+            title: String
+            type: string
+      - name: SharedWithTeamId
+        in: query
+        description: The templates can be listed by the shared teams.
+        schema:
+          title: List`1
+          type: array
+          items:
+            title: String
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TemplateRecords'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+  /v1/template/create:
+    post:
+      tags:
+      - Template
+      summary: Creates a new template.
+      operationId: CreateTemplate
+      requestBody:
+        description: The create template request body.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateTemplateRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/CreateTemplateRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/CreateTemplateRequest'
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TemplateCreated'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+        '422':
+          description: Unprocessable Content
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+  /v1/template/createEmbeddedTemplateUrl:
+    post:
+      tags:
+      - Template
+      summary: Generates a create URL to embeds template create process into your application.
+      operationId: CreateEmbeddedTemplateUrl
+      requestBody:
+        description: The create embedded template request body.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmbeddedCreateTemplateRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/EmbeddedCreateTemplateRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/EmbeddedCreateTemplateRequest'
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmbeddedTemplateCreated'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+        '422':
+          description: Unprocessable Content
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+  /v1/template/getEmbeddedTemplateEditUrl:
+    post:
+      tags:
+      - Template
+      summary: Generates a edit URL to embeds template edit process into your application.
+      operationId: getEmbeddedTemplateEditUrl
+      parameters:
+      - name: templateId
+        in: query
+        required: true
+        schema:
+          title: String
+          type: string
+      requestBody:
+        description: The embedded edit template request body.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmbeddedTemplateEditRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/EmbeddedTemplateEditRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/EmbeddedTemplateEditRequest'
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmbeddedTemplateEdited'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+  /v1/template/delete:
+    delete:
+      tags:
+      - Template
+      summary: Deletes a template.
+      operationId: DeleteTemplate
+      parameters:
+      - name: templateId
+        in: query
+        required: true
+        schema:
+          title: String
+          type: string
+      - name: onBehalfOf
+        in: query
+        schema:
+          title: String
+          type: string
+      responses:
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+  /v1/template/send:
+    post:
+      tags:
+      - Template
+      summary: Send a document for signature using a Template.
+      operationId: SendUsingTemplate
+      parameters:
+      - name: templateId
+        in: query
+        required: true
+        schema:
+          title: String
+          type: string
+      requestBody:
+        description: The send template details as JSON.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SendForSignFromTemplateForm'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/SendForSignFromTemplateForm'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/SendForSignFromTemplateForm'
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DocumentCreated'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+        '422':
+          description: Unprocessable Content
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+  /v1/template/mergeAndSend:
+    post:
+      tags:
+      - Template
+      summary: Send the document by merging multiple templates.
+      operationId: MergeAndSend
+      requestBody:
+        description: The merge and send details as JSON.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MergeAndSendForSignForm'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/MergeAndSendForSignForm'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/MergeAndSendForSignForm'
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DocumentCreated'
+        '422':
+          description: Unprocessable Content
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+  /v1/template/createEmbeddedRequestUrl:
+    post:
+      tags:
+      - Template
+      summary: Generates a send URL using a template which embeds document sending process into your application.
+      operationId: CreateEmbeddedRequestUrlTemplate
+      parameters:
+      - name: templateId
+        in: query
+        required: true
+        schema:
+          title: String
+          type: string
+      requestBody:
+        description: Embedded send template json request.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmbeddedSendTemplateFormRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/EmbeddedSendTemplateFormRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/EmbeddedSendTemplateFormRequest'
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmbeddedSendCreated'
+        '422':
+          description: Unprocessable Content
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+  /v1/template/mergeCreateEmbeddedRequestUrl:
+    post:
+      tags:
+      - Template
+      summary: Generates a merge request URL using a template that combines document merging and sending processes into your application.
+      operationId: MergeCreateEmbeddedRequestUrlTemplate
+      requestBody:
+        description: Embedded merge and send template json request.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmbeddedMergeTemplateFormRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/EmbeddedMergeTemplateFormRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/EmbeddedMergeTemplateFormRequest'
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmbeddedSendCreated'
+        '422':
+          description: Unprocessable Content
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+  /v1/template/properties:
+    get:
+      tags:
+      - Template
+      summary: Get summary of the template.
+      operationId: GetTemplateProperties
+      parameters:
+      - name: templateId
+        in: query
+        required: true
+        schema:
+          title: String
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TemplateProperties'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+      x-operation-name: GetProperties
+  /v1/template/download:
+    get:
+      tags:
+      - Template
+      summary: Download the template.
+      operationId: Download
+      parameters:
+      - name: templateId
+        in: query
+        required: true
+        schema:
+          title: String
+          type: string
+      - name: onBehalfOf
+        in: query
+        schema:
+          title: String
+          type: string
+      - name: includeFormFieldValues
+        in: query
+        schema:
+          title: Boolean
+          type: boolean
+          default: false
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: FileStreamResult
+                type: string
+                format: binary
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+  /v1/template/edit:
+    put:
+      tags:
+      - Template
+      summary: Edit and updates an existing template.
+      operationId: EditTemplate
+      parameters:
+      - name: templateId
+        in: query
+        required: true
+        schema:
+          title: String
+          type: string
+      requestBody:
+        description: The edit template request body.
+        content:
+          application/json;odata.metadata=minimal;odata.streaming=true:
+            schema:
+              $ref: '#/components/schemas/EditTemplateRequest'
+          application/json;odata.metadata=minimal;odata.streaming=false:
+            schema:
+              $ref: '#/components/schemas/EditTemplateRequest'
+          application/json;odata.metadata=minimal:
+            schema:
+              $ref: '#/components/schemas/EditTemplateRequest'
+          application/json;odata.metadata=full;odata.streaming=true:
+            schema:
+              $ref: '#/components/schemas/EditTemplateRequest'
+          application/json;odata.metadata=full;odata.streaming=false:
+            schema:
+              $ref: '#/components/schemas/EditTemplateRequest'
+          application/json;odata.metadata=full:
+            schema:
+              $ref: '#/components/schemas/EditTemplateRequest'
+          application/json;odata.metadata=none;odata.streaming=true:
+            schema:
+              $ref: '#/components/schemas/EditTemplateRequest'
+          application/json;odata.metadata=none;odata.streaming=false:
+            schema:
+              $ref: '#/components/schemas/EditTemplateRequest'
+          application/json;odata.metadata=none:
+            schema:
+              $ref: '#/components/schemas/EditTemplateRequest'
+          application/json;odata.streaming=true:
+            schema:
+              $ref: '#/components/schemas/EditTemplateRequest'
+          application/json;odata.streaming=false:
+            schema:
+              $ref: '#/components/schemas/EditTemplateRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EditTemplateRequest'
+          application/json;odata.metadata=minimal;odata.streaming=true;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/EditTemplateRequest'
+          application/json;odata.metadata=minimal;odata.streaming=true;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/EditTemplateRequest'
+          application/json;odata.metadata=minimal;odata.streaming=false;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/EditTemplateRequest'
+          application/json;odata.metadata=minimal;odata.streaming=false;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/EditTemplateRequest'
+          application/json;odata.metadata=minimal;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/EditTemplateRequest'
+          application/json;odata.metadata=minimal;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/EditTemplateRequest'
+          application/json;odata.metadata=full;odata.streaming=true;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/EditTemplateRequest'
+          application/json;odata.metadata=full;odata.streaming=true;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/EditTemplateRequest'
+          application/json;odata.metadata=full;odata.streaming=false;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/EditTemplateRequest'
+          application/json;odata.metadata=full;odata.streaming=false;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/EditTemplateRequest'
+          application/json;odata.metadata=full;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/EditTemplateRequest'
+          application/json;odata.metadata=full;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/EditTemplateRequest'
+          application/json;odata.metadata=none;odata.streaming=true;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/EditTemplateRequest'
+          application/json;odata.metadata=none;odata.streaming=true;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/EditTemplateRequest'
+          application/json;odata.metadata=none;odata.streaming=false;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/EditTemplateRequest'
+          application/json;odata.metadata=none;odata.streaming=false;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/EditTemplateRequest'
+          application/json;odata.metadata=none;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/EditTemplateRequest'
+          application/json;odata.metadata=none;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/EditTemplateRequest'
+          application/json;odata.streaming=true;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/EditTemplateRequest'
+          application/json;odata.streaming=true;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/EditTemplateRequest'
+          application/json;odata.streaming=false;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/EditTemplateRequest'
+          application/json;odata.streaming=false;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/EditTemplateRequest'
+          application/json;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/EditTemplateRequest'
+          application/json;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/EditTemplateRequest'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/EditTemplateRequest'
+          text/plain:
+            schema:
+              $ref: '#/components/schemas/EditTemplateRequest'
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/EditTemplateRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/EditTemplateRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/EditTemplateRequest'
+        required: true
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+        '422':
+          description: Unprocessable Content
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+  /v1/template/addTags:
+    patch:
+      tags:
+      - Template
+      summary: Add the Tags in Templates.
+      operationId: AddTemplateTag
+      requestBody:
+        description: ContainsTemplateId and Label Names for AddingTags.
+        content:
+          application/json;odata.metadata=minimal;odata.streaming=true:
+            schema:
+              $ref: '#/components/schemas/TemplateTag'
+          application/json;odata.metadata=minimal;odata.streaming=false:
+            schema:
+              $ref: '#/components/schemas/TemplateTag'
+          application/json;odata.metadata=minimal:
+            schema:
+              $ref: '#/components/schemas/TemplateTag'
+          application/json;odata.metadata=full;odata.streaming=true:
+            schema:
+              $ref: '#/components/schemas/TemplateTag'
+          application/json;odata.metadata=full;odata.streaming=false:
+            schema:
+              $ref: '#/components/schemas/TemplateTag'
+          application/json;odata.metadata=full:
+            schema:
+              $ref: '#/components/schemas/TemplateTag'
+          application/json;odata.metadata=none;odata.streaming=true:
+            schema:
+              $ref: '#/components/schemas/TemplateTag'
+          application/json;odata.metadata=none;odata.streaming=false:
+            schema:
+              $ref: '#/components/schemas/TemplateTag'
+          application/json;odata.metadata=none:
+            schema:
+              $ref: '#/components/schemas/TemplateTag'
+          application/json;odata.streaming=true:
+            schema:
+              $ref: '#/components/schemas/TemplateTag'
+          application/json;odata.streaming=false:
+            schema:
+              $ref: '#/components/schemas/TemplateTag'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TemplateTag'
+          application/json;odata.metadata=minimal;odata.streaming=true;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/TemplateTag'
+          application/json;odata.metadata=minimal;odata.streaming=true;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/TemplateTag'
+          application/json;odata.metadata=minimal;odata.streaming=false;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/TemplateTag'
+          application/json;odata.metadata=minimal;odata.streaming=false;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/TemplateTag'
+          application/json;odata.metadata=minimal;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/TemplateTag'
+          application/json;odata.metadata=minimal;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/TemplateTag'
+          application/json;odata.metadata=full;odata.streaming=true;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/TemplateTag'
+          application/json;odata.metadata=full;odata.streaming=true;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/TemplateTag'
+          application/json;odata.metadata=full;odata.streaming=false;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/TemplateTag'
+          application/json;odata.metadata=full;odata.streaming=false;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/TemplateTag'
+          application/json;odata.metadata=full;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/TemplateTag'
+          application/json;odata.metadata=full;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/TemplateTag'
+          application/json;odata.metadata=none;odata.streaming=true;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/TemplateTag'
+          application/json;odata.metadata=none;odata.streaming=true;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/TemplateTag'
+          application/json;odata.metadata=none;odata.streaming=false;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/TemplateTag'
+          application/json;odata.metadata=none;odata.streaming=false;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/TemplateTag'
+          application/json;odata.metadata=none;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/TemplateTag'
+          application/json;odata.metadata=none;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/TemplateTag'
+          application/json;odata.streaming=true;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/TemplateTag'
+          application/json;odata.streaming=true;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/TemplateTag'
+          application/json;odata.streaming=false;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/TemplateTag'
+          application/json;odata.streaming=false;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/TemplateTag'
+          application/json;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/TemplateTag'
+          application/json;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/TemplateTag'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/TemplateTag'
+          text/plain:
+            schema:
+              $ref: '#/components/schemas/TemplateTag'
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/TemplateTag'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/TemplateTag'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/TemplateTag'
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+          content:
+            application/json;odata.metadata=minimal;odata.streaming=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal;odata.streaming=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;odata.streaming=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;odata.streaming=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;odata.streaming=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;odata.streaming=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.streaming=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.streaming=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal;odata.streaming=true;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal;odata.streaming=true;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal;odata.streaming=false;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal;odata.streaming=false;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;odata.streaming=true;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;odata.streaming=true;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;odata.streaming=false;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;odata.streaming=false;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;odata.streaming=true;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;odata.streaming=true;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;odata.streaming=false;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;odata.streaming=false;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.streaming=true;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.streaming=true;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.streaming=false;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.streaming=false;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/octet-stream:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+        '401':
+          description: Unauthorized
+          content:
+            application/json;odata.metadata=minimal;odata.streaming=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal;odata.streaming=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;odata.streaming=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;odata.streaming=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;odata.streaming=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;odata.streaming=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.streaming=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.streaming=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal;odata.streaming=true;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal;odata.streaming=true;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal;odata.streaming=false;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal;odata.streaming=false;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;odata.streaming=true;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;odata.streaming=true;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;odata.streaming=false;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;odata.streaming=false;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;odata.streaming=true;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;odata.streaming=true;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;odata.streaming=false;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;odata.streaming=false;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.streaming=true;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.streaming=true;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.streaming=false;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.streaming=false;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/octet-stream:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+      x-operation-name: AddTag
+  /v1/template/deleteTags:
+    delete:
+      tags:
+      - Template
+      summary: Delete the Tags in Templates.
+      operationId: DeleteTemplateTag
+      requestBody:
+        description: Contains TemplateId and LabelNames for Adding Tags.
+        content:
+          application/json;odata.metadata=minimal;odata.streaming=true:
+            schema:
+              $ref: '#/components/schemas/TemplateTag'
+          application/json;odata.metadata=minimal;odata.streaming=false:
+            schema:
+              $ref: '#/components/schemas/TemplateTag'
+          application/json;odata.metadata=minimal:
+            schema:
+              $ref: '#/components/schemas/TemplateTag'
+          application/json;odata.metadata=full;odata.streaming=true:
+            schema:
+              $ref: '#/components/schemas/TemplateTag'
+          application/json;odata.metadata=full;odata.streaming=false:
+            schema:
+              $ref: '#/components/schemas/TemplateTag'
+          application/json;odata.metadata=full:
+            schema:
+              $ref: '#/components/schemas/TemplateTag'
+          application/json;odata.metadata=none;odata.streaming=true:
+            schema:
+              $ref: '#/components/schemas/TemplateTag'
+          application/json;odata.metadata=none;odata.streaming=false:
+            schema:
+              $ref: '#/components/schemas/TemplateTag'
+          application/json;odata.metadata=none:
+            schema:
+              $ref: '#/components/schemas/TemplateTag'
+          application/json;odata.streaming=true:
+            schema:
+              $ref: '#/components/schemas/TemplateTag'
+          application/json;odata.streaming=false:
+            schema:
+              $ref: '#/components/schemas/TemplateTag'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TemplateTag'
+          application/json;odata.metadata=minimal;odata.streaming=true;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/TemplateTag'
+          application/json;odata.metadata=minimal;odata.streaming=true;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/TemplateTag'
+          application/json;odata.metadata=minimal;odata.streaming=false;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/TemplateTag'
+          application/json;odata.metadata=minimal;odata.streaming=false;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/TemplateTag'
+          application/json;odata.metadata=minimal;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/TemplateTag'
+          application/json;odata.metadata=minimal;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/TemplateTag'
+          application/json;odata.metadata=full;odata.streaming=true;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/TemplateTag'
+          application/json;odata.metadata=full;odata.streaming=true;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/TemplateTag'
+          application/json;odata.metadata=full;odata.streaming=false;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/TemplateTag'
+          application/json;odata.metadata=full;odata.streaming=false;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/TemplateTag'
+          application/json;odata.metadata=full;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/TemplateTag'
+          application/json;odata.metadata=full;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/TemplateTag'
+          application/json;odata.metadata=none;odata.streaming=true;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/TemplateTag'
+          application/json;odata.metadata=none;odata.streaming=true;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/TemplateTag'
+          application/json;odata.metadata=none;odata.streaming=false;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/TemplateTag'
+          application/json;odata.metadata=none;odata.streaming=false;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/TemplateTag'
+          application/json;odata.metadata=none;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/TemplateTag'
+          application/json;odata.metadata=none;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/TemplateTag'
+          application/json;odata.streaming=true;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/TemplateTag'
+          application/json;odata.streaming=true;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/TemplateTag'
+          application/json;odata.streaming=false;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/TemplateTag'
+          application/json;odata.streaming=false;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/TemplateTag'
+          application/json;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/TemplateTag'
+          application/json;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/TemplateTag'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/TemplateTag'
+          text/plain:
+            schema:
+              $ref: '#/components/schemas/TemplateTag'
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/TemplateTag'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/TemplateTag'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/TemplateTag'
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+          content:
+            application/json;odata.metadata=minimal;odata.streaming=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal;odata.streaming=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;odata.streaming=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;odata.streaming=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;odata.streaming=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;odata.streaming=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.streaming=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.streaming=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal;odata.streaming=true;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal;odata.streaming=true;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal;odata.streaming=false;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal;odata.streaming=false;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;odata.streaming=true;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;odata.streaming=true;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;odata.streaming=false;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;odata.streaming=false;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;odata.streaming=true;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;odata.streaming=true;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;odata.streaming=false;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;odata.streaming=false;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.streaming=true;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.streaming=true;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.streaming=false;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.streaming=false;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/octet-stream:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+        '400':
+          description: Bad Request
+          content:
+            application/json;odata.metadata=minimal;odata.streaming=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal;odata.streaming=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;odata.streaming=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;odata.streaming=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;odata.streaming=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;odata.streaming=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.streaming=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.streaming=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal;odata.streaming=true;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal;odata.streaming=true;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal;odata.streaming=false;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal;odata.streaming=false;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=minimal;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;odata.streaming=true;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;odata.streaming=true;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;odata.streaming=false;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;odata.streaming=false;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=full;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;odata.streaming=true;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;odata.streaming=true;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;odata.streaming=false;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;odata.streaming=false;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.metadata=none;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.streaming=true;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.streaming=true;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.streaming=false;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;odata.streaming=false;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;IEEE754Compatible=false:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/json;IEEE754Compatible=true:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            application/octet-stream:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+      x-operation-name: DeleteTag
+  /v1/template/share:
+    patch:
+      tags:
+      - Template
+      summary: Share a template with teams and manage permissions.
+      operationId: ShareTemplate
+      parameters:
+      - name: templateId
+        in: query
+        required: true
+        schema:
+          title: String
+          type: string
+      requestBody:
+        description: Permissions request.
+        content:
+          application/json;odata.metadata=minimal;odata.streaming=true:
+            schema:
+              $ref: '#/components/schemas/TemplateShareRequest'
+          application/json;odata.metadata=minimal;odata.streaming=false:
+            schema:
+              $ref: '#/components/schemas/TemplateShareRequest'
+          application/json;odata.metadata=minimal:
+            schema:
+              $ref: '#/components/schemas/TemplateShareRequest'
+          application/json;odata.metadata=full;odata.streaming=true:
+            schema:
+              $ref: '#/components/schemas/TemplateShareRequest'
+          application/json;odata.metadata=full;odata.streaming=false:
+            schema:
+              $ref: '#/components/schemas/TemplateShareRequest'
+          application/json;odata.metadata=full:
+            schema:
+              $ref: '#/components/schemas/TemplateShareRequest'
+          application/json;odata.metadata=none;odata.streaming=true:
+            schema:
+              $ref: '#/components/schemas/TemplateShareRequest'
+          application/json;odata.metadata=none;odata.streaming=false:
+            schema:
+              $ref: '#/components/schemas/TemplateShareRequest'
+          application/json;odata.metadata=none:
+            schema:
+              $ref: '#/components/schemas/TemplateShareRequest'
+          application/json;odata.streaming=true:
+            schema:
+              $ref: '#/components/schemas/TemplateShareRequest'
+          application/json;odata.streaming=false:
+            schema:
+              $ref: '#/components/schemas/TemplateShareRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TemplateShareRequest'
+          application/json;odata.metadata=minimal;odata.streaming=true;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/TemplateShareRequest'
+          application/json;odata.metadata=minimal;odata.streaming=true;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/TemplateShareRequest'
+          application/json;odata.metadata=minimal;odata.streaming=false;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/TemplateShareRequest'
+          application/json;odata.metadata=minimal;odata.streaming=false;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/TemplateShareRequest'
+          application/json;odata.metadata=minimal;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/TemplateShareRequest'
+          application/json;odata.metadata=minimal;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/TemplateShareRequest'
+          application/json;odata.metadata=full;odata.streaming=true;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/TemplateShareRequest'
+          application/json;odata.metadata=full;odata.streaming=true;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/TemplateShareRequest'
+          application/json;odata.metadata=full;odata.streaming=false;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/TemplateShareRequest'
+          application/json;odata.metadata=full;odata.streaming=false;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/TemplateShareRequest'
+          application/json;odata.metadata=full;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/TemplateShareRequest'
+          application/json;odata.metadata=full;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/TemplateShareRequest'
+          application/json;odata.metadata=none;odata.streaming=true;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/TemplateShareRequest'
+          application/json;odata.metadata=none;odata.streaming=true;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/TemplateShareRequest'
+          application/json;odata.metadata=none;odata.streaming=false;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/TemplateShareRequest'
+          application/json;odata.metadata=none;odata.streaming=false;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/TemplateShareRequest'
+          application/json;odata.metadata=none;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/TemplateShareRequest'
+          application/json;odata.metadata=none;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/TemplateShareRequest'
+          application/json;odata.streaming=true;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/TemplateShareRequest'
+          application/json;odata.streaming=true;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/TemplateShareRequest'
+          application/json;odata.streaming=false;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/TemplateShareRequest'
+          application/json;odata.streaming=false;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/TemplateShareRequest'
+          application/json;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/TemplateShareRequest'
+          application/json;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/TemplateShareRequest'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/TemplateShareRequest'
+          text/plain:
+            schema:
+              $ref: '#/components/schemas/TemplateShareRequest'
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/TemplateShareRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/TemplateShareRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/TemplateShareRequest'
+        required: true
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TemplateShareErrorResponse'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TemplateShareErrorResponse'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+  /v1/template/createEmbeddedPreviewUrl:
+    post:
+      tags:
+      - Template
+      summary: Generates a preview URL for a template to view it.
+      operationId: createEmbeddedPreviewUrl
+      parameters:
+      - name: templateId
+        in: query
+        required: true
+        schema:
+          title: String
+          type: string
+      requestBody:
+        description: The embedded template preview request body.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmbeddedTemplatePreviewJsonRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/EmbeddedTemplatePreviewJsonRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/EmbeddedTemplatePreviewJsonRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmbeddedTemplatePreview'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+components:
+  schemas:
+    FormulaFieldSettings:
+      title: FormulaFieldSettings
+      type: object
+      properties:
+        formulaExpression:
+          title: String
+          type: string
+          nullable: true
+        decimalPrecision:
+          title: Int32
+          type: integer
+          format: int32
+          default: 0
+      additionalProperties: false
+    TextTagOffset:
+      title: TextTagOffset
+      type: object
+      properties:
+        offsetX:
+          title: Double
+          type: number
+          format: double
+        offsetY:
+          title: Double
+          type: number
+          format: double
+      additionalProperties: false
+    PageDetails:
+      title: PageDetails
+      type: object
+      properties:
+        pageSize:
+          title: Int32
+          type: integer
+          format: int32
+        page:
+          title: Int32
+          type: integer
+          format: int32
+        totalRecordsCount:
+          title: Int32
+          type: integer
+          format: int32
+        totalPages:
+          title: Int32
+          type: integer
+          format: int32
+        sortedColumn:
+          title: String
+          type: string
+          nullable: true
+        sortDirection:
+          title: String
+          type: string
+          nullable: true
+      additionalProperties: false
+    DocumentCC:
+      title: DocumentCC
+      required:
+      - emailAddress
+      type: object
+      properties:
+        emailAddress:
+          title: String
+          minLength: 1
+          type: string
+      additionalProperties: false
+    FormField:
+      title: FormField
+      required:
+      - bounds
+      - fieldType
+      - pageNumber
+      type: object
+      properties:
+        id:
+          title: String
+          type: string
+          nullable: true
+        name:
+          title: String
+          type: string
+          nullable: true
+        fieldType:
+          title: FieldType
+          enum:
+          - Signature
+          - Initial
+          - CheckBox
+          - TextBox
+          - Label
+          - DateSigned
+          - RadioButton
+          - Image
+          - Attachment
+          - EditableDate
+          - Hyperlink
+          - Dropdown
+          - Title
+          - Company
+          - Formula
+          - Drawing
+          type: string
+        pageNumber:
+          title: Int32
+          type: integer
+          format: int32
+        bounds:
+          $ref: '#/components/schemas/Rectangle'
+        isRequired:
+          title: Boolean
+          type: boolean
+        isReadOnly:
+          title: Boolean
+          type: boolean
+        value:
+          title: String
+          type: string
+          nullable: true
+        fontSize:
+          title: Single
+          minimum: 0
+          type: number
+          format: float
+        font:
+          title: FontFamily
+          enum:
+          - Helvetica
+          - Courier
+          - TimesRoman
+          - NotoSans
+          - Carlito
+          type: string
+        fontHexColor:
+          title: String
+          type: string
+          nullable: true
+        isBoldFont:
+          title: Boolean
+          type: boolean
+        isItalicFont:
+          title: Boolean
+          type: boolean
+        isUnderLineFont:
+          title: Boolean
+          type: boolean
+        lineHeight:
+          title: Int32
+          maximum: 2147483647
+          minimum: 0
+          type: integer
+          format: int32
+        characterLimit:
+          title: Int32
+          maximum: 2147483647
+          minimum: 0
+          type: integer
+          format: int32
+        groupName:
+          title: String
+          type: string
+          nullable: true
+        label:
+          title: String
+          type: string
+          nullable: true
+        placeHolder:
+          title: String
+          type: string
+          nullable: true
+        validationType:
+          title: ValidationType
+          enum:
+          - None
+          - NumbersOnly
+          - EmailAddress
+          - Currency
+          - CustomRegex
+          type: string
+        validationCustomRegex:
+          title: String
+          type: string
+          nullable: true
+        validationCustomRegexMessage:
+          title: String
+          type: string
+          nullable: true
+        dateFormat:
+          title: String
+          type: string
+          nullable: true
+        timeFormat:
+          title: String
+          type: string
+          nullable: true
+        imageInfo:
+          $ref: '#/components/schemas/ImageInfo'
+        attachmentInfo:
+          $ref: '#/components/schemas/AttachmentInfo'
+        editableDateFieldSettings:
+          $ref: '#/components/schemas/EditableDateFieldSettings'
+        hyperlinkText:
+          title: String
+          type: string
+          nullable: true
+        conditionalRules:
+          title: IEnumerable`1
+          type: array
+          items:
+            $ref: '#/components/schemas/ConditionalRule'
+          nullable: true
+        dataSyncTag:
+          title: String
+          type: string
+          nullable: true
+        dropdownOptions:
+          title: String[]
+          type: array
+          items:
+            title: String
+            type: string
+          nullable: true
+        textAlign:
+          title: TextAlign
+          enum:
+          - Left
+          - Center
+          - Right
+          type: string
+        textDirection:
+          title: TextDirection
+          enum:
+          - LTR
+          - RTL
+          type: string
+        characterSpacing:
+          title: Single
+          type: number
+          format: float
+        backgroundHexColor:
+          title: String
+          type: string
+          nullable: true
+        tabIndex:
+          title: Nullable`1
+          maximum: 2147483647
+          minimum: -1
+          type: integer
+          format: int32
+          nullable: true
+        formulaFieldSettings:
+          $ref: '#/components/schemas/FormulaFieldSettings'
+        resizeOption:
+          title: Nullable`1
+          enum:
+          - GrowVertically
+          - GrowHorizontally
+          - GrowBoth
+          - Fixed
+          - AutoResizeFont
+          type: string
+          nullable: true
+        allowEditFormField:
+          title: Nullable`1
+          type: boolean
+          nullable: true
+        allowDeleteFormField:
+          title: Nullable`1
+          type: boolean
+          nullable: true
+        collaborationSettings:
+          $ref: '#/components/schemas/CollaborationSettings'
+        isMasked:
+          title: Nullable`1
+          type: boolean
+          default: false
+          nullable: true
+        isDefaultValueRequired:
+          title: Nullable`1
+          type: boolean
+          nullable: true
+      additionalProperties: false
+    Template:
+      title: Template
+      type: object
+      properties:
+        documentId:
+          title: String
+          type: string
+          nullable: true
+        senderDetail:
+          $ref: '#/components/schemas/TemplateSenderDetails'
+        ccDetails:
+          title: TemplateCC[]
+          type: array
+          items:
+            $ref: '#/components/schemas/TemplateCC'
+          nullable: true
+        createdDate:
+          title: Int64
+          type: integer
+          format: int64
+        activityDate:
+          title: Int64
+          type: integer
+          format: int64
+        activityBy:
+          title: String
+          type: string
+          nullable: true
+        messageTitle:
+          title: String
+          type: string
+          nullable: true
+        status:
+          title: DocumentStatus
+          enum:
+          - InProgress
+          - Completed
+          - Declined
+          - Expired
+          - Revoked
+          - Draft
+          - Scheduled
+          type: string
+        signerDetails:
+          title: TemplateSignerDetails[]
+          type: array
+          items:
+            $ref: '#/components/schemas/TemplateSignerDetails'
+          nullable: true
+        enableSigningOrder:
+          title: Boolean
+          type: boolean
+        templateName:
+          title: String
+          type: string
+          nullable: true
+        templateDescription:
+          title: String
+          type: string
+          nullable: true
+        accessType:
+          title: TemplateAccessType
+          enum:
+          - Use
+          - Edit
+          - None
+          type: string
+        accessTid:
+          title: String
+          type: string
+          nullable: true
+        isTemplate:
+          title: Boolean
+          type: boolean
+          default: false
+        behalfOf:
+          $ref: '#/components/schemas/BehalfOf'
+        templateLabels:
+          title: List`1
+          type: array
+          items:
+            title: String
+            type: string
+          nullable: true
+        labels:
+          title: List`1
+          type: array
+          items:
+            title: String
+            type: string
+          nullable: true
+        brandId:
+          title: String
+          type: string
+          nullable: true
+      additionalProperties: false
+    AuthenticationSettings:
+      title: AuthenticationSettings
+      type: object
+      properties:
+        authenticationFrequency:
+          title: Nullable`1
+          enum:
+          - None
+          - EveryAccess
+          - UntilSignCompleted
+          - OncePerDocument
+          type: string
+          nullable: true
+      additionalProperties: false
+    EmbeddedTemplateCreated:
+      title: EmbeddedTemplateCreated
+      type: object
+      properties:
+        templateId:
+          title: String
+          type: string
+          nullable: true
+        createUrl:
+          title: Uri
+          type: string
+          format: uri
+          nullable: true
+      additionalProperties: false
+    TemplateFormFields:
+      title: TemplateFormFields
+      type: object
+      properties:
+        id:
+          title: String
+          type: string
+          nullable: true
+        fieldType:
+          title: String
+          type: string
+          nullable: true
+        type:
+          title: String
+          type: string
+          nullable: true
+        value:
+          title: String
+          type: string
+          nullable: true
+        font:
+          title: String
+          type: string
+          nullable: true
+        isRequired:
+          title: Boolean
+          type: boolean
+        isReadOnly:
+          title: Boolean
+          type: boolean
+        lineHeight:
+          title: Int32
+          type: integer
+          format: int32
+        fontSize:
+          title: Int32
+          type: integer
+          format: int32
+        fontHexColor:
+          title: String
+          type: string
+          nullable: true
+        isUnderLineFont:
+          title: Boolean
+          type: boolean
+        isItalicFont:
+          title: Boolean
+          type: boolean
+        isBoldFont:
+          title: Boolean
+          type: boolean
+        groupName:
+          title: String
+          type: string
+          nullable: true
+        label:
+          title: String
+          type: string
+          nullable: true
+        placeholder:
+          title: String
+          type: string
+          nullable: true
+        validationtype:
+          title: ValidationType
+          enum:
+          - None
+          - NumbersOnly
+          - EmailAddress
+          - Currency
+          - CustomRegex
+          type: string
+        validationCustomRegex:
+          title: String
+          type: string
+          nullable: true
+        validationCustomRegexMessage:
+          title: String
+          type: string
+          nullable: true
+        dateFormat:
+          title: String
+          type: string
+          nullable: true
+        timeFormat:
+          title: String
+          type: string
+          nullable: true
+        imageInfo:
+          $ref: '#/components/schemas/ImageInfo'
+        attachmentInfo:
+          $ref: '#/components/schemas/AttachmentInfo'
+        editableDateFieldSettings:
+          $ref: '#/components/schemas/EditableDateFieldSettings'
+        dropdownOptions:
+          title: String[]
+          type: array
+          items:
+            title: String
+            type: string
+          nullable: true
+        bounds:
+          $ref: '#/components/schemas/Rectangle'
+        pageNumber:
+          title: Int32
+          type: integer
+          format: int32
+        conditionalRules:
+          title: IEnumerable`1
+          type: array
+          items:
+            $ref: '#/components/schemas/ConditionalRule'
+          nullable: true
+        dataSyncTag:
+          title: String
+          type: string
+          nullable: true
+        textAlign:
+          title: TextAlign
+          enum:
+          - Left
+          - Center
+          - Right
+          type: string
+        textDirection:
+          title: TextDirection
+          enum:
+          - LTR
+          - RTL
+          type: string
+        characterSpacing:
+          title: Single
+          type: number
+          format: float
+        characterLimit:
+          title: Int32
+          type: integer
+          format: int32
+        hyperlinkText:
+          title: String
+          type: string
+          nullable: true
+        backgroundHexColor:
+          title: String
+          type: string
+          nullable: true
+        tabIndex:
+          title: Int32
+          type: integer
+          format: int32
+        formulaFieldSettings:
+          $ref: '#/components/schemas/FormulaFieldSettings'
+        resizeOption:
+          title: Nullable`1
+          enum:
+          - GrowVertically
+          - GrowHorizontally
+          - GrowBoth
+          - Fixed
+          - AutoResizeFont
+          type: string
+          nullable: true
+        allowEditFormField:
+          title: Boolean
+          type: boolean
+        allowDeleteFormField:
+          title: Boolean
+          type: boolean
+        collaborationSettings:
+          $ref: '#/components/schemas/CollaborationSettings'
+        isMasked:
+          title: Boolean
+          type: boolean
+          default: false
+        isDefaultValueRequired:
+          title: Boolean
+          type: boolean
+      additionalProperties: false
+    TemplateSenderDetail:
+      title: TemplateSenderDetail
+      type: object
+      properties:
+        emailAddress:
+          title: String
+          type: string
+          nullable: true
+        name:
+          title: String
+          type: string
+          nullable: true
+      additionalProperties: false
+    Rectangle:
+      title: Rectangle
+      type: object
+      properties:
+        x:
+          title: Single
+          minimum: 0
+          type: number
+          format: float
+          default: 0
+        y:
+          title: Single
+          minimum: 0
+          type: number
+          format: float
+          default: 0
+        width:
+          title: Single
+          minimum: 1
+          type: number
+          format: float
+          default: 1
+        height:
+          title: Single
+          minimum: 1
+          type: number
+          format: float
+          default: 1
+      additionalProperties: false
+    TemplateSharing:
+      title: TemplateSharing
+      type: object
+      properties:
+        teams:
+          title: List`1
+          type: array
+          items:
+            $ref: '#/components/schemas/TemplateTeamShare'
+          nullable: true
+      additionalProperties: false
+    TemplateCC:
+      title: TemplateCC
+      type: object
+      properties:
+        emailAddress:
+          title: String
+          type: string
+          nullable: true
+        userId:
+          title: String
+          type: string
+          nullable: true
+      additionalProperties: false
+    ReminderSettings:
+      title: ReminderSettings
+      type: object
+      properties:
+        enableAutoReminder:
+          title: Boolean
+          type: boolean
+          default: false
+        reminderDays:
+          title: Int32
+          type: integer
+          format: int32
+          default: 3
+        reminderCount:
+          title: Int32
+          type: integer
+          format: int32
+          default: 3
+      additionalProperties: false
+    TemplateRole:
+      title: TemplateRole
+      required:
+      - index
+      type: object
+      properties:
+        name:
+          title: String
+          maxLength: 100
+          minLength: 0
+          type: string
+          nullable: true
+        index:
+          title: Int32
+          maximum: 50
+          minimum: 1
+          type: integer
+          format: int32
+        defaultSignerName:
+          title: String
+          maxLength: 100
+          minLength: 0
+          type: string
+          nullable: true
+        defaultSignerEmail:
+          title: String
+          maxLength: 250
+          minLength: 0
+          type: string
+          nullable: true
+        signerOrder:
+          title: Int32
+          type: integer
+          format: int32
+        signerType:
+          title: SignerType
+          enum:
+          - Signer
+          - Reviewer
+          - InPersonSigner
+          type: string
+        hostEmail:
+          title: String
+          type: string
+          nullable: true
+        language:
+          title: Languages
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          - 6
+          - 7
+          - 8
+          - 9
+          - 10
+          - 11
+          - 12
+          - 13
+          - 14
+          - 15
+          - 16
+          - 17
+          - 18
+          - 19
+          - 20
+          type: integer
+          description: <p>Description:</p><ul><li><i>0</i> - None</li><li><i>1</i> - English</li><li><i>2</i> - Spanish</li><li><i>3</i> - German</li><li><i>4</i> - French</li><li><i>5</i> - Romanian</li><li><i>6</i> - Norwegian</li><li><i>7</i> - Bulgarian</li><li><i>8</i> - Italian</li><li><i>9</i> - Danish</li><li><i>10</i> - Polish</li><li><i>11</i> - Portuguese</li><li><i>12</i> - Czech</li><li><i>13</i> - Dutch</li><li><i>14</i> - Swedish</li><li><i>15</i> - Russian</li><li><i>16</i> - Japanese</li><li><i>17</i> - Thai</li><li><i>18</i> - SimplifiedChinese</li><li><i>19</i> - TraditionalChinese</li><li><i>20</i> - Korean</li></ul>
+          format: int32
+        locale:
+          title: Locales
+          enum:
+          - EN
+          - 'NO'
+          - FR
+          - DE
+          - ES
+          - BG
+          - CS
+          - DA
+          - IT
+          - NL
+          - PL
+          - PT
+          - RO
+          - RU
+          - SV
+          - Default
+          - JA
+          - TH
+          - ZH_CN
+          - ZH_TW
+          - KO
+          type: string
+        signType:
+          title: SignType
+          enum:
+          - Single
+          - Group
+          type: string
+        defaultGroupId:
+          title: String
+          type: string
+          nullable: true
+        imposeAuthentication:
+          title: ImposeAuthentication
+          enum:
+          - None
+          - EmailOTP
+          - AccessCode
+          - SMSOTP
+          - IdVerification
+          type: string
+        phoneNumber:
+          $ref: '#/components/schemas/PhoneNumber'
+        deliveryMode:
+          title: DeliveryMode
+          enum:
+          - Email
+          - SMS
+          - EmailAndSMS
+          - WhatsApp
+          type: string
+        allowFieldConfiguration:
+          title: Boolean
+          type: boolean
+        formFields:
+          title: IEnumerable`1
+          type: array
+          items:
+            $ref: '#/components/schemas/FormField'
+          nullable: true
+        allowRoleEdit:
+          title: Boolean
+          type: boolean
+        allowRoleDelete:
+          title: Boolean
+          type: boolean
+        recipientNotificationSettings:
+          $ref: '#/components/schemas/RecipientNotificationSettings'
+        enableQes:
+          title: Nullable`1
+          type: boolean
+          nullable: true
+      additionalProperties: false
+    PhoneNumber:
+      title: PhoneNumber
+      type: object
+      properties:
+        countryCode:
+          title: String
+          type: string
+          nullable: true
+        number:
+          title: String
+          type: string
+          nullable: true
+      additionalProperties: false
+    EmbeddedSendTemplateFormRequest:
+      title: EmbeddedSendTemplateFormRequest
+      type: object
+      properties:
+        files:
+          title: List`1
+          type: array
+          items:
+            title: IFormFile
+            type: string
+            format: binary
+          nullable: true
+        fileUrls:
+          title: Uri[]
+          type: array
+          items:
+            title: Uri
+            type: string
+            format: uri
+          nullable: true
+        redirectUrl:
+          title: Uri
+          type: string
+          format: uri
+          nullable: true
+        showToolbar:
+          title: Boolean
+          type: boolean
+        sendViewOption:
+          title: PageViewOption
+          enum:
+          - PreparePage
+          - FillingPage
+          type: string
+        showSaveButton:
+          title: Boolean
+          type: boolean
+        locale:
+          title: Locales
+          enum:
+          - EN
+          - 'NO'
+          - FR
+          - DE
+          - ES
+          - BG
+          - CS
+          - DA
+          - IT
+          - NL
+          - PL
+          - PT
+          - RO
+          - RU
+          - SV
+          - Default
+          - JA
+          - TH
+          - ZH_CN
+          - ZH_TW
+          - KO
+          type: string
+        showSendButton:
+          title: Boolean
+          type: boolean
+        showPreviewButton:
+          title: Boolean
+          type: boolean
+        showNavigationButtons:
+          title: Boolean
+          type: boolean
+        sendLinkValidTill:
+          title: Nullable`1
+          type: string
+          format: date-time
+          nullable: true
+        showTooltip:
+          title: Boolean
+          type: boolean
+        documentId:
+          title: String
+          type: string
+          nullable: true
+        title:
+          title: String
+          maxLength: 256
+          minLength: 0
+          type: string
+          nullable: true
+        message:
+          title: String
+          maxLength: 5000
+          minLength: 0
+          type: string
+          nullable: true
+        roles:
+          title: List`1
+          type: array
+          items:
+            $ref: '#/components/schemas/Role'
+          nullable: true
+        brandId:
+          title: String
+          type: string
+          nullable: true
+        labels:
+          title: IEnumerable`1
+          type: array
+          items:
+            title: String
+            type: string
+          nullable: true
+        disableEmails:
+          title: Boolean
+          type: boolean
+        disableSMS:
+          title: Boolean
+          type: boolean
+          default: false
+        hideDocumentId:
+          title: Nullable`1
+          type: boolean
+          nullable: true
+        reminderSettings:
+          $ref: '#/components/schemas/ReminderSettings'
+        cc:
+          title: IEnumerable`1
+          type: array
+          items:
+            $ref: '#/components/schemas/DocumentCC'
+          nullable: true
+        expiryDays:
+          title: Int32
+          type: integer
+          format: int32
+          deprecated: true
+        expiryDateType:
+          title: Nullable`1
+          enum:
+          - Days
+          - Hours
+          - SpecificDateTime
+          type: string
+          nullable: true
+        expiryValue:
+          title: Int64
+          type: integer
+          format: int64
+          default: 60
+        enablePrintAndSign:
+          title: Boolean
+          type: boolean
+        enableReassign:
+          title: Nullable`1
+          type: boolean
+          nullable: true
+        enableSigningOrder:
+          title: Nullable`1
+          type: boolean
+          nullable: true
+        disableExpiryAlert:
+          title: Nullable`1
+          type: boolean
+          nullable: true
+        documentInfo:
+          title: IEnumerable`1
+          type: array
+          items:
+            $ref: '#/components/schemas/DocumentInfo'
+          nullable: true
+        onBehalfOf:
+          title: String
+          type: string
+          nullable: true
+        isSandbox:
+          title: Nullable`1
+          type: boolean
+          nullable: true
+        roleRemovalIndices:
+          title: Int32[]
+          type: array
+          items:
+            title: Int32
+            type: integer
+            format: int32
+          nullable: true
+        documentDownloadOption:
+          title: Nullable`1
+          enum:
+          - Combined
+          - Individually
+          type: string
+          nullable: true
+        metaData:
+          title: Dictionary`2
+          maxLength: 50
+          type: object
+          additionalProperties:
+            title: String
+            type: string
+            nullable: true
+          nullable: true
+        formGroups:
+          title: List`1
+          type: array
+          items:
+            $ref: '#/components/schemas/FormGroup'
+          nullable: true
+        removeFormFields:
+          title: List`1
+          type: array
+          items:
+            title: String
+            type: string
+          nullable: true
+        recipientNotificationSettings:
+          $ref: '#/components/schemas/RecipientNotificationSettings'
+        enableAuditTrailLocalization:
+          title: Nullable`1
+          type: boolean
+          nullable: true
+        downloadFileName:
+          title: String
+          maxLength: 250
+          minLength: 0
+          type: string
+          nullable: true
+        scheduledSendTime:
+          title: Nullable`1
+          type: integer
+          format: int64
+          nullable: true
+        allowScheduledSend:
+          title: Boolean
+          type: boolean
+          default: false
+        allowedSignatureTypes:
+          title: List`1
+          type: array
+          items:
+            title: SignatureType
+            enum:
+            - Text
+            - Draw
+            - Image
+            type: string
+          nullable: true
+        groupSignerSettings:
+          $ref: '#/components/schemas/GroupSignerSettings'
+        enableAllowSignEverywhere:
+          title: Nullable`1
+          type: boolean
+          nullable: true
+        documentTimeZone:
+          title: String
+          type: string
+          nullable: true
+      additionalProperties: false
+    CreateTemplateRequest:
+      title: CreateTemplateRequest
+      required:
+      - title
+      type: object
+      properties:
+        title:
+          title: String
+          maxLength: 256
+          minLength: 0
+          type: string
+        description:
+          title: String
+          maxLength: 5000
+          minLength: 0
+          type: string
+          nullable: true
+        documentTitle:
+          title: String
+          maxLength: 256
+          minLength: 0
+          type: string
+          nullable: true
+        documentMessage:
+          title: String
+          maxLength: 5000
+          minLength: 0
+          type: string
+          nullable: true
+        files:
+          title: List`1
+          type: array
+          items:
+            title: IFormFile
+            type: string
+            format: binary
+          nullable: true
+        fileUrls:
+          title: Uri[]
+          type: array
+          items:
+            title: Uri
+            type: string
+            format: uri
+          nullable: true
+        roles:
+          title: IEnumerable`1
+          type: array
+          items:
+            $ref: '#/components/schemas/TemplateRole'
+          nullable: true
+        allowModifyFiles:
+          title: Boolean
+          type: boolean
+          default: true
+        cc:
+          title: IEnumerable`1
+          type: array
+          items:
+            $ref: '#/components/schemas/DocumentCC'
+          nullable: true
+        brandId:
+          title: String
+          type: string
+          nullable: true
+        allowMessageEditing:
+          title: Boolean
+          type: boolean
+          default: true
+        allowNewRoles:
+          title: Boolean
+          type: boolean
+          default: true
+        allowNewFiles:
+          title: Boolean
+          type: boolean
+          default: true
+        enableReassign:
+          title: Boolean
+          type: boolean
+          default: true
+        enablePrintAndSign:
+          title: Boolean
+          type: boolean
+          default: false
+        enableSigningOrder:
+          title: Boolean
+          type: boolean
+          default: false
+        documentInfo:
+          title: IEnumerable`1
+          type: array
+          items:
+            $ref: '#/components/schemas/DocumentInfo'
+          nullable: true
+        useTextTags:
+          title: Boolean
+          type: boolean
+          default: false
+        textTagDefinitions:
+          title: List`1
+          type: array
+          items:
+            $ref: '#/components/schemas/TextTagDefinition'
+          nullable: true
+        autoDetectFields:
+          title: Boolean
+          type: boolean
+          default: false
+        onBehalfOf:
+          title: String
+          type: string
+          nullable: true
+        labels:
+          title: IEnumerable`1
+          type: array
+          items:
+            title: String
+            type: string
+          nullable: true
+        templateLabels:
+          title: IEnumerable`1
+          type: array
+          items:
+            title: String
+            type: string
+          nullable: true
+        formGroups:
+          title: List`1
+          type: array
+          items:
+            $ref: '#/components/schemas/FormGroup'
+          nullable: true
+        recipientNotificationSettings:
+          $ref: '#/components/schemas/RecipientNotificationSettings'
+        allowedSignatureTypes:
+          title: List`1
+          type: array
+          items:
+            title: SignatureType
+            enum:
+            - Text
+            - Draw
+            - Image
+            type: string
+          nullable: true
+        formFieldPermission:
+          $ref: '#/components/schemas/FormFieldPermission'
+        groupSignerSettings:
+          $ref: '#/components/schemas/GroupSignerSettings'
+        enableAllowSignEverywhere:
+          title: Nullable`1
+          type: boolean
+          nullable: true
+        documentTimeZone:
+          title: String
+          type: string
+          nullable: true
+      additionalProperties: false
+    TemplateSenderDetails:
+      title: TemplateSenderDetails
+      type: object
+      properties:
+        name:
+          title: String
+          type: string
+          nullable: true
+        emailAddress:
+          title: String
+          type: string
+          nullable: true
+        userId:
+          title: String
+          type: string
+          nullable: true
+      additionalProperties: false
+    TemplateProperties:
+      title: TemplateProperties
+      type: object
+      properties:
+        templateId:
+          title: String
+          type: string
+          nullable: true
+        title:
+          title: String
+          type: string
+          nullable: true
+        description:
+          title: String
+          type: string
+          nullable: true
+        documentTitle:
+          title: String
+          type: string
+          nullable: true
+        documentMessage:
+          title: String
+          type: string
+          nullable: true
+        files:
+          title: IEnumerable`1
+          type: array
+          items:
+            $ref: '#/components/schemas/TemplateFiles'
+          nullable: true
+        roles:
+          title: Roles[]
+          type: array
+          items:
+            $ref: '#/components/schemas/Roles'
+          nullable: true
+        formGroups:
+          title: IEnumerable`1
+          type: array
+          items:
+            $ref: '#/components/schemas/FormGroup'
+          nullable: true
+        commonFields:
+          title: IEnumerable`1
+          type: array
+          items:
+            $ref: '#/components/schemas/TemplateFormFields'
+          nullable: true
+        cCDetails:
+          title: IEnumerable`1
+          type: array
+          items:
+            title: String
+            type: string
+          nullable: true
+        brandId:
+          title: String
+          type: string
+          nullable: true
+        allowMessageEditing:
+          title: Boolean
+          type: boolean
+        allowNewRoles:
+          title: Boolean
+          type: boolean
+        allowNewFiles:
+          title: Boolean
+          type: boolean
+        allowModifyFiles:
+          title: Boolean
+          type: boolean
+        enableReassign:
+          title: Boolean
+          type: boolean
+        EnablePrintAndSign:
+          title: Boolean
+          type: boolean
+        enableSigningOrder:
+          title: Boolean
+          type: boolean
+        createdDate:
+          title: Int64
+          type: integer
+          format: int64
+        createdBy:
+          $ref: '#/components/schemas/TemplateSenderDetail'
+        sharedTemplateDetail:
+          title: List`1
+          type: array
+          items:
+            $ref: '#/components/schemas/TemplateSharedTemplateDetail'
+          nullable: true
+          deprecated: true
+        documentInfo:
+          title: DocumentInfo[]
+          type: array
+          items:
+            $ref: '#/components/schemas/DocumentInfo'
+          nullable: true
+        labels:
+          title: List`1
+          type: array
+          items:
+            title: String
+            type: string
+          nullable: true
+        templateLabels:
+          title: List`1
+          type: array
+          items:
+            title: String
+            type: string
+          nullable: true
+        behalfOf:
+          $ref: '#/components/schemas/BehalfOf'
+        documentDownloadOption:
+          title: DocumentDownloadOption
+          enum:
+          - Combined
+          - Individually
+          type: string
+        recipientNotificationSettings:
+          $ref: '#/components/schemas/RecipientNotificationSettings'
+        formFieldPermission:
+          $ref: '#/components/schemas/FormFieldPermission'
+        allowedSignatureTypes:
+          title: List`1
+          type: array
+          items:
+            title: SignatureType
+            enum:
+            - Text
+            - Draw
+            - Image
+            type: string
+          nullable: true
+        groupSignerSettings:
+          $ref: '#/components/schemas/GroupSignerSettings'
+        sharing:
+          $ref: '#/components/schemas/TemplateSharing'
+        enableAllowSignEverywhere:
+          title: Boolean
+          type: boolean
+        documentTimeZone:
+          title: String
+          type: string
+          nullable: true
+      additionalProperties: false
+    AttachmentInfo:
+      title: AttachmentInfo
+      required:
+      - acceptedFileTypes
+      - title
+      type: object
+      properties:
+        title:
+          title: String
+          type: string
+          nullable: true
+        description:
+          title: String
+          type: string
+          nullable: true
+        allowedFileTypes:
+          title: String
+          type: string
+          nullable: true
+          deprecated: true
+        acceptedFileTypes:
+          title: String[]
+          type: array
+          items:
+            title: String
+            type: string
+          nullable: true
+      additionalProperties: false
+    ConditionalRule:
+      title: ConditionalRule
+      type: object
+      properties:
+        fieldId:
+          title: String
+          type: string
+          nullable: true
+        isChecked:
+          title: Boolean
+          type: boolean
+        value:
+          title: String
+          type: string
+          nullable: true
+      additionalProperties: false
+    EmbeddedTemplatePreviewJsonRequest:
+      title: EmbeddedTemplatePreviewJsonRequest
+      type: object
+      properties:
+        linkValidTill:
+          title: Nullable`1
+          type: string
+          format: date-time
+          nullable: true
+        showToolbar:
+          title: Boolean
+          type: boolean
+      additionalProperties: false
+    ExistingFormField:
+      title: ExistingFormField
+      type: object
+      properties:
+        index:
+          title: Int32
+          type: integer
+          format: int32
+        name:
+          title: String
+          type: string
+          nullable: true
+          deprecated: true
+        id:
+          title: String
+          type: string
+          nullable: true
+        value:
+          title: String
+          type: string
+          nullable: true
+        isReadOnly:
+          title: Nullable`1
+          type: boolean
+          nullable: true
+      additionalProperties: false
+    ErrorResponse:
+      title: ErrorResponse
+      type: object
+      properties:
+        errorType:
+          title: String
+          type: string
+          nullable: true
+        error:
+          title: String
+          type: string
+          nullable: true
+      additionalProperties: false
+    EmbeddedTemplateEdited:
+      title: EmbeddedTemplateEdited
+      type: object
+      properties:
+        editUrl:
+          title: Uri
+          type: string
+          format: uri
+          nullable: true
+      additionalProperties: false
+    DocumentCreated:
+      title: DocumentCreated
+      type: object
+      properties:
+        documentId:
+          title: String
+          type: string
+          nullable: true
+      additionalProperties: false
+    EmbeddedMergeTemplateFormRequest:
+      title: EmbeddedMergeTemplateFormRequest
+      type: object
+      properties:
+        files:
+          title: List`1
+          type: array
+          items:
+            title: IFormFile
+            type: string
+            format: binary
+          nullable: true
+        fileUrls:
+          title: Uri[]
+          type: array
+          items:
+            title: Uri
+            type: string
+            format: uri
+          nullable: true
+        redirectUrl:
+          title: Uri
+          type: string
+          format: uri
+          nullable: true
+        showToolbar:
+          title: Boolean
+          type: boolean
+        sendViewOption:
+          title: PageViewOption
+          enum:
+          - PreparePage
+          - FillingPage
+          type: string
+        showSaveButton:
+          title: Boolean
+          type: boolean
+        locale:
+          title: Locales
+          enum:
+          - EN
+          - 'NO'
+          - FR
+          - DE
+          - ES
+          - BG
+          - CS
+          - DA
+          - IT
+          - NL
+          - PL
+          - PT
+          - RO
+          - RU
+          - SV
+          - Default
+          - JA
+          - TH
+          - ZH_CN
+          - ZH_TW
+          - KO
+          type: string
+        showSendButton:
+          title: Boolean
+          type: boolean
+        showPreviewButton:
+          title: Boolean
+          type: boolean
+        showNavigationButtons:
+          title: Boolean
+          type: boolean
+        sendLinkValidTill:
+          title: Nullable`1
+          type: string
+          format: date-time
+          nullable: true
+        showTooltip:
+          title: Boolean
+          type: boolean
+        templateIds:
+          title: String[]
+          type: array
+          items:
+            title: String
+            type: string
+          nullable: true
+        useTextTags:
+          title: Boolean
+          type: boolean
+        textTagDefinitions:
+          title: List`1
+          type: array
+          items:
+            $ref: '#/components/schemas/TextTagDefinition'
+          nullable: true
+        documentId:
+          title: String
+          type: string
+          nullable: true
+        title:
+          title: String
+          maxLength: 256
+          minLength: 0
+          type: string
+          nullable: true
+        message:
+          title: String
+          maxLength: 5000
+          minLength: 0
+          type: string
+          nullable: true
+        roles:
+          title: List`1
+          type: array
+          items:
+            $ref: '#/components/schemas/Role'
+          nullable: true
+        brandId:
+          title: String
+          type: string
+          nullable: true
+        labels:
+          title: IEnumerable`1
+          type: array
+          items:
+            title: String
+            type: string
+          nullable: true
+        disableEmails:
+          title: Boolean
+          type: boolean
+        disableSMS:
+          title: Boolean
+          type: boolean
+          default: false
+        hideDocumentId:
+          title: Nullable`1
+          type: boolean
+          nullable: true
+        reminderSettings:
+          $ref: '#/components/schemas/ReminderSettings'
+        cc:
+          title: IEnumerable`1
+          type: array
+          items:
+            $ref: '#/components/schemas/DocumentCC'
+          nullable: true
+        expiryDays:
+          title: Int32
+          type: integer
+          format: int32
+          deprecated: true
+        expiryDateType:
+          title: Nullable`1
+          enum:
+          - Days
+          - Hours
+          - SpecificDateTime
+          type: string
+          nullable: true
+        expiryValue:
+          title: Int64
+          type: integer
+          format: int64
+          default: 60
+        enablePrintAndSign:
+          title: Boolean
+          type: boolean
+        enableReassign:
+          title: Nullable`1
+          type: boolean
+          nullable: true
+        enableSigningOrder:
+          title: Nullable`1
+          type: boolean
+          nullable: true
+        disableExpiryAlert:
+          title: Nullable`1
+          type: boolean
+          nullable: true
+        documentInfo:
+          title: IEnumerable`1
+          type: array
+          items:
+            $ref: '#/components/schemas/DocumentInfo'
+          nullable: true
+        onBehalfOf:
+          title: String
+          type: string
+          nullable: true
+        isSandbox:
+          title: Nullable`1
+          type: boolean
+          nullable: true
+        roleRemovalIndices:
+          title: Int32[]
+          type: array
+          items:
+            title: Int32
+            type: integer
+            format: int32
+          nullable: true
+        documentDownloadOption:
+          title: Nullable`1
+          enum:
+          - Combined
+          - Individually
+          type: string
+          nullable: true
+        metaData:
+          title: Dictionary`2
+          maxLength: 50
+          type: object
+          additionalProperties:
+            title: String
+            type: string
+            nullable: true
+          nullable: true
+        formGroups:
+          title: List`1
+          type: array
+          items:
+            $ref: '#/components/schemas/FormGroup'
+          nullable: true
+        removeFormFields:
+          title: List`1
+          type: array
+          items:
+            title: String
+            type: string
+          nullable: true
+        recipientNotificationSettings:
+          $ref: '#/components/schemas/RecipientNotificationSettings'
+        enableAuditTrailLocalization:
+          title: Nullable`1
+          type: boolean
+          nullable: true
+        downloadFileName:
+          title: String
+          maxLength: 250
+          minLength: 0
+          type: string
+          nullable: true
+        scheduledSendTime:
+          title: Nullable`1
+          type: integer
+          format: int64
+          nullable: true
+        allowScheduledSend:
+          title: Boolean
+          type: boolean
+          default: false
+        allowedSignatureTypes:
+          title: List`1
+          type: array
+          items:
+            title: SignatureType
+            enum:
+            - Text
+            - Draw
+            - Image
+            type: string
+          nullable: true
+        groupSignerSettings:
+          $ref: '#/components/schemas/GroupSignerSettings'
+        enableAllowSignEverywhere:
+          title: Nullable`1
+          type: boolean
+          nullable: true
+        documentTimeZone:
+          title: String
+          type: string
+          nullable: true
+      additionalProperties: false
+    TemplateCreated:
+      title: TemplateCreated
+      type: object
+      properties:
+        templateId:
+          title: String
+          type: string
+          nullable: true
+      additionalProperties: false
+    TemplateShareRequest:
+      title: TemplateShareRequest
+      type: object
+      properties:
+        teams:
+          title: List`1
+          type: array
+          items:
+            $ref: '#/components/schemas/TemplateTeamShareRequest'
+          nullable: true
+      additionalProperties: false
+    Roles:
+      title: Roles
+      type: object
+      properties:
+        name:
+          title: String
+          type: string
+          nullable: true
+        index:
+          title: Int32
+          type: integer
+          format: int32
+        defaultSignerName:
+          title: String
+          type: string
+          nullable: true
+        defaultSignerEmail:
+          title: String
+          type: string
+          nullable: true
+        phoneNumber:
+          $ref: '#/components/schemas/PhoneNumber'
+        signerOrder:
+          title: Int32
+          type: integer
+          format: int32
+        signerType:
+          title: SignerType
+          enum:
+          - Signer
+          - Reviewer
+          - InPersonSigner
+          type: string
+        hostEmail:
+          title: String
+          type: string
+          nullable: true
+        hostName:
+          title: String
+          type: string
+          nullable: true
+        language:
+          title: Languages
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          - 6
+          - 7
+          - 8
+          - 9
+          - 10
+          - 11
+          - 12
+          - 13
+          - 14
+          - 15
+          - 16
+          - 17
+          - 18
+          - 19
+          - 20
+          type: integer
+          description: <p>Description:</p><ul><li><i>0</i> - None</li><li><i>1</i> - English</li><li><i>2</i> - Spanish</li><li><i>3</i> - German</li><li><i>4</i> - French</li><li><i>5</i> - Romanian</li><li><i>6</i> - Norwegian</li><li><i>7</i> - Bulgarian</li><li><i>8</i> - Italian</li><li><i>9</i> - Danish</li><li><i>10</i> - Polish</li><li><i>11</i> - Portuguese</li><li><i>12</i> - Czech</li><li><i>13</i> - Dutch</li><li><i>14</i> - Swedish</li><li><i>15</i> - Russian</li><li><i>16</i> - Japanese</li><li><i>17</i> - Thai</li><li><i>18</i> - SimplifiedChinese</li><li><i>19</i> - TraditionalChinese</li><li><i>20</i> - Korean</li></ul>
+          format: int32
+        locale:
+          title: Locales
+          enum:
+          - EN
+          - 'NO'
+          - FR
+          - DE
+          - ES
+          - BG
+          - CS
+          - DA
+          - IT
+          - NL
+          - PL
+          - PT
+          - RO
+          - RU
+          - SV
+          - Default
+          - JA
+          - TH
+          - ZH_CN
+          - ZH_TW
+          - KO
+          type: string
+        signType:
+          title: SignType
+          enum:
+          - Single
+          - Group
+          type: string
+        defaultGroupId:
+          title: String
+          type: string
+          nullable: true
+        allowRoleEdit:
+          title: Boolean
+          type: boolean
+        allowRoleDelete:
+          title: Boolean
+          type: boolean
+        enableAccessCode:
+          title: Boolean
+          type: boolean
+        enableEmailOTP:
+          title: Boolean
+          type: boolean
+        imposeAuthentication:
+          title: ImposeAuthentication
+          enum:
+          - None
+          - EmailOTP
+          - AccessCode
+          - SMSOTP
+          - IdVerification
+          type: string
+        deliveryMode:
+          title: DeliveryMode
+          enum:
+          - Email
+          - SMS
+          - EmailAndSMS
+          - WhatsApp
+          type: string
+        allowFieldConfiguration:
+          title: Boolean
+          type: boolean
+        formFields:
+          title: IEnumerable`1
+          type: array
+          items:
+            $ref: '#/components/schemas/TemplateFormFields'
+          nullable: true
+        enableEditRecipients:
+          title: Boolean
+          type: boolean
+        enableDeleteRecipients:
+          title: Boolean
+          type: boolean
+        recipientNotificationSettings:
+          $ref: '#/components/schemas/RecipientNotificationSettings'
+        enableQes:
+          title: Boolean
+          type: boolean
+        groupSigners:
+          title: IEnumerable`1
+          type: array
+          items:
+            $ref: '#/components/schemas/TemplateGroupSigner'
+          nullable: true
+      additionalProperties: false
+    TemplateGroupSigner:
+      title: TemplateGroupSigner
+      type: object
+      properties:
+        signerEmail:
+          title: String
+          type: string
+          nullable: true
+        signerName:
+          title: String
+          type: string
+          nullable: true
+      additionalProperties: false
+    SendForSignFromTemplateForm:
+      title: SendForSignFromTemplateForm
+      type: object
+      properties:
+        files:
+          title: List`1
+          type: array
+          items:
+            title: IFormFile
+            type: string
+            format: binary
+          nullable: true
+        fileUrls:
+          title: Uri[]
+          type: array
+          items:
+            title: Uri
+            type: string
+            format: uri
+          nullable: true
+        documentId:
+          title: String
+          type: string
+          nullable: true
+        title:
+          title: String
+          maxLength: 256
+          minLength: 0
+          type: string
+          nullable: true
+        message:
+          title: String
+          maxLength: 5000
+          minLength: 0
+          type: string
+          nullable: true
+        roles:
+          title: List`1
+          type: array
+          items:
+            $ref: '#/components/schemas/Role'
+          nullable: true
+        brandId:
+          title: String
+          type: string
+          nullable: true
+        labels:
+          title: IEnumerable`1
+          type: array
+          items:
+            title: String
+            type: string
+          nullable: true
+        disableEmails:
+          title: Boolean
+          type: boolean
+        disableSMS:
+          title: Boolean
+          type: boolean
+          default: false
+        hideDocumentId:
+          title: Nullable`1
+          type: boolean
+          nullable: true
+        reminderSettings:
+          $ref: '#/components/schemas/ReminderSettings'
+        cc:
+          title: IEnumerable`1
+          type: array
+          items:
+            $ref: '#/components/schemas/DocumentCC'
+          nullable: true
+        expiryDays:
+          title: Int32
+          type: integer
+          format: int32
+          deprecated: true
+        expiryDateType:
+          title: Nullable`1
+          enum:
+          - Days
+          - Hours
+          - SpecificDateTime
+          type: string
+          nullable: true
+        expiryValue:
+          title: Int64
+          type: integer
+          format: int64
+          default: 60
+        enablePrintAndSign:
+          title: Boolean
+          type: boolean
+        enableReassign:
+          title: Nullable`1
+          type: boolean
+          nullable: true
+        enableSigningOrder:
+          title: Nullable`1
+          type: boolean
+          nullable: true
+        disableExpiryAlert:
+          title: Nullable`1
+          type: boolean
+          nullable: true
+        documentInfo:
+          title: IEnumerable`1
+          type: array
+          items:
+            $ref: '#/components/schemas/DocumentInfo'
+          nullable: true
+        onBehalfOf:
+          title: String
+          type: string
+          nullable: true
+        isSandbox:
+          title: Nullable`1
+          type: boolean
+          nullable: true
+        roleRemovalIndices:
+          title: Int32[]
+          type: array
+          items:
+            title: Int32
+            type: integer
+            format: int32
+          nullable: true
+        documentDownloadOption:
+          title: Nullable`1
+          enum:
+          - Combined
+          - Individually
+          type: string
+          nullable: true
+        metaData:
+          title: Dictionary`2
+          maxLength: 50
+          type: object
+          additionalProperties:
+            title: String
+            type: string
+            nullable: true
+          nullable: true
+        formGroups:
+          title: List`1
+          type: array
+          items:
+            $ref: '#/components/schemas/FormGroup'
+          nullable: true
+        removeFormFields:
+          title: List`1
+          type: array
+          items:
+            title: String
+            type: string
+          nullable: true
+        recipientNotificationSettings:
+          $ref: '#/components/schemas/RecipientNotificationSettings'
+        enableAuditTrailLocalization:
+          title: Nullable`1
+          type: boolean
+          nullable: true
+        downloadFileName:
+          title: String
+          maxLength: 250
+          minLength: 0
+          type: string
+          nullable: true
+        scheduledSendTime:
+          title: Nullable`1
+          type: integer
+          format: int64
+          nullable: true
+        allowScheduledSend:
+          title: Boolean
+          type: boolean
+          default: false
+        allowedSignatureTypes:
+          title: List`1
+          type: array
+          items:
+            title: SignatureType
+            enum:
+            - Text
+            - Draw
+            - Image
+            type: string
+          nullable: true
+        groupSignerSettings:
+          $ref: '#/components/schemas/GroupSignerSettings'
+        enableAllowSignEverywhere:
+          title: Nullable`1
+          type: boolean
+          nullable: true
+        documentTimeZone:
+          title: String
+          type: string
+          nullable: true
+      additionalProperties: false
+    CollaborationSettings:
+      title: CollaborationSettings
+      type: object
+      properties:
+        isRequired:
+          title: Nullable`1
+          type: boolean
+          nullable: true
+        requireSignerApproval:
+          title: Nullable`1
+          type: boolean
+          nullable: true
+        requireInitial:
+          title: Nullable`1
+          type: boolean
+          nullable: true
+        allowedSigners:
+          title: List`1
+          type: array
+          items:
+            title: String
+            type: string
+          nullable: true
+      additionalProperties: false
+    TemplateTeamShareRequest:
+      title: TemplateTeamShareRequest
+      required:
+      - action
+      - teamId
+      type: object
+      properties:
+        teamId:
+          title: String
+          minLength: 1
+          type: string
+        action:
+          title: Nullable`1
+          enum:
+          - Grant
+          - Revoke
+          type: string
+        accessLevel:
+          title: Nullable`1
+          enum:
+          - Use
+          - Edit
+          type: string
+          nullable: true
+      additionalProperties: false
+    TemplateSharedTemplateDetail:
+      title: TemplateSharedTemplateDetail
+      type: object
+      properties:
+        teamId:
+          title: String
+          type: string
+          nullable: true
+        accessType:
+          title: TemplateAccessType
+          enum:
+          - Use
+          - Edit
+          type: string
+      additionalProperties: false
+    EmbeddedTemplateEditRequest:
+      title: EmbeddedTemplateEditRequest
+      type: object
+      properties:
+        redirectUrl:
+          title: Uri
+          type: string
+          format: uri
+          nullable: true
+        showToolbar:
+          title: Boolean
+          type: boolean
+          default: false
+        viewOption:
+          title: PageViewOption
+          enum:
+          - PreparePage
+          - FillingPage
+          type: string
+          default: PreparePage
+        showSaveButton:
+          title: Boolean
+          type: boolean
+          default: true
+        locale:
+          title: Locales
+          enum:
+          - EN
+          - 'NO'
+          - FR
+          - DE
+          - ES
+          - BG
+          - CS
+          - DA
+          - IT
+          - NL
+          - PL
+          - PT
+          - RO
+          - RU
+          - SV
+          - Default
+          - JA
+          - TH
+          - ZH_CN
+          - ZH_TW
+          - KO
+          type: string
+          default: EN
+        showCreateButton:
+          title: Boolean
+          type: boolean
+          default: true
+        showPreviewButton:
+          title: Boolean
+          type: boolean
+          default: true
+        showNavigationButtons:
+          title: Boolean
+          type: boolean
+          default: true
+        linkValidTill:
+          title: Nullable`1
+          type: string
+          format: date-time
+          nullable: true
+        showTooltip:
+          title: Boolean
+          type: boolean
+          default: false
+        onBehalfOf:
+          title: String
+          type: string
+          nullable: true
+      additionalProperties: false
+    TemplateFiles:
+      title: TemplateFiles
+      type: object
+      properties:
+        documentId:
+          title: String
+          type: string
+          nullable: true
+        documentName:
+          title: String
+          type: string
+          nullable: true
+        order:
+          title: Int32
+          type: integer
+          format: int32
+        pageCount:
+          title: Int32
+          type: integer
+          format: int32
+      additionalProperties: false
+    MergeAndSendForSignForm:
+      title: MergeAndSendForSignForm
+      type: object
+      properties:
+        files:
+          title: List`1
+          type: array
+          items:
+            title: IFormFile
+            type: string
+            format: binary
+          nullable: true
+        fileUrls:
+          title: Uri[]
+          type: array
+          items:
+            title: Uri
+            type: string
+            format: uri
+          nullable: true
+        templateIds:
+          title: String[]
+          type: array
+          items:
+            title: String
+            type: string
+          nullable: true
+        useTextTags:
+          title: Boolean
+          type: boolean
+        textTagDefinitions:
+          title: List`1
+          type: array
+          items:
+            $ref: '#/components/schemas/TextTagDefinition'
+          nullable: true
+        documentId:
+          title: String
+          type: string
+          nullable: true
+        title:
+          title: String
+          maxLength: 256
+          minLength: 0
+          type: string
+          nullable: true
+        message:
+          title: String
+          maxLength: 5000
+          minLength: 0
+          type: string
+          nullable: true
+        roles:
+          title: List`1
+          type: array
+          items:
+            $ref: '#/components/schemas/Role'
+          nullable: true
+        brandId:
+          title: String
+          type: string
+          nullable: true
+        labels:
+          title: IEnumerable`1
+          type: array
+          items:
+            title: String
+            type: string
+          nullable: true
+        disableEmails:
+          title: Boolean
+          type: boolean
+        disableSMS:
+          title: Boolean
+          type: boolean
+          default: false
+        hideDocumentId:
+          title: Nullable`1
+          type: boolean
+          nullable: true
+        reminderSettings:
+          $ref: '#/components/schemas/ReminderSettings'
+        cc:
+          title: IEnumerable`1
+          type: array
+          items:
+            $ref: '#/components/schemas/DocumentCC'
+          nullable: true
+        expiryDays:
+          title: Int32
+          type: integer
+          format: int32
+          deprecated: true
+        expiryDateType:
+          title: Nullable`1
+          enum:
+          - Days
+          - Hours
+          - SpecificDateTime
+          type: string
+          nullable: true
+        expiryValue:
+          title: Int64
+          type: integer
+          format: int64
+          default: 60
+        enablePrintAndSign:
+          title: Boolean
+          type: boolean
+        enableReassign:
+          title: Nullable`1
+          type: boolean
+          nullable: true
+        enableSigningOrder:
+          title: Nullable`1
+          type: boolean
+          nullable: true
+        disableExpiryAlert:
+          title: Nullable`1
+          type: boolean
+          nullable: true
+        documentInfo:
+          title: IEnumerable`1
+          type: array
+          items:
+            $ref: '#/components/schemas/DocumentInfo'
+          nullable: true
+        onBehalfOf:
+          title: String
+          type: string
+          nullable: true
+        isSandbox:
+          title: Nullable`1
+          type: boolean
+          nullable: true
+        roleRemovalIndices:
+          title: Int32[]
+          type: array
+          items:
+            title: Int32
+            type: integer
+            format: int32
+          nullable: true
+        documentDownloadOption:
+          title: Nullable`1
+          enum:
+          - Combined
+          - Individually
+          type: string
+          nullable: true
+        metaData:
+          title: Dictionary`2
+          maxLength: 50
+          type: object
+          additionalProperties:
+            title: String
+            type: string
+            nullable: true
+          nullable: true
+        formGroups:
+          title: List`1
+          type: array
+          items:
+            $ref: '#/components/schemas/FormGroup'
+          nullable: true
+        removeFormFields:
+          title: List`1
+          type: array
+          items:
+            title: String
+            type: string
+          nullable: true
+        recipientNotificationSettings:
+          $ref: '#/components/schemas/RecipientNotificationSettings'
+        enableAuditTrailLocalization:
+          title: Nullable`1
+          type: boolean
+          nullable: true
+        downloadFileName:
+          title: String
+          maxLength: 250
+          minLength: 0
+          type: string
+          nullable: true
+        scheduledSendTime:
+          title: Nullable`1
+          type: integer
+          format: int64
+          nullable: true
+        allowScheduledSend:
+          title: Boolean
+          type: boolean
+          default: false
+        allowedSignatureTypes:
+          title: List`1
+          type: array
+          items:
+            title: SignatureType
+            enum:
+            - Text
+            - Draw
+            - Image
+            type: string
+          nullable: true
+        groupSignerSettings:
+          $ref: '#/components/schemas/GroupSignerSettings'
+        enableAllowSignEverywhere:
+          title: Nullable`1
+          type: boolean
+          nullable: true
+        documentTimeZone:
+          title: String
+          type: string
+          nullable: true
+      additionalProperties: false
+    Font:
+      title: Font
+      type: object
+      properties:
+        name:
+          title: Nullable`1
+          enum:
+          - Helvetica
+          - Courier
+          - TimesRoman
+          - NotoSans
+          - Carlito
+          type: string
+          nullable: true
+        color:
+          title: String
+          type: string
+          nullable: true
+        size:
+          title: Nullable`1
+          type: number
+          format: float
+          nullable: true
+        style:
+          title: Nullable`1
+          enum:
+          - Regular
+          - Bold
+          - Italic
+          - Underline
+          type: string
+          nullable: true
+          deprecated: true
+        lineHeight:
+          title: Nullable`1
+          type: integer
+          format: int32
+          nullable: true
+        isBoldFont:
+          title: Boolean
+          type: boolean
+        isItalicFont:
+          title: Boolean
+          type: boolean
+        isUnderLineFont:
+          title: Boolean
+          type: boolean
+      additionalProperties: false
+    IdentityVerificationSettings:
+      title: IdentityVerificationSettings
+      type: object
+      properties:
+        type:
+          title: Nullable`1
+          enum:
+          - EveryAccess
+          - UntilSignCompleted
+          - OncePerDocument
+          type: string
+          nullable: true
+        maximumRetryCount:
+          title: Nullable`1
+          maximum: 10
+          minimum: 1
+          type: integer
+          format: int32
+          nullable: true
+        requireLiveCapture:
+          title: Nullable`1
+          type: boolean
+          nullable: true
+        requireMatchingSelfie:
+          title: Nullable`1
+          type: boolean
+          nullable: true
+        nameMatcher:
+          title: Nullable`1
+          enum:
+          - Strict
+          - Moderate
+          - Lenient
+          type: string
+          nullable: true
+        holdForPrefill:
+          title: Nullable`1
+          type: boolean
+          nullable: true
+        allowedDocumentTypes:
+          title: List`1
+          type: array
+          items:
+            title: AllowedDocumentType
+            enum:
+            - Passport
+            - IDCard
+            - DriverLicense
+            type: string
+          nullable: true
+      additionalProperties: false
+    EmbeddedTemplatePreview:
+      title: EmbeddedTemplatePreview
+      type: object
+      properties:
+        templateUrl:
+          title: Uri
+          type: string
+          format: uri
+          nullable: true
+      additionalProperties: false
+    EditTemplateRequest:
+      title: EditTemplateRequest
+      type: object
+      properties:
+        title:
+          title: String
+          maxLength: 256
+          minLength: 0
+          type: string
+          nullable: true
+        description:
+          title: String
+          maxLength: 5000
+          minLength: 0
+          type: string
+          nullable: true
+        documentTitle:
+          title: String
+          maxLength: 256
+          minLength: 0
+          type: string
+          nullable: true
+        documentMessage:
+          title: String
+          maxLength: 5000
+          minLength: 0
+          type: string
+          nullable: true
+        roles:
+          title: IEnumerable`1
+          type: array
+          items:
+            $ref: '#/components/schemas/TemplateRole'
+          nullable: true
+        cc:
+          title: IEnumerable`1
+          type: array
+          items:
+            $ref: '#/components/schemas/DocumentCC'
+          nullable: true
+        brandId:
+          title: String
+          type: string
+          nullable: true
+        allowMessageEditing:
+          title: Nullable`1
+          type: boolean
+          nullable: true
+        allowNewRoles:
+          title: Nullable`1
+          type: boolean
+          nullable: true
+        allowNewFiles:
+          title: Nullable`1
+          type: boolean
+          nullable: true
+        allowModifyFiles:
+          title: Nullable`1
+          type: boolean
+          nullable: true
+        enableReassign:
+          title: Nullable`1
+          type: boolean
+          nullable: true
+        enablePrintAndSign:
+          title: Nullable`1
+          type: boolean
+          nullable: true
+        enableSigningOrder:
+          title: Nullable`1
+          type: boolean
+          nullable: true
+        documentInfo:
+          title: IEnumerable`1
+          type: array
+          items:
+            $ref: '#/components/schemas/DocumentInfo'
+          nullable: true
+        onBehalfOf:
+          title: String
+          type: string
+          nullable: true
+        labels:
+          title: IEnumerable`1
+          type: array
+          items:
+            title: String
+            type: string
+          nullable: true
+        templateLabels:
+          title: IEnumerable`1
+          type: array
+          items:
+            title: String
+            type: string
+          nullable: true
+        formGroups:
+          title: List`1
+          type: array
+          items:
+            $ref: '#/components/schemas/FormGroup'
+          nullable: true
+        recipientNotificationSettings:
+          $ref: '#/components/schemas/RecipientNotificationSettings'
+        allowedSignatureTypes:
+          title: List`1
+          type: array
+          items:
+            title: SignatureType
+            enum:
+            - Text
+            - Draw
+            - Image
+            type: string
+          nullable: true
+        formFieldPermission:
+          $ref: '#/components/schemas/FormFieldPermission'
+        groupSignerSettings:
+          $ref: '#/components/schemas/GroupSignerSettings'
+        enableAllowSignEverywhere:
+          title: Nullable`1
+          type: boolean
+          nullable: true
+        documentTimeZone:
+          title: String
+          type: string
+          nullable: true
+      additionalProperties: false
+    TemplateShareErrorResponse:
+      title: TemplateShareErrorResponse
+      type: object
+      properties:
+        teams:
+          title: List`1
+          type: array
+          items:
+            title: String
+            type: string
+          nullable: true
+        templateId:
+          title: String
+          type: string
+          nullable: true
+        errorType:
+          title: String
+          type: string
+          nullable: true
+        error:
+          title: String
+          type: string
+          nullable: true
+      additionalProperties: false
+    ImageInfo:
+      title: ImageInfo
+      required:
+      - allowedFileExtensions
+      - title
+      type: object
+      properties:
+        title:
+          title: String
+          type: string
+          nullable: true
+        description:
+          title: String
+          type: string
+          nullable: true
+        allowedFileExtensions:
+          title: String
+          type: string
+          nullable: true
+      additionalProperties: false
+    FormFieldPermission:
+      title: FormFieldPermission
+      type: object
+      properties:
+        canAdd:
+          title: Boolean
+          type: boolean
+        canModify:
+          title: Boolean
+          type: boolean
+        canModifyDefaultValue:
+          title: Boolean
+          type: boolean
+      additionalProperties: false
+    TemplateRecords:
+      title: TemplateRecords
+      type: object
+      properties:
+        pageDetails:
+          $ref: '#/components/schemas/PageDetails'
+        result:
+          title: List`1
+          type: array
+          items:
+            $ref: '#/components/schemas/Template'
+          nullable: true
+      additionalProperties: false
+    BehalfOf:
+      title: BehalfOf
+      type: object
+      properties:
+        name:
+          title: String
+          type: string
+          nullable: true
+        emailAddress:
+          title: String
+          type: string
+          nullable: true
+      additionalProperties: false
+    Validation:
+      title: Validation
+      required:
+      - type
+      type: object
+      properties:
+        type:
+          title: Nullable`1
+          enum:
+          - NumberOnly
+          - Email
+          - Currency
+          - Regex
+          - None
+          type: string
+        regex:
+          title: String
+          type: string
+          nullable: true
+        regexMessage:
+          title: String
+          type: string
+          nullable: true
+      additionalProperties: false
+    Role:
+      title: Role
+      type: object
+      properties:
+        roleIndex:
+          title: Nullable`1
+          maximum: 50
+          minimum: 1
+          type: integer
+          format: int32
+          nullable: true
+        signerName:
+          title: String
+          type: string
+          nullable: true
+        signerOrder:
+          title: Int32
+          type: integer
+          format: int32
+        signerEmail:
+          title: String
+          type: string
+          nullable: true
+        hostEmail:
+          title: String
+          type: string
+          nullable: true
+        privateMessage:
+          title: String
+          maxLength: 5000
+          type: string
+          nullable: true
+        authenticationCode:
+          title: String
+          maxLength: 50
+          type: string
+          nullable: true
+        enableEmailOTP:
+          title: Boolean
+          type: boolean
+        authenticationType:
+          title: AuthenticationType
+          enum:
+          - None
+          - EmailOTP
+          - AccessCode
+          - SMSOTP
+          - IdVerification
+          type: string
+        phoneNumber:
+          $ref: '#/components/schemas/PhoneNumber'
+        deliveryMode:
+          title: DeliveryMode
+          enum:
+          - Email
+          - SMS
+          - EmailAndSMS
+          - WhatsApp
+          type: string
+        signerType:
+          title: Nullable`1
+          enum:
+          - Signer
+          - Reviewer
+          - InPersonSigner
+          type: string
+          nullable: true
+        signerRole:
+          title: String
+          type: string
+          nullable: true
+        allowFieldConfiguration:
+          title: Nullable`1
+          type: boolean
+          nullable: true
+        formFields:
+          title: IEnumerable`1
+          type: array
+          items:
+            $ref: '#/components/schemas/FormField'
+          nullable: true
+        existingFormFields:
+          title: IEnumerable`1
+          type: array
+          items:
+            $ref: '#/components/schemas/ExistingFormField'
+          nullable: true
+        identityVerificationSettings:
+          $ref: '#/components/schemas/IdentityVerificationSettings'
+        language:
+          title: Languages
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          - 6
+          - 7
+          - 8
+          - 9
+          - 10
+          - 11
+          - 12
+          - 13
+          - 14
+          - 15
+          - 16
+          - 17
+          - 18
+          - 19
+          - 20
+          type: integer
+          description: <p>Description:</p><ul><li><i>0</i> - None</li><li><i>1</i> - English</li><li><i>2</i> - Spanish</li><li><i>3</i> - German</li><li><i>4</i> - French</li><li><i>5</i> - Romanian</li><li><i>6</i> - Norwegian</li><li><i>7</i> - Bulgarian</li><li><i>8</i> - Italian</li><li><i>9</i> - Danish</li><li><i>10</i> - Polish</li><li><i>11</i> - Portuguese</li><li><i>12</i> - Czech</li><li><i>13</i> - Dutch</li><li><i>14</i> - Swedish</li><li><i>15</i> - Russian</li><li><i>16</i> - Japanese</li><li><i>17</i> - Thai</li><li><i>18</i> - SimplifiedChinese</li><li><i>19</i> - TraditionalChinese</li><li><i>20</i> - Korean</li></ul>
+          format: int32
+        locale:
+          title: Locales
+          enum:
+          - EN
+          - 'NO'
+          - FR
+          - DE
+          - ES
+          - BG
+          - CS
+          - DA
+          - IT
+          - NL
+          - PL
+          - PT
+          - RO
+          - RU
+          - SV
+          - Default
+          - JA
+          - TH
+          - ZH_CN
+          - ZH_TW
+          - KO
+          type: string
+        signType:
+          title: Nullable`1
+          enum:
+          - Single
+          - Group
+          type: string
+          nullable: true
+        groupId:
+          title: String
+          type: string
+          nullable: true
+        recipientNotificationSettings:
+          $ref: '#/components/schemas/RecipientNotificationSettings'
+        authenticationRetryCount:
+          title: Nullable`1
+          maximum: 10
+          minimum: 1
+          type: integer
+          format: int32
+          nullable: true
+        enableQes:
+          title: Nullable`1
+          type: boolean
+          nullable: true
+        authenticationSettings:
+          $ref: '#/components/schemas/AuthenticationSettings'
+      additionalProperties: false
+    DocumentInfo:
+      title: DocumentInfo
+      required:
+      - locale
+      - title
+      type: object
+      properties:
+        language:
+          title: Languages
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          - 6
+          - 7
+          - 8
+          - 9
+          - 10
+          - 11
+          - 12
+          - 13
+          - 14
+          - 15
+          - 16
+          - 17
+          - 18
+          - 19
+          - 20
+          type: integer
+          description: <p>Description:</p><ul><li><i>0</i> - None</li><li><i>1</i> - English</li><li><i>2</i> - Spanish</li><li><i>3</i> - German</li><li><i>4</i> - French</li><li><i>5</i> - Romanian</li><li><i>6</i> - Norwegian</li><li><i>7</i> - Bulgarian</li><li><i>8</i> - Italian</li><li><i>9</i> - Danish</li><li><i>10</i> - Polish</li><li><i>11</i> - Portuguese</li><li><i>12</i> - Czech</li><li><i>13</i> - Dutch</li><li><i>14</i> - Swedish</li><li><i>15</i> - Russian</li><li><i>16</i> - Japanese</li><li><i>17</i> - Thai</li><li><i>18</i> - SimplifiedChinese</li><li><i>19</i> - TraditionalChinese</li><li><i>20</i> - Korean</li></ul>
+          format: int32
+        locale:
+          title: Locales
+          enum:
+          - EN
+          - 'NO'
+          - FR
+          - DE
+          - ES
+          - BG
+          - CS
+          - DA
+          - IT
+          - NL
+          - PL
+          - PT
+          - RO
+          - RU
+          - SV
+          - Default
+          - JA
+          - TH
+          - ZH_CN
+          - ZH_TW
+          - KO
+          type: string
+        title:
+          title: String
+          minLength: 1
+          type: string
+        description:
+          title: String
+          type: string
+          nullable: true
+      additionalProperties: false
+    ErrorResult:
+      title: ErrorResult
+      type: object
+      properties:
+        error:
+          title: String
+          type: string
+          nullable: true
+      additionalProperties: false
+    TemplateSignerDetails:
+      title: TemplateSignerDetails
+      type: object
+      properties:
+        signerName:
+          title: String
+          type: string
+          nullable: true
+        signerRole:
+          title: String
+          type: string
+          nullable: true
+        signerEmail:
+          title: String
+          type: string
+          nullable: true
+        phoneNumber:
+          $ref: '#/components/schemas/PhoneNumber'
+        status:
+          title: SignerStatus
+          enum:
+          - None
+          - NotCompleted
+          - Completed
+          - Declined
+          - Revoked
+          - Expired
+          type: string
+        enableAccessCode:
+          title: Boolean
+          type: boolean
+        enableEmailOTP:
+          title: Boolean
+          type: boolean
+        imposeAuthentication:
+          title: ImposeAuthentication
+          enum:
+          - None
+          - EmailOTP
+          - AccessCode
+          - SMSOTP
+          - IdVerification
+          type: string
+        deliveryMode:
+          title: DeliveryMode
+          enum:
+          - Email
+          - SMS
+          - EmailAndSMS
+          - WhatsApp
+          type: string
+        allowFieldConfiguration:
+          title: Boolean
+          type: boolean
+          default: false
+        userId:
+          title: String
+          type: string
+          nullable: true
+        order:
+          title: Int32
+          type: integer
+          format: int32
+        signerType:
+          title: SignerType
+          enum:
+          - Signer
+          - Reviewer
+          - InPersonSigner
+          type: string
+          default: Signer
+        hostEmail:
+          title: String
+          type: string
+          nullable: true
+        hostName:
+          title: String
+          type: string
+          nullable: true
+        hostUserId:
+          title: String
+          type: string
+          nullable: true
+        signType:
+          title: SignType
+          enum:
+          - Single
+          - Group
+          type: string
+        groupId:
+          title: String
+          type: string
+          nullable: true
+        groupSigners:
+          title: TemplateGroupSigner[]
+          type: array
+          items:
+            $ref: '#/components/schemas/TemplateGroupSigner'
+          nullable: true
+      additionalProperties: false
+    TextTagDefinition:
+      title: TextTagDefinition
+      required:
+      - definitionId
+      - signerIndex
+      - type
+      type: object
+      properties:
+        definitionId:
+          title: String
+          minLength: 1
+          type: string
+        type:
+          title: Nullable`1
+          enum:
+          - Signature
+          - Initial
+          - CheckBox
+          - TextBox
+          - Label
+          - DateSigned
+          - RadioButton
+          - Image
+          - Attachment
+          - EditableDate
+          - Hyperlink
+          - Dropdown
+          - Title
+          - Company
+          - Formula
+          - Drawing
+          type: string
+        signerIndex:
+          title: Int32
+          maximum: 50
+          minimum: 1
+          type: integer
+          format: int32
+        isRequired:
+          title: Boolean
+          type: boolean
+        placeholder:
+          title: String
+          type: string
+          nullable: true
+        fieldId:
+          title: String
+          type: string
+          nullable: true
+        font:
+          $ref: '#/components/schemas/Font'
+        validation:
+          $ref: '#/components/schemas/Validation'
+        size:
+          $ref: '#/components/schemas/Size'
+        dateFormat:
+          title: String
+          type: string
+          nullable: true
+        timeFormat:
+          title: String
+          type: string
+          nullable: true
+        radioGroupName:
+          title: String
+          type: string
+          nullable: true
+        groupName:
+          title: String
+          type: string
+          nullable: true
+        value:
+          title: String
+          type: string
+          nullable: true
+        dropdownOptions:
+          title: String[]
+          type: array
+          items:
+            title: String
+            type: string
+          nullable: true
+        imageInfo:
+          $ref: '#/components/schemas/ImageInfo'
+        hyperlinkText:
+          title: String
+          type: string
+          nullable: true
+        attachmentInfo:
+          $ref: '#/components/schemas/AttachmentInfo'
+        backgroundHexColor:
+          title: String
+          type: string
+          nullable: true
+        isReadOnly:
+          title: Boolean
+          type: boolean
+        offset:
+          $ref: '#/components/schemas/TextTagOffset'
+        label:
+          title: String
+          type: string
+          nullable: true
+        tabIndex:
+          title: Nullable`1
+          maximum: 2147483647
+          minimum: -1
+          type: integer
+          format: int32
+          nullable: true
+        dataSyncTag:
+          title: String
+          type: string
+          nullable: true
+        textAlign:
+          title: TextAlign
+          enum:
+          - Left
+          - Center
+          - Right
+          type: string
+        textDirection:
+          title: TextDirection
+          enum:
+          - LTR
+          - RTL
+          type: string
+        characterSpacing:
+          title: Single
+          type: number
+          format: float
+        characterLimit:
+          title: Int32
+          maximum: 2147483647
+          minimum: 0
+          type: integer
+          format: int32
+        formulaFieldSettings:
+          $ref: '#/components/schemas/FormulaFieldSettings'
+        resizeOption:
+          title: Nullable`1
+          enum:
+          - GrowVertically
+          - GrowHorizontally
+          - GrowBoth
+          - Fixed
+          - AutoResizeFont
+          type: string
+          nullable: true
+        collaborationSettings:
+          $ref: '#/components/schemas/CollaborationSettings'
+        isMasked:
+          title: Nullable`1
+          type: boolean
+          default: false
+          nullable: true
+        conditionalRules:
+          title: IEnumerable`1
+          type: array
+          items:
+            $ref: '#/components/schemas/ConditionalRule'
+          nullable: true
+      additionalProperties: false
+    TemplateTeamShare:
+      title: TemplateTeamShare
+      type: object
+      properties:
+        teamId:
+          title: String
+          type: string
+          nullable: true
+        accessType:
+          title: TemplateAccessType
+          enum:
+          - Use
+          - Edit
+          - None
+          type: string
+      additionalProperties: false
+    EmbeddedCreateTemplateRequest:
+      title: EmbeddedCreateTemplateRequest
+      required:
+      - title
+      type: object
+      properties:
+        redirectUrl:
+          title: Uri
+          type: string
+          format: uri
+          nullable: true
+        showToolbar:
+          title: Boolean
+          type: boolean
+          default: false
+        viewOption:
+          title: PageViewOption
+          enum:
+          - PreparePage
+          - FillingPage
+          type: string
+          default: PreparePage
+        showSaveButton:
+          title: Boolean
+          type: boolean
+          default: true
+        locale:
+          title: Locales
+          enum:
+          - EN
+          - 'NO'
+          - FR
+          - DE
+          - ES
+          - BG
+          - CS
+          - DA
+          - IT
+          - NL
+          - PL
+          - PT
+          - RO
+          - RU
+          - SV
+          - Default
+          - JA
+          - TH
+          - ZH_CN
+          - ZH_TW
+          - KO
+          type: string
+          default: EN
+        showSendButton:
+          title: Nullable`1
+          type: boolean
+          nullable: true
+          deprecated: true
+        showCreateButton:
+          title: Boolean
+          type: boolean
+          default: true
+        showPreviewButton:
+          title: Boolean
+          type: boolean
+          default: true
+        showNavigationButtons:
+          title: Boolean
+          type: boolean
+          default: true
+        linkValidTill:
+          title: Nullable`1
+          type: string
+          format: date-time
+          nullable: true
+        showTooltip:
+          title: Boolean
+          type: boolean
+          default: false
+        title:
+          title: String
+          maxLength: 256
+          minLength: 0
+          type: string
+        description:
+          title: String
+          maxLength: 5000
+          minLength: 0
+          type: string
+          nullable: true
+        documentTitle:
+          title: String
+          maxLength: 256
+          minLength: 0
+          type: string
+          nullable: true
+        documentMessage:
+          title: String
+          maxLength: 5000
+          minLength: 0
+          type: string
+          nullable: true
+        files:
+          title: List`1
+          type: array
+          items:
+            title: IFormFile
+            type: string
+            format: binary
+          nullable: true
+        fileUrls:
+          title: Uri[]
+          type: array
+          items:
+            title: Uri
+            type: string
+            format: uri
+          nullable: true
+        roles:
+          title: IEnumerable`1
+          type: array
+          items:
+            $ref: '#/components/schemas/TemplateRole'
+          nullable: true
+        allowModifyFiles:
+          title: Boolean
+          type: boolean
+          default: true
+        cc:
+          title: IEnumerable`1
+          type: array
+          items:
+            $ref: '#/components/schemas/DocumentCC'
+          nullable: true
+        brandId:
+          title: String
+          type: string
+          nullable: true
+        allowMessageEditing:
+          title: Boolean
+          type: boolean
+          default: true
+        allowNewRoles:
+          title: Boolean
+          type: boolean
+          default: true
+        allowNewFiles:
+          title: Boolean
+          type: boolean
+          default: true
+        enableReassign:
+          title: Boolean
+          type: boolean
+          default: true
+        enablePrintAndSign:
+          title: Boolean
+          type: boolean
+          default: false
+        enableSigningOrder:
+          title: Boolean
+          type: boolean
+          default: false
+        documentInfo:
+          title: IEnumerable`1
+          type: array
+          items:
+            $ref: '#/components/schemas/DocumentInfo'
+          nullable: true
+        useTextTags:
+          title: Boolean
+          type: boolean
+          default: false
+        textTagDefinitions:
+          title: List`1
+          type: array
+          items:
+            $ref: '#/components/schemas/TextTagDefinition'
+          nullable: true
+        autoDetectFields:
+          title: Boolean
+          type: boolean
+          default: false
+        onBehalfOf:
+          title: String
+          type: string
+          nullable: true
+        labels:
+          title: IEnumerable`1
+          type: array
+          items:
+            title: String
+            type: string
+          nullable: true
+        templateLabels:
+          title: IEnumerable`1
+          type: array
+          items:
+            title: String
+            type: string
+          nullable: true
+        formGroups:
+          title: List`1
+          type: array
+          items:
+            $ref: '#/components/schemas/FormGroup'
+          nullable: true
+        recipientNotificationSettings:
+          $ref: '#/components/schemas/RecipientNotificationSettings'
+        allowedSignatureTypes:
+          title: List`1
+          type: array
+          items:
+            title: SignatureType
+            enum:
+            - Text
+            - Draw
+            - Image
+            type: string
+          nullable: true
+        formFieldPermission:
+          $ref: '#/components/schemas/FormFieldPermission'
+        groupSignerSettings:
+          $ref: '#/components/schemas/GroupSignerSettings'
+        enableAllowSignEverywhere:
+          title: Nullable`1
+          type: boolean
+          nullable: true
+        documentTimeZone:
+          title: String
+          type: string
+          nullable: true
+      additionalProperties: false
+    RecipientNotificationSettings:
+      title: RecipientNotificationSettings
+      type: object
+      properties:
+        signatureRequest:
+          title: Boolean
+          type: boolean
+          default: true
+        declined:
+          title: Boolean
+          type: boolean
+          default: true
+        revoked:
+          title: Boolean
+          type: boolean
+          default: true
+        signed:
+          title: Boolean
+          type: boolean
+          default: true
+        completed:
+          title: Boolean
+          type: boolean
+          default: true
+        expired:
+          title: Boolean
+          type: boolean
+          default: true
+        reassigned:
+          title: Boolean
+          type: boolean
+          default: true
+        deleted:
+          title: Boolean
+          type: boolean
+          default: true
+        reminders:
+          title: Boolean
+          type: boolean
+          default: true
+        editRecipient:
+          title: Boolean
+          type: boolean
+          default: true
+        editDocument:
+          title: Boolean
+          type: boolean
+          default: true
+        viewed:
+          title: Boolean
+          type: boolean
+      additionalProperties: false
+    TemplateTag:
+      title: TemplateTag
+      required:
+      - templateId
+      type: object
+      properties:
+        templateId:
+          title: String
+          minLength: 1
+          type: string
+        documentLabels:
+          title: List`1
+          type: array
+          items:
+            title: String
+            type: string
+          nullable: true
+        templateLabels:
+          title: List`1
+          type: array
+          items:
+            title: String
+            type: string
+          nullable: true
+        onBehalfOf:
+          title: String
+          type: string
+          nullable: true
+      additionalProperties: false
+    GroupSignerSettings:
+      title: GroupSignerSettings
+      type: object
+      properties:
+        enabled:
+          title: Boolean
+          type: boolean
+        allowedDirectories:
+          title: List`1
+          type: array
+          items:
+            title: String
+            type: string
+          nullable: true
+      additionalProperties: false
+    Size:
+      title: Size
+      type: object
+      properties:
+        width:
+          title: Single
+          minimum: 0
+          type: number
+          format: float
+          default: 0
+        height:
+          title: Single
+          minimum: 0
+          type: number
+          format: float
+          default: 0
+      additionalProperties: false
+    EmbeddedSendCreated:
+      title: EmbeddedSendCreated
+      type: object
+      properties:
+        documentId:
+          title: String
+          type: string
+          nullable: true
+        sendUrl:
+          title: Uri
+          type: string
+          format: uri
+          nullable: true
+      additionalProperties: false
+    FormGroup:
+      title: FormGroup
+      required:
+      - groupNames
+      - groupValidation
+      type: object
+      properties:
+        minimumCount:
+          title: Nullable`1
+          maximum: 2147483647
+          minimum: 0
+          type: integer
+          format: int32
+          nullable: true
+        maximumCount:
+          title: Nullable`1
+          maximum: 2147483647
+          minimum: 0
+          type: integer
+          format: int32
+          nullable: true
+        dataSyncTag:
+          title: String
+          type: string
+          nullable: true
+        groupNames:
+          title: IEnumerable`1
+          type: array
+          items:
+            title: String
+            type: string
+        groupValidation:
+          title: GroupValidation
+          enum:
+          - Minimum
+          - Maximum
+          - Absolute
+          - Range
+          type: string
+          format: Enumeration
+      additionalProperties: false
+    EditableDateFieldSettings:
+      title: EditableDateFieldSettings
+      required:
+      - dateFormat
+      type: object
+      properties:
+        dateFormat:
+          title: String
+          type: string
+          nullable: true
+        minDate:
+          title: Nullable`1
+          type: string
+          format: date-time
+          nullable: true
+        maxDate:
+          title: Nullable`1
+          type: string
+          format: date-time
+          nullable: true
+        timeFormat:
+          title: String
+          type: string
+          nullable: true
+      additionalProperties: false
+  securitySchemes:
+    Bearer:
+      type: apiKey
+      description: 'Format ''Bearer'' [space] [TOKEN]. Ex: ''Bearer eyJhbGciOiJIUzI1N'''
+      name: Authorization
+      in: header
+    X-API-KEY:
+      type: apiKey
+      description: 'Format [API-KEY]. Ex: ''abcdef12345'''
+      name: X-API-KEY
+      in: header
+externalDocs:
+  description: BoldSign Developer Documentation
+  url: https://developers.boldsign.com/

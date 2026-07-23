@@ -1,0 +1,718 @@
+openapi: 3.0.3
+info:
+  title: BoldSign Branding Contacts API
+  version: '1'
+  description: BoldSign eSignature REST API for sending documents for electronic signature, managing reusable templates, tracking envelope status, embedding signing and requesting workflows into third-party applications. Supports API key and OAuth 2.0 authentication. Regional endpoints available for US, EU, CA, and AU.
+  contact:
+    name: BoldSign Support
+    url: https://developers.boldsign.com/
+    email: support@boldsign.com
+  license:
+    name: Proprietary
+    url: https://boldsign.com/terms-of-use/
+  termsOfService: https://boldsign.com/terms-of-use/
+servers:
+- url: https://api.boldsign.com
+  description: US production
+- url: https://eu.boldsign.com
+  description: EU production
+- url: https://ca.boldsign.com
+  description: CA production
+- url: https://au.boldsign.com
+  description: AU production
+security:
+- Bearer: []
+- X-API-KEY: []
+tags:
+- name: Contacts
+paths:
+  /v1/contacts/list:
+    get:
+      tags:
+      - Contacts
+      summary: List Contact document.
+      operationId: ContactUserList
+      parameters:
+      - name: PageSize
+        in: query
+        description: Page size specified in get user contact list request. Default value is 10.
+        schema:
+          title: Int32
+          type: integer
+          format: int32
+          default: 10
+      - name: Page
+        in: query
+        description: Page index specified in get user contact list request. Default value is 1.
+        required: true
+        schema:
+          title: Int32
+          type: integer
+          format: int32
+          default: 1
+      - name: SearchKey
+        in: query
+        description: Contacts can be listed by the search  based on the Name or Email
+        schema:
+          title: String
+          type: string
+      - name: ContactType
+        in: query
+        description: Contact type whether the contact is My Contacts or All Contacts. Default value is AllContacts.
+        schema:
+          title: ContactType
+          enum:
+          - MyContacts
+          - AllContacts
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactsList'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+  /v1/contacts/delete:
+    delete:
+      tags:
+      - Contacts
+      summary: Deletes a contact.
+      operationId: DeleteContacts
+      parameters:
+      - name: id
+        in: query
+        required: true
+        schema:
+          title: String
+          type: string
+      responses:
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+  /v1/contacts/create:
+    post:
+      tags:
+      - Contacts
+      summary: Create the new Contact.
+      operationId: CreateContact
+      requestBody:
+        description: The contact details.
+        content:
+          application/json;odata.metadata=minimal;odata.streaming=true:
+            schema:
+              title: List`1
+              type: array
+              items:
+                $ref: '#/components/schemas/ContactDetails'
+          application/json;odata.metadata=minimal;odata.streaming=false:
+            schema:
+              title: List`1
+              type: array
+              items:
+                $ref: '#/components/schemas/ContactDetails'
+          application/json;odata.metadata=minimal:
+            schema:
+              title: List`1
+              type: array
+              items:
+                $ref: '#/components/schemas/ContactDetails'
+          application/json;odata.metadata=full;odata.streaming=true:
+            schema:
+              title: List`1
+              type: array
+              items:
+                $ref: '#/components/schemas/ContactDetails'
+          application/json;odata.metadata=full;odata.streaming=false:
+            schema:
+              title: List`1
+              type: array
+              items:
+                $ref: '#/components/schemas/ContactDetails'
+          application/json;odata.metadata=full:
+            schema:
+              title: List`1
+              type: array
+              items:
+                $ref: '#/components/schemas/ContactDetails'
+          application/json;odata.metadata=none;odata.streaming=true:
+            schema:
+              title: List`1
+              type: array
+              items:
+                $ref: '#/components/schemas/ContactDetails'
+          application/json;odata.metadata=none;odata.streaming=false:
+            schema:
+              title: List`1
+              type: array
+              items:
+                $ref: '#/components/schemas/ContactDetails'
+          application/json;odata.metadata=none:
+            schema:
+              title: List`1
+              type: array
+              items:
+                $ref: '#/components/schemas/ContactDetails'
+          application/json;odata.streaming=true:
+            schema:
+              title: List`1
+              type: array
+              items:
+                $ref: '#/components/schemas/ContactDetails'
+          application/json;odata.streaming=false:
+            schema:
+              title: List`1
+              type: array
+              items:
+                $ref: '#/components/schemas/ContactDetails'
+          application/json:
+            schema:
+              title: List`1
+              type: array
+              items:
+                $ref: '#/components/schemas/ContactDetails'
+          application/json;odata.metadata=minimal;odata.streaming=true;IEEE754Compatible=false:
+            schema:
+              title: List`1
+              type: array
+              items:
+                $ref: '#/components/schemas/ContactDetails'
+          application/json;odata.metadata=minimal;odata.streaming=true;IEEE754Compatible=true:
+            schema:
+              title: List`1
+              type: array
+              items:
+                $ref: '#/components/schemas/ContactDetails'
+          application/json;odata.metadata=minimal;odata.streaming=false;IEEE754Compatible=false:
+            schema:
+              title: List`1
+              type: array
+              items:
+                $ref: '#/components/schemas/ContactDetails'
+          application/json;odata.metadata=minimal;odata.streaming=false;IEEE754Compatible=true:
+            schema:
+              title: List`1
+              type: array
+              items:
+                $ref: '#/components/schemas/ContactDetails'
+          application/json;odata.metadata=minimal;IEEE754Compatible=false:
+            schema:
+              title: List`1
+              type: array
+              items:
+                $ref: '#/components/schemas/ContactDetails'
+          application/json;odata.metadata=minimal;IEEE754Compatible=true:
+            schema:
+              title: List`1
+              type: array
+              items:
+                $ref: '#/components/schemas/ContactDetails'
+          application/json;odata.metadata=full;odata.streaming=true;IEEE754Compatible=false:
+            schema:
+              title: List`1
+              type: array
+              items:
+                $ref: '#/components/schemas/ContactDetails'
+          application/json;odata.metadata=full;odata.streaming=true;IEEE754Compatible=true:
+            schema:
+              title: List`1
+              type: array
+              items:
+                $ref: '#/components/schemas/ContactDetails'
+          application/json;odata.metadata=full;odata.streaming=false;IEEE754Compatible=false:
+            schema:
+              title: List`1
+              type: array
+              items:
+                $ref: '#/components/schemas/ContactDetails'
+          application/json;odata.metadata=full;odata.streaming=false;IEEE754Compatible=true:
+            schema:
+              title: List`1
+              type: array
+              items:
+                $ref: '#/components/schemas/ContactDetails'
+          application/json;odata.metadata=full;IEEE754Compatible=false:
+            schema:
+              title: List`1
+              type: array
+              items:
+                $ref: '#/components/schemas/ContactDetails'
+          application/json;odata.metadata=full;IEEE754Compatible=true:
+            schema:
+              title: List`1
+              type: array
+              items:
+                $ref: '#/components/schemas/ContactDetails'
+          application/json;odata.metadata=none;odata.streaming=true;IEEE754Compatible=false:
+            schema:
+              title: List`1
+              type: array
+              items:
+                $ref: '#/components/schemas/ContactDetails'
+          application/json;odata.metadata=none;odata.streaming=true;IEEE754Compatible=true:
+            schema:
+              title: List`1
+              type: array
+              items:
+                $ref: '#/components/schemas/ContactDetails'
+          application/json;odata.metadata=none;odata.streaming=false;IEEE754Compatible=true:
+            schema:
+              title: List`1
+              type: array
+              items:
+                $ref: '#/components/schemas/ContactDetails'
+          application/json;odata.metadata=none;odata.streaming=false;IEEE754Compatible=false:
+            schema:
+              title: List`1
+              type: array
+              items:
+                $ref: '#/components/schemas/ContactDetails'
+          application/json;odata.metadata=none;IEEE754Compatible=false:
+            schema:
+              title: List`1
+              type: array
+              items:
+                $ref: '#/components/schemas/ContactDetails'
+          application/json;odata.metadata=none;IEEE754Compatible=true:
+            schema:
+              title: List`1
+              type: array
+              items:
+                $ref: '#/components/schemas/ContactDetails'
+          application/json;odata.streaming=true;IEEE754Compatible=false:
+            schema:
+              title: List`1
+              type: array
+              items:
+                $ref: '#/components/schemas/ContactDetails'
+          application/json;odata.streaming=true;IEEE754Compatible=true:
+            schema:
+              title: List`1
+              type: array
+              items:
+                $ref: '#/components/schemas/ContactDetails'
+          application/json;odata.streaming=false;IEEE754Compatible=false:
+            schema:
+              title: List`1
+              type: array
+              items:
+                $ref: '#/components/schemas/ContactDetails'
+          application/json;odata.streaming=false;IEEE754Compatible=true:
+            schema:
+              title: List`1
+              type: array
+              items:
+                $ref: '#/components/schemas/ContactDetails'
+          application/json;IEEE754Compatible=false:
+            schema:
+              title: List`1
+              type: array
+              items:
+                $ref: '#/components/schemas/ContactDetails'
+          application/json;IEEE754Compatible=true:
+            schema:
+              title: List`1
+              type: array
+              items:
+                $ref: '#/components/schemas/ContactDetails'
+          application/xml:
+            schema:
+              title: List`1
+              type: array
+              items:
+                $ref: '#/components/schemas/ContactDetails'
+          text/plain:
+            schema:
+              title: List`1
+              type: array
+              items:
+                $ref: '#/components/schemas/ContactDetails'
+          application/json-patch+json:
+            schema:
+              title: List`1
+              type: array
+              items:
+                $ref: '#/components/schemas/ContactDetails'
+          text/json:
+            schema:
+              title: List`1
+              type: array
+              items:
+                $ref: '#/components/schemas/ContactDetails'
+          application/*+json:
+            schema:
+              title: List`1
+              type: array
+              items:
+                $ref: '#/components/schemas/ContactDetails'
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateContactResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+  /v1/contacts/update:
+    put:
+      tags:
+      - Contacts
+      summary: Update the contact.
+      operationId: UpdateContact
+      parameters:
+      - name: id
+        in: query
+        schema:
+          title: String
+          type: string
+      requestBody:
+        description: The contact details.
+        content:
+          application/json;odata.metadata=minimal;odata.streaming=true:
+            schema:
+              $ref: '#/components/schemas/ContactDetails'
+          application/json;odata.metadata=minimal;odata.streaming=false:
+            schema:
+              $ref: '#/components/schemas/ContactDetails'
+          application/json;odata.metadata=minimal:
+            schema:
+              $ref: '#/components/schemas/ContactDetails'
+          application/json;odata.metadata=full;odata.streaming=true:
+            schema:
+              $ref: '#/components/schemas/ContactDetails'
+          application/json;odata.metadata=full;odata.streaming=false:
+            schema:
+              $ref: '#/components/schemas/ContactDetails'
+          application/json;odata.metadata=full:
+            schema:
+              $ref: '#/components/schemas/ContactDetails'
+          application/json;odata.metadata=none;odata.streaming=true:
+            schema:
+              $ref: '#/components/schemas/ContactDetails'
+          application/json;odata.metadata=none;odata.streaming=false:
+            schema:
+              $ref: '#/components/schemas/ContactDetails'
+          application/json;odata.metadata=none:
+            schema:
+              $ref: '#/components/schemas/ContactDetails'
+          application/json;odata.streaming=true:
+            schema:
+              $ref: '#/components/schemas/ContactDetails'
+          application/json;odata.streaming=false:
+            schema:
+              $ref: '#/components/schemas/ContactDetails'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContactDetails'
+          application/json;odata.metadata=minimal;odata.streaming=true;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/ContactDetails'
+          application/json;odata.metadata=minimal;odata.streaming=true;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/ContactDetails'
+          application/json;odata.metadata=minimal;odata.streaming=false;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/ContactDetails'
+          application/json;odata.metadata=minimal;odata.streaming=false;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/ContactDetails'
+          application/json;odata.metadata=minimal;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/ContactDetails'
+          application/json;odata.metadata=minimal;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/ContactDetails'
+          application/json;odata.metadata=full;odata.streaming=true;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/ContactDetails'
+          application/json;odata.metadata=full;odata.streaming=true;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/ContactDetails'
+          application/json;odata.metadata=full;odata.streaming=false;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/ContactDetails'
+          application/json;odata.metadata=full;odata.streaming=false;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/ContactDetails'
+          application/json;odata.metadata=full;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/ContactDetails'
+          application/json;odata.metadata=full;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/ContactDetails'
+          application/json;odata.metadata=none;odata.streaming=true;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/ContactDetails'
+          application/json;odata.metadata=none;odata.streaming=true;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/ContactDetails'
+          application/json;odata.metadata=none;odata.streaming=false;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/ContactDetails'
+          application/json;odata.metadata=none;odata.streaming=false;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/ContactDetails'
+          application/json;odata.metadata=none;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/ContactDetails'
+          application/json;odata.metadata=none;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/ContactDetails'
+          application/json;odata.streaming=true;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/ContactDetails'
+          application/json;odata.streaming=true;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/ContactDetails'
+          application/json;odata.streaming=false;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/ContactDetails'
+          application/json;odata.streaming=false;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/ContactDetails'
+          application/json;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/ContactDetails'
+          application/json;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/ContactDetails'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/ContactDetails'
+          text/plain:
+            schema:
+              $ref: '#/components/schemas/ContactDetails'
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/ContactDetails'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/ContactDetails'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/ContactDetails'
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+  /v1/contacts/get:
+    get:
+      tags:
+      - Contacts
+      summary: Get summary of the contact.
+      operationId: GetContact
+      parameters:
+      - name: id
+        in: query
+        required: true
+        schema:
+          title: String
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactsDetails'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+components:
+  schemas:
+    PhoneNumber:
+      title: PhoneNumber
+      type: object
+      properties:
+        countryCode:
+          title: String
+          type: string
+          nullable: true
+        number:
+          title: String
+          type: string
+          nullable: true
+      additionalProperties: false
+    CreateContactResponse:
+      title: CreateContactResponse
+      type: object
+      properties:
+        createdContacts:
+          title: List`1
+          type: array
+          items:
+            $ref: '#/components/schemas/ContactCreated'
+          nullable: true
+      additionalProperties: false
+    ContactPageDetails:
+      title: ContactPageDetails
+      type: object
+      properties:
+        pageSize:
+          title: Int32
+          type: integer
+          format: int32
+        page:
+          title: Int32
+          type: integer
+          format: int32
+        totalRecordsCount:
+          title: Int32
+          type: integer
+          format: int32
+      additionalProperties: false
+    ErrorResult:
+      title: ErrorResult
+      type: object
+      properties:
+        error:
+          title: String
+          type: string
+          nullable: true
+      additionalProperties: false
+    ContactDetails:
+      title: ContactDetails
+      required:
+      - email
+      - name
+      type: object
+      properties:
+        email:
+          title: String
+          minLength: 1
+          type: string
+        name:
+          title: String
+          minLength: 1
+          type: string
+        phoneNumber:
+          $ref: '#/components/schemas/PhoneNumber'
+        jobTitle:
+          title: String
+          type: string
+          nullable: true
+        companyName:
+          title: String
+          type: string
+          nullable: true
+      additionalProperties: false
+    ContactCreated:
+      title: ContactCreated
+      type: object
+      properties:
+        id:
+          title: String
+          type: string
+          nullable: true
+        email:
+          title: String
+          type: string
+          nullable: true
+      additionalProperties: false
+    ContactsDetails:
+      title: ContactsDetails
+      type: object
+      properties:
+        id:
+          title: String
+          type: string
+          nullable: true
+        name:
+          title: String
+          type: string
+          nullable: true
+        email:
+          title: String
+          type: string
+          nullable: true
+        companyName:
+          title: String
+          type: string
+          nullable: true
+        jobTitle:
+          title: String
+          type: string
+          nullable: true
+        phoneNumber:
+          $ref: '#/components/schemas/PhoneNumber'
+      additionalProperties: false
+    ContactsList:
+      title: ContactsList
+      type: object
+      properties:
+        pageDetails:
+          $ref: '#/components/schemas/ContactPageDetails'
+        result:
+          title: List`1
+          type: array
+          items:
+            $ref: '#/components/schemas/ContactsDetails'
+          nullable: true
+      additionalProperties: false
+  securitySchemes:
+    Bearer:
+      type: apiKey
+      description: 'Format ''Bearer'' [space] [TOKEN]. Ex: ''Bearer eyJhbGciOiJIUzI1N'''
+      name: Authorization
+      in: header
+    X-API-KEY:
+      type: apiKey
+      description: 'Format [API-KEY]. Ex: ''abcdef12345'''
+      name: X-API-KEY
+      in: header
+externalDocs:
+  description: BoldSign Developer Documentation
+  url: https://developers.boldsign.com/

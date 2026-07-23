@@ -1,0 +1,1137 @@
+openapi: 3.0.3
+info:
+  title: BoldSign Branding User API
+  version: '1'
+  description: BoldSign eSignature REST API for sending documents for electronic signature, managing reusable templates, tracking envelope status, embedding signing and requesting workflows into third-party applications. Supports API key and OAuth 2.0 authentication. Regional endpoints available for US, EU, CA, and AU.
+  contact:
+    name: BoldSign Support
+    url: https://developers.boldsign.com/
+    email: support@boldsign.com
+  license:
+    name: Proprietary
+    url: https://boldsign.com/terms-of-use/
+  termsOfService: https://boldsign.com/terms-of-use/
+servers:
+- url: https://api.boldsign.com
+  description: US production
+- url: https://eu.boldsign.com
+  description: EU production
+- url: https://ca.boldsign.com
+  description: CA production
+- url: https://au.boldsign.com
+  description: AU production
+security:
+- Bearer: []
+- X-API-KEY: []
+tags:
+- name: User
+paths:
+  /v1/users/create:
+    post:
+      tags:
+      - User
+      summary: Create the user.
+      operationId: CreateUser
+      requestBody:
+        description: The create user.
+        content:
+          application/json;odata.metadata=minimal;odata.streaming=true:
+            schema:
+              title: List`1
+              type: array
+              items:
+                $ref: '#/components/schemas/CreateUser'
+          application/json;odata.metadata=minimal;odata.streaming=false:
+            schema:
+              title: List`1
+              type: array
+              items:
+                $ref: '#/components/schemas/CreateUser'
+          application/json;odata.metadata=minimal:
+            schema:
+              title: List`1
+              type: array
+              items:
+                $ref: '#/components/schemas/CreateUser'
+          application/json;odata.metadata=full;odata.streaming=true:
+            schema:
+              title: List`1
+              type: array
+              items:
+                $ref: '#/components/schemas/CreateUser'
+          application/json;odata.metadata=full;odata.streaming=false:
+            schema:
+              title: List`1
+              type: array
+              items:
+                $ref: '#/components/schemas/CreateUser'
+          application/json;odata.metadata=full:
+            schema:
+              title: List`1
+              type: array
+              items:
+                $ref: '#/components/schemas/CreateUser'
+          application/json;odata.metadata=none;odata.streaming=true:
+            schema:
+              title: List`1
+              type: array
+              items:
+                $ref: '#/components/schemas/CreateUser'
+          application/json;odata.metadata=none;odata.streaming=false:
+            schema:
+              title: List`1
+              type: array
+              items:
+                $ref: '#/components/schemas/CreateUser'
+          application/json;odata.metadata=none:
+            schema:
+              title: List`1
+              type: array
+              items:
+                $ref: '#/components/schemas/CreateUser'
+          application/json;odata.streaming=true:
+            schema:
+              title: List`1
+              type: array
+              items:
+                $ref: '#/components/schemas/CreateUser'
+          application/json;odata.streaming=false:
+            schema:
+              title: List`1
+              type: array
+              items:
+                $ref: '#/components/schemas/CreateUser'
+          application/json:
+            schema:
+              title: List`1
+              type: array
+              items:
+                $ref: '#/components/schemas/CreateUser'
+          application/json;odata.metadata=minimal;odata.streaming=true;IEEE754Compatible=false:
+            schema:
+              title: List`1
+              type: array
+              items:
+                $ref: '#/components/schemas/CreateUser'
+          application/json;odata.metadata=minimal;odata.streaming=true;IEEE754Compatible=true:
+            schema:
+              title: List`1
+              type: array
+              items:
+                $ref: '#/components/schemas/CreateUser'
+          application/json;odata.metadata=minimal;odata.streaming=false;IEEE754Compatible=false:
+            schema:
+              title: List`1
+              type: array
+              items:
+                $ref: '#/components/schemas/CreateUser'
+          application/json;odata.metadata=minimal;odata.streaming=false;IEEE754Compatible=true:
+            schema:
+              title: List`1
+              type: array
+              items:
+                $ref: '#/components/schemas/CreateUser'
+          application/json;odata.metadata=minimal;IEEE754Compatible=false:
+            schema:
+              title: List`1
+              type: array
+              items:
+                $ref: '#/components/schemas/CreateUser'
+          application/json;odata.metadata=minimal;IEEE754Compatible=true:
+            schema:
+              title: List`1
+              type: array
+              items:
+                $ref: '#/components/schemas/CreateUser'
+          application/json;odata.metadata=full;odata.streaming=true;IEEE754Compatible=false:
+            schema:
+              title: List`1
+              type: array
+              items:
+                $ref: '#/components/schemas/CreateUser'
+          application/json;odata.metadata=full;odata.streaming=true;IEEE754Compatible=true:
+            schema:
+              title: List`1
+              type: array
+              items:
+                $ref: '#/components/schemas/CreateUser'
+          application/json;odata.metadata=full;odata.streaming=false;IEEE754Compatible=false:
+            schema:
+              title: List`1
+              type: array
+              items:
+                $ref: '#/components/schemas/CreateUser'
+          application/json;odata.metadata=full;odata.streaming=false;IEEE754Compatible=true:
+            schema:
+              title: List`1
+              type: array
+              items:
+                $ref: '#/components/schemas/CreateUser'
+          application/json;odata.metadata=full;IEEE754Compatible=false:
+            schema:
+              title: List`1
+              type: array
+              items:
+                $ref: '#/components/schemas/CreateUser'
+          application/json;odata.metadata=full;IEEE754Compatible=true:
+            schema:
+              title: List`1
+              type: array
+              items:
+                $ref: '#/components/schemas/CreateUser'
+          application/json;odata.metadata=none;odata.streaming=true;IEEE754Compatible=false:
+            schema:
+              title: List`1
+              type: array
+              items:
+                $ref: '#/components/schemas/CreateUser'
+          application/json;odata.metadata=none;odata.streaming=true;IEEE754Compatible=true:
+            schema:
+              title: List`1
+              type: array
+              items:
+                $ref: '#/components/schemas/CreateUser'
+          application/json;odata.metadata=none;odata.streaming=false;IEEE754Compatible=true:
+            schema:
+              title: List`1
+              type: array
+              items:
+                $ref: '#/components/schemas/CreateUser'
+          application/json;odata.metadata=none;odata.streaming=false;IEEE754Compatible=false:
+            schema:
+              title: List`1
+              type: array
+              items:
+                $ref: '#/components/schemas/CreateUser'
+          application/json;odata.metadata=none;IEEE754Compatible=false:
+            schema:
+              title: List`1
+              type: array
+              items:
+                $ref: '#/components/schemas/CreateUser'
+          application/json;odata.metadata=none;IEEE754Compatible=true:
+            schema:
+              title: List`1
+              type: array
+              items:
+                $ref: '#/components/schemas/CreateUser'
+          application/json;odata.streaming=true;IEEE754Compatible=false:
+            schema:
+              title: List`1
+              type: array
+              items:
+                $ref: '#/components/schemas/CreateUser'
+          application/json;odata.streaming=true;IEEE754Compatible=true:
+            schema:
+              title: List`1
+              type: array
+              items:
+                $ref: '#/components/schemas/CreateUser'
+          application/json;odata.streaming=false;IEEE754Compatible=false:
+            schema:
+              title: List`1
+              type: array
+              items:
+                $ref: '#/components/schemas/CreateUser'
+          application/json;odata.streaming=false;IEEE754Compatible=true:
+            schema:
+              title: List`1
+              type: array
+              items:
+                $ref: '#/components/schemas/CreateUser'
+          application/json;IEEE754Compatible=false:
+            schema:
+              title: List`1
+              type: array
+              items:
+                $ref: '#/components/schemas/CreateUser'
+          application/json;IEEE754Compatible=true:
+            schema:
+              title: List`1
+              type: array
+              items:
+                $ref: '#/components/schemas/CreateUser'
+          application/xml:
+            schema:
+              title: List`1
+              type: array
+              items:
+                $ref: '#/components/schemas/CreateUser'
+          text/plain:
+            schema:
+              title: List`1
+              type: array
+              items:
+                $ref: '#/components/schemas/CreateUser'
+          application/json-patch+json:
+            schema:
+              title: List`1
+              type: array
+              items:
+                $ref: '#/components/schemas/CreateUser'
+          text/json:
+            schema:
+              title: List`1
+              type: array
+              items:
+                $ref: '#/components/schemas/CreateUser'
+          application/*+json:
+            schema:
+              title: List`1
+              type: array
+              items:
+                $ref: '#/components/schemas/CreateUser'
+      responses:
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+  /v1/users/update:
+    put:
+      tags:
+      - User
+      summary: Update new User role.
+      operationId: UpdateUser
+      requestBody:
+        description: update query.
+        content:
+          application/json;odata.metadata=minimal;odata.streaming=true:
+            schema:
+              $ref: '#/components/schemas/UpdateUser'
+          application/json;odata.metadata=minimal;odata.streaming=false:
+            schema:
+              $ref: '#/components/schemas/UpdateUser'
+          application/json;odata.metadata=minimal:
+            schema:
+              $ref: '#/components/schemas/UpdateUser'
+          application/json;odata.metadata=full;odata.streaming=true:
+            schema:
+              $ref: '#/components/schemas/UpdateUser'
+          application/json;odata.metadata=full;odata.streaming=false:
+            schema:
+              $ref: '#/components/schemas/UpdateUser'
+          application/json;odata.metadata=full:
+            schema:
+              $ref: '#/components/schemas/UpdateUser'
+          application/json;odata.metadata=none;odata.streaming=true:
+            schema:
+              $ref: '#/components/schemas/UpdateUser'
+          application/json;odata.metadata=none;odata.streaming=false:
+            schema:
+              $ref: '#/components/schemas/UpdateUser'
+          application/json;odata.metadata=none:
+            schema:
+              $ref: '#/components/schemas/UpdateUser'
+          application/json;odata.streaming=true:
+            schema:
+              $ref: '#/components/schemas/UpdateUser'
+          application/json;odata.streaming=false:
+            schema:
+              $ref: '#/components/schemas/UpdateUser'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateUser'
+          application/json;odata.metadata=minimal;odata.streaming=true;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/UpdateUser'
+          application/json;odata.metadata=minimal;odata.streaming=true;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/UpdateUser'
+          application/json;odata.metadata=minimal;odata.streaming=false;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/UpdateUser'
+          application/json;odata.metadata=minimal;odata.streaming=false;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/UpdateUser'
+          application/json;odata.metadata=minimal;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/UpdateUser'
+          application/json;odata.metadata=minimal;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/UpdateUser'
+          application/json;odata.metadata=full;odata.streaming=true;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/UpdateUser'
+          application/json;odata.metadata=full;odata.streaming=true;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/UpdateUser'
+          application/json;odata.metadata=full;odata.streaming=false;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/UpdateUser'
+          application/json;odata.metadata=full;odata.streaming=false;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/UpdateUser'
+          application/json;odata.metadata=full;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/UpdateUser'
+          application/json;odata.metadata=full;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/UpdateUser'
+          application/json;odata.metadata=none;odata.streaming=true;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/UpdateUser'
+          application/json;odata.metadata=none;odata.streaming=true;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/UpdateUser'
+          application/json;odata.metadata=none;odata.streaming=false;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/UpdateUser'
+          application/json;odata.metadata=none;odata.streaming=false;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/UpdateUser'
+          application/json;odata.metadata=none;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/UpdateUser'
+          application/json;odata.metadata=none;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/UpdateUser'
+          application/json;odata.streaming=true;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/UpdateUser'
+          application/json;odata.streaming=true;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/UpdateUser'
+          application/json;odata.streaming=false;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/UpdateUser'
+          application/json;odata.streaming=false;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/UpdateUser'
+          application/json;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/UpdateUser'
+          application/json;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/UpdateUser'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/UpdateUser'
+          text/plain:
+            schema:
+              $ref: '#/components/schemas/UpdateUser'
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/UpdateUser'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/UpdateUser'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/UpdateUser'
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+  /v1/users/resendInvitation:
+    post:
+      tags:
+      - User
+      summary: Resend the users invitation.
+      operationId: ResendInvitation
+      parameters:
+      - name: UserId
+        in: query
+        required: true
+        schema:
+          title: String
+          type: string
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+  /v1/users/cancelInvitation:
+    post:
+      tags:
+      - User
+      summary: Cancel the users invitation.
+      operationId: CancelInvitation
+      parameters:
+      - name: UserId
+        in: query
+        required: true
+        schema:
+          title: String
+          type: string
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+  /v1/users/list:
+    get:
+      tags:
+      - User
+      summary: List user documents.
+      operationId: ListUsers
+      parameters:
+      - name: PageSize
+        in: query
+        description: Page size specified in get user list request.
+        schema:
+          title: Int32
+          type: integer
+          format: int32
+          default: 10
+      - name: Page
+        in: query
+        description: Page index specified in get user list request.
+        required: true
+        schema:
+          title: Int32
+          type: integer
+          format: int32
+          default: 1
+      - name: Search
+        in: query
+        description: Users can be listed by the search  based on the user ID
+        schema:
+          title: String
+          type: string
+      - name: UserId
+        in: query
+        description: Users can be listed by the search based on the user IDs
+        schema:
+          title: List`1
+          type: array
+          items:
+            title: String
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserRecords'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+  /v1/users/get:
+    get:
+      tags:
+      - User
+      summary: Get summary of the user.
+      operationId: GetUser
+      parameters:
+      - name: userId
+        in: query
+        required: true
+        schema:
+          title: String
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserProperties'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+  /v1/users/updateMetaData:
+    put:
+      tags:
+      - User
+      summary: Update new User meta data details.
+      operationId: updateMetaData
+      requestBody:
+        description: update query.
+        content:
+          application/json;odata.metadata=minimal;odata.streaming=true:
+            schema:
+              $ref: '#/components/schemas/UpdateUserMetaData'
+          application/json;odata.metadata=minimal;odata.streaming=false:
+            schema:
+              $ref: '#/components/schemas/UpdateUserMetaData'
+          application/json;odata.metadata=minimal:
+            schema:
+              $ref: '#/components/schemas/UpdateUserMetaData'
+          application/json;odata.metadata=full;odata.streaming=true:
+            schema:
+              $ref: '#/components/schemas/UpdateUserMetaData'
+          application/json;odata.metadata=full;odata.streaming=false:
+            schema:
+              $ref: '#/components/schemas/UpdateUserMetaData'
+          application/json;odata.metadata=full:
+            schema:
+              $ref: '#/components/schemas/UpdateUserMetaData'
+          application/json;odata.metadata=none;odata.streaming=true:
+            schema:
+              $ref: '#/components/schemas/UpdateUserMetaData'
+          application/json;odata.metadata=none;odata.streaming=false:
+            schema:
+              $ref: '#/components/schemas/UpdateUserMetaData'
+          application/json;odata.metadata=none:
+            schema:
+              $ref: '#/components/schemas/UpdateUserMetaData'
+          application/json;odata.streaming=true:
+            schema:
+              $ref: '#/components/schemas/UpdateUserMetaData'
+          application/json;odata.streaming=false:
+            schema:
+              $ref: '#/components/schemas/UpdateUserMetaData'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateUserMetaData'
+          application/json;odata.metadata=minimal;odata.streaming=true;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/UpdateUserMetaData'
+          application/json;odata.metadata=minimal;odata.streaming=true;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/UpdateUserMetaData'
+          application/json;odata.metadata=minimal;odata.streaming=false;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/UpdateUserMetaData'
+          application/json;odata.metadata=minimal;odata.streaming=false;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/UpdateUserMetaData'
+          application/json;odata.metadata=minimal;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/UpdateUserMetaData'
+          application/json;odata.metadata=minimal;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/UpdateUserMetaData'
+          application/json;odata.metadata=full;odata.streaming=true;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/UpdateUserMetaData'
+          application/json;odata.metadata=full;odata.streaming=true;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/UpdateUserMetaData'
+          application/json;odata.metadata=full;odata.streaming=false;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/UpdateUserMetaData'
+          application/json;odata.metadata=full;odata.streaming=false;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/UpdateUserMetaData'
+          application/json;odata.metadata=full;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/UpdateUserMetaData'
+          application/json;odata.metadata=full;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/UpdateUserMetaData'
+          application/json;odata.metadata=none;odata.streaming=true;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/UpdateUserMetaData'
+          application/json;odata.metadata=none;odata.streaming=true;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/UpdateUserMetaData'
+          application/json;odata.metadata=none;odata.streaming=false;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/UpdateUserMetaData'
+          application/json;odata.metadata=none;odata.streaming=false;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/UpdateUserMetaData'
+          application/json;odata.metadata=none;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/UpdateUserMetaData'
+          application/json;odata.metadata=none;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/UpdateUserMetaData'
+          application/json;odata.streaming=true;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/UpdateUserMetaData'
+          application/json;odata.streaming=true;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/UpdateUserMetaData'
+          application/json;odata.streaming=false;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/UpdateUserMetaData'
+          application/json;odata.streaming=false;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/UpdateUserMetaData'
+          application/json;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/UpdateUserMetaData'
+          application/json;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/UpdateUserMetaData'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/UpdateUserMetaData'
+          text/plain:
+            schema:
+              $ref: '#/components/schemas/UpdateUserMetaData'
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/UpdateUserMetaData'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/UpdateUserMetaData'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/UpdateUserMetaData'
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+  /v1/users/changeTeam:
+    put:
+      tags:
+      - User
+      summary: Change users to other team.
+      operationId: ChangeTeam
+      parameters:
+      - name: userId
+        in: query
+        required: true
+        schema:
+          title: String
+          type: string
+      requestBody:
+        description: Change team request.
+        content:
+          application/json;odata.metadata=minimal;odata.streaming=true:
+            schema:
+              $ref: '#/components/schemas/ChangeTeamRequest'
+          application/json;odata.metadata=minimal;odata.streaming=false:
+            schema:
+              $ref: '#/components/schemas/ChangeTeamRequest'
+          application/json;odata.metadata=minimal:
+            schema:
+              $ref: '#/components/schemas/ChangeTeamRequest'
+          application/json;odata.metadata=full;odata.streaming=true:
+            schema:
+              $ref: '#/components/schemas/ChangeTeamRequest'
+          application/json;odata.metadata=full;odata.streaming=false:
+            schema:
+              $ref: '#/components/schemas/ChangeTeamRequest'
+          application/json;odata.metadata=full:
+            schema:
+              $ref: '#/components/schemas/ChangeTeamRequest'
+          application/json;odata.metadata=none;odata.streaming=true:
+            schema:
+              $ref: '#/components/schemas/ChangeTeamRequest'
+          application/json;odata.metadata=none;odata.streaming=false:
+            schema:
+              $ref: '#/components/schemas/ChangeTeamRequest'
+          application/json;odata.metadata=none:
+            schema:
+              $ref: '#/components/schemas/ChangeTeamRequest'
+          application/json;odata.streaming=true:
+            schema:
+              $ref: '#/components/schemas/ChangeTeamRequest'
+          application/json;odata.streaming=false:
+            schema:
+              $ref: '#/components/schemas/ChangeTeamRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ChangeTeamRequest'
+          application/json;odata.metadata=minimal;odata.streaming=true;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/ChangeTeamRequest'
+          application/json;odata.metadata=minimal;odata.streaming=true;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/ChangeTeamRequest'
+          application/json;odata.metadata=minimal;odata.streaming=false;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/ChangeTeamRequest'
+          application/json;odata.metadata=minimal;odata.streaming=false;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/ChangeTeamRequest'
+          application/json;odata.metadata=minimal;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/ChangeTeamRequest'
+          application/json;odata.metadata=minimal;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/ChangeTeamRequest'
+          application/json;odata.metadata=full;odata.streaming=true;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/ChangeTeamRequest'
+          application/json;odata.metadata=full;odata.streaming=true;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/ChangeTeamRequest'
+          application/json;odata.metadata=full;odata.streaming=false;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/ChangeTeamRequest'
+          application/json;odata.metadata=full;odata.streaming=false;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/ChangeTeamRequest'
+          application/json;odata.metadata=full;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/ChangeTeamRequest'
+          application/json;odata.metadata=full;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/ChangeTeamRequest'
+          application/json;odata.metadata=none;odata.streaming=true;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/ChangeTeamRequest'
+          application/json;odata.metadata=none;odata.streaming=true;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/ChangeTeamRequest'
+          application/json;odata.metadata=none;odata.streaming=false;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/ChangeTeamRequest'
+          application/json;odata.metadata=none;odata.streaming=false;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/ChangeTeamRequest'
+          application/json;odata.metadata=none;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/ChangeTeamRequest'
+          application/json;odata.metadata=none;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/ChangeTeamRequest'
+          application/json;odata.streaming=true;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/ChangeTeamRequest'
+          application/json;odata.streaming=true;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/ChangeTeamRequest'
+          application/json;odata.streaming=false;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/ChangeTeamRequest'
+          application/json;odata.streaming=false;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/ChangeTeamRequest'
+          application/json;IEEE754Compatible=false:
+            schema:
+              $ref: '#/components/schemas/ChangeTeamRequest'
+          application/json;IEEE754Compatible=true:
+            schema:
+              $ref: '#/components/schemas/ChangeTeamRequest'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/ChangeTeamRequest'
+          text/plain:
+            schema:
+              $ref: '#/components/schemas/ChangeTeamRequest'
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/ChangeTeamRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/ChangeTeamRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/ChangeTeamRequest'
+      responses:
+        '200':
+          description: OK
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResult'
+components:
+  schemas:
+    UpdateUser:
+      title: UpdateUser
+      required:
+      - userId
+      type: object
+      properties:
+        userId:
+          title: String
+          minLength: 1
+          type: string
+        userRole:
+          title: UserRoleType
+          enum:
+          - Admin
+          - TeamAdmin
+          - Member
+          type: string
+        userStatus:
+          title: UserStatusOption
+          enum:
+          - Activate
+          - Deactivate
+          type: string
+        toUserId:
+          title: String
+          type: string
+          nullable: true
+      additionalProperties: false
+    UserRecords:
+      title: UserRecords
+      type: object
+      properties:
+        pageDetails:
+          $ref: '#/components/schemas/UserPageDetails'
+        result:
+          title: List`1
+          type: array
+          items:
+            $ref: '#/components/schemas/UsersDetails'
+          nullable: true
+      additionalProperties: false
+    ErrorResult:
+      title: ErrorResult
+      type: object
+      properties:
+        error:
+          title: String
+          type: string
+          nullable: true
+      additionalProperties: false
+    UpdateUserMetaData:
+      title: UpdateUserMetaData
+      required:
+      - metaData
+      - userId
+      type: object
+      properties:
+        userId:
+          title: String
+          minLength: 1
+          type: string
+        metaData:
+          title: Dictionary`2
+          maxLength: 50
+          type: object
+          additionalProperties:
+            title: String
+            type: string
+            nullable: true
+      additionalProperties: false
+    CreateUser:
+      title: CreateUser
+      required:
+      - emailId
+      type: object
+      properties:
+        emailId:
+          title: String
+          minLength: 1
+          type: string
+        teamId:
+          title: String
+          type: string
+          nullable: true
+        userRole:
+          title: UserRoleType
+          enum:
+          - Admin
+          - TeamAdmin
+          - Member
+          type: string
+        metaData:
+          title: Dictionary`2
+          maxLength: 50
+          type: object
+          additionalProperties:
+            title: String
+            type: string
+            nullable: true
+          nullable: true
+      additionalProperties: false
+    UsersDetails:
+      title: UsersDetails
+      type: object
+      properties:
+        userId:
+          title: Guid
+          type: string
+          format: uuid
+        email:
+          title: String
+          type: string
+          nullable: true
+        firstName:
+          title: String
+          type: string
+          nullable: true
+        lastName:
+          title: String
+          type: string
+          nullable: true
+        teamId:
+          title: Guid
+          type: string
+          format: uuid
+        teamName:
+          title: String
+          type: string
+          nullable: true
+        role:
+          title: String
+          type: string
+          nullable: true
+        userStatus:
+          title: String
+          type: string
+          nullable: true
+        createdDate:
+          title: Int64
+          type: integer
+          format: int64
+        modifiedDate:
+          title: Int64
+          type: integer
+          format: int64
+        metaData:
+          title: Dictionary`2
+          type: object
+          additionalProperties:
+            title: String
+            type: string
+            nullable: true
+          nullable: true
+      additionalProperties: false
+    UserPageDetails:
+      title: UserPageDetails
+      type: object
+      properties:
+        pageSize:
+          title: Int32
+          type: integer
+          format: int32
+        page:
+          title: Int32
+          type: integer
+          format: int32
+      additionalProperties: false
+    ChangeTeamRequest:
+      title: ChangeTeamRequest
+      required:
+      - toTeamId
+      type: object
+      properties:
+        toTeamId:
+          title: String
+          minLength: 1
+          type: string
+        transferDocumentsToUserId:
+          title: String
+          type: string
+          nullable: true
+      additionalProperties: false
+    UserProperties:
+      title: UserProperties
+      type: object
+      properties:
+        userId:
+          title: String
+          type: string
+          nullable: true
+        email:
+          title: String
+          type: string
+          nullable: true
+        firstName:
+          title: String
+          type: string
+          nullable: true
+        lastName:
+          title: String
+          type: string
+          nullable: true
+        teamId:
+          title: String
+          type: string
+          nullable: true
+        teamName:
+          title: String
+          type: string
+          nullable: true
+        role:
+          title: String
+          type: string
+          nullable: true
+        userStatus:
+          title: String
+          type: string
+          nullable: true
+        createdDate:
+          title: Int64
+          type: integer
+          format: int64
+        modifiedDate:
+          title: Int64
+          type: integer
+          format: int64
+        metaData:
+          title: Dictionary`2
+          type: object
+          additionalProperties:
+            title: String
+            type: string
+            nullable: true
+          nullable: true
+      additionalProperties: false
+  securitySchemes:
+    Bearer:
+      type: apiKey
+      description: 'Format ''Bearer'' [space] [TOKEN]. Ex: ''Bearer eyJhbGciOiJIUzI1N'''
+      name: Authorization
+      in: header
+    X-API-KEY:
+      type: apiKey
+      description: 'Format [API-KEY]. Ex: ''abcdef12345'''
+      name: X-API-KEY
+      in: header
+externalDocs:
+  description: BoldSign Developer Documentation
+  url: https://developers.boldsign.com/
