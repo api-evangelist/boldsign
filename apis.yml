@@ -1,7 +1,20 @@
 aid: boldsign
 name: BoldSign
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/boldsign.png
 url: https://raw.githubusercontent.com/api-evangelist/boldsign/refs/heads/main/apis.yml
 created: 2026-06-12
 modified: 2026-06-12
@@ -25,37 +38,248 @@ tags:
   - Identity Verification
   - Compliance
 apis:
-  - name: BoldSign eSignature API
-    description: >
-      REST API for sending documents for signature, managing templates, embedding
-      signing and requesting workflows, retrieving audit trails, prefilling form fields,
-      configuring webhooks, and managing users and teams.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://developers.boldsign.com/
-    baseURL: https://api.boldsign.com
-    tags:
-      - E-Signature
-      - Documents
-      - Templates
-      - Webhooks
-    properties:
-      - type: Documentation
-        url: https://developers.boldsign.com/
-      - type: OpenAPI
-        url: https://api.boldsign.com/swagger/index.html
-      - type: OpenAPISpec
-        url: openapi/boldsign-esignature-openapi.yml
-      - type: JSONSchema
-        url: json-schema/boldsign-schemas.json
-      - type: JSONLDContext
-        url: json-ld/boldsign-context.jsonld
-      - type: Vocabulary
-        url: vocabulary/boldsign-vocabulary.yml
-      - type: Postman
-        url: https://developers.boldsign.com/api-overview/api-explorer/
-    contact:
-      - FN: BoldSign Support
-        email: support@boldsign.com
+- aid: boldsign:boldsign-branding-api
+  name: BoldSign Branding API
+  description: The Branding API from BoldSign — 6 operation(s) for branding.
+  humanURL: https://developers.boldsign.com/
+  baseURL: https://api.boldsign.com
+  tags:
+  - Branding
+  properties:
+  - type: OpenAPI
+    url: openapi/boldsign-branding-api-openapi.yml
+  - type: Documentation
+    url: https://developers.boldsign.com/
+  - type: OpenAPISpec
+    url: openapi/boldsign-esignature-openapi.yml
+  - type: JSONSchema
+    url: json-schema/boldsign-schemas.json
+  - type: JSONLDContext
+    url: json-ld/boldsign-context.jsonld
+  - type: Vocabulary
+    url: vocabulary/boldsign-vocabulary.yml
+  - type: Postman
+    url: https://developers.boldsign.com/api-overview/api-explorer/
+- aid: boldsign:boldsign-contacts-api
+  name: BoldSign Contacts API
+  description: The Contacts API from BoldSign — 5 operation(s) for contacts.
+  humanURL: https://developers.boldsign.com/
+  baseURL: https://api.boldsign.com
+  tags:
+  - Contacts
+  properties:
+  - type: OpenAPI
+    url: openapi/boldsign-contacts-api-openapi.yml
+  - type: Documentation
+    url: https://developers.boldsign.com/
+  - type: OpenAPISpec
+    url: openapi/boldsign-esignature-openapi.yml
+  - type: JSONSchema
+    url: json-schema/boldsign-schemas.json
+  - type: JSONLDContext
+    url: json-ld/boldsign-context.jsonld
+  - type: Vocabulary
+    url: vocabulary/boldsign-vocabulary.yml
+  - type: Postman
+    url: https://developers.boldsign.com/api-overview/api-explorer/
+- aid: boldsign:boldsign-custom-field-api
+  name: BoldSign Custom Field API
+  description: The Custom Field API from BoldSign — 5 operation(s) for custom field.
+  humanURL: https://developers.boldsign.com/
+  baseURL: https://api.boldsign.com
+  tags:
+  - Custom Field
+  properties:
+  - type: OpenAPI
+    url: openapi/boldsign-custom-field-api-openapi.yml
+  - type: Documentation
+    url: https://developers.boldsign.com/
+  - type: OpenAPISpec
+    url: openapi/boldsign-esignature-openapi.yml
+  - type: JSONSchema
+    url: json-schema/boldsign-schemas.json
+  - type: JSONLDContext
+    url: json-ld/boldsign-context.jsonld
+  - type: Vocabulary
+    url: vocabulary/boldsign-vocabulary.yml
+  - type: Postman
+    url: https://developers.boldsign.com/api-overview/api-explorer/
+- aid: boldsign:boldsign-document-api
+  name: BoldSign Document API
+  description: The Document API from BoldSign — 25 operation(s) for document.
+  humanURL: https://developers.boldsign.com/
+  baseURL: https://api.boldsign.com
+  tags:
+  - Document
+  properties:
+  - type: OpenAPI
+    url: openapi/boldsign-document-api-openapi.yml
+  - type: Documentation
+    url: https://developers.boldsign.com/
+  - type: OpenAPISpec
+    url: openapi/boldsign-esignature-openapi.yml
+  - type: JSONSchema
+    url: json-schema/boldsign-schemas.json
+  - type: JSONLDContext
+    url: json-ld/boldsign-context.jsonld
+  - type: Vocabulary
+    url: vocabulary/boldsign-vocabulary.yml
+  - type: Postman
+    url: https://developers.boldsign.com/api-overview/api-explorer/
+- aid: boldsign:boldsign-groupcontacts-api
+  name: BoldSign GroupContacts API
+  description: The GroupContacts API from BoldSign — 5 operation(s) for groupcontacts.
+  humanURL: https://developers.boldsign.com/
+  baseURL: https://api.boldsign.com
+  tags:
+  - GroupContacts
+  properties:
+  - type: OpenAPI
+    url: openapi/boldsign-groupcontacts-api-openapi.yml
+  - type: Documentation
+    url: https://developers.boldsign.com/
+  - type: OpenAPISpec
+    url: openapi/boldsign-esignature-openapi.yml
+  - type: JSONSchema
+    url: json-schema/boldsign-schemas.json
+  - type: JSONLDContext
+    url: json-ld/boldsign-context.jsonld
+  - type: Vocabulary
+    url: vocabulary/boldsign-vocabulary.yml
+  - type: Postman
+    url: https://developers.boldsign.com/api-overview/api-explorer/
+- aid: boldsign:boldsign-identity-verification-api
+  name: BoldSign Identity Verification API
+  description: The Identity Verification API from BoldSign — 3 operation(s) for identity verification.
+  humanURL: https://developers.boldsign.com/
+  baseURL: https://api.boldsign.com
+  tags:
+  - Identity Verification
+  properties:
+  - type: OpenAPI
+    url: openapi/boldsign-identity-verification-api-openapi.yml
+  - type: Documentation
+    url: https://developers.boldsign.com/
+  - type: OpenAPISpec
+    url: openapi/boldsign-esignature-openapi.yml
+  - type: JSONSchema
+    url: json-schema/boldsign-schemas.json
+  - type: JSONLDContext
+    url: json-ld/boldsign-context.jsonld
+  - type: Vocabulary
+    url: vocabulary/boldsign-vocabulary.yml
+  - type: Postman
+    url: https://developers.boldsign.com/api-overview/api-explorer/
+- aid: boldsign:boldsign-plan-api
+  name: BoldSign Plan API
+  description: The Plan API from BoldSign — 1 operation(s) for plan.
+  humanURL: https://developers.boldsign.com/
+  baseURL: https://api.boldsign.com
+  tags:
+  - Plan
+  properties:
+  - type: OpenAPI
+    url: openapi/boldsign-plan-api-openapi.yml
+  - type: Documentation
+    url: https://developers.boldsign.com/
+  - type: OpenAPISpec
+    url: openapi/boldsign-esignature-openapi.yml
+  - type: JSONSchema
+    url: json-schema/boldsign-schemas.json
+  - type: JSONLDContext
+    url: json-ld/boldsign-context.jsonld
+  - type: Vocabulary
+    url: vocabulary/boldsign-vocabulary.yml
+  - type: Postman
+    url: https://developers.boldsign.com/api-overview/api-explorer/
+- aid: boldsign:boldsign-sender-identities-api
+  name: BoldSign Sender Identities API
+  description: The Sender Identities API from BoldSign — 7 operation(s) for sender identities.
+  humanURL: https://developers.boldsign.com/
+  baseURL: https://api.boldsign.com
+  tags:
+  - Sender Identities
+  properties:
+  - type: OpenAPI
+    url: openapi/boldsign-sender-identities-api-openapi.yml
+  - type: Documentation
+    url: https://developers.boldsign.com/
+  - type: OpenAPISpec
+    url: openapi/boldsign-esignature-openapi.yml
+  - type: JSONSchema
+    url: json-schema/boldsign-schemas.json
+  - type: JSONLDContext
+    url: json-ld/boldsign-context.jsonld
+  - type: Vocabulary
+    url: vocabulary/boldsign-vocabulary.yml
+  - type: Postman
+    url: https://developers.boldsign.com/api-overview/api-explorer/
+- aid: boldsign:boldsign-teams-api
+  name: BoldSign Teams API
+  description: The Teams API from BoldSign — 4 operation(s) for teams.
+  humanURL: https://developers.boldsign.com/
+  baseURL: https://api.boldsign.com
+  tags:
+  - Teams
+  properties:
+  - type: OpenAPI
+    url: openapi/boldsign-teams-api-openapi.yml
+  - type: Documentation
+    url: https://developers.boldsign.com/
+  - type: OpenAPISpec
+    url: openapi/boldsign-esignature-openapi.yml
+  - type: JSONSchema
+    url: json-schema/boldsign-schemas.json
+  - type: JSONLDContext
+    url: json-ld/boldsign-context.jsonld
+  - type: Vocabulary
+    url: vocabulary/boldsign-vocabulary.yml
+  - type: Postman
+    url: https://developers.boldsign.com/api-overview/api-explorer/
+- aid: boldsign:boldsign-template-api
+  name: BoldSign Template API
+  description: The Template API from BoldSign — 16 operation(s) for template.
+  humanURL: https://developers.boldsign.com/
+  baseURL: https://api.boldsign.com
+  tags:
+  - Template
+  properties:
+  - type: OpenAPI
+    url: openapi/boldsign-template-api-openapi.yml
+  - type: Documentation
+    url: https://developers.boldsign.com/
+  - type: OpenAPISpec
+    url: openapi/boldsign-esignature-openapi.yml
+  - type: JSONSchema
+    url: json-schema/boldsign-schemas.json
+  - type: JSONLDContext
+    url: json-ld/boldsign-context.jsonld
+  - type: Vocabulary
+    url: vocabulary/boldsign-vocabulary.yml
+  - type: Postman
+    url: https://developers.boldsign.com/api-overview/api-explorer/
+- aid: boldsign:boldsign-user-api
+  name: BoldSign User API
+  description: The User API from BoldSign — 8 operation(s) for user.
+  humanURL: https://developers.boldsign.com/
+  baseURL: https://api.boldsign.com
+  tags:
+  - User
+  properties:
+  - type: OpenAPI
+    url: openapi/boldsign-user-api-openapi.yml
+  - type: Documentation
+    url: https://developers.boldsign.com/
+  - type: OpenAPISpec
+    url: openapi/boldsign-esignature-openapi.yml
+  - type: JSONSchema
+    url: json-schema/boldsign-schemas.json
+  - type: JSONLDContext
+    url: json-ld/boldsign-context.jsonld
+  - type: Vocabulary
+    url: vocabulary/boldsign-vocabulary.yml
+  - type: Postman
+    url: https://developers.boldsign.com/api-overview/api-explorer/
 common:
   - type: AgenticAccess
     url: agentic-access/boldsign-agentic-access.yml
