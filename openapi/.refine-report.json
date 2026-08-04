@@ -1,0 +1,34 @@
+{
+  "provider": "boldsign",
+  "sources": [
+    "boldsign-branding-api-openapi.yml",
+    "boldsign-contacts-api-openapi.yml",
+    "boldsign-custom-field-api-openapi.yml",
+    "boldsign-document-api-openapi.yml",
+    "boldsign-groupcontacts-api-openapi.yml",
+    "boldsign-identity-verification-api-openapi.yml",
+    "boldsign-plan-api-openapi.yml",
+    "boldsign-sender-identities-api-openapi.yml",
+    "boldsign-teams-api-openapi.yml",
+    "boldsign-template-api-openapi.yml",
+    "boldsign-user-api-openapi.yml"
+  ],
+  "outputs": [
+    "boldsign-branding-api-openapi.yml",
+    "boldsign-contacts-api-openapi.yml",
+    "boldsign-custom-field-api-openapi.yml",
+    "boldsign-document-api-openapi.yml",
+    "boldsign-groupcontacts-api-openapi.yml",
+    "boldsign-identity-verification-api-openapi.yml",
+    "boldsign-plan-api-openapi.yml",
+    "boldsign-sender-identities-api-openapi.yml",
+    "boldsign-teams-api-openapi.yml",
+    "boldsign-template-api-openapi.yml",
+    "boldsign-user-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
