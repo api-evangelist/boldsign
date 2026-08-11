@@ -51,7 +51,7 @@ apis:
   - type: Documentation
     url: https://developers.boldsign.com/
   - type: OpenAPISpec
-    url: openapi/boldsign-esignature-openapi.yml
+    url: openapi/_original/boldsign-esignature-openapi.yml
   - type: JSONSchema
     url: json-schema/boldsign-schemas.json
   - type: JSONLDContext
@@ -73,7 +73,7 @@ apis:
   - type: Documentation
     url: https://developers.boldsign.com/
   - type: OpenAPISpec
-    url: openapi/boldsign-esignature-openapi.yml
+    url: openapi/_original/boldsign-esignature-openapi.yml
   - type: JSONSchema
     url: json-schema/boldsign-schemas.json
   - type: JSONLDContext
@@ -95,7 +95,7 @@ apis:
   - type: Documentation
     url: https://developers.boldsign.com/
   - type: OpenAPISpec
-    url: openapi/boldsign-esignature-openapi.yml
+    url: openapi/_original/boldsign-esignature-openapi.yml
   - type: JSONSchema
     url: json-schema/boldsign-schemas.json
   - type: JSONLDContext
@@ -117,7 +117,7 @@ apis:
   - type: Documentation
     url: https://developers.boldsign.com/
   - type: OpenAPISpec
-    url: openapi/boldsign-esignature-openapi.yml
+    url: openapi/_original/boldsign-esignature-openapi.yml
   - type: JSONSchema
     url: json-schema/boldsign-schemas.json
   - type: JSONLDContext
@@ -139,7 +139,7 @@ apis:
   - type: Documentation
     url: https://developers.boldsign.com/
   - type: OpenAPISpec
-    url: openapi/boldsign-esignature-openapi.yml
+    url: openapi/_original/boldsign-esignature-openapi.yml
   - type: JSONSchema
     url: json-schema/boldsign-schemas.json
   - type: JSONLDContext
@@ -161,7 +161,7 @@ apis:
   - type: Documentation
     url: https://developers.boldsign.com/
   - type: OpenAPISpec
-    url: openapi/boldsign-esignature-openapi.yml
+    url: openapi/_original/boldsign-esignature-openapi.yml
   - type: JSONSchema
     url: json-schema/boldsign-schemas.json
   - type: JSONLDContext
@@ -183,7 +183,7 @@ apis:
   - type: Documentation
     url: https://developers.boldsign.com/
   - type: OpenAPISpec
-    url: openapi/boldsign-esignature-openapi.yml
+    url: openapi/_original/boldsign-esignature-openapi.yml
   - type: JSONSchema
     url: json-schema/boldsign-schemas.json
   - type: JSONLDContext
@@ -205,7 +205,7 @@ apis:
   - type: Documentation
     url: https://developers.boldsign.com/
   - type: OpenAPISpec
-    url: openapi/boldsign-esignature-openapi.yml
+    url: openapi/_original/boldsign-esignature-openapi.yml
   - type: JSONSchema
     url: json-schema/boldsign-schemas.json
   - type: JSONLDContext
@@ -227,7 +227,7 @@ apis:
   - type: Documentation
     url: https://developers.boldsign.com/
   - type: OpenAPISpec
-    url: openapi/boldsign-esignature-openapi.yml
+    url: openapi/_original/boldsign-esignature-openapi.yml
   - type: JSONSchema
     url: json-schema/boldsign-schemas.json
   - type: JSONLDContext
@@ -249,7 +249,7 @@ apis:
   - type: Documentation
     url: https://developers.boldsign.com/
   - type: OpenAPISpec
-    url: openapi/boldsign-esignature-openapi.yml
+    url: openapi/_original/boldsign-esignature-openapi.yml
   - type: JSONSchema
     url: json-schema/boldsign-schemas.json
   - type: JSONLDContext
@@ -271,7 +271,7 @@ apis:
   - type: Documentation
     url: https://developers.boldsign.com/
   - type: OpenAPISpec
-    url: openapi/boldsign-esignature-openapi.yml
+    url: openapi/_original/boldsign-esignature-openapi.yml
   - type: JSONSchema
     url: json-schema/boldsign-schemas.json
   - type: JSONLDContext
