@@ -1,0 +1,1235 @@
+{
+  "item": [
+    {
+      "id": "73391bd2-5cf8-48e2-9e1f-d3bfe937b6f8",
+      "name": "Custom Field",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "00934a6f-691d-4f90-ab7f-32a6bec096e1",
+          "name": "Create the custom field.",
+          "request": {
+            "name": "Create the custom field.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "customField",
+                "create"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json;odata.metadata=minimal;odata.streaming=true"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fieldName\": \"<string>\",\n  \"fieldDescription\": \"<string>\",\n  \"fieldOrder\": 1,\n  \"brandId\": \"<string>\",\n  \"sharedField\": \"<boolean>\",\n  \"formField\": {\n    \"fieldType\": \"<string>\",\n    \"width\": \"<float>\",\n    \"height\": \"<float>\",\n    \"isRequired\": \"<boolean>\",\n    \"isReadOnly\": \"<boolean>\",\n    \"value\": \"<string>\",\n    \"fontSize\": 13,\n    \"font\": \"<string>\",\n    \"fontHexColor\": \"<string>\",\n    \"isBoldFont\": \"<boolean>\",\n    \"isItalicFont\": \"<boolean>\",\n    \"isUnderLineFont\": \"<boolean>\",\n    \"lineHeight\": 15,\n    \"characterLimit\": 0,\n    \"placeHolder\": \"<string>\",\n    \"validationType\": \"<string>\",\n    \"validationCustomRegex\": \"<string>\",\n    \"validationCustomRegexMessage\": \"<string>\",\n    \"dateFormat\": \"<string>\",\n    \"timeFormat\": \"<string>\",\n    \"imageInfo\": {\n      \"allowedFileExtensions\": \"<string>\",\n      \"title\": \"<string>\",\n      \"description\": \"<string>\"\n    },\n    \"attachmentInfo\": {\n      \"acceptedFileTypes\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"title\": \"<string>\",\n      \"description\": \"<string>\",\n      \"allowedFileTypes\": \"<string>\"\n    },\n    \"editableDateFieldSettings\": {\n      \"dateFormat\": \"<string>\",\n      \"minDate\": \"<dateTime>\",\n      \"maxDate\": \"<dateTime>\",\n      \"timeFormat\": \"<string>\"\n    },\n    \"hyperlinkText\": \"<string>\",\n    \"dataSyncTag\": \"<string>\",\n    \"dropdownOptions\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"textAlign\": \"<string>\",\n    \"textDirection\": \"<string>\",\n    \"characterSpacing\": \"<float>\",\n    \"idPrefix\": \"<string>\",\n    \"restrictIdPrefixChange\": false,\n    \"backgroundHexColor\": \"<string>\",\n    \"resizeOption\": \"<string>\",\n    \"isMasked\": false\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6a1edccf-d08a-4f41-aeea-740195ffc176",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "customField",
+                    "create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json;odata.metadata=minimal;odata.streaming=true"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fieldName\": \"<string>\",\n  \"fieldDescription\": \"<string>\",\n  \"fieldOrder\": 1,\n  \"brandId\": \"<string>\",\n  \"sharedField\": \"<boolean>\",\n  \"formField\": {\n    \"fieldType\": \"<string>\",\n    \"width\": \"<float>\",\n    \"height\": \"<float>\",\n    \"isRequired\": \"<boolean>\",\n    \"isReadOnly\": \"<boolean>\",\n    \"value\": \"<string>\",\n    \"fontSize\": 13,\n    \"font\": \"<string>\",\n    \"fontHexColor\": \"<string>\",\n    \"isBoldFont\": \"<boolean>\",\n    \"isItalicFont\": \"<boolean>\",\n    \"isUnderLineFont\": \"<boolean>\",\n    \"lineHeight\": 15,\n    \"characterLimit\": 0,\n    \"placeHolder\": \"<string>\",\n    \"validationType\": \"<string>\",\n    \"validationCustomRegex\": \"<string>\",\n    \"validationCustomRegexMessage\": \"<string>\",\n    \"dateFormat\": \"<string>\",\n    \"timeFormat\": \"<string>\",\n    \"imageInfo\": {\n      \"allowedFileExtensions\": \"<string>\",\n      \"title\": \"<string>\",\n      \"description\": \"<string>\"\n    },\n    \"attachmentInfo\": {\n      \"acceptedFileTypes\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"title\": \"<string>\",\n      \"description\": \"<string>\",\n      \"allowedFileTypes\": \"<string>\"\n    },\n    \"editableDateFieldSettings\": {\n      \"dateFormat\": \"<string>\",\n      \"minDate\": \"<dateTime>\",\n      \"maxDate\": \"<dateTime>\",\n      \"timeFormat\": \"<string>\"\n    },\n    \"hyperlinkText\": \"<string>\",\n    \"dataSyncTag\": \"<string>\",\n    \"dropdownOptions\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"textAlign\": \"<string>\",\n    \"textDirection\": \"<string>\",\n    \"characterSpacing\": \"<float>\",\n    \"idPrefix\": \"<string>\",\n    \"restrictIdPrefixChange\": false,\n    \"backgroundHexColor\": \"<string>\",\n    \"resizeOption\": \"<string>\",\n    \"isMasked\": false\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;odata.metadata=minimal;odata.streaming=true"
+                }
+              ],
+              "body": "{\n  \"customFieldId\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cddc8df8-06bd-4d4f-aede-2c9151ba13c4",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "customField",
+                    "create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json;odata.metadata=minimal;odata.streaming=true"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fieldName\": \"<string>\",\n  \"fieldDescription\": \"<string>\",\n  \"fieldOrder\": 1,\n  \"brandId\": \"<string>\",\n  \"sharedField\": \"<boolean>\",\n  \"formField\": {\n    \"fieldType\": \"<string>\",\n    \"width\": \"<float>\",\n    \"height\": \"<float>\",\n    \"isRequired\": \"<boolean>\",\n    \"isReadOnly\": \"<boolean>\",\n    \"value\": \"<string>\",\n    \"fontSize\": 13,\n    \"font\": \"<string>\",\n    \"fontHexColor\": \"<string>\",\n    \"isBoldFont\": \"<boolean>\",\n    \"isItalicFont\": \"<boolean>\",\n    \"isUnderLineFont\": \"<boolean>\",\n    \"lineHeight\": 15,\n    \"characterLimit\": 0,\n    \"placeHolder\": \"<string>\",\n    \"validationType\": \"<string>\",\n    \"validationCustomRegex\": \"<string>\",\n    \"validationCustomRegexMessage\": \"<string>\",\n    \"dateFormat\": \"<string>\",\n    \"timeFormat\": \"<string>\",\n    \"imageInfo\": {\n      \"allowedFileExtensions\": \"<string>\",\n      \"title\": \"<string>\",\n      \"description\": \"<string>\"\n    },\n    \"attachmentInfo\": {\n      \"acceptedFileTypes\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"title\": \"<string>\",\n      \"description\": \"<string>\",\n      \"allowedFileTypes\": \"<string>\"\n    },\n    \"editableDateFieldSettings\": {\n      \"dateFormat\": \"<string>\",\n      \"minDate\": \"<dateTime>\",\n      \"maxDate\": \"<dateTime>\",\n      \"timeFormat\": \"<string>\"\n    },\n    \"hyperlinkText\": \"<string>\",\n    \"dataSyncTag\": \"<string>\",\n    \"dropdownOptions\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"textAlign\": \"<string>\",\n    \"textDirection\": \"<string>\",\n    \"characterSpacing\": \"<float>\",\n    \"idPrefix\": \"<string>\",\n    \"restrictIdPrefixChange\": false,\n    \"backgroundHexColor\": \"<string>\",\n    \"resizeOption\": \"<string>\",\n    \"isMasked\": false\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;odata.metadata=minimal;odata.streaming=true"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7fa74808-ac9b-4e69-a462-c939816ae631",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "customField",
+                    "create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json;odata.metadata=minimal;odata.streaming=true"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fieldName\": \"<string>\",\n  \"fieldDescription\": \"<string>\",\n  \"fieldOrder\": 1,\n  \"brandId\": \"<string>\",\n  \"sharedField\": \"<boolean>\",\n  \"formField\": {\n    \"fieldType\": \"<string>\",\n    \"width\": \"<float>\",\n    \"height\": \"<float>\",\n    \"isRequired\": \"<boolean>\",\n    \"isReadOnly\": \"<boolean>\",\n    \"value\": \"<string>\",\n    \"fontSize\": 13,\n    \"font\": \"<string>\",\n    \"fontHexColor\": \"<string>\",\n    \"isBoldFont\": \"<boolean>\",\n    \"isItalicFont\": \"<boolean>\",\n    \"isUnderLineFont\": \"<boolean>\",\n    \"lineHeight\": 15,\n    \"characterLimit\": 0,\n    \"placeHolder\": \"<string>\",\n    \"validationType\": \"<string>\",\n    \"validationCustomRegex\": \"<string>\",\n    \"validationCustomRegexMessage\": \"<string>\",\n    \"dateFormat\": \"<string>\",\n    \"timeFormat\": \"<string>\",\n    \"imageInfo\": {\n      \"allowedFileExtensions\": \"<string>\",\n      \"title\": \"<string>\",\n      \"description\": \"<string>\"\n    },\n    \"attachmentInfo\": {\n      \"acceptedFileTypes\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"title\": \"<string>\",\n      \"description\": \"<string>\",\n      \"allowedFileTypes\": \"<string>\"\n    },\n    \"editableDateFieldSettings\": {\n      \"dateFormat\": \"<string>\",\n      \"minDate\": \"<dateTime>\",\n      \"maxDate\": \"<dateTime>\",\n      \"timeFormat\": \"<string>\"\n    },\n    \"hyperlinkText\": \"<string>\",\n    \"dataSyncTag\": \"<string>\",\n    \"dropdownOptions\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"textAlign\": \"<string>\",\n    \"textDirection\": \"<string>\",\n    \"characterSpacing\": \"<float>\",\n    \"idPrefix\": \"<string>\",\n    \"restrictIdPrefixChange\": false,\n    \"backgroundHexColor\": \"<string>\",\n    \"resizeOption\": \"<string>\",\n    \"isMasked\": false\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;odata.metadata=minimal;odata.streaming=true"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "27f5c3b7-7793-4555-8218-e7585a77919a",
+              "name": "Unprocessable Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "customField",
+                    "create"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json;odata.metadata=minimal;odata.streaming=true"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fieldName\": \"<string>\",\n  \"fieldDescription\": \"<string>\",\n  \"fieldOrder\": 1,\n  \"brandId\": \"<string>\",\n  \"sharedField\": \"<boolean>\",\n  \"formField\": {\n    \"fieldType\": \"<string>\",\n    \"width\": \"<float>\",\n    \"height\": \"<float>\",\n    \"isRequired\": \"<boolean>\",\n    \"isReadOnly\": \"<boolean>\",\n    \"value\": \"<string>\",\n    \"fontSize\": 13,\n    \"font\": \"<string>\",\n    \"fontHexColor\": \"<string>\",\n    \"isBoldFont\": \"<boolean>\",\n    \"isItalicFont\": \"<boolean>\",\n    \"isUnderLineFont\": \"<boolean>\",\n    \"lineHeight\": 15,\n    \"characterLimit\": 0,\n    \"placeHolder\": \"<string>\",\n    \"validationType\": \"<string>\",\n    \"validationCustomRegex\": \"<string>\",\n    \"validationCustomRegexMessage\": \"<string>\",\n    \"dateFormat\": \"<string>\",\n    \"timeFormat\": \"<string>\",\n    \"imageInfo\": {\n      \"allowedFileExtensions\": \"<string>\",\n      \"title\": \"<string>\",\n      \"description\": \"<string>\"\n    },\n    \"attachmentInfo\": {\n      \"acceptedFileTypes\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"title\": \"<string>\",\n      \"description\": \"<string>\",\n      \"allowedFileTypes\": \"<string>\"\n    },\n    \"editableDateFieldSettings\": {\n      \"dateFormat\": \"<string>\",\n      \"minDate\": \"<dateTime>\",\n      \"maxDate\": \"<dateTime>\",\n      \"timeFormat\": \"<string>\"\n    },\n    \"hyperlinkText\": \"<string>\",\n    \"dataSyncTag\": \"<string>\",\n    \"dropdownOptions\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"textAlign\": \"<string>\",\n    \"textDirection\": \"<string>\",\n    \"characterSpacing\": \"<float>\",\n    \"idPrefix\": \"<string>\",\n    \"restrictIdPrefixChange\": false,\n    \"backgroundHexColor\": \"<string>\",\n    \"resizeOption\": \"<string>\",\n    \"isMasked\": false\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;odata.metadata=minimal;odata.streaming=true"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "062966e2-3ac2-4e91-8659-11f8c155a316",
+          "name": "Edit the custom field.",
+          "request": {
+            "name": "Edit the custom field.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "customField",
+                "edit"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "customFieldId",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json;odata.metadata=minimal;odata.streaming=true"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fieldName\": \"<string>\",\n  \"fieldDescription\": \"<string>\",\n  \"fieldOrder\": 1,\n  \"brandId\": \"<string>\",\n  \"sharedField\": \"<boolean>\",\n  \"formField\": {\n    \"fieldType\": \"<string>\",\n    \"width\": \"<float>\",\n    \"height\": \"<float>\",\n    \"isRequired\": \"<boolean>\",\n    \"isReadOnly\": \"<boolean>\",\n    \"value\": \"<string>\",\n    \"fontSize\": 13,\n    \"font\": \"<string>\",\n    \"fontHexColor\": \"<string>\",\n    \"isBoldFont\": \"<boolean>\",\n    \"isItalicFont\": \"<boolean>\",\n    \"isUnderLineFont\": \"<boolean>\",\n    \"lineHeight\": 15,\n    \"characterLimit\": 0,\n    \"placeHolder\": \"<string>\",\n    \"validationType\": \"<string>\",\n    \"validationCustomRegex\": \"<string>\",\n    \"validationCustomRegexMessage\": \"<string>\",\n    \"dateFormat\": \"<string>\",\n    \"timeFormat\": \"<string>\",\n    \"imageInfo\": {\n      \"allowedFileExtensions\": \"<string>\",\n      \"title\": \"<string>\",\n      \"description\": \"<string>\"\n    },\n    \"attachmentInfo\": {\n      \"acceptedFileTypes\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"title\": \"<string>\",\n      \"description\": \"<string>\",\n      \"allowedFileTypes\": \"<string>\"\n    },\n    \"editableDateFieldSettings\": {\n      \"dateFormat\": \"<string>\",\n      \"minDate\": \"<dateTime>\",\n      \"maxDate\": \"<dateTime>\",\n      \"timeFormat\": \"<string>\"\n    },\n    \"hyperlinkText\": \"<string>\",\n    \"dataSyncTag\": \"<string>\",\n    \"dropdownOptions\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"textAlign\": \"<string>\",\n    \"textDirection\": \"<string>\",\n    \"characterSpacing\": \"<float>\",\n    \"idPrefix\": \"<string>\",\n    \"restrictIdPrefixChange\": false,\n    \"backgroundHexColor\": \"<string>\",\n    \"resizeOption\": \"<string>\",\n    \"isMasked\": false\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ef885d46-b89e-4113-b2a7-85a1a7ffd786",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "customField",
+                    "edit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "customFieldId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json;odata.metadata=minimal;odata.streaming=true"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fieldName\": \"<string>\",\n  \"fieldDescription\": \"<string>\",\n  \"fieldOrder\": 1,\n  \"brandId\": \"<string>\",\n  \"sharedField\": \"<boolean>\",\n  \"formField\": {\n    \"fieldType\": \"<string>\",\n    \"width\": \"<float>\",\n    \"height\": \"<float>\",\n    \"isRequired\": \"<boolean>\",\n    \"isReadOnly\": \"<boolean>\",\n    \"value\": \"<string>\",\n    \"fontSize\": 13,\n    \"font\": \"<string>\",\n    \"fontHexColor\": \"<string>\",\n    \"isBoldFont\": \"<boolean>\",\n    \"isItalicFont\": \"<boolean>\",\n    \"isUnderLineFont\": \"<boolean>\",\n    \"lineHeight\": 15,\n    \"characterLimit\": 0,\n    \"placeHolder\": \"<string>\",\n    \"validationType\": \"<string>\",\n    \"validationCustomRegex\": \"<string>\",\n    \"validationCustomRegexMessage\": \"<string>\",\n    \"dateFormat\": \"<string>\",\n    \"timeFormat\": \"<string>\",\n    \"imageInfo\": {\n      \"allowedFileExtensions\": \"<string>\",\n      \"title\": \"<string>\",\n      \"description\": \"<string>\"\n    },\n    \"attachmentInfo\": {\n      \"acceptedFileTypes\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"title\": \"<string>\",\n      \"description\": \"<string>\",\n      \"allowedFileTypes\": \"<string>\"\n    },\n    \"editableDateFieldSettings\": {\n      \"dateFormat\": \"<string>\",\n      \"minDate\": \"<dateTime>\",\n      \"maxDate\": \"<dateTime>\",\n      \"timeFormat\": \"<string>\"\n    },\n    \"hyperlinkText\": \"<string>\",\n    \"dataSyncTag\": \"<string>\",\n    \"dropdownOptions\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"textAlign\": \"<string>\",\n    \"textDirection\": \"<string>\",\n    \"characterSpacing\": \"<float>\",\n    \"idPrefix\": \"<string>\",\n    \"restrictIdPrefixChange\": false,\n    \"backgroundHexColor\": \"<string>\",\n    \"resizeOption\": \"<string>\",\n    \"isMasked\": false\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;odata.metadata=minimal;odata.streaming=true"
+                }
+              ],
+              "body": "{\n  \"customFieldId\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "92c626da-7fb5-4af3-866e-eb45d4c1e4c0",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "customField",
+                    "edit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "customFieldId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json;odata.metadata=minimal;odata.streaming=true"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fieldName\": \"<string>\",\n  \"fieldDescription\": \"<string>\",\n  \"fieldOrder\": 1,\n  \"brandId\": \"<string>\",\n  \"sharedField\": \"<boolean>\",\n  \"formField\": {\n    \"fieldType\": \"<string>\",\n    \"width\": \"<float>\",\n    \"height\": \"<float>\",\n    \"isRequired\": \"<boolean>\",\n    \"isReadOnly\": \"<boolean>\",\n    \"value\": \"<string>\",\n    \"fontSize\": 13,\n    \"font\": \"<string>\",\n    \"fontHexColor\": \"<string>\",\n    \"isBoldFont\": \"<boolean>\",\n    \"isItalicFont\": \"<boolean>\",\n    \"isUnderLineFont\": \"<boolean>\",\n    \"lineHeight\": 15,\n    \"characterLimit\": 0,\n    \"placeHolder\": \"<string>\",\n    \"validationType\": \"<string>\",\n    \"validationCustomRegex\": \"<string>\",\n    \"validationCustomRegexMessage\": \"<string>\",\n    \"dateFormat\": \"<string>\",\n    \"timeFormat\": \"<string>\",\n    \"imageInfo\": {\n      \"allowedFileExtensions\": \"<string>\",\n      \"title\": \"<string>\",\n      \"description\": \"<string>\"\n    },\n    \"attachmentInfo\": {\n      \"acceptedFileTypes\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"title\": \"<string>\",\n      \"description\": \"<string>\",\n      \"allowedFileTypes\": \"<string>\"\n    },\n    \"editableDateFieldSettings\": {\n      \"dateFormat\": \"<string>\",\n      \"minDate\": \"<dateTime>\",\n      \"maxDate\": \"<dateTime>\",\n      \"timeFormat\": \"<string>\"\n    },\n    \"hyperlinkText\": \"<string>\",\n    \"dataSyncTag\": \"<string>\",\n    \"dropdownOptions\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"textAlign\": \"<string>\",\n    \"textDirection\": \"<string>\",\n    \"characterSpacing\": \"<float>\",\n    \"idPrefix\": \"<string>\",\n    \"restrictIdPrefixChange\": false,\n    \"backgroundHexColor\": \"<string>\",\n    \"resizeOption\": \"<string>\",\n    \"isMasked\": false\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;odata.metadata=minimal;odata.streaming=true"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ff133d6d-706f-4d56-8ab4-6201fee8a408",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "customField",
+                    "edit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "customFieldId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json;odata.metadata=minimal;odata.streaming=true"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fieldName\": \"<string>\",\n  \"fieldDescription\": \"<string>\",\n  \"fieldOrder\": 1,\n  \"brandId\": \"<string>\",\n  \"sharedField\": \"<boolean>\",\n  \"formField\": {\n    \"fieldType\": \"<string>\",\n    \"width\": \"<float>\",\n    \"height\": \"<float>\",\n    \"isRequired\": \"<boolean>\",\n    \"isReadOnly\": \"<boolean>\",\n    \"value\": \"<string>\",\n    \"fontSize\": 13,\n    \"font\": \"<string>\",\n    \"fontHexColor\": \"<string>\",\n    \"isBoldFont\": \"<boolean>\",\n    \"isItalicFont\": \"<boolean>\",\n    \"isUnderLineFont\": \"<boolean>\",\n    \"lineHeight\": 15,\n    \"characterLimit\": 0,\n    \"placeHolder\": \"<string>\",\n    \"validationType\": \"<string>\",\n    \"validationCustomRegex\": \"<string>\",\n    \"validationCustomRegexMessage\": \"<string>\",\n    \"dateFormat\": \"<string>\",\n    \"timeFormat\": \"<string>\",\n    \"imageInfo\": {\n      \"allowedFileExtensions\": \"<string>\",\n      \"title\": \"<string>\",\n      \"description\": \"<string>\"\n    },\n    \"attachmentInfo\": {\n      \"acceptedFileTypes\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"title\": \"<string>\",\n      \"description\": \"<string>\",\n      \"allowedFileTypes\": \"<string>\"\n    },\n    \"editableDateFieldSettings\": {\n      \"dateFormat\": \"<string>\",\n      \"minDate\": \"<dateTime>\",\n      \"maxDate\": \"<dateTime>\",\n      \"timeFormat\": \"<string>\"\n    },\n    \"hyperlinkText\": \"<string>\",\n    \"dataSyncTag\": \"<string>\",\n    \"dropdownOptions\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"textAlign\": \"<string>\",\n    \"textDirection\": \"<string>\",\n    \"characterSpacing\": \"<float>\",\n    \"idPrefix\": \"<string>\",\n    \"restrictIdPrefixChange\": false,\n    \"backgroundHexColor\": \"<string>\",\n    \"resizeOption\": \"<string>\",\n    \"isMasked\": false\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;odata.metadata=minimal;odata.streaming=true"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2870fc05-4477-4937-804d-44dc0b5eb311",
+              "name": "Unprocessable Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "customField",
+                    "edit"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "customFieldId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json;odata.metadata=minimal;odata.streaming=true"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fieldName\": \"<string>\",\n  \"fieldDescription\": \"<string>\",\n  \"fieldOrder\": 1,\n  \"brandId\": \"<string>\",\n  \"sharedField\": \"<boolean>\",\n  \"formField\": {\n    \"fieldType\": \"<string>\",\n    \"width\": \"<float>\",\n    \"height\": \"<float>\",\n    \"isRequired\": \"<boolean>\",\n    \"isReadOnly\": \"<boolean>\",\n    \"value\": \"<string>\",\n    \"fontSize\": 13,\n    \"font\": \"<string>\",\n    \"fontHexColor\": \"<string>\",\n    \"isBoldFont\": \"<boolean>\",\n    \"isItalicFont\": \"<boolean>\",\n    \"isUnderLineFont\": \"<boolean>\",\n    \"lineHeight\": 15,\n    \"characterLimit\": 0,\n    \"placeHolder\": \"<string>\",\n    \"validationType\": \"<string>\",\n    \"validationCustomRegex\": \"<string>\",\n    \"validationCustomRegexMessage\": \"<string>\",\n    \"dateFormat\": \"<string>\",\n    \"timeFormat\": \"<string>\",\n    \"imageInfo\": {\n      \"allowedFileExtensions\": \"<string>\",\n      \"title\": \"<string>\",\n      \"description\": \"<string>\"\n    },\n    \"attachmentInfo\": {\n      \"acceptedFileTypes\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"title\": \"<string>\",\n      \"description\": \"<string>\",\n      \"allowedFileTypes\": \"<string>\"\n    },\n    \"editableDateFieldSettings\": {\n      \"dateFormat\": \"<string>\",\n      \"minDate\": \"<dateTime>\",\n      \"maxDate\": \"<dateTime>\",\n      \"timeFormat\": \"<string>\"\n    },\n    \"hyperlinkText\": \"<string>\",\n    \"dataSyncTag\": \"<string>\",\n    \"dropdownOptions\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"textAlign\": \"<string>\",\n    \"textDirection\": \"<string>\",\n    \"characterSpacing\": \"<float>\",\n    \"idPrefix\": \"<string>\",\n    \"restrictIdPrefixChange\": false,\n    \"backgroundHexColor\": \"<string>\",\n    \"resizeOption\": \"<string>\",\n    \"isMasked\": false\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;odata.metadata=minimal;odata.streaming=true"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "07ce9626-3486-4aa2-a352-8d6b6205abc0",
+          "name": "Delete the custom field.",
+          "request": {
+            "name": "Delete the custom field.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "customField",
+                "delete"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "customFieldId",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json;odata.metadata=minimal;odata.streaming=true"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "acf728be-0637-4201-84c7-2068cebf4918",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "customField",
+                    "delete"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "customFieldId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json;odata.metadata=minimal;odata.streaming=true"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;odata.metadata=minimal;odata.streaming=true"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c94f5980-3256-4682-ab01-bfd15558a04f",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "customField",
+                    "delete"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "customFieldId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json;odata.metadata=minimal;odata.streaming=true"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;odata.metadata=minimal;odata.streaming=true"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "60ec5fdb-ea07-48a3-9aaf-cb6923d2b6a5",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "customField",
+                    "delete"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "customFieldId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json;odata.metadata=minimal;odata.streaming=true"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;odata.metadata=minimal;odata.streaming=true"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "481f41c8-614f-4e81-93c6-0ec6c4e98be1",
+              "name": "Unprocessable Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "customField",
+                    "delete"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "customFieldId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json;odata.metadata=minimal;odata.streaming=true"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;odata.metadata=minimal;odata.streaming=true"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ada49292-25c1-4d24-a577-363ec2e0c565",
+          "name": "List the custom fields respective to the brand id.",
+          "request": {
+            "name": "List the custom fields respective to the brand id.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "customField",
+                "list"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "brandId",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b9f2962f-2160-4625-b68f-ad604b6d49fe",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "customField",
+                    "list"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "brandId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"result\": [\n    {\n      \"customFieldId\": \"string\",\n      \"fieldName\": \"string\",\n      \"fieldDescription\": \"string\",\n      \"fieldOrder\": 5841,\n      \"brandId\": \"string\",\n      \"sharedField\": true,\n      \"formField\": {\n        \"fieldType\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"width\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"height\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"isRequired\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"isReadOnly\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"value\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"fontSize\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"font\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"fontHexColor\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"isBoldFont\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"isItalicFont\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"isUnderLineFont\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"lineHeight\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"characterLimit\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"placeHolder\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"validationType\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"validationCustomRegex\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"validationCustomRegexMessage\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"dateFormat\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"timeFormat\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"imageInfo\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"attachmentInfo\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"editableDateFieldSettings\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"hyperlinkText\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"dataSyncTag\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"dropdownOptions\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"textAlign\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"textDirection\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"characterSpacing\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"idPrefix\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"restrictIdPrefixChange\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"backgroundHexColor\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"resizeOption\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"isMasked\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      }\n    },\n    {\n      \"customFieldId\": \"string\",\n      \"fieldName\": \"string\",\n      \"fieldDescription\": \"string\",\n      \"fieldOrder\": 2900,\n      \"brandId\": \"string\",\n      \"sharedField\": false,\n      \"formField\": {\n        \"fieldType\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"width\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"height\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"isRequired\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"isReadOnly\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"value\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"fontSize\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"font\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"fontHexColor\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"isBoldFont\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"isItalicFont\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"isUnderLineFont\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"lineHeight\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"characterLimit\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"placeHolder\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"validationType\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"validationCustomRegex\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"validationCustomRegexMessage\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"dateFormat\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"timeFormat\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"imageInfo\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"attachmentInfo\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"editableDateFieldSettings\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"hyperlinkText\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"dataSyncTag\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"dropdownOptions\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"textAlign\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"textDirection\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"characterSpacing\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"idPrefix\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"restrictIdPrefixChange\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"backgroundHexColor\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"resizeOption\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"isMasked\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "80c92d6f-af0e-4167-aa0f-cea6972e4b45",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "customField",
+                    "list"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "brandId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b2752685-495b-4b8b-a9a5-96455b48ff3a",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "customField",
+                    "list"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "brandId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "07ba76ae-f3af-42db-9ba0-779179ee17c6",
+          "name": "Generates a URL for creating or modifying custom fields within your application's embedded Designer.",
+          "request": {
+            "name": "Generates a URL for creating or modifying custom fields within your application's embedded Designer.",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "customField",
+                "createEmbeddedCustomFieldUrl"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "BrandId",
+                  "value": "<string>",
+                  "description": "(Required) The Brand ID for custom fields must be configured"
+                },
+                {
+                  "disabled": false,
+                  "key": "LinkValidTill",
+                  "value": "<dateTime>",
+                  "description": "This property is used to set the validity of the generated URL. Its maximum validity is 30 days"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2cb8206e-1ee4-4155-a6cb-a7ea007db0e3",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "customField",
+                    "createEmbeddedCustomFieldUrl"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "BrandId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "LinkValidTill",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"createUrl\": \"http://lRStj.dzAuym1vPwy7FUQUyZia5SK5QUJ8L--1p6lw7JhXJZBRmgRO404NQg+OESPkBYnnhLPQ\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "63111f03-3a28-45ca-8c93-7ec5bde20d77",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "customField",
+                    "createEmbeddedCustomFieldUrl"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "BrandId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "LinkValidTill",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c46fc3b0-8187-4b6e-a57c-f9aa5d04b55b",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "customField",
+                    "createEmbeddedCustomFieldUrl"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "BrandId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "LinkValidTill",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.boldsign.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "04babe1f-7fba-48a1-931b-d36b4451e883",
+    "name": "BoldSign Branding Custom Field API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "BoldSign eSignature REST API for sending documents for electronic signature, managing reusable templates, tracking envelope status, embedding signing and requesting workflows into third-party applications. Supports API key and OAuth 2.0 authentication. Regional endpoints available for US, EU, CA, and AU.\n\nContact Support:\n Name: BoldSign Support\n Email: support@boldsign.com",
+      "type": "text/plain"
+    }
+  }
+}

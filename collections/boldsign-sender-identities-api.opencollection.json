@@ -1,0 +1,177 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "BoldSign Branding Sender Identities API",
+    "version": "1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Sender Identities",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Creates sender identity.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.boldsign.com/v1/senderIdentities/create",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates sender identity."
+        },
+        {
+          "info": {
+            "name": "Updates sender identity.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.boldsign.com/v1/senderIdentities/update",
+            "params": [
+              {
+                "name": "email",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates sender identity."
+        },
+        {
+          "info": {
+            "name": "Deletes sender identity.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.boldsign.com/v1/senderIdentities/delete",
+            "params": [
+              {
+                "name": "email",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Deletes sender identity."
+        },
+        {
+          "info": {
+            "name": "Resends sender identity invitation.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.boldsign.com/v1/senderIdentities/resendInvitation",
+            "params": [
+              {
+                "name": "email",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Resends sender identity invitation."
+        },
+        {
+          "info": {
+            "name": "Rerequests denied sender identity.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.boldsign.com/v1/senderIdentities/rerequest",
+            "params": [
+              {
+                "name": "email",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Rerequests denied sender identity."
+        },
+        {
+          "info": {
+            "name": "Lists sender identity.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.boldsign.com/v1/senderIdentities/list",
+            "params": [
+              {
+                "name": "PageSize",
+                "value": "",
+                "type": "query",
+                "description": "Page size specified in get sender identity list request."
+              },
+              {
+                "name": "Page",
+                "value": "",
+                "type": "query",
+                "description": "Page index specified in get sender identity request."
+              },
+              {
+                "name": "Search",
+                "value": "",
+                "type": "query",
+                "description": "Users can be listed by the search key present in the sender identity like sender identity name and email address"
+              },
+              {
+                "name": "BrandIds",
+                "value": "",
+                "type": "query",
+                "description": "A list of brand IDs to filter associated with the sender identity."
+              }
+            ]
+          },
+          "docs": "Lists sender identity."
+        },
+        {
+          "info": {
+            "name": "Gets sender identity by ID or email.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.boldsign.com/v1/senderIdentities/properties",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "email",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Gets sender identity by ID or email."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

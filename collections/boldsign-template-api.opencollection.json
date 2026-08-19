@@ -1,0 +1,392 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "BoldSign Branding Template API",
+    "version": "1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Template",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all the templates.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.boldsign.com/v1/template/list",
+            "params": [
+              {
+                "name": "TemplateType",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "PageSize",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "Page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "SearchKey",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "OnBehalfOf",
+                "value": "",
+                "type": "query",
+                "description": "The sender identity's email used to filter the templates returned in the API. The API will return templates that were sent on behalf of the specified email address."
+              },
+              {
+                "name": "CreatedBy",
+                "value": "",
+                "type": "query",
+                "description": "The templates can be listed by the creator of the template."
+              },
+              {
+                "name": "TemplateLabels",
+                "value": "",
+                "type": "query",
+                "description": "Labels of the template."
+              },
+              {
+                "name": "StartDate",
+                "value": "",
+                "type": "query",
+                "description": "Start date of the template"
+              },
+              {
+                "name": "EndDate",
+                "value": "",
+                "type": "query",
+                "description": "End date of the template"
+              },
+              {
+                "name": "BrandIds",
+                "value": "",
+                "type": "query",
+                "description": "BrandId(s) of the template."
+              },
+              {
+                "name": "SharedWithTeamId",
+                "value": "",
+                "type": "query",
+                "description": "The templates can be listed by the shared teams."
+              }
+            ]
+          },
+          "docs": "List all the templates."
+        },
+        {
+          "info": {
+            "name": "Creates a new template.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.boldsign.com/v1/template/create",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new template."
+        },
+        {
+          "info": {
+            "name": "Generates a create URL to embeds template create process into your application.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.boldsign.com/v1/template/createEmbeddedTemplateUrl",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Generates a create URL to embeds template create process into your application."
+        },
+        {
+          "info": {
+            "name": "Generates a edit URL to embeds template edit process into your application.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.boldsign.com/v1/template/getEmbeddedTemplateEditUrl",
+            "params": [
+              {
+                "name": "templateId",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Generates a edit URL to embeds template edit process into your application."
+        },
+        {
+          "info": {
+            "name": "Deletes a template.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.boldsign.com/v1/template/delete",
+            "params": [
+              {
+                "name": "templateId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "onBehalfOf",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Deletes a template."
+        },
+        {
+          "info": {
+            "name": "Send a document for signature using a Template.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.boldsign.com/v1/template/send",
+            "params": [
+              {
+                "name": "templateId",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Send a document for signature using a Template."
+        },
+        {
+          "info": {
+            "name": "Send the document by merging multiple templates.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.boldsign.com/v1/template/mergeAndSend",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Send the document by merging multiple templates."
+        },
+        {
+          "info": {
+            "name": "Generates a send URL using a template which embeds document sending process into your application.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.boldsign.com/v1/template/createEmbeddedRequestUrl",
+            "params": [
+              {
+                "name": "templateId",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Generates a send URL using a template which embeds document sending process into your application."
+        },
+        {
+          "info": {
+            "name": "Generates a merge request URL using a template that combines document merging and sending processes into your application.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.boldsign.com/v1/template/mergeCreateEmbeddedRequestUrl",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Generates a merge request URL using a template that combines document merging and sending processes into your application."
+        },
+        {
+          "info": {
+            "name": "Get summary of the template.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.boldsign.com/v1/template/properties",
+            "params": [
+              {
+                "name": "templateId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get summary of the template."
+        },
+        {
+          "info": {
+            "name": "Download the template.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.boldsign.com/v1/template/download",
+            "params": [
+              {
+                "name": "templateId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "onBehalfOf",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "includeFormFieldValues",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Download the template."
+        },
+        {
+          "info": {
+            "name": "Edit and updates an existing template.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.boldsign.com/v1/template/edit",
+            "params": [
+              {
+                "name": "templateId",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Edit and updates an existing template."
+        },
+        {
+          "info": {
+            "name": "Add the Tags in Templates.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.boldsign.com/v1/template/addTags",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add the Tags in Templates."
+        },
+        {
+          "info": {
+            "name": "Delete the Tags in Templates.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.boldsign.com/v1/template/deleteTags",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Delete the Tags in Templates."
+        },
+        {
+          "info": {
+            "name": "Share a template with teams and manage permissions.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.boldsign.com/v1/template/share",
+            "params": [
+              {
+                "name": "templateId",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Share a template with teams and manage permissions."
+        },
+        {
+          "info": {
+            "name": "Generates a preview URL for a template to view it.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.boldsign.com/v1/template/createEmbeddedPreviewUrl",
+            "params": [
+              {
+                "name": "templateId",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Generates a preview URL for a template to view it."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

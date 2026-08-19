@@ -1,0 +1,184 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "BoldSign Branding User API",
+    "version": "1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "User",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create the user.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.boldsign.com/v1/users/create",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create the user."
+        },
+        {
+          "info": {
+            "name": "Update new User role.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.boldsign.com/v1/users/update",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update new User role."
+        },
+        {
+          "info": {
+            "name": "Resend the users invitation.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.boldsign.com/v1/users/resendInvitation",
+            "params": [
+              {
+                "name": "UserId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Resend the users invitation."
+        },
+        {
+          "info": {
+            "name": "Cancel the users invitation.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.boldsign.com/v1/users/cancelInvitation",
+            "params": [
+              {
+                "name": "UserId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Cancel the users invitation."
+        },
+        {
+          "info": {
+            "name": "List user documents.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.boldsign.com/v1/users/list",
+            "params": [
+              {
+                "name": "PageSize",
+                "value": "",
+                "type": "query",
+                "description": "Page size specified in get user list request."
+              },
+              {
+                "name": "Page",
+                "value": "",
+                "type": "query",
+                "description": "Page index specified in get user list request."
+              },
+              {
+                "name": "Search",
+                "value": "",
+                "type": "query",
+                "description": "Users can be listed by the search  based on the user ID"
+              },
+              {
+                "name": "UserId",
+                "value": "",
+                "type": "query",
+                "description": "Users can be listed by the search based on the user IDs"
+              }
+            ]
+          },
+          "docs": "List user documents."
+        },
+        {
+          "info": {
+            "name": "Get summary of the user.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.boldsign.com/v1/users/get",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get summary of the user."
+        },
+        {
+          "info": {
+            "name": "Update new User meta data details.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.boldsign.com/v1/users/updateMetaData",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update new User meta data details."
+        },
+        {
+          "info": {
+            "name": "Change users to other team.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.boldsign.com/v1/users/changeTeam",
+            "params": [
+              {
+                "name": "userId",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Change users to other team."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

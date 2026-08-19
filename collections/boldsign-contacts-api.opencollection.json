@@ -1,0 +1,136 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "BoldSign Branding Contacts API",
+    "version": "1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Contacts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Contact document.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.boldsign.com/v1/contacts/list",
+            "params": [
+              {
+                "name": "PageSize",
+                "value": "",
+                "type": "query",
+                "description": "Page size specified in get user contact list request. Default value is 10."
+              },
+              {
+                "name": "Page",
+                "value": "",
+                "type": "query",
+                "description": "Page index specified in get user contact list request. Default value is 1."
+              },
+              {
+                "name": "SearchKey",
+                "value": "",
+                "type": "query",
+                "description": "Contacts can be listed by the search  based on the Name or Email"
+              },
+              {
+                "name": "ContactType",
+                "value": "",
+                "type": "query",
+                "description": "Contact type whether the contact is My Contacts or All Contacts. Default value is AllContacts."
+              }
+            ]
+          },
+          "docs": "List Contact document."
+        },
+        {
+          "info": {
+            "name": "Deletes a contact.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.boldsign.com/v1/contacts/delete",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Deletes a contact."
+        },
+        {
+          "info": {
+            "name": "Create the new Contact.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.boldsign.com/v1/contacts/create",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create the new Contact."
+        },
+        {
+          "info": {
+            "name": "Update the contact.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.boldsign.com/v1/contacts/update",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update the contact."
+        },
+        {
+          "info": {
+            "name": "Get summary of the contact.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.boldsign.com/v1/contacts/get",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get summary of the contact."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

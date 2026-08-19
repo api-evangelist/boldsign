@@ -1,0 +1,124 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "BoldSign Branding Custom Field API",
+    "version": "1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Custom Field",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create the custom field.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.boldsign.com/v1/customField/create",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create the custom field."
+        },
+        {
+          "info": {
+            "name": "Edit the custom field.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.boldsign.com/v1/customField/edit",
+            "params": [
+              {
+                "name": "customFieldId",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Edit the custom field."
+        },
+        {
+          "info": {
+            "name": "Delete the custom field.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.boldsign.com/v1/customField/delete",
+            "params": [
+              {
+                "name": "customFieldId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Delete the custom field."
+        },
+        {
+          "info": {
+            "name": "List the custom fields respective to the brand id.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.boldsign.com/v1/customField/list",
+            "params": [
+              {
+                "name": "brandId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List the custom fields respective to the brand id."
+        },
+        {
+          "info": {
+            "name": "Generates a URL for creating or modifying custom fields within your application's embedded Designer.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.boldsign.com/v1/customField/createEmbeddedCustomFieldUrl",
+            "params": [
+              {
+                "name": "BrandId",
+                "value": "",
+                "type": "query",
+                "description": "The Brand ID for custom fields must be configured"
+              },
+              {
+                "name": "LinkValidTill",
+                "value": "",
+                "type": "query",
+                "description": "This property is used to set the validity of the generated URL. Its maximum validity is 30 days"
+              }
+            ]
+          },
+          "docs": "Generates a URL for creating or modifying custom fields within your application's embedded Designer."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

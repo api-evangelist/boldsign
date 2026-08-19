@@ -1,0 +1,105 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "BoldSign Branding Teams API",
+    "version": "1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Teams",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Team details.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.boldsign.com/v1/teams/get",
+            "params": [
+              {
+                "name": "teamId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get Team details."
+        },
+        {
+          "info": {
+            "name": "List Teams.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.boldsign.com/v1/teams/list",
+            "params": [
+              {
+                "name": "Page",
+                "value": "",
+                "type": "query",
+                "description": "Page index specified in get team list request."
+              },
+              {
+                "name": "PageSize",
+                "value": "",
+                "type": "query",
+                "description": "Page size specified in get team list request."
+              },
+              {
+                "name": "SearchKey",
+                "value": "",
+                "type": "query",
+                "description": "Teams can be listed by the search key"
+              }
+            ]
+          },
+          "docs": "List Teams."
+        },
+        {
+          "info": {
+            "name": "Create Team.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.boldsign.com/v1/teams/create",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Team."
+        },
+        {
+          "info": {
+            "name": "Update Team.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.boldsign.com/v1/teams/update",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Team."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

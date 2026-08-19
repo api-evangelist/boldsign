@@ -1,0 +1,460 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "BoldSign Branding API",
+    "version": "1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Branding",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create the brand.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.boldsign.com/v1/brand/create",
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "BrandName",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "BrandLogo",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "BackgroundColor",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "ButtonColor",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "ButtonTextColor",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "EmailDisplayName",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "DisclaimerDescription",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "DisclaimerTitle",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "RedirectUrl",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "IsDefault",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "CanHideTagLine",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "CombineAuditTrail",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "CombineAttachments",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "ExcludeAuditTrailFromEmail",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "EmailSignedDocument",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "DocumentTimeZone",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "ShowBuiltInFormFields",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "AllowCustomFieldCreation",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "ShowSharedCustomFields",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "HideDecline",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "HideSave",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "DocumentExpirySettings.ExpiryDateType",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "DocumentExpirySettings.ExpiryValue",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "DocumentExpirySettings.EnableDefaultExpiryAlert",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "DocumentExpirySettings.EnableAutoReminder",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "DocumentExpirySettings.ReminderDays",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "DocumentExpirySettings.ReminderCount",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "CustomDomainSettings.DomainName",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "CustomDomainSettings.FromName",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "SignatureFrameSettings.EnableSignatureFrame",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "SignatureFrameSettings.ShowRecipientName",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "SignatureFrameSettings.ShowRecipientEmail",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "SignatureFrameSettings.ShowTimeStamp",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Create the brand."
+        },
+        {
+          "info": {
+            "name": "Edit the brand.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.boldsign.com/v1/brand/edit",
+            "params": [
+              {
+                "name": "brandId",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "BrandName",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "BrandLogo",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "BackgroundColor",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "ButtonColor",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "ButtonTextColor",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "EmailDisplayName",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "DisclaimerDescription",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "DisclaimerTitle",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "RedirectUrl",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "IsDefault",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "CanHideTagLine",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "CombineAuditTrail",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "CombineAttachments",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "ExcludeAuditTrailFromEmail",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "EmailSignedDocument",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "DocumentTimeZone",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "ShowBuiltInFormFields",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "AllowCustomFieldCreation",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "ShowSharedCustomFields",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "HideDecline",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "HideSave",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "DocumentExpirySettings.ExpiryDateType",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "DocumentExpirySettings.ExpiryValue",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "DocumentExpirySettings.EnableDefaultExpiryAlert",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "DocumentExpirySettings.EnableAutoReminder",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "DocumentExpirySettings.ReminderDays",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "DocumentExpirySettings.ReminderCount",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "CustomDomainSettings.DomainName",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "CustomDomainSettings.FromName",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "SignatureFrameSettings.EnableSignatureFrame",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "SignatureFrameSettings.ShowRecipientName",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "SignatureFrameSettings.ShowRecipientEmail",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "SignatureFrameSettings.ShowTimeStamp",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Edit the brand."
+        },
+        {
+          "info": {
+            "name": "Get the specific brand details.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.boldsign.com/v1/brand/get",
+            "params": [
+              {
+                "name": "brandId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get the specific brand details."
+        },
+        {
+          "info": {
+            "name": "Delete the brand.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.boldsign.com/v1/brand/delete",
+            "params": [
+              {
+                "name": "brandId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Delete the brand."
+        },
+        {
+          "info": {
+            "name": "Reset default brand.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.boldsign.com/v1/brand/resetdefault",
+            "params": [
+              {
+                "name": "brandId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Reset default brand."
+        },
+        {
+          "info": {
+            "name": "List all the brands.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.boldsign.com/v1/brand/list"
+          },
+          "docs": "List all the brands."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

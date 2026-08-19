@@ -1,0 +1,785 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "BoldSign Branding Document API",
+    "version": "1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Document",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Sends the document for sign.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.boldsign.com/v1/document/send",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Sends the document for sign."
+        },
+        {
+          "info": {
+            "name": "Extends the expiration date of the document.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.boldsign.com/v1/document/extendExpiry",
+            "params": [
+              {
+                "name": "documentId",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Extends the expiration date of the document."
+        },
+        {
+          "info": {
+            "name": "Generates a send URL which embeds document sending process into your application.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.boldsign.com/v1/document/createEmbeddedRequestUrl",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Generates a send URL which embeds document sending process into your application."
+        },
+        {
+          "info": {
+            "name": "Generates an embedded edit URL that allows the document editing process to be integrated into your application.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.boldsign.com/v1/document/createEmbeddedEditUrl",
+            "params": [
+              {
+                "name": "documentId",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Generates an embedded edit URL that allows the document editing process to be integrated into your application."
+        },
+        {
+          "info": {
+            "name": "List user documents.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.boldsign.com/v1/document/list",
+            "params": [
+              {
+                "name": "SentBy",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "Recipients",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "TransmitType",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "DateFilterType",
+                "value": "",
+                "type": "query",
+                "description": "Date Filter as SentBetween and ExpiresOn."
+              },
+              {
+                "name": "PageSize",
+                "value": "",
+                "type": "query",
+                "description": "Page size specified in get document list request."
+              },
+              {
+                "name": "Page",
+                "value": "",
+                "type": "query",
+                "description": "Page index specified in get document list request."
+              },
+              {
+                "name": "StartDate",
+                "value": "",
+                "type": "query",
+                "description": "Start date of the document"
+              },
+              {
+                "name": "Status",
+                "value": "",
+                "type": "query",
+                "description": "Status of the document such as In-progress, Completed, Decline, Expired, Revoked, Draft."
+              },
+              {
+                "name": "EndDate",
+                "value": "",
+                "type": "query",
+                "description": "End date of the document"
+              },
+              {
+                "name": "SearchKey",
+                "value": "",
+                "type": "query",
+                "description": "Documents can be listed by the search key present in the document like document title, document ID, sender or recipient(s) name, etc.,"
+              },
+              {
+                "name": "Labels",
+                "value": "",
+                "type": "query",
+                "description": "Labels of the document."
+              },
+              {
+                "name": "NextCursor",
+                "value": "",
+                "type": "query",
+                "description": "Next cursor value for pagination, required for fetching the next set of documents beyond 10,000 records."
+              },
+              {
+                "name": "BrandIds",
+                "value": "",
+                "type": "query",
+                "description": "BrandId(s) of the document."
+              }
+            ]
+          },
+          "docs": "List user documents."
+        },
+        {
+          "info": {
+            "name": "Get user Team documents.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.boldsign.com/v1/document/teamlist",
+            "params": [
+              {
+                "name": "UserId",
+                "value": "",
+                "type": "query",
+                "description": "UserId of the  Team document."
+              },
+              {
+                "name": "TeamId",
+                "value": "",
+                "type": "query",
+                "description": "TeamId  of the  Team document."
+              },
+              {
+                "name": "TransmitType",
+                "value": "",
+                "type": "query",
+                "description": "Transmit type as Sent, Received and Both."
+              },
+              {
+                "name": "DateFilterType",
+                "value": "",
+                "type": "query",
+                "description": "Date Filter as SentBetween and Expiring."
+              },
+              {
+                "name": "PageSize",
+                "value": "",
+                "type": "query",
+                "description": "Page size specified in get document list request."
+              },
+              {
+                "name": "Page",
+                "value": "",
+                "type": "query",
+                "description": "Page index specified in get document list request."
+              },
+              {
+                "name": "StartDate",
+                "value": "",
+                "type": "query",
+                "description": "Start date of the document"
+              },
+              {
+                "name": "Status",
+                "value": "",
+                "type": "query",
+                "description": "Status of the document such as In-progress, Completed, Decline, Expired, Revoked, Draft."
+              },
+              {
+                "name": "EndDate",
+                "value": "",
+                "type": "query",
+                "description": "End date of the document"
+              },
+              {
+                "name": "SearchKey",
+                "value": "",
+                "type": "query",
+                "description": "Documents can be listed by the search key present in the document like document title, document ID, sender or recipient(s) name, etc.,"
+              },
+              {
+                "name": "Labels",
+                "value": "",
+                "type": "query",
+                "description": "Labels of the document."
+              },
+              {
+                "name": "NextCursor",
+                "value": "",
+                "type": "query",
+                "description": "Next cursor value for pagination, required for fetching the next set of documents beyond 10,000 records."
+              },
+              {
+                "name": "BrandIds",
+                "value": "",
+                "type": "query",
+                "description": "BrandId(s) of the document."
+              }
+            ]
+          },
+          "docs": "Get user Team documents."
+        },
+        {
+          "info": {
+            "name": "Gets the behalf documents.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.boldsign.com/v1/document/behalfList",
+            "params": [
+              {
+                "name": "PageType",
+                "value": "",
+                "type": "query",
+                "description": "The filter used to differentiate between documents sent on the user's behalf and documents sent by the user on behalf of others. The API will return documents based on the specified value."
+              },
+              {
+                "name": "EmailAddress",
+                "value": "",
+                "type": "query",
+                "description": "The sender identity's email used to filter the documents returned in the API. The API will return documents that were sent on behalf of the specified email address."
+              },
+              {
+                "name": "Signers",
+                "value": "",
+                "type": "query",
+                "description": "A list of signer email addresses used to filter the documents returned in the API. The API will return documents where the signer's email address matches one of the email addresses provided in this list"
+              },
+              {
+                "name": "PageSize",
+                "value": "",
+                "type": "query",
+                "description": "Page size specified in get document list request."
+              },
+              {
+                "name": "Page",
+                "value": "",
+                "type": "query",
+                "description": "Page index specified in get document list request."
+              },
+              {
+                "name": "StartDate",
+                "value": "",
+                "type": "query",
+                "description": "Start date of the document"
+              },
+              {
+                "name": "Status",
+                "value": "",
+                "type": "query",
+                "description": "Status of the document such as In-progress, Completed, Decline, Expired, Revoked, Draft."
+              },
+              {
+                "name": "EndDate",
+                "value": "",
+                "type": "query",
+                "description": "End date of the document"
+              },
+              {
+                "name": "SearchKey",
+                "value": "",
+                "type": "query",
+                "description": "Documents can be listed by the search key present in the document like document title, document ID, sender or recipient(s) name, etc.,"
+              },
+              {
+                "name": "Labels",
+                "value": "",
+                "type": "query",
+                "description": "Labels of the document."
+              },
+              {
+                "name": "NextCursor",
+                "value": "",
+                "type": "query",
+                "description": "Next cursor value for pagination, required for fetching the next set of documents beyond 10,000 records."
+              },
+              {
+                "name": "BrandIds",
+                "value": "",
+                "type": "query",
+                "description": "BrandId(s) of the document."
+              }
+            ]
+          },
+          "docs": "Gets the behalf documents."
+        },
+        {
+          "info": {
+            "name": "Get summary of the document.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.boldsign.com/v1/document/properties",
+            "params": [
+              {
+                "name": "documentId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get summary of the document."
+        },
+        {
+          "info": {
+            "name": "Download the document.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.boldsign.com/v1/document/download",
+            "params": [
+              {
+                "name": "documentId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "onBehalfOf",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Download the document."
+        },
+        {
+          "info": {
+            "name": "Download the Attachment.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.boldsign.com/v1/document/downloadAttachment",
+            "params": [
+              {
+                "name": "documentId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "attachmentId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "onBehalfOf",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Download the Attachment."
+        },
+        {
+          "info": {
+            "name": "Download the audit trail document.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.boldsign.com/v1/document/downloadAuditLog",
+            "params": [
+              {
+                "name": "documentId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "onBehalfOf",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Download the audit trail document."
+        },
+        {
+          "info": {
+            "name": "Revoke the document.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.boldsign.com/v1/document/revoke",
+            "params": [
+              {
+                "name": "documentId",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Revoke the document."
+        },
+        {
+          "info": {
+            "name": "Delete the document.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.boldsign.com/v1/document/delete",
+            "params": [
+              {
+                "name": "documentId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "deletePermanently",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Delete the document."
+        },
+        {
+          "info": {
+            "name": "Send reminder to pending signers.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.boldsign.com/v1/document/remind",
+            "params": [
+              {
+                "name": "documentId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "receiverEmails",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Send reminder to pending signers."
+        },
+        {
+          "info": {
+            "name": "Changes the access code for the given document signer.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.boldsign.com/v1/document/changeAccessCode",
+            "params": [
+              {
+                "name": "DocumentId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "EmailId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "ZOrder",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Changes the access code for the given document signer."
+        },
+        {
+          "info": {
+            "name": "Change recipient details of a document.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.boldsign.com/v1/document/changeRecipient",
+            "params": [
+              {
+                "name": "documentId",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Change recipient details of a document."
+        },
+        {
+          "info": {
+            "name": "Get sign link for Embedded Sign.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.boldsign.com/v1/document/getEmbeddedSignLink",
+            "params": [
+              {
+                "name": "DocumentId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "SignerEmail",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "CountryCode",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "PhoneNumber",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "SignLinkValidTill",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "RedirectUrl",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get sign link for Embedded Sign."
+        },
+        {
+          "info": {
+            "name": "Add the Tags in Documents.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.boldsign.com/v1/document/addTags",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add the Tags in Documents."
+        },
+        {
+          "info": {
+            "name": "Delete the Tags in Documents.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.boldsign.com/v1/document/deleteTags",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Delete the Tags in Documents."
+        },
+        {
+          "info": {
+            "name": "Remove the access code for the given document signer.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.boldsign.com/v1/document/RemoveAuthentication",
+            "params": [
+              {
+                "name": "DocumentId",
+                "value": "",
+                "type": "query",
+                "description": "Document ID of the signature request"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Remove the access code for the given document signer."
+        },
+        {
+          "info": {
+            "name": "The add authentication to recipient.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.boldsign.com/v1/document/addAuthentication",
+            "params": [
+              {
+                "name": "documentId",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "The add authentication to recipient."
+        },
+        {
+          "info": {
+            "name": "Updates the value (prefill) of the fields in the document.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.boldsign.com/v1/document/prefillFields",
+            "params": [
+              {
+                "name": "documentId",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the value (prefill) of the fields in the document."
+        },
+        {
+          "info": {
+            "name": "Sends a draft-status document out for signature.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.boldsign.com/v1/document/draftSend",
+            "params": [
+              {
+                "name": "documentId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Sends a draft-status document out for signature."
+        },
+        {
+          "info": {
+            "name": "Edit and updates an existing document.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.boldsign.com/v1/document/edit",
+            "params": [
+              {
+                "name": "documentId",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Edit and updates an existing document."
+        },
+        {
+          "info": {
+            "name": "Cancels editing for a document that is currently in edit-mode.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.boldsign.com/v1/document/cancelEditing",
+            "params": [
+              {
+                "name": "documentId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "onBehalfOf",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Cancels editing for a document that is currently in edit-mode."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

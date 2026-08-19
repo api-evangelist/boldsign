@@ -1,0 +1,92 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "BoldSign Branding Identity Verification API",
+    "version": "1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Identity Verification",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve the ID verification report for the specified document signer.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.boldsign.com/v1/identityVerification/report",
+            "params": [
+              {
+                "name": "documentId",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieve the ID verification report for the specified document signer."
+        },
+        {
+          "info": {
+            "name": "Retrieve the uploaded ID verification document or selfie image for the specified document signer using the file ID.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.boldsign.com/v1/identityVerification/image",
+            "params": [
+              {
+                "name": "documentId",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieve the uploaded ID verification document or selfie image for the specified document signer using the file ID."
+        },
+        {
+          "info": {
+            "name": "Generate a URL that embeds manual ID verification for the specified document signer into your application.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.boldsign.com/v1/identityVerification/createEmbeddedVerificationUrl",
+            "params": [
+              {
+                "name": "documentId",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Generate a URL that embeds manual ID verification for the specified document signer into your application."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
