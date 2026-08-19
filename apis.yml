@@ -18,7 +18,7 @@ image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/boldsign.p
 url: https://raw.githubusercontent.com/api-evangelist/boldsign/refs/heads/main/apis.yml
 created: 2026-06-12
 modified: 2026-06-12
-specificationVersion: "0.19"
+specificationVersion: '0.23'
 description: >
   BoldSign is an e-signature platform built by Syncfusion that provides a REST API
   for sending documents for electronic signature, managing reusable templates, tracking
