@@ -31,6 +31,15 @@ description: >
 tags:
   - E-Signature
   - Electronic Signature
+  - Document-Management
+  - Embedded Signing
+  - Webhook
+  - Templates
+  - Identity Verification
+  - Compliance
+tags_raw:
+  - E-Signature
+  - Electronic Signature
   - Document Management
   - Embedded Signing
   - Webhooks
@@ -220,6 +229,8 @@ apis:
   humanURL: https://developers.boldsign.com/
   baseURL: https://api.boldsign.com
   tags:
+  - Team
+  tags_raw:
   - Teams
   properties:
   - type: OpenAPI
