@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: BoldSign Branding Document API
+  title: BoldSign Document API
   version: '1'
   description: BoldSign eSignature REST API for sending documents for electronic signature, managing reusable templates, tracking envelope status, embedding signing and requesting workflows into third-party applications. Supports API key and OAuth 2.0 authentication. Regional endpoints available for US, EU, CA, and AU.
   contact:
@@ -30,7 +30,7 @@ paths:
     post:
       tags:
       - Document
-      summary: Sends the document for sign.
+      summary: Sends the document for sign
       operationId: SendDocument
       requestBody:
         description: The send for sign request body.
@@ -79,7 +79,7 @@ paths:
     patch:
       tags:
       - Document
-      summary: Extends the expiration date of the document.
+      summary: Extends the expiration date of the document
       operationId: ExtendExpiry
       parameters:
       - name: documentId
@@ -467,7 +467,7 @@ paths:
     post:
       tags:
       - Document
-      summary: Generates a send URL which embeds document sending process into your application.
+      summary: Generates a send URL which embeds document sending process into your application
       operationId: CreateEmbeddedRequestUrlDocument
       requestBody:
         description: The embedded send document request body.
@@ -516,7 +516,7 @@ paths:
     post:
       tags:
       - Document
-      summary: Generates an embedded edit URL that allows the document editing process to be integrated into your application.
+      summary: Generates an embedded edit URL that allows the document editing process to be…
       operationId: createEmbeddedEditUrl
       parameters:
       - name: documentId
@@ -572,7 +572,7 @@ paths:
     get:
       tags:
       - Document
-      summary: List user documents.
+      summary: List user documents
       operationId: ListDocuments
       parameters:
       - name: SentBy
@@ -708,7 +708,7 @@ paths:
     get:
       tags:
       - Document
-      summary: Get user Team documents.
+      summary: Get user Team documents
       operationId: TeamDocuments
       parameters:
       - name: UserId
@@ -853,7 +853,7 @@ paths:
     get:
       tags:
       - Document
-      summary: Gets the behalf documents.
+      summary: Gets the behalf documents
       operationId: BehalfDocuments
       parameters:
       - name: PageType
@@ -988,7 +988,7 @@ paths:
     get:
       tags:
       - Document
-      summary: Get summary of the document.
+      summary: Get summary of the document
       operationId: GetDocumentProperties
       parameters:
       - name: documentId
@@ -1021,7 +1021,7 @@ paths:
     get:
       tags:
       - Document
-      summary: Download the document.
+      summary: Download the document
       operationId: DownloadDocument
       parameters:
       - name: documentId
@@ -1489,7 +1489,7 @@ paths:
     get:
       tags:
       - Document
-      summary: Download the Attachment.
+      summary: Download the Attachment
       operationId: DownloadAttachment
       parameters:
       - name: documentId
@@ -1963,7 +1963,7 @@ paths:
     get:
       tags:
       - Document
-      summary: Download the audit trail document.
+      summary: Download the audit trail document
       operationId: DownloadAuditLog
       parameters:
       - name: documentId
@@ -2431,7 +2431,7 @@ paths:
     post:
       tags:
       - Document
-      summary: Revoke the document.
+      summary: Revoke the document
       operationId: RevokeDocument
       parameters:
       - name: documentId
@@ -2586,7 +2586,7 @@ paths:
     delete:
       tags:
       - Document
-      summary: Delete the document.
+      summary: Delete the document
       operationId: DeleteDocument
       parameters:
       - name: documentId
@@ -2854,7 +2854,7 @@ paths:
     post:
       tags:
       - Document
-      summary: Send reminder to pending signers.
+      summary: Send reminder to pending signers
       operationId: RemindDocument
       parameters:
       - name: documentId
@@ -3250,7 +3250,7 @@ paths:
     patch:
       tags:
       - Document
-      summary: Changes the access code for the given document signer.
+      summary: Changes the access code for the given document signer
       operationId: ChangeAccessCode
       parameters:
       - name: DocumentId
@@ -3650,7 +3650,7 @@ paths:
     patch:
       tags:
       - Document
-      summary: Change recipient details of a document.
+      summary: Change recipient details of a document
       operationId: ChangeRecipient
       parameters:
       - name: documentId
@@ -4039,7 +4039,7 @@ paths:
     get:
       tags:
       - Document
-      summary: Get sign link for Embedded Sign.
+      summary: Get sign link for Embedded Sign
       operationId: GetEmbeddedSignLink
       parameters:
       - name: DocumentId
@@ -4449,7 +4449,7 @@ paths:
     patch:
       tags:
       - Document
-      summary: Add the Tags in Documents.
+      summary: Add the Tags in Documents
       operationId: AddDocumentTag
       requestBody:
         description: Contains DocumentId and LabelNames for Adding Tags.
@@ -4831,7 +4831,7 @@ paths:
     delete:
       tags:
       - Document
-      summary: Delete the Tags in Documents.
+      summary: Delete the Tags in Documents
       operationId: DeleteDocumentTag
       requestBody:
         description: Contains DocumentId and LabelNames for Adding Tags.
@@ -5213,7 +5213,7 @@ paths:
     patch:
       tags:
       - Document
-      summary: Remove the access code for the given document signer.
+      summary: Remove the access code for the given document signer
       operationId: RemoveAuthentication
       parameters:
       - name: DocumentId
@@ -5602,7 +5602,7 @@ paths:
     patch:
       tags:
       - Document
-      summary: The add authentication to recipient.
+      summary: The add authentication to recipient
       operationId: AddAuthentication
       parameters:
       - name: documentId
@@ -5756,7 +5756,7 @@ paths:
     patch:
       tags:
       - Document
-      summary: Updates the value (prefill) of the fields in the document.
+      summary: Updates the value (prefill) of the fields in the document
       operationId: PrefillFields
       parameters:
       - name: documentId
@@ -5911,7 +5911,7 @@ paths:
     post:
       tags:
       - Document
-      summary: Sends a draft-status document out for signature.
+      summary: Sends a draft-status document out for signature
       operationId: DraftSend
       parameters:
       - name: documentId
@@ -5939,7 +5939,7 @@ paths:
     put:
       tags:
       - Document
-      summary: Edit and updates an existing document.
+      summary: Edit and updates an existing document
       operationId: EditDocument
       parameters:
       - name: documentId
@@ -5995,7 +5995,7 @@ paths:
     post:
       tags:
       - Document
-      summary: Cancels editing for a document that is currently in edit-mode.
+      summary: Cancels editing for a document that is currently in edit-mode
       operationId: cancelEditing
       parameters:
       - name: documentId
@@ -6026,46 +6026,323 @@ paths:
                 $ref: '#/components/schemas/ErrorResult'
 components:
   schemas:
-    FormulaFieldSettings:
-      title: FormulaFieldSettings
+    EditDocumentRequest:
+      title: EditDocumentRequest
       type: object
       properties:
-        formulaExpression:
+        files:
+          title: IEnumerable`1
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/EditDocumentFile'
+        title:
           title: String
-          type: string
-          nullable: true
-        decimalPrecision:
-          title: Int32
-          type: integer
-          format: int32
-          default: 0
-      additionalProperties: false
-    TextTagOffset:
-      title: TextTagOffset
-      type: object
-      properties:
-        offsetX:
-          title: Double
-          type: number
-          format: double
-        offsetY:
-          title: Double
-          type: number
-          format: double
-      additionalProperties: false
-    AuthenticationSettings:
-      title: AuthenticationSettings
-      type: object
-      properties:
-        authenticationFrequency:
+          maxLength: 256
+          minLength: 0
+          type:
+          - string
+          - 'null'
+        message:
+          title: String
+          maxLength: 5000
+          minLength: 0
+          type:
+          - string
+          - 'null'
+        signers:
+          title: IEnumerable`1
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/EditDocumentSigner'
+        cc:
+          title: IEnumerable`1
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/DocumentCC'
+        enableSigningOrder:
+          title: Nullable`1
+          type:
+          - boolean
+          - 'null'
+        enableAuditTrailLocalization:
+          title: Nullable`1
+          type:
+          - boolean
+          - 'null'
+        expiryDateType:
           title: Nullable`1
           enum:
+          - Days
+          - Hours
+          - SpecificDateTime
+          type:
+          - string
+          - 'null'
+        expiryValue:
+          title: Nullable`1
+          type:
+          - integer
+          - 'null'
+          format: int64
+        reminderSettings:
+          $ref: '#/components/schemas/ReminderSettings'
+        disableEmails:
+          title: Nullable`1
+          type:
+          - boolean
+          - 'null'
+        disableSMS:
+          title: Nullable`1
+          type:
+          - boolean
+          - 'null'
+        brandId:
+          title: String
+          type:
+          - string
+          - 'null'
+        hideDocumentId:
+          title: Nullable`1
+          type:
+          - boolean
+          - 'null'
+        labels:
+          title: IEnumerable`1
+          type:
+          - array
+          - 'null'
+          items:
+            title: String
+            type: string
+        disableExpiryAlert:
+          title: Nullable`1
+          type:
+          - boolean
+          - 'null'
+        enablePrintAndSign:
+          title: Nullable`1
+          type:
+          - boolean
+          - 'null'
+        enableReassign:
+          title: Nullable`1
+          type:
+          - boolean
+          - 'null'
+        useTextTags:
+          title: Boolean
+          type: boolean
+        textTagDefinitions:
+          title: List`1
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/TextTagDefinition'
+        documentInfo:
+          title: IEnumerable`1
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/DocumentInfo'
+        onBehalfOf:
+          title: String
+          type:
+          - string
+          - 'null'
+        documentDownloadOption:
+          title: Nullable`1
+          enum:
+          - Combined
+          - Individually
+          type:
+          - string
+          - 'null'
+        metaData:
+          title: Dictionary`2
+          maxLength: 50
+          type:
+          - object
+          - 'null'
+          additionalProperties:
+            title: String
+            type:
+            - string
+            - 'null'
+        recipientNotificationSettings:
+          $ref: '#/components/schemas/RecipientNotificationSettings'
+        formGroups:
+          title: List`1
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/FormGroup'
+        downloadFileName:
+          title: String
+          maxLength: 250
+          minLength: 0
+          type:
+          - string
+          - 'null'
+        scheduledSendTime:
+          title: Nullable`1
+          type:
+          - integer
+          - 'null'
+          format: int64
+        allowedSignatureTypes:
+          title: List`1
+          type:
+          - array
+          - 'null'
+          items:
+            title: SignatureType
+            enum:
+            - Text
+            - Draw
+            - Image
+            type: string
+        groupSignerSettings:
+          $ref: '#/components/schemas/GroupSignerSettings'
+        enableAllowSignEverywhere:
+          title: Nullable`1
+          type:
+          - boolean
+          - 'null'
+        documentTimeZone:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    Font:
+      title: Font
+      type: object
+      properties:
+        name:
+          title: Nullable`1
+          enum:
+          - Helvetica
+          - Courier
+          - TimesRoman
+          - NotoSans
+          - Carlito
+          type:
+          - string
+          - 'null'
+        color:
+          title: String
+          type:
+          - string
+          - 'null'
+        size:
+          title: Nullable`1
+          type:
+          - number
+          - 'null'
+          format: float
+        style:
+          title: Nullable`1
+          enum:
+          - Regular
+          - Bold
+          - Italic
+          - Underline
+          type:
+          - string
+          - 'null'
+          deprecated: true
+        lineHeight:
+          title: Nullable`1
+          type:
+          - integer
+          - 'null'
+          format: int32
+        isBoldFont:
+          title: Boolean
+          type: boolean
+        isItalicFont:
+          title: Boolean
+          type: boolean
+        isUnderLineFont:
+          title: Boolean
+          type: boolean
+      additionalProperties: false
+    Validation:
+      title: Validation
+      required:
+      - type
+      type: object
+      properties:
+        type:
+          title: Nullable`1
+          enum:
+          - NumberOnly
+          - Email
+          - Currency
+          - Regex
           - None
-          - EveryAccess
-          - UntilSignCompleted
-          - OncePerDocument
           type: string
-          nullable: true
+        regex:
+          title: String
+          type:
+          - string
+          - 'null'
+        regexMessage:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    AccessCodeDetails:
+      title: AccessCodeDetails
+      required:
+      - accessCode
+      type: object
+      properties:
+        accessCode:
+          title: String
+          minLength: 1
+          type: string
+        phoneNumber:
+          $ref: '#/components/schemas/PhoneNumber'
+        onBehalfOf:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    DocumentSenderDetail:
+      title: DocumentSenderDetail
+      type: object
+      properties:
+        name:
+          title: String
+          type:
+          - string
+          - 'null'
+        privateMessage:
+          title: String
+          type:
+          - string
+          - 'null'
+        emailAddress:
+          title: String
+          type:
+          - string
+          - 'null'
+        isViewed:
+          title: Boolean
+          type: boolean
+          default: false
       additionalProperties: false
     DocumentCC:
       title: DocumentCC
@@ -6088,12 +6365,14 @@ components:
       properties:
         id:
           title: String
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         name:
           title: String
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         fieldType:
           title: FieldType
           enum:
@@ -6128,8 +6407,9 @@ components:
           type: boolean
         value:
           title: String
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         fontSize:
           title: Single
           minimum: 0
@@ -6146,8 +6426,9 @@ components:
           type: string
         fontHexColor:
           title: String
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         isBoldFont:
           title: Boolean
           type: boolean
@@ -6171,16 +6452,19 @@ components:
           format: int32
         groupName:
           title: String
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         label:
           title: String
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         placeHolder:
           title: String
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         validationType:
           title: ValidationType
           enum:
@@ -6192,20 +6476,24 @@ components:
           type: string
         validationCustomRegex:
           title: String
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         validationCustomRegexMessage:
           title: String
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         dateFormat:
           title: String
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         timeFormat:
           title: String
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         imageInfo:
           $ref: '#/components/schemas/ImageInfo'
         attachmentInfo:
@@ -6214,25 +6502,29 @@ components:
           $ref: '#/components/schemas/EditableDateFieldSettings'
         hyperlinkText:
           title: String
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         conditionalRules:
           title: IEnumerable`1
-          type: array
+          type:
+          - array
+          - 'null'
           items:
             $ref: '#/components/schemas/ConditionalRule'
-          nullable: true
         dataSyncTag:
           title: String
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         dropdownOptions:
           title: String[]
-          type: array
+          type:
+          - array
+          - 'null'
           items:
             title: String
             type: string
-          nullable: true
         textAlign:
           title: TextAlign
           enum:
@@ -6252,15 +6544,17 @@ components:
           format: float
         backgroundHexColor:
           title: String
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         tabIndex:
           title: Nullable`1
           maximum: 2147483647
           minimum: -1
-          type: integer
+          type:
+          - integer
+          - 'null'
           format: int32
-          nullable: true
         formulaFieldSettings:
           $ref: '#/components/schemas/FormulaFieldSettings'
         resizeOption:
@@ -6271,56 +6565,2044 @@ components:
           - GrowBoth
           - Fixed
           - AutoResizeFont
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         allowEditFormField:
           title: Nullable`1
-          type: boolean
-          nullable: true
+          type:
+          - boolean
+          - 'null'
         allowDeleteFormField:
           title: Nullable`1
-          type: boolean
-          nullable: true
+          type:
+          - boolean
+          - 'null'
         collaborationSettings:
           $ref: '#/components/schemas/CollaborationSettings'
         isMasked:
           title: Nullable`1
-          type: boolean
+          type:
+          - boolean
+          - 'null'
           default: false
-          nullable: true
         isDefaultValueRequired:
           title: Nullable`1
-          type: boolean
-          nullable: true
+          type:
+          - boolean
+          - 'null'
       additionalProperties: false
-    PageDetails:
-      title: PageDetails
+    FileInfo:
+      title: FileInfo
       type: object
       properties:
-        pageSize:
-          title: Int32
-          type: integer
-          format: int32
-        page:
-          title: Int32
-          type: integer
-          format: int32
-        totalRecordsCount:
-          title: Int32
-          type: integer
-          format: int32
-        totalPages:
-          title: Int32
-          type: integer
-          format: int32
-        sortedColumn:
+        fileName:
           title: String
-          type: string
-          nullable: true
-        sortDirection:
+          type:
+          - string
+          - 'null'
+        fileSize:
+          title: Int32
+          type: integer
+          format: int32
+        contentType:
           title: String
+          type:
+          - string
+          - 'null'
+        extension:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    GroupSignerSettings:
+      title: GroupSignerSettings
+      type: object
+      properties:
+        enabled:
+          title: Boolean
+          type: boolean
+        allowedDirectories:
+          title: List`1
+          type:
+          - array
+          - 'null'
+          items:
+            title: String
+            type: string
+      additionalProperties: false
+    BehalfOf:
+      title: BehalfOf
+      type: object
+      properties:
+        name:
+          title: String
+          type:
+          - string
+          - 'null'
+        emailAddress:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    AuthenticationSettings:
+      title: AuthenticationSettings
+      type: object
+      properties:
+        authenticationFrequency:
+          title: Nullable`1
+          enum:
+          - None
+          - EveryAccess
+          - UntilSignCompleted
+          - OncePerDocument
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    SendForSign:
+      title: SendForSign
+      type: object
+      properties:
+        files:
+          title: List`1
+          type:
+          - array
+          - 'null'
+          items:
+            title: IFormFile
+            type: string
+            format: binary
+        title:
+          title: String
+          maxLength: 256
+          minLength: 0
+          type:
+          - string
+          - 'null'
+        message:
+          title: String
+          maxLength: 5000
+          minLength: 0
+          type:
+          - string
+          - 'null'
+        signers:
+          title: IEnumerable`1
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/DocumentSigner'
+        cc:
+          title: IEnumerable`1
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/DocumentCC'
+        enableSigningOrder:
+          title: Boolean
+          type: boolean
+          default: false
+        expiryDays:
+          title: Int32
+          type: integer
+          format: int32
+          deprecated: true
+        expiryDateType:
+          title: Nullable`1
+          enum:
+          - Days
+          - Hours
+          - SpecificDateTime
+          type:
+          - string
+          - 'null'
+        expiryValue:
+          title: Int64
+          type: integer
+          format: int64
+          default: 60
+        reminderSettings:
+          $ref: '#/components/schemas/ReminderSettings'
+        enableEmbeddedSigning:
+          title: Boolean
+          type: boolean
+          default: false
+          deprecated: true
+        disableEmails:
+          title: Boolean
+          type: boolean
+          default: false
+        disableSMS:
+          title: Boolean
+          type: boolean
+          default: false
+        brandId:
+          title: String
+          type:
+          - string
+          - 'null'
+        hideDocumentId:
+          title: Nullable`1
+          type:
+          - boolean
+          - 'null'
+          default: false
+        labels:
+          title: IEnumerable`1
+          type:
+          - array
+          - 'null'
+          items:
+            title: String
+            type: string
+        fileUrls:
+          title: Uri[]
+          type:
+          - array
+          - 'null'
+          items:
+            title: Uri
+            type: string
+            format: uri
+        sendLinkValidTill:
+          title: Nullable`1
+          type:
+          - string
+          - 'null'
+          format: date-time
+        useTextTags:
+          title: Boolean
+          type: boolean
+          default: false
+        textTagDefinitions:
+          title: List`1
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/TextTagDefinition'
+        enablePrintAndSign:
+          title: Boolean
+          type: boolean
+          default: false
+        enableReassign:
+          title: Boolean
+          type: boolean
+          default: true
+        disableExpiryAlert:
+          title: Nullable`1
+          type:
+          - boolean
+          - 'null'
+        documentInfo:
+          title: IEnumerable`1
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/DocumentInfo'
+        onBehalfOf:
+          title: String
+          type:
+          - string
+          - 'null'
+        AutoDetectFields:
+          title: Boolean
+          type: boolean
+          default: false
+        documentDownloadOption:
+          title: Nullable`1
+          enum:
+          - Combined
+          - Individually
+          type:
+          - string
+          - 'null'
+        isSandbox:
+          title: Nullable`1
+          type:
+          - boolean
+          - 'null'
+        metaData:
+          title: Dictionary`2
+          maxLength: 50
+          type:
+          - object
+          - 'null'
+          additionalProperties:
+            title: String
+            type:
+            - string
+            - 'null'
+        formGroups:
+          title: List`1
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/FormGroup'
+        recipientNotificationSettings:
+          $ref: '#/components/schemas/RecipientNotificationSettings'
+        enableAuditTrailLocalization:
+          title: Nullable`1
+          type:
+          - boolean
+          - 'null'
+        downloadFileName:
+          title: String
+          maxLength: 250
+          minLength: 0
+          type:
+          - string
+          - 'null'
+        scheduledSendTime:
+          title: Nullable`1
+          type:
+          - integer
+          - 'null'
+          format: int64
+        allowScheduledSend:
+          title: Boolean
+          type: boolean
+          default: false
+        allowedSignatureTypes:
+          title: List`1
+          type:
+          - array
+          - 'null'
+          items:
+            title: SignatureType
+            enum:
+            - Text
+            - Draw
+            - Image
+            type: string
+        groupSignerSettings:
+          $ref: '#/components/schemas/GroupSignerSettings'
+        enableAllowSignEverywhere:
+          title: Nullable`1
+          type:
+          - boolean
+          - 'null'
+        documentTimeZone:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    DocumentSigner:
+      title: DocumentSigner
+      type: object
+      properties:
+        id:
+          title: String
+          type:
+          - string
+          - 'null'
+        name:
+          title: String
+          type:
+          - string
+          - 'null'
+        emailAddress:
+          title: String
+          type:
+          - string
+          - 'null'
+        privateMessage:
+          title: String
+          maxLength: 5000
+          type:
+          - string
+          - 'null'
+        authenticationType:
+          title: AuthenticationType
+          enum:
+          - None
+          - EmailOTP
+          - AccessCode
+          - SMSOTP
+          - IdVerification
           type: string
-          nullable: true
+        phoneNumber:
+          $ref: '#/components/schemas/PhoneNumber'
+        deliveryMode:
+          title: DeliveryMode
+          enum:
+          - Email
+          - SMS
+          - EmailAndSMS
+          - WhatsApp
+          type: string
+        authenticationCode:
+          title: String
+          maxLength: 50
+          type:
+          - string
+          - 'null'
+        identityVerificationSettings:
+          $ref: '#/components/schemas/IdentityVerificationSettings'
+        signerOrder:
+          title: Int32
+          type: integer
+          format: int32
+        enableEmailOTP:
+          title: Boolean
+          type: boolean
+        signerType:
+          title: SignerType
+          enum:
+          - Signer
+          - Reviewer
+          - InPersonSigner
+          type: string
+        hostEmail:
+          title: String
+          type:
+          - string
+          - 'null'
+        signerRole:
+          title: String
+          type:
+          - string
+          - 'null'
+        allowFieldConfiguration:
+          title: Boolean
+          type: boolean
+        formFields:
+          title: IEnumerable`1
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/FormField'
+        language:
+          title: Languages
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          - 6
+          - 7
+          - 8
+          - 9
+          - 10
+          - 11
+          - 12
+          - 13
+          - 14
+          - 15
+          - 16
+          - 17
+          - 18
+          - 19
+          - 20
+          type: integer
+          description: <p>Description:</p><ul><li><i>0</i> - None</li><li><i>1</i> - English</li><li><i>2</i> - Spanish</li><li><i>3</i> - German</li><li><i>4</i> - French</li><li><i>5</i> - Romanian</li><li><i>6</i> - Norwegian</li><li><i>7</i> - Bulgarian</li><li><i>8</i> - Italian</li><li><i>9</i> - Danish</li><li><i>10</i> - Polish</li><li><i>11</i> - Portuguese</li><li><i>12</i> - Czech</li><li><i>13</i> - Dutch</li><li><i>14</i> - Swedish</li><li><i>15</i> - Russian</li><li><i>16</i> - Japanese</li><li><i>17</i> - Thai</li><li><i>18</i> - SimplifiedChinese</li><li><i>19</i> - TraditionalChinese</li><li><i>20</i> - Korean</li></ul>
+          format: int32
+        locale:
+          title: Locales
+          enum:
+          - EN
+          - 'NO'
+          - FR
+          - DE
+          - ES
+          - BG
+          - CS
+          - DA
+          - IT
+          - NL
+          - PL
+          - PT
+          - RO
+          - RU
+          - SV
+          - Default
+          - JA
+          - TH
+          - ZH_CN
+          - ZH_TW
+          - KO
+          type: string
+        signType:
+          title: SignType
+          enum:
+          - Single
+          - Group
+          type: string
+        groupId:
+          title: String
+          type:
+          - string
+          - 'null'
+        recipientNotificationSettings:
+          $ref: '#/components/schemas/RecipientNotificationSettings'
+        authenticationRetryCount:
+          title: Nullable`1
+          maximum: 10
+          minimum: 1
+          type:
+          - integer
+          - 'null'
+          format: int32
+        enableQes:
+          title: Nullable`1
+          type:
+          - boolean
+          - 'null'
+        authenticationSettings:
+          $ref: '#/components/schemas/AuthenticationSettings'
+      additionalProperties: false
+    RecipientChangeLog:
+      title: RecipientChangeLog
+      type: object
+      properties:
+        added:
+          title: IEnumerable`1
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Added'
+        removed:
+          title: IEnumerable`1
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Removed'
+      additionalProperties: false
+    ConditionalRule:
+      title: ConditionalRule
+      type: object
+      properties:
+        fieldId:
+          title: String
+          type:
+          - string
+          - 'null'
+        isChecked:
+          title: Boolean
+          type: boolean
+        value:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    DocumentTags:
+      title: DocumentTags
+      required:
+      - documentId
+      - tags
+      type: object
+      properties:
+        documentId:
+          title: String
+          minLength: 1
+          type: string
+        tags:
+          title: List`1
+          type: array
+          items:
+            title: String
+            type: string
+      additionalProperties: false
+    BehalfDocument:
+      title: BehalfDocument
+      type: object
+      properties:
+        behalfOf:
+          $ref: '#/components/schemas/BehalfOf'
+        documentId:
+          title: String
+          type:
+          - string
+          - 'null'
+        senderDetail:
+          $ref: '#/components/schemas/DocumentSenderDetail'
+        ccDetails:
+          title: DocumentCcDetails[]
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/DocumentCcDetails'
+        createdDate:
+          title: Int64
+          type: integer
+          format: int64
+        activityDate:
+          title: Int64
+          type: integer
+          format: int64
+        activityBy:
+          title: String
+          type:
+          - string
+          - 'null'
+        messageTitle:
+          title: String
+          type:
+          - string
+          - 'null'
+        status:
+          title: DocumentStatus
+          enum:
+          - InProgress
+          - Completed
+          - Declined
+          - Expired
+          - Revoked
+          - Draft
+          - Scheduled
+          type: string
+        signerDetails:
+          title: DocumentSignerDetails[]
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/DocumentSignerDetails'
+        expiryDate:
+          title: Int64
+          type: integer
+          format: int64
+        enableSigningOrder:
+          title: Boolean
+          type: boolean
+        isDeleted:
+          title: Boolean
+          type: boolean
+        labels:
+          title: List`1
+          type:
+          - array
+          - 'null'
+          items:
+            title: String
+            type: string
+        cursor:
+          title: Int64
+          type: integer
+          format: int64
+        brandId:
+          title: String
+          type:
+          - string
+          - 'null'
+        scheduledSendTime:
+          title: Nullable`1
+          type:
+          - integer
+          - 'null'
+          format: int64
+        inEditingMode:
+          title: Boolean
+          type: boolean
+        displayStatus:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    DocumentFormFields:
+      title: DocumentFormFields
+      type: object
+      properties:
+        id:
+          title: String
+          type:
+          - string
+          - 'null'
+        formFieldId:
+          title: String
+          type:
+          - string
+          - 'null'
+        type:
+          title: String
+          type:
+          - string
+          - 'null'
+        value:
+          title: String
+          type:
+          - string
+          - 'null'
+        font:
+          title: String
+          type:
+          - string
+          - 'null'
+        isRequired:
+          title: Boolean
+          type: boolean
+        isReadOnly:
+          title: Boolean
+          type: boolean
+        lineHeight:
+          title: Single
+          type: number
+          format: float
+        fontSize:
+          title: Single
+          type: number
+          format: float
+        fontColor:
+          title: String
+          type:
+          - string
+          - 'null'
+        isUnderline:
+          title: Boolean
+          type: boolean
+        isItalic:
+          title: Boolean
+          type: boolean
+        isBold:
+          title: Boolean
+          type: boolean
+        groupName:
+          title: String
+          type:
+          - string
+          - 'null'
+        label:
+          title: String
+          type:
+          - string
+          - 'null'
+        placeholder:
+          title: String
+          type:
+          - string
+          - 'null'
+        validationtype:
+          title: ValidationType
+          enum:
+          - None
+          - NumbersOnly
+          - EmailAddress
+          - Currency
+          - CustomRegex
+          type: string
+        validationCustomRegex:
+          title: String
+          type:
+          - string
+          - 'null'
+        validationCustomRegexMessage:
+          title: String
+          type:
+          - string
+          - 'null'
+        dateFormat:
+          title: String
+          type:
+          - string
+          - 'null'
+        timeFormat:
+          title: String
+          type:
+          - string
+          - 'null'
+        imageInfo:
+          $ref: '#/components/schemas/ImageInfo'
+        attachmentInfo:
+          $ref: '#/components/schemas/AttachmentInfo'
+        fileInfo:
+          $ref: '#/components/schemas/FileInfo'
+        editableDateFieldSettings:
+          $ref: '#/components/schemas/EditableDateFieldSettings'
+        hyperlinkText:
+          title: String
+          type:
+          - string
+          - 'null'
+        conditionalRules:
+          title: IEnumerable`1
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ConditionalRule'
+        bounds:
+          $ref: '#/components/schemas/Rectangle'
+        pageNumber:
+          title: Int32
+          type: integer
+          format: int32
+        dataSyncTag:
+          title: String
+          type:
+          - string
+          - 'null'
+        dropdownOptions:
+          title: String[]
+          type:
+          - array
+          - 'null'
+          items:
+            title: String
+            type: string
+        textAlign:
+          title: TextAlign
+          enum:
+          - Left
+          - Center
+          - Right
+          type: string
+        textDirection:
+          title: TextDirection
+          enum:
+          - LTR
+          - RTL
+          type: string
+        characterSpacing:
+          title: Single
+          type: number
+          format: float
+        backgroundHexColor:
+          title: String
+          type:
+          - string
+          - 'null'
+        tabIndex:
+          title: Int32
+          type: integer
+          format: int32
+        formulaFieldSettings:
+          $ref: '#/components/schemas/FormulaFieldSettings'
+        resizeOption:
+          title: Nullable`1
+          enum:
+          - GrowVertically
+          - GrowHorizontally
+          - GrowBoth
+          - Fixed
+          - AutoResizeFont
+          type:
+          - string
+          - 'null'
+        allowEditFormField:
+          title: Boolean
+          type: boolean
+        allowDeleteFormField:
+          title: Boolean
+          type: boolean
+        collaborationSettings:
+          $ref: '#/components/schemas/CollaborationSettings'
+        hidden:
+          title: Boolean
+          type: boolean
+        isMasked:
+          title: Boolean
+          type: boolean
+          default: false
+      additionalProperties: false
+    FormulaFieldSettings:
+      title: FormulaFieldSettings
+      type: object
+      properties:
+        formulaExpression:
+          title: String
+          type:
+          - string
+          - 'null'
+        decimalPrecision:
+          title: Int32
+          type: integer
+          format: int32
+          default: 0
+      additionalProperties: false
+    TextTagDefinition:
+      title: TextTagDefinition
+      required:
+      - definitionId
+      - signerIndex
+      - type
+      type: object
+      properties:
+        definitionId:
+          title: String
+          minLength: 1
+          type: string
+        type:
+          title: Nullable`1
+          enum:
+          - Signature
+          - Initial
+          - CheckBox
+          - TextBox
+          - Label
+          - DateSigned
+          - RadioButton
+          - Image
+          - Attachment
+          - EditableDate
+          - Hyperlink
+          - Dropdown
+          - Title
+          - Company
+          - Formula
+          - Drawing
+          type: string
+        signerIndex:
+          title: Int32
+          maximum: 50
+          minimum: 1
+          type: integer
+          format: int32
+        isRequired:
+          title: Boolean
+          type: boolean
+        placeholder:
+          title: String
+          type:
+          - string
+          - 'null'
+        fieldId:
+          title: String
+          type:
+          - string
+          - 'null'
+        font:
+          $ref: '#/components/schemas/Font'
+        validation:
+          $ref: '#/components/schemas/Validation'
+        size:
+          $ref: '#/components/schemas/Size'
+        dateFormat:
+          title: String
+          type:
+          - string
+          - 'null'
+        timeFormat:
+          title: String
+          type:
+          - string
+          - 'null'
+        radioGroupName:
+          title: String
+          type:
+          - string
+          - 'null'
+        groupName:
+          title: String
+          type:
+          - string
+          - 'null'
+        value:
+          title: String
+          type:
+          - string
+          - 'null'
+        dropdownOptions:
+          title: String[]
+          type:
+          - array
+          - 'null'
+          items:
+            title: String
+            type: string
+        imageInfo:
+          $ref: '#/components/schemas/ImageInfo'
+        hyperlinkText:
+          title: String
+          type:
+          - string
+          - 'null'
+        attachmentInfo:
+          $ref: '#/components/schemas/AttachmentInfo'
+        backgroundHexColor:
+          title: String
+          type:
+          - string
+          - 'null'
+        isReadOnly:
+          title: Boolean
+          type: boolean
+        offset:
+          $ref: '#/components/schemas/TextTagOffset'
+        label:
+          title: String
+          type:
+          - string
+          - 'null'
+        tabIndex:
+          title: Nullable`1
+          maximum: 2147483647
+          minimum: -1
+          type:
+          - integer
+          - 'null'
+          format: int32
+        dataSyncTag:
+          title: String
+          type:
+          - string
+          - 'null'
+        textAlign:
+          title: TextAlign
+          enum:
+          - Left
+          - Center
+          - Right
+          type: string
+        textDirection:
+          title: TextDirection
+          enum:
+          - LTR
+          - RTL
+          type: string
+        characterSpacing:
+          title: Single
+          type: number
+          format: float
+        characterLimit:
+          title: Int32
+          maximum: 2147483647
+          minimum: 0
+          type: integer
+          format: int32
+        formulaFieldSettings:
+          $ref: '#/components/schemas/FormulaFieldSettings'
+        resizeOption:
+          title: Nullable`1
+          enum:
+          - GrowVertically
+          - GrowHorizontally
+          - GrowBoth
+          - Fixed
+          - AutoResizeFont
+          type:
+          - string
+          - 'null'
+        collaborationSettings:
+          $ref: '#/components/schemas/CollaborationSettings'
+        isMasked:
+          title: Nullable`1
+          type:
+          - boolean
+          - 'null'
+          default: false
+        conditionalRules:
+          title: IEnumerable`1
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ConditionalRule'
+      additionalProperties: false
+    AttachmentInfo:
+      title: AttachmentInfo
+      required:
+      - acceptedFileTypes
+      - title
+      type: object
+      properties:
+        title:
+          title: String
+          type:
+          - string
+          - 'null'
+        description:
+          title: String
+          type:
+          - string
+          - 'null'
+        allowedFileTypes:
+          title: String
+          type:
+          - string
+          - 'null'
+          deprecated: true
+        acceptedFileTypes:
+          title: String[]
+          type:
+          - array
+          - 'null'
+          items:
+            title: String
+            type: string
+      additionalProperties: false
+    IdVerificationDetails:
+      title: IdVerificationDetails
+      type: object
+      properties:
+        type:
+          title: String
+          type:
+          - string
+          - 'null'
+        maximumRetryCount:
+          title: Nullable`1
+          type:
+          - integer
+          - 'null'
+          format: int32
+        status:
+          title: String
+          type:
+          - string
+          - 'null'
+        nameMatcher:
+          title: String
+          type:
+          - string
+          - 'null'
+        requireLiveCapture:
+          title: Nullable`1
+          type:
+          - boolean
+          - 'null'
+        requireMatchingSelfie:
+          title: Nullable`1
+          type:
+          - boolean
+          - 'null'
+        holdForPrefill:
+          title: Nullable`1
+          type:
+          - boolean
+          - 'null'
+        prefillCompleted:
+          title: Nullable`1
+          type:
+          - boolean
+          - 'null'
+        allowedDocumentTypes:
+          title: List`1
+          type:
+          - array
+          - 'null'
+          items:
+            title: String
+            type: string
+        allowedCountries:
+          title: List`1
+          type:
+          - array
+          - 'null'
+          items:
+            title: String
+            type: string
+      additionalProperties: false
+    ImageInfo:
+      title: ImageInfo
+      required:
+      - allowedFileExtensions
+      - title
+      type: object
+      properties:
+        title:
+          title: String
+          type:
+          - string
+          - 'null'
+        description:
+          title: String
+          type:
+          - string
+          - 'null'
+        allowedFileExtensions:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    EditDocumentFile:
+      title: EditDocumentFile
+      required:
+      - editAction
+      type: object
+      properties:
+        editAction:
+          title: Nullable`1
+          enum:
+          - Add
+          - Update
+          - Remove
+          type: string
+        file:
+          title: IFormFile
+          type:
+          - string
+          - 'null'
+          format: binary
+        fileUrl:
+          title: Uri
+          type:
+          - string
+          - 'null'
+          format: uri
+        id:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    ErrorResult:
+      title: ErrorResult
+      type: object
+      properties:
+        error:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    TeamDocumentRecords:
+      title: TeamDocumentRecords
+      type: object
+      properties:
+        pageDetails:
+          $ref: '#/components/schemas/PageDetails'
+        result:
+          title: List`1
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Document'
+      additionalProperties: false
+    Added:
+      title: Added
+      type: object
+      properties:
+        signerName:
+          title: String
+          type:
+          - string
+          - 'null'
+        signerEmail:
+          title: String
+          type:
+          - string
+          - 'null'
+        signerPhoneNumber:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    RevokeDocument:
+      title: RevokeDocument
+      required:
+      - message
+      type: object
+      properties:
+        message:
+          title: String
+          minLength: 1
+          type: string
+        onBehalfOf:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    ReminderSettings:
+      title: ReminderSettings
+      type: object
+      properties:
+        enableAutoReminder:
+          title: Boolean
+          type: boolean
+          default: false
+        reminderDays:
+          title: Int32
+          type: integer
+          format: int32
+          default: 3
+        reminderCount:
+          title: Int32
+          type: integer
+          format: int32
+          default: 3
+      additionalProperties: false
+    EditableDateFieldSettings:
+      title: EditableDateFieldSettings
+      required:
+      - dateFormat
+      type: object
+      properties:
+        dateFormat:
+          title: String
+          type:
+          - string
+          - 'null'
+        minDate:
+          title: Nullable`1
+          type:
+          - string
+          - 'null'
+          format: date-time
+        maxDate:
+          title: Nullable`1
+          type:
+          - string
+          - 'null'
+          format: date-time
+        timeFormat:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    Document:
+      title: Document
+      type: object
+      properties:
+        documentId:
+          title: String
+          type:
+          - string
+          - 'null'
+        senderDetail:
+          $ref: '#/components/schemas/DocumentSenderDetail'
+        ccDetails:
+          title: DocumentCcDetails[]
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/DocumentCcDetails'
+        createdDate:
+          title: Int64
+          type: integer
+          format: int64
+        activityDate:
+          title: Int64
+          type: integer
+          format: int64
+        activityBy:
+          title: String
+          type:
+          - string
+          - 'null'
+        messageTitle:
+          title: String
+          type:
+          - string
+          - 'null'
+        status:
+          title: DocumentStatus
+          enum:
+          - InProgress
+          - Completed
+          - Declined
+          - Expired
+          - Revoked
+          - Draft
+          - Scheduled
+          type: string
+        signerDetails:
+          title: DocumentSignerDetails[]
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/DocumentSignerDetails'
+        expiryDate:
+          title: Int64
+          type: integer
+          format: int64
+        enableSigningOrder:
+          title: Boolean
+          type: boolean
+        isDeleted:
+          title: Boolean
+          type: boolean
+        labels:
+          title: List`1
+          type:
+          - array
+          - 'null'
+          items:
+            title: String
+            type: string
+        cursor:
+          title: Int64
+          type: integer
+          format: int64
+        brandId:
+          title: String
+          type:
+          - string
+          - 'null'
+        scheduledSendTime:
+          title: Nullable`1
+          type:
+          - integer
+          - 'null'
+          format: int64
+        inEditingMode:
+          title: Boolean
+          type: boolean
+        displayStatus:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    Rectangle:
+      title: Rectangle
+      type: object
+      properties:
+        x:
+          title: Single
+          minimum: 0
+          type: number
+          format: float
+          default: 0
+        y:
+          title: Single
+          minimum: 0
+          type: number
+          format: float
+          default: 0
+        width:
+          title: Single
+          minimum: 1
+          type: number
+          format: float
+          default: 1
+        height:
+          title: Single
+          minimum: 1
+          type: number
+          format: float
+          default: 1
+      additionalProperties: false
+    EditDocumentSigner:
+      title: EditDocumentSigner
+      required:
+      - editAction
+      type: object
+      properties:
+        editAction:
+          title: Nullable`1
+          enum:
+          - Add
+          - Update
+          - Remove
+          type: string
+        id:
+          title: String
+          type:
+          - string
+          - 'null'
+        name:
+          title: String
+          type:
+          - string
+          - 'null'
+        emailAddress:
+          title: String
+          type:
+          - string
+          - 'null'
+        privateMessage:
+          title: String
+          maxLength: 5000
+          type:
+          - string
+          - 'null'
+        authenticationType:
+          title: Nullable`1
+          enum:
+          - None
+          - EmailOTP
+          - AccessCode
+          - SMSOTP
+          - IdVerification
+          type:
+          - string
+          - 'null'
+        phoneNumber:
+          $ref: '#/components/schemas/PhoneNumber'
+        deliveryMode:
+          title: Nullable`1
+          enum:
+          - Email
+          - SMS
+          - EmailAndSMS
+          - WhatsApp
+          type:
+          - string
+          - 'null'
+        authenticationCode:
+          title: String
+          maxLength: 50
+          type:
+          - string
+          - 'null'
+        identityVerificationSettings:
+          $ref: '#/components/schemas/IdentityVerificationSettings'
+        signerOrder:
+          title: Nullable`1
+          type:
+          - integer
+          - 'null'
+          format: int32
+        enableEmailOTP:
+          title: Nullable`1
+          type:
+          - boolean
+          - 'null'
+        signerType:
+          title: Nullable`1
+          enum:
+          - Signer
+          - Reviewer
+          - InPersonSigner
+          type:
+          - string
+          - 'null'
+        hostEmail:
+          title: String
+          type:
+          - string
+          - 'null'
+        signerRole:
+          title: String
+          type:
+          - string
+          - 'null'
+        allowFieldConfiguration:
+          title: Nullable`1
+          type:
+          - boolean
+          - 'null'
+        formFields:
+          title: IEnumerable`1
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/EditFormField'
+        language:
+          title: Nullable`1
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          - 6
+          - 7
+          - 8
+          - 9
+          - 10
+          - 11
+          - 12
+          - 13
+          - 14
+          - 15
+          - 16
+          - 17
+          - 18
+          - 19
+          - 20
+          type:
+          - integer
+          - 'null'
+          format: int32
+        locale:
+          title: Nullable`1
+          enum:
+          - EN
+          - 'NO'
+          - FR
+          - DE
+          - ES
+          - BG
+          - CS
+          - DA
+          - IT
+          - NL
+          - PL
+          - PT
+          - RO
+          - RU
+          - SV
+          - Default
+          - JA
+          - TH
+          - ZH_CN
+          - ZH_TW
+          - KO
+          type:
+          - string
+          - 'null'
+        signType:
+          title: Nullable`1
+          enum:
+          - Single
+          - Group
+          type:
+          - string
+          - 'null'
+        groupId:
+          title: String
+          type:
+          - string
+          - 'null'
+        recipientNotificationSettings:
+          $ref: '#/components/schemas/RecipientNotificationSettings'
+        authenticationRetryCount:
+          title: Nullable`1
+          maximum: 10
+          minimum: 1
+          type:
+          - integer
+          - 'null'
+          format: int32
+        enableQes:
+          title: Nullable`1
+          type:
+          - boolean
+          - 'null'
+        authenticationSettings:
+          $ref: '#/components/schemas/AuthenticationSettings'
+      additionalProperties: false
+    DocumentFiles:
+      title: DocumentFiles
+      type: object
+      properties:
+        id:
+          title: String
+          type:
+          - string
+          - 'null'
+        documentName:
+          title: String
+          type:
+          - string
+          - 'null'
+        order:
+          title: Int32
+          type: integer
+          format: int32
+        pageCount:
+          title: Int32
+          type: integer
+          format: int32
+        templateName:
+          title: String
+          type:
+          - string
+          - 'null'
+        templateId:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    EmbeddedDocumentRequest:
+      title: EmbeddedDocumentRequest
+      type: object
+      properties:
+        redirectUrl:
+          title: Uri
+          type:
+          - string
+          - 'null'
+          format: uri
+        showToolbar:
+          title: Boolean
+          type: boolean
+          default: false
+        sendViewOption:
+          title: PageViewOption
+          enum:
+          - PreparePage
+          - FillingPage
+          type: string
+          default: PreparePage
+        showSaveButton:
+          title: Boolean
+          type: boolean
+          default: true
+        locale:
+          title: Locales
+          enum:
+          - EN
+          - 'NO'
+          - FR
+          - DE
+          - ES
+          - BG
+          - CS
+          - DA
+          - IT
+          - NL
+          - PL
+          - PT
+          - RO
+          - RU
+          - SV
+          - Default
+          - JA
+          - TH
+          - ZH_CN
+          - ZH_TW
+          - KO
+          type: string
+          default: EN
+        showSendButton:
+          title: Boolean
+          type: boolean
+          default: true
+        showPreviewButton:
+          title: Boolean
+          type: boolean
+          default: true
+        showNavigationButtons:
+          title: Boolean
+          type: boolean
+          default: true
+        showTooltip:
+          title: Boolean
+          type: boolean
+          default: false
+        embeddedSendLinkValidTill:
+          title: Nullable`1
+          type:
+          - string
+          - 'null'
+          format: date-time
+        files:
+          title: List`1
+          type:
+          - array
+          - 'null'
+          items:
+            title: IFormFile
+            type: string
+            format: binary
+        title:
+          title: String
+          maxLength: 256
+          minLength: 0
+          type:
+          - string
+          - 'null'
+        message:
+          title: String
+          maxLength: 5000
+          minLength: 0
+          type:
+          - string
+          - 'null'
+        signers:
+          title: IEnumerable`1
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/DocumentSigner'
+        cc:
+          title: IEnumerable`1
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/DocumentCC'
+        enableSigningOrder:
+          title: Boolean
+          type: boolean
+          default: false
+        expiryDays:
+          title: Int32
+          type: integer
+          format: int32
+          deprecated: true
+        expiryDateType:
+          title: Nullable`1
+          enum:
+          - Days
+          - Hours
+          - SpecificDateTime
+          type:
+          - string
+          - 'null'
+        expiryValue:
+          title: Int64
+          type: integer
+          format: int64
+          default: 60
+        reminderSettings:
+          $ref: '#/components/schemas/ReminderSettings'
+        enableEmbeddedSigning:
+          title: Boolean
+          type: boolean
+          default: false
+          deprecated: true
+        disableEmails:
+          title: Boolean
+          type: boolean
+          default: false
+        disableSMS:
+          title: Boolean
+          type: boolean
+          default: false
+        brandId:
+          title: String
+          type:
+          - string
+          - 'null'
+        hideDocumentId:
+          title: Nullable`1
+          type:
+          - boolean
+          - 'null'
+          default: false
+        labels:
+          title: IEnumerable`1
+          type:
+          - array
+          - 'null'
+          items:
+            title: String
+            type: string
+        fileUrls:
+          title: Uri[]
+          type:
+          - array
+          - 'null'
+          items:
+            title: Uri
+            type: string
+            format: uri
+        sendLinkValidTill:
+          title: Nullable`1
+          type:
+          - string
+          - 'null'
+          format: date-time
+        useTextTags:
+          title: Boolean
+          type: boolean
+          default: false
+        textTagDefinitions:
+          title: List`1
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/TextTagDefinition'
+        enablePrintAndSign:
+          title: Boolean
+          type: boolean
+          default: false
+        enableReassign:
+          title: Boolean
+          type: boolean
+          default: true
+        disableExpiryAlert:
+          title: Nullable`1
+          type:
+          - boolean
+          - 'null'
+        documentInfo:
+          title: IEnumerable`1
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/DocumentInfo'
+        onBehalfOf:
+          title: String
+          type:
+          - string
+          - 'null'
+        AutoDetectFields:
+          title: Boolean
+          type: boolean
+          default: false
+        documentDownloadOption:
+          title: Nullable`1
+          enum:
+          - Combined
+          - Individually
+          type:
+          - string
+          - 'null'
+        isSandbox:
+          title: Nullable`1
+          type:
+          - boolean
+          - 'null'
+        metaData:
+          title: Dictionary`2
+          maxLength: 50
+          type:
+          - object
+          - 'null'
+          additionalProperties:
+            title: String
+            type:
+            - string
+            - 'null'
+        formGroups:
+          title: List`1
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/FormGroup'
+        recipientNotificationSettings:
+          $ref: '#/components/schemas/RecipientNotificationSettings'
+        enableAuditTrailLocalization:
+          title: Nullable`1
+          type:
+          - boolean
+          - 'null'
+        downloadFileName:
+          title: String
+          maxLength: 250
+          minLength: 0
+          type:
+          - string
+          - 'null'
+        scheduledSendTime:
+          title: Nullable`1
+          type:
+          - integer
+          - 'null'
+          format: int64
+        allowScheduledSend:
+          title: Boolean
+          type: boolean
+          default: false
+        allowedSignatureTypes:
+          title: List`1
+          type:
+          - array
+          - 'null'
+          items:
+            title: SignatureType
+            enum:
+            - Text
+            - Draw
+            - Image
+            type: string
+        groupSignerSettings:
+          $ref: '#/components/schemas/GroupSignerSettings'
+        enableAllowSignEverywhere:
+          title: Nullable`1
+          type:
+          - boolean
+          - 'null'
+        documentTimeZone:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    ModificationDetails:
+      title: ModificationDetails
+      type: object
+      properties:
+        removedCount:
+          title: Int32
+          type: integer
+          format: int32
+        addedCount:
+          title: Int32
+          type: integer
+          format: int32
+      additionalProperties: false
+    DocumentReassign:
+      title: DocumentReassign
+      type: object
+      properties:
+        signerEmail:
+          title: String
+          type:
+          - string
+          - 'null'
+        order:
+          title: Int32
+          type: integer
+          format: int32
+          default: 0
+        message:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    IdentityVerificationSettings:
+      title: IdentityVerificationSettings
+      type: object
+      properties:
+        type:
+          title: Nullable`1
+          enum:
+          - EveryAccess
+          - UntilSignCompleted
+          - OncePerDocument
+          type:
+          - string
+          - 'null'
+        maximumRetryCount:
+          title: Nullable`1
+          maximum: 10
+          minimum: 1
+          type:
+          - integer
+          - 'null'
+          format: int32
+        requireLiveCapture:
+          title: Nullable`1
+          type:
+          - boolean
+          - 'null'
+        requireMatchingSelfie:
+          title: Nullable`1
+          type:
+          - boolean
+          - 'null'
+        nameMatcher:
+          title: Nullable`1
+          enum:
+          - Strict
+          - Moderate
+          - Lenient
+          type:
+          - string
+          - 'null'
+        holdForPrefill:
+          title: Nullable`1
+          type:
+          - boolean
+          - 'null'
+        allowedDocumentTypes:
+          title: List`1
+          type:
+          - array
+          - 'null'
+          items:
+            title: AllowedDocumentType
+            enum:
+            - Passport
+            - IDCard
+            - DriverLicense
+            type: string
       additionalProperties: false
     DocumentCcDetails:
       title: DocumentCcDetails
@@ -6328,12 +8610,981 @@ components:
       properties:
         emailAddress:
           title: String
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         isViewed:
           title: Boolean
           type: boolean
           default: false
+      additionalProperties: false
+    BehalfDocumentRecords:
+      title: BehalfDocumentRecords
+      type: object
+      properties:
+        pageDetails:
+          $ref: '#/components/schemas/PageDetails'
+        result:
+          title: List`1
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/BehalfDocument'
+      additionalProperties: false
+    TextTagOffset:
+      title: TextTagOffset
+      type: object
+      properties:
+        offsetX:
+          title: Double
+          type: number
+          format: double
+        offsetY:
+          title: Double
+          type: number
+          format: double
+      additionalProperties: false
+    ChangeRecipient:
+      title: ChangeRecipient
+      required:
+      - newSignerName
+      - reason
+      type: object
+      properties:
+        newSignerName:
+          title: String
+          minLength: 1
+          type: string
+        reason:
+          title: String
+          minLength: 1
+          type: string
+        order:
+          title: Nullable`1
+          maximum: 50
+          minimum: 1
+          type:
+          - integer
+          - 'null'
+          format: int32
+        newSignerEmail:
+          title: String
+          type:
+          - string
+          - 'null'
+          format: email
+        oldSignerEmail:
+          title: String
+          type:
+          - string
+          - 'null'
+          format: email
+        onBehalfOf:
+          title: String
+          type:
+          - string
+          - 'null'
+        phoneNumber:
+          $ref: '#/components/schemas/PhoneNumber'
+        oldPhoneNumber:
+          $ref: '#/components/schemas/PhoneNumber'
+      additionalProperties: false
+    PrefillField:
+      title: PrefillField
+      required:
+      - id
+      - value
+      type: object
+      properties:
+        id:
+          title: String
+          minLength: 1
+          type: string
+        value:
+          title: String
+          minLength: 1
+          type: string
+      additionalProperties: false
+    DocumentProperties:
+      title: DocumentProperties
+      type: object
+      properties:
+        documentId:
+          title: String
+          type:
+          - string
+          - 'null'
+        brandId:
+          title: String
+          type:
+          - string
+          - 'null'
+        messageTitle:
+          title: String
+          type:
+          - string
+          - 'null'
+        documentDescription:
+          title: String
+          type:
+          - string
+          - 'null'
+        status:
+          title: DocumentStatus
+          enum:
+          - InProgress
+          - Completed
+          - Declined
+          - Expired
+          - Revoked
+          - Draft
+          - Scheduled
+          type: string
+        files:
+          title: IEnumerable`1
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/DocumentFiles'
+        senderDetail:
+          $ref: '#/components/schemas/DocumentSenderDetail'
+        signerDetails:
+          title: DocumentSignerDetails[]
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/DocumentSignerDetails'
+        formGroups:
+          title: FormGroup[]
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/FormGroup'
+        commonFields:
+          title: DocumentFormFields[]
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/DocumentFormFields'
+        behalfOf:
+          $ref: '#/components/schemas/BehalfOf'
+        ccDetails:
+          title: DocumentCcDetails[]
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/DocumentCcDetails'
+        reminderSettings:
+          $ref: '#/components/schemas/ReminderSettings'
+        reassign:
+          title: IEnumerable`1
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/DocumentReassign'
+        documentHistory:
+          title: IEnumerable`1
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/AuditTrail'
+        activityBy:
+          title: String
+          type:
+          - string
+          - 'null'
+        activityDate:
+          title: Int64
+          type: integer
+          format: int64
+        activityAction:
+          title: ActivityAction
+          enum:
+          - Viewed
+          - Signed
+          - Reassigned
+          - Declined
+          - Revoked
+          - Expired
+          - Downloaded
+          - DownloadedForPrintSign
+          - InitiatePrintAndSign
+          - InitiateFormSign
+          - CancelPrintAndSign
+          - CompletePrintAndSign
+          - Reviewed
+          - None
+          - EditingInitiated
+          - EditingCancelled
+          - EditingCompleted
+          - DocumentScheduled
+          type: string
+        createdDate:
+          title: Int64
+          type: integer
+          format: int64
+        expiryDays:
+          title: Int32
+          type: integer
+          format: int32
+        expiryDate:
+          title: Nullable`1
+          type:
+          - integer
+          - 'null'
+          format: int64
+        enableSigningOrder:
+          title: Boolean
+          type: boolean
+        isDeleted:
+          title: Boolean
+          type: boolean
+        revokeMessage:
+          title: String
+          type:
+          - string
+          - 'null'
+        declineMessage:
+          title: String
+          type:
+          - string
+          - 'null'
+        applicationId:
+          title: String
+          type:
+          - string
+          - 'null'
+        labels:
+          title: IEnumerable`1
+          type:
+          - array
+          - 'null'
+          items:
+            title: String
+            type: string
+        disableEmails:
+          title: Boolean
+          type: boolean
+        enablePrintAndSign:
+          title: Boolean
+          type: boolean
+        enableReassign:
+          title: Boolean
+          type: boolean
+        disableExpiryAlert:
+          title: Boolean
+          type: boolean
+        hideDocumentId:
+          title: Boolean
+          type: boolean
+        expiryDateType:
+          title: ExpiryDateType
+          enum:
+          - Days
+          - Hours
+          - SpecificDateTime
+          type: string
+        expiryValue:
+          title: Int64
+          type: integer
+          format: int64
+        documentDownloadOption:
+          title: DocumentDownloadOption
+          enum:
+          - Combined
+          - Individually
+          type: string
+        metaData:
+          title: Dictionary`2
+          type:
+          - object
+          - 'null'
+          additionalProperties:
+            title: String
+            type:
+            - string
+            - 'null'
+        recipientNotificationSettings:
+          $ref: '#/components/schemas/RecipientNotificationSettings'
+        enableAuditTrailLocalization:
+          title: Boolean
+          type: boolean
+        downloadFileName:
+          title: String
+          type:
+          - string
+          - 'null'
+        scheduledSendTime:
+          title: Nullable`1
+          type:
+          - integer
+          - 'null'
+          format: int64
+        allowedSignatureTypes:
+          title: List`1
+          type:
+          - array
+          - 'null'
+          items:
+            title: SignatureType
+            enum:
+            - Text
+            - Draw
+            - Image
+            type: string
+        groupSignerSettings:
+          $ref: '#/components/schemas/GroupSignerSettings'
+        inEditingMode:
+          title: Boolean
+          type: boolean
+        displayStatus:
+          title: String
+          type:
+          - string
+          - 'null'
+        enableAllowSignEverywhere:
+          title: Boolean
+          type: boolean
+        isCombinedAudit:
+          title: Boolean
+          type: boolean
+        isCombinedAttachment:
+          title: Boolean
+          type: boolean
+        documentTimeZone:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    FormGroup:
+      title: FormGroup
+      required:
+      - groupNames
+      - groupValidation
+      type: object
+      properties:
+        minimumCount:
+          title: Nullable`1
+          maximum: 2147483647
+          minimum: 0
+          type:
+          - integer
+          - 'null'
+          format: int32
+        maximumCount:
+          title: Nullable`1
+          maximum: 2147483647
+          minimum: 0
+          type:
+          - integer
+          - 'null'
+          format: int32
+        dataSyncTag:
+          title: String
+          type:
+          - string
+          - 'null'
+        groupNames:
+          title: IEnumerable`1
+          type: array
+          items:
+            title: String
+            type: string
+        groupValidation:
+          title: GroupValidation
+          enum:
+          - Minimum
+          - Maximum
+          - Absolute
+          - Range
+          type: string
+          format: Enumeration
+      additionalProperties: false
+    DocumentCreated:
+      title: DocumentCreated
+      type: object
+      properties:
+        documentId:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    AccessCodeDetail:
+      title: AccessCodeDetail
+      required:
+      - authenticationType
+      type: object
+      properties:
+        emailId:
+          title: String
+          type:
+          - string
+          - 'null'
+        order:
+          title: Nullable`1
+          maximum: 50
+          minimum: 1
+          type:
+          - integer
+          - 'null'
+          format: int32
+        accessCode:
+          title: String
+          type:
+          - string
+          - 'null'
+        authenticationType:
+          title: Nullable`1
+          enum:
+          - None
+          - EmailOTP
+          - AccessCode
+          - SMSOTP
+          - IdVerification
+          type: string
+        onBehalfOf:
+          title: String
+          type:
+          - string
+          - 'null'
+        phoneNumber:
+          $ref: '#/components/schemas/PhoneNumber'
+        identityVerificationSettings:
+          $ref: '#/components/schemas/IdentityVerificationSettings'
+        authenticationRetryCount:
+          title: Nullable`1
+          maximum: 10
+          minimum: 1
+          type:
+          - integer
+          - 'null'
+          format: int32
+        authenticationSettings:
+          $ref: '#/components/schemas/AuthenticationSettings'
+      additionalProperties: false
+    DocumentRecords:
+      title: DocumentRecords
+      type: object
+      properties:
+        pageDetails:
+          $ref: '#/components/schemas/PageDetails'
+        result:
+          title: List`1
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Document'
+      additionalProperties: false
+    EditFormField:
+      title: EditFormField
+      required:
+      - editAction
+      type: object
+      properties:
+        editAction:
+          title: Nullable`1
+          enum:
+          - Add
+          - Update
+          - Remove
+          type: string
+        id:
+          title: String
+          type:
+          - string
+          - 'null'
+        name:
+          title: String
+          type:
+          - string
+          - 'null'
+        fieldType:
+          title: Nullable`1
+          enum:
+          - Signature
+          - Initial
+          - CheckBox
+          - TextBox
+          - Label
+          - DateSigned
+          - RadioButton
+          - Image
+          - Attachment
+          - EditableDate
+          - Hyperlink
+          - Dropdown
+          - Title
+          - Company
+          - Formula
+          - Drawing
+          type:
+          - string
+          - 'null'
+        pageNumber:
+          title: Nullable`1
+          type:
+          - integer
+          - 'null'
+          format: int32
+        bounds:
+          $ref: '#/components/schemas/Rectangle'
+        isRequired:
+          title: Nullable`1
+          type:
+          - boolean
+          - 'null'
+        value:
+          title: String
+          type:
+          - string
+          - 'null'
+        fontSize:
+          title: Nullable`1
+          minimum: 0
+          type:
+          - number
+          - 'null'
+          format: float
+        font:
+          title: Nullable`1
+          enum:
+          - Helvetica
+          - Courier
+          - TimesRoman
+          - NotoSans
+          - Carlito
+          type:
+          - string
+          - 'null'
+        fontHexColor:
+          title: String
+          type:
+          - string
+          - 'null'
+        isBoldFont:
+          title: Nullable`1
+          type:
+          - boolean
+          - 'null'
+        isItalicFont:
+          title: Nullable`1
+          type:
+          - boolean
+          - 'null'
+        isUnderLineFont:
+          title: Nullable`1
+          type:
+          - boolean
+          - 'null'
+        lineHeight:
+          title: Nullable`1
+          maximum: 2147483647
+          minimum: 0
+          type:
+          - integer
+          - 'null'
+          format: int32
+        characterLimit:
+          title: Nullable`1
+          maximum: 2147483647
+          minimum: 0
+          type:
+          - integer
+          - 'null'
+          format: int32
+        groupName:
+          title: String
+          type:
+          - string
+          - 'null'
+        label:
+          title: String
+          type:
+          - string
+          - 'null'
+        placeHolder:
+          title: String
+          type:
+          - string
+          - 'null'
+        validationType:
+          title: Nullable`1
+          enum:
+          - None
+          - NumbersOnly
+          - EmailAddress
+          - Currency
+          - CustomRegex
+          type:
+          - string
+          - 'null'
+        validationCustomRegex:
+          title: String
+          type:
+          - string
+          - 'null'
+        validationCustomRegexMessage:
+          title: String
+          type:
+          - string
+          - 'null'
+        dateFormat:
+          title: String
+          type:
+          - string
+          - 'null'
+        timeFormat:
+          title: String
+          type:
+          - string
+          - 'null'
+        imageInfo:
+          $ref: '#/components/schemas/ImageInfo'
+        attachmentInfo:
+          $ref: '#/components/schemas/AttachmentInfo'
+        editableDateFieldSettings:
+          $ref: '#/components/schemas/EditableDateFieldSettings'
+        conditionalRules:
+          title: IEnumerable`1
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ConditionalRule'
+        hyperlinkText:
+          title: String
+          type:
+          - string
+          - 'null'
+        dropdownOptions:
+          title: String[]
+          type:
+          - array
+          - 'null'
+          items:
+            title: String
+            type: string
+        isReadOnly:
+          title: Nullable`1
+          type:
+          - boolean
+          - 'null'
+        dataSyncTag:
+          title: String
+          type:
+          - string
+          - 'null'
+        textAlign:
+          title: Nullable`1
+          enum:
+          - Left
+          - Center
+          - Right
+          type:
+          - string
+          - 'null'
+        textDirection:
+          title: Nullable`1
+          enum:
+          - LTR
+          - RTL
+          type:
+          - string
+          - 'null'
+        characterSpacing:
+          title: Nullable`1
+          type:
+          - number
+          - 'null'
+          format: float
+        backgroundHexColor:
+          title: String
+          type:
+          - string
+          - 'null'
+        tabIndex:
+          title: Nullable`1
+          maximum: 2147483647
+          minimum: -1
+          type:
+          - integer
+          - 'null'
+          format: int32
+          readOnly: true
+        formulaFieldSettings:
+          $ref: '#/components/schemas/FormulaFieldSettings'
+        resizeOption:
+          title: Nullable`1
+          enum:
+          - GrowVertically
+          - GrowHorizontally
+          - GrowBoth
+          - Fixed
+          - AutoResizeFont
+          type:
+          - string
+          - 'null'
+        allowEditFormField:
+          title: Nullable`1
+          type:
+          - boolean
+          - 'null'
+        allowDeleteFormField:
+          title: Nullable`1
+          type:
+          - boolean
+          - 'null'
+        isMasked:
+          title: Nullable`1
+          type:
+          - boolean
+          - 'null'
+          default: false
+      additionalProperties: false
+    CollaborationSettings:
+      title: CollaborationSettings
+      type: object
+      properties:
+        isRequired:
+          title: Nullable`1
+          type:
+          - boolean
+          - 'null'
+        requireSignerApproval:
+          title: Nullable`1
+          type:
+          - boolean
+          - 'null'
+        requireInitial:
+          title: Nullable`1
+          type:
+          - boolean
+          - 'null'
+        allowedSigners:
+          title: List`1
+          type:
+          - array
+          - 'null'
+          items:
+            title: String
+            type: string
+      additionalProperties: false
+    EmbeddedSendCreated:
+      title: EmbeddedSendCreated
+      type: object
+      properties:
+        documentId:
+          title: String
+          type:
+          - string
+          - 'null'
+        sendUrl:
+          title: Uri
+          type:
+          - string
+          - 'null'
+          format: uri
+      additionalProperties: false
+    DocumentInfo:
+      title: DocumentInfo
+      required:
+      - locale
+      - title
+      type: object
+      properties:
+        language:
+          title: Languages
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          - 6
+          - 7
+          - 8
+          - 9
+          - 10
+          - 11
+          - 12
+          - 13
+          - 14
+          - 15
+          - 16
+          - 17
+          - 18
+          - 19
+          - 20
+          type: integer
+          description: <p>Description:</p><ul><li><i>0</i> - None</li><li><i>1</i> - English</li><li><i>2</i> - Spanish</li><li><i>3</i> - German</li><li><i>4</i> - French</li><li><i>5</i> - Romanian</li><li><i>6</i> - Norwegian</li><li><i>7</i> - Bulgarian</li><li><i>8</i> - Italian</li><li><i>9</i> - Danish</li><li><i>10</i> - Polish</li><li><i>11</i> - Portuguese</li><li><i>12</i> - Czech</li><li><i>13</i> - Dutch</li><li><i>14</i> - Swedish</li><li><i>15</i> - Russian</li><li><i>16</i> - Japanese</li><li><i>17</i> - Thai</li><li><i>18</i> - SimplifiedChinese</li><li><i>19</i> - TraditionalChinese</li><li><i>20</i> - Korean</li></ul>
+          format: int32
+        locale:
+          title: Locales
+          enum:
+          - EN
+          - 'NO'
+          - FR
+          - DE
+          - ES
+          - BG
+          - CS
+          - DA
+          - IT
+          - NL
+          - PL
+          - PT
+          - RO
+          - RU
+          - SV
+          - Default
+          - JA
+          - TH
+          - ZH_CN
+          - ZH_TW
+          - KO
+          type: string
+        title:
+          title: String
+          minLength: 1
+          type: string
+        description:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    DocumentEdited:
+      title: DocumentEdited
+      type: object
+      properties:
+        status:
+          title: EditProcessStatus
+          enum:
+          - Completed
+          - Queued
+          type: string
+      additionalProperties: false
+    ExtendExpiry:
+      title: ExtendExpiry
+      type: object
+      properties:
+        newExpiryValue:
+          title: String
+          type:
+          - string
+          - 'null'
+        newExpiryDate:
+          title: String
+          type:
+          - string
+          - 'null'
+          deprecated: true
+        warnPrior:
+          title: Nullable`1
+          type:
+          - boolean
+          - 'null'
+        onBehalfOf:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    PrefillFieldRequest:
+      title: PrefillFieldRequest
+      required:
+      - fields
+      type: object
+      properties:
+        fields:
+          title: List`1
+          type: array
+          items:
+            $ref: '#/components/schemas/PrefillField'
+        onBehalfOf:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    SignerAuthenticationSettings:
+      title: SignerAuthenticationSettings
+      type: object
+      properties:
+        authenticationFrequency:
+          title: String
+          type:
+          - string
+          - 'null'
+        status:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    PhoneNumber:
+      title: PhoneNumber
+      type: object
+      properties:
+        countryCode:
+          title: String
+          type:
+          - string
+          - 'null'
+        number:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    Removed:
+      title: Removed
+      type: object
+      properties:
+        signerName:
+          title: String
+          type:
+          - string
+          - 'null'
+        signerEmail:
+          title: String
+          type:
+          - string
+          - 'null'
+        signerPhoneNumber:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    Size:
+      title: Size
+      type: object
+      properties:
+        width:
+          title: Single
+          minimum: 0
+          type: number
+          format: float
+          default: 0
+        height:
+          title: Single
+          minimum: 0
+          type: number
+          format: float
+          default: 0
       additionalProperties: false
     DocumentSignerDetails:
       title: DocumentSignerDetails
@@ -6341,20 +9592,24 @@ components:
       properties:
         id:
           title: String
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         signerName:
           title: String
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         signerRole:
           title: String
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         signerEmail:
           title: String
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         status:
           title: SignerStatus
           enum:
@@ -6370,9 +9625,10 @@ components:
           type: boolean
         isAuthenticationFailed:
           title: Nullable`1
-          type: boolean
+          type:
+          - boolean
+          - 'null'
           default: false
-          nullable: true
         enableEmailOTP:
           title: Boolean
           type: boolean
@@ -6408,28 +9664,32 @@ components:
           default: Signer
         hostEmail:
           title: String
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         hostName:
           title: String
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         isReassigned:
           title: Boolean
           type: boolean
         privateMessage:
           title: String
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         allowFieldConfiguration:
           title: Boolean
           type: boolean
         formFields:
           title: DocumentFormFields[]
-          type: array
+          type:
+          - array
+          - 'null'
           items:
             $ref: '#/components/schemas/DocumentFormFields'
-          nullable: true
         language:
           title: Languages
           enum:
@@ -6491,8 +9751,9 @@ components:
           default: Single
         groupId:
           title: String
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         phoneNumber:
           $ref: '#/components/schemas/PhoneNumber'
         idVerification:
@@ -6501,13 +9762,15 @@ components:
           $ref: '#/components/schemas/RecipientNotificationSettings'
         authenticationRetryCount:
           title: Nullable`1
-          type: integer
+          type:
+          - integer
+          - 'null'
           format: int32
-          nullable: true
         enableQes:
           title: Nullable`1
-          type: boolean
-          nullable: true
+          type:
+          - boolean
+          - 'null'
         deliveryMode:
           title: DeliveryMode
           enum:
@@ -6520,214 +9783,229 @@ components:
           $ref: '#/components/schemas/SignerAuthenticationSettings'
         groupSigners:
           title: IEnumerable`1
-          type: array
+          type:
+          - array
+          - 'null'
           items:
             $ref: '#/components/schemas/GroupSigner'
-          nullable: true
       additionalProperties: false
-    DocumentReassign:
-      title: DocumentReassign
-      type: object
-      properties:
-        signerEmail:
-          title: String
-          type: string
-          nullable: true
-        order:
-          title: Int32
-          type: integer
-          format: int32
-          default: 0
-        message:
-          title: String
-          type: string
-          nullable: true
-      additionalProperties: false
-    EmbeddedDocumentEdited:
-      title: EmbeddedDocumentEdited
-      type: object
-      properties:
-        editUrl:
-          title: Uri
-          type: string
-          format: uri
-          nullable: true
-      additionalProperties: false
-    DocumentFormFields:
-      title: DocumentFormFields
+    GroupSigner:
+      title: GroupSigner
       type: object
       properties:
         id:
           title: String
-          type: string
-          nullable: true
-        formFieldId:
+          type:
+          - string
+          - 'null'
+        signerEmail:
           title: String
-          type: string
-          nullable: true
-        type:
+          type:
+          - string
+          - 'null'
+        signerName:
           title: String
-          type: string
-          nullable: true
-        value:
-          title: String
-          type: string
-          nullable: true
-        font:
-          title: String
-          type: string
-          nullable: true
-        isRequired:
-          title: Boolean
-          type: boolean
-        isReadOnly:
-          title: Boolean
-          type: boolean
-        lineHeight:
-          title: Single
-          type: number
-          format: float
-        fontSize:
-          title: Single
-          type: number
-          format: float
-        fontColor:
-          title: String
-          type: string
-          nullable: true
-        isUnderline:
-          title: Boolean
-          type: boolean
-        isItalic:
-          title: Boolean
-          type: boolean
-        isBold:
-          title: Boolean
-          type: boolean
-        groupName:
-          title: String
-          type: string
-          nullable: true
-        label:
-          title: String
-          type: string
-          nullable: true
-        placeholder:
-          title: String
-          type: string
-          nullable: true
-        validationtype:
-          title: ValidationType
+          type:
+          - string
+          - 'null'
+        status:
+          title: SignerStatus
           enum:
           - None
-          - NumbersOnly
-          - EmailAddress
-          - Currency
-          - CustomRegex
+          - NotCompleted
+          - Completed
+          - Declined
+          - Revoked
+          - Expired
           type: string
-        validationCustomRegex:
-          title: String
-          type: string
-          nullable: true
-        validationCustomRegexMessage:
-          title: String
-          type: string
-          nullable: true
-        dateFormat:
-          title: String
-          type: string
-          nullable: true
-        timeFormat:
-          title: String
-          type: string
-          nullable: true
-        imageInfo:
-          $ref: '#/components/schemas/ImageInfo'
-        attachmentInfo:
-          $ref: '#/components/schemas/AttachmentInfo'
-        fileInfo:
-          $ref: '#/components/schemas/FileInfo'
-        editableDateFieldSettings:
-          $ref: '#/components/schemas/EditableDateFieldSettings'
-        hyperlinkText:
-          title: String
-          type: string
-          nullable: true
-        conditionalRules:
-          title: IEnumerable`1
-          type: array
-          items:
-            $ref: '#/components/schemas/ConditionalRule'
-          nullable: true
-        bounds:
-          $ref: '#/components/schemas/Rectangle'
-        pageNumber:
-          title: Int32
-          type: integer
-          format: int32
-        dataSyncTag:
-          title: String
-          type: string
-          nullable: true
-        dropdownOptions:
-          title: String[]
-          type: array
-          items:
-            title: String
-            type: string
-          nullable: true
-        textAlign:
-          title: TextAlign
-          enum:
-          - Left
-          - Center
-          - Right
-          type: string
-        textDirection:
-          title: TextDirection
-          enum:
-          - LTR
-          - RTL
-          type: string
-        characterSpacing:
-          title: Single
-          type: number
-          format: float
-        backgroundHexColor:
-          title: String
-          type: string
-          nullable: true
-        tabIndex:
-          title: Int32
-          type: integer
-          format: int32
-        formulaFieldSettings:
-          $ref: '#/components/schemas/FormulaFieldSettings'
-        resizeOption:
+        isViewed:
+          title: Boolean
+          type: boolean
+        isDeliveryFailed:
+          title: Boolean
+          type: boolean
+        isAuthenticationFailed:
           title: Nullable`1
-          enum:
-          - GrowVertically
-          - GrowHorizontally
-          - GrowBoth
-          - Fixed
-          - AutoResizeFont
-          type: string
-          nullable: true
-        allowEditFormField:
+          type:
+          - boolean
+          - 'null'
+      additionalProperties: false
+    RemoveAuthentication:
+      title: RemoveAuthentication
+      type: object
+      properties:
+        emailId:
+          title: String
+          type:
+          - string
+          - 'null'
+        zOrder:
+          title: Nullable`1
+          type:
+          - integer
+          - 'null'
+          format: int32
+        phoneNumber:
+          $ref: '#/components/schemas/PhoneNumber'
+        onBehalfOf:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    RecipientNotificationSettings:
+      title: RecipientNotificationSettings
+      type: object
+      properties:
+        signatureRequest:
           title: Boolean
           type: boolean
-        allowDeleteFormField:
+          default: true
+        declined:
           title: Boolean
           type: boolean
-        collaborationSettings:
-          $ref: '#/components/schemas/CollaborationSettings'
-        hidden:
+          default: true
+        revoked:
           title: Boolean
           type: boolean
-        isMasked:
+          default: true
+        signed:
+          title: Boolean
+          type: boolean
+          default: true
+        completed:
+          title: Boolean
+          type: boolean
+          default: true
+        expired:
+          title: Boolean
+          type: boolean
+          default: true
+        reassigned:
+          title: Boolean
+          type: boolean
+          default: true
+        deleted:
+          title: Boolean
+          type: boolean
+          default: true
+        reminders:
+          title: Boolean
+          type: boolean
+          default: true
+        editRecipient:
+          title: Boolean
+          type: boolean
+          default: true
+        editDocument:
+          title: Boolean
+          type: boolean
+          default: true
+        viewed:
+          title: Boolean
+          type: boolean
+      additionalProperties: false
+    PageDetails:
+      title: PageDetails
+      type: object
+      properties:
+        pageSize:
+          title: Int32
+          type: integer
+          format: int32
+        page:
+          title: Int32
+          type: integer
+          format: int32
+        totalRecordsCount:
+          title: Int32
+          type: integer
+          format: int32
+        totalPages:
+          title: Int32
+          type: integer
+          format: int32
+        sortedColumn:
+          title: String
+          type:
+          - string
+          - 'null'
+        sortDirection:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    EmbeddedDocumentEditJsonRequest:
+      title: EmbeddedDocumentEditJsonRequest
+      type: object
+      properties:
+        redirectUrl:
+          title: Uri
+          type:
+          - string
+          - 'null'
+          format: uri
+        showToolbar:
           title: Boolean
           type: boolean
           default: false
+        sendViewOption:
+          title: PageViewOption
+          enum:
+          - PreparePage
+          - FillingPage
+          type: string
+          default: PreparePage
+        locale:
+          title: Locales
+          enum:
+          - EN
+          - 'NO'
+          - FR
+          - DE
+          - ES
+          - BG
+          - CS
+          - DA
+          - IT
+          - NL
+          - PL
+          - PT
+          - RO
+          - RU
+          - SV
+          - Default
+          - JA
+          - TH
+          - ZH_CN
+          - ZH_TW
+          - KO
+          type: string
+          default: EN
+        showSendButton:
+          title: Boolean
+          type: boolean
+          default: true
+        showPreviewButton:
+          title: Boolean
+          type: boolean
+          default: true
+        showNavigationButtons:
+          title: Boolean
+          type: boolean
+          default: true
+        linkValidTill:
+          title: Nullable`1
+          type:
+          - string
+          - 'null'
+          format: date-time
+        onBehalfOf:
+          title: String
+          type:
+          - string
+          - 'null'
       additionalProperties: false
     AuditTrail:
       title: AuditTrail
@@ -6735,44 +10013,54 @@ components:
       properties:
         id:
           title: String
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         name:
           title: String
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         email:
           title: String
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         fromName:
           title: String
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         fromEmail:
           title: String
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         fromPhoneNumber:
           title: String
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         toName:
           title: String
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         toEmail:
           title: String
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         toPhoneNumber:
           title: String
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         ipaddress:
           title: String
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         action:
           title: DocumentAuditAction
           enum:
@@ -6868,1323 +10156,38 @@ components:
         fieldChangeLog:
           $ref: '#/components/schemas/ModificationDetails'
       additionalProperties: false
-    EditDocumentFile:
-      title: EditDocumentFile
-      required:
-      - editAction
-      type: object
-      properties:
-        editAction:
-          title: Nullable`1
-          enum:
-          - Add
-          - Update
-          - Remove
-          type: string
-        file:
-          title: IFormFile
-          type: string
-          format: binary
-          nullable: true
-        fileUrl:
-          title: Uri
-          type: string
-          format: uri
-          nullable: true
-        id:
-          title: String
-          type: string
-          nullable: true
-      additionalProperties: false
-    Rectangle:
-      title: Rectangle
-      type: object
-      properties:
-        x:
-          title: Single
-          minimum: 0
-          type: number
-          format: float
-          default: 0
-        y:
-          title: Single
-          minimum: 0
-          type: number
-          format: float
-          default: 0
-        width:
-          title: Single
-          minimum: 1
-          type: number
-          format: float
-          default: 1
-        height:
-          title: Single
-          minimum: 1
-          type: number
-          format: float
-          default: 1
-      additionalProperties: false
-    ModificationDetails:
-      title: ModificationDetails
-      type: object
-      properties:
-        removedCount:
-          title: Int32
-          type: integer
-          format: int32
-        addedCount:
-          title: Int32
-          type: integer
-          format: int32
-      additionalProperties: false
-    DocumentRecords:
-      title: DocumentRecords
-      type: object
-      properties:
-        pageDetails:
-          $ref: '#/components/schemas/PageDetails'
-        result:
-          title: List`1
-          type: array
-          items:
-            $ref: '#/components/schemas/Document'
-          nullable: true
-      additionalProperties: false
-    GroupSigner:
-      title: GroupSigner
-      type: object
-      properties:
-        id:
-          title: String
-          type: string
-          nullable: true
-        signerEmail:
-          title: String
-          type: string
-          nullable: true
-        signerName:
-          title: String
-          type: string
-          nullable: true
-        status:
-          title: SignerStatus
-          enum:
-          - None
-          - NotCompleted
-          - Completed
-          - Declined
-          - Revoked
-          - Expired
-          type: string
-        isViewed:
-          title: Boolean
-          type: boolean
-        isDeliveryFailed:
-          title: Boolean
-          type: boolean
-        isAuthenticationFailed:
-          title: Nullable`1
-          type: boolean
-          nullable: true
-      additionalProperties: false
-    RecipientChangeLog:
-      title: RecipientChangeLog
-      type: object
-      properties:
-        added:
-          title: IEnumerable`1
-          type: array
-          items:
-            $ref: '#/components/schemas/Added'
-          nullable: true
-        removed:
-          title: IEnumerable`1
-          type: array
-          items:
-            $ref: '#/components/schemas/Removed'
-          nullable: true
-      additionalProperties: false
-    PrefillField:
-      title: PrefillField
-      required:
-      - id
-      - value
-      type: object
-      properties:
-        id:
-          title: String
-          minLength: 1
-          type: string
-        value:
-          title: String
-          minLength: 1
-          type: string
-      additionalProperties: false
-    ExtendExpiry:
-      title: ExtendExpiry
-      type: object
-      properties:
-        newExpiryValue:
-          title: String
-          type: string
-          nullable: true
-        newExpiryDate:
-          title: String
-          type: string
-          nullable: true
-          deprecated: true
-        warnPrior:
-          title: Nullable`1
-          type: boolean
-          nullable: true
-        onBehalfOf:
-          title: String
-          type: string
-          nullable: true
-      additionalProperties: false
-    AccessCodeDetails:
-      title: AccessCodeDetails
-      required:
-      - accessCode
-      type: object
-      properties:
-        accessCode:
-          title: String
-          minLength: 1
-          type: string
-        phoneNumber:
-          $ref: '#/components/schemas/PhoneNumber'
-        onBehalfOf:
-          title: String
-          type: string
-          nullable: true
-      additionalProperties: false
-    DocumentSenderDetail:
-      title: DocumentSenderDetail
-      type: object
-      properties:
-        name:
-          title: String
-          type: string
-          nullable: true
-        privateMessage:
-          title: String
-          type: string
-          nullable: true
-        emailAddress:
-          title: String
-          type: string
-          nullable: true
-        isViewed:
-          title: Boolean
-          type: boolean
-          default: false
-      additionalProperties: false
-    DocumentProperties:
-      title: DocumentProperties
-      type: object
-      properties:
-        documentId:
-          title: String
-          type: string
-          nullable: true
-        brandId:
-          title: String
-          type: string
-          nullable: true
-        messageTitle:
-          title: String
-          type: string
-          nullable: true
-        documentDescription:
-          title: String
-          type: string
-          nullable: true
-        status:
-          title: DocumentStatus
-          enum:
-          - InProgress
-          - Completed
-          - Declined
-          - Expired
-          - Revoked
-          - Draft
-          - Scheduled
-          type: string
-        files:
-          title: IEnumerable`1
-          type: array
-          items:
-            $ref: '#/components/schemas/DocumentFiles'
-          nullable: true
-        senderDetail:
-          $ref: '#/components/schemas/DocumentSenderDetail'
-        signerDetails:
-          title: DocumentSignerDetails[]
-          type: array
-          items:
-            $ref: '#/components/schemas/DocumentSignerDetails'
-          nullable: true
-        formGroups:
-          title: FormGroup[]
-          type: array
-          items:
-            $ref: '#/components/schemas/FormGroup'
-          nullable: true
-        commonFields:
-          title: DocumentFormFields[]
-          type: array
-          items:
-            $ref: '#/components/schemas/DocumentFormFields'
-          nullable: true
-        behalfOf:
-          $ref: '#/components/schemas/BehalfOf'
-        ccDetails:
-          title: DocumentCcDetails[]
-          type: array
-          items:
-            $ref: '#/components/schemas/DocumentCcDetails'
-          nullable: true
-        reminderSettings:
-          $ref: '#/components/schemas/ReminderSettings'
-        reassign:
-          title: IEnumerable`1
-          type: array
-          items:
-            $ref: '#/components/schemas/DocumentReassign'
-          nullable: true
-        documentHistory:
-          title: IEnumerable`1
-          type: array
-          items:
-            $ref: '#/components/schemas/AuditTrail'
-          nullable: true
-        activityBy:
-          title: String
-          type: string
-          nullable: true
-        activityDate:
-          title: Int64
-          type: integer
-          format: int64
-        activityAction:
-          title: ActivityAction
-          enum:
-          - Viewed
-          - Signed
-          - Reassigned
-          - Declined
-          - Revoked
-          - Expired
-          - Downloaded
-          - DownloadedForPrintSign
-          - InitiatePrintAndSign
-          - InitiateFormSign
-          - CancelPrintAndSign
-          - CompletePrintAndSign
-          - Reviewed
-          - None
-          - EditingInitiated
-          - EditingCancelled
-          - EditingCompleted
-          - DocumentScheduled
-          type: string
-        createdDate:
-          title: Int64
-          type: integer
-          format: int64
-        expiryDays:
-          title: Int32
-          type: integer
-          format: int32
-        expiryDate:
-          title: Nullable`1
-          type: integer
-          format: int64
-          nullable: true
-        enableSigningOrder:
-          title: Boolean
-          type: boolean
-        isDeleted:
-          title: Boolean
-          type: boolean
-        revokeMessage:
-          title: String
-          type: string
-          nullable: true
-        declineMessage:
-          title: String
-          type: string
-          nullable: true
-        applicationId:
-          title: String
-          type: string
-          nullable: true
-        labels:
-          title: IEnumerable`1
-          type: array
-          items:
-            title: String
-            type: string
-          nullable: true
-        disableEmails:
-          title: Boolean
-          type: boolean
-        enablePrintAndSign:
-          title: Boolean
-          type: boolean
-        enableReassign:
-          title: Boolean
-          type: boolean
-        disableExpiryAlert:
-          title: Boolean
-          type: boolean
-        hideDocumentId:
-          title: Boolean
-          type: boolean
-        expiryDateType:
-          title: ExpiryDateType
-          enum:
-          - Days
-          - Hours
-          - SpecificDateTime
-          type: string
-        expiryValue:
-          title: Int64
-          type: integer
-          format: int64
-        documentDownloadOption:
-          title: DocumentDownloadOption
-          enum:
-          - Combined
-          - Individually
-          type: string
-        metaData:
-          title: Dictionary`2
-          type: object
-          additionalProperties:
-            title: String
-            type: string
-            nullable: true
-          nullable: true
-        recipientNotificationSettings:
-          $ref: '#/components/schemas/RecipientNotificationSettings'
-        enableAuditTrailLocalization:
-          title: Boolean
-          type: boolean
-        downloadFileName:
-          title: String
-          type: string
-          nullable: true
-        scheduledSendTime:
-          title: Nullable`1
-          type: integer
-          format: int64
-          nullable: true
-        allowedSignatureTypes:
-          title: List`1
-          type: array
-          items:
-            title: SignatureType
-            enum:
-            - Text
-            - Draw
-            - Image
-            type: string
-          nullable: true
-        groupSignerSettings:
-          $ref: '#/components/schemas/GroupSignerSettings'
-        inEditingMode:
-          title: Boolean
-          type: boolean
-        displayStatus:
-          title: String
-          type: string
-          nullable: true
-        enableAllowSignEverywhere:
-          title: Boolean
-          type: boolean
-        isCombinedAudit:
-          title: Boolean
-          type: boolean
-        isCombinedAttachment:
-          title: Boolean
-          type: boolean
-        documentTimeZone:
-          title: String
-          type: string
-          nullable: true
-      additionalProperties: false
-    ReminderSettings:
-      title: ReminderSettings
-      type: object
-      properties:
-        enableAutoReminder:
-          title: Boolean
-          type: boolean
-          default: false
-        reminderDays:
-          title: Int32
-          type: integer
-          format: int32
-          default: 3
-        reminderCount:
-          title: Int32
-          type: integer
-          format: int32
-          default: 3
-      additionalProperties: false
-    DocumentFiles:
-      title: DocumentFiles
-      type: object
-      properties:
-        id:
-          title: String
-          type: string
-          nullable: true
-        documentName:
-          title: String
-          type: string
-          nullable: true
-        order:
-          title: Int32
-          type: integer
-          format: int32
-        pageCount:
-          title: Int32
-          type: integer
-          format: int32
-        templateName:
-          title: String
-          type: string
-          nullable: true
-        templateId:
-          title: String
-          type: string
-          nullable: true
-      additionalProperties: false
-    DocumentTags:
-      title: DocumentTags
-      required:
-      - documentId
-      - tags
-      type: object
-      properties:
-        documentId:
-          title: String
-          minLength: 1
-          type: string
-        tags:
-          title: List`1
-          type: array
-          items:
-            title: String
-            type: string
-      additionalProperties: false
-    PhoneNumber:
-      title: PhoneNumber
-      type: object
-      properties:
-        countryCode:
-          title: String
-          type: string
-          nullable: true
-        number:
-          title: String
-          type: string
-          nullable: true
-      additionalProperties: false
-    ChangeRecipient:
-      title: ChangeRecipient
-      required:
-      - newSignerName
-      - reason
-      type: object
-      properties:
-        newSignerName:
-          title: String
-          minLength: 1
-          type: string
-        reason:
-          title: String
-          minLength: 1
-          type: string
-        order:
-          title: Nullable`1
-          maximum: 50
-          minimum: 1
-          type: integer
-          format: int32
-          nullable: true
-        newSignerEmail:
-          title: String
-          type: string
-          format: email
-          nullable: true
-        oldSignerEmail:
-          title: String
-          type: string
-          format: email
-          nullable: true
-        onBehalfOf:
-          title: String
-          type: string
-          nullable: true
-        phoneNumber:
-          $ref: '#/components/schemas/PhoneNumber'
-        oldPhoneNumber:
-          $ref: '#/components/schemas/PhoneNumber'
-      additionalProperties: false
-    AttachmentInfo:
-      title: AttachmentInfo
-      required:
-      - acceptedFileTypes
-      - title
-      type: object
-      properties:
-        title:
-          title: String
-          type: string
-          nullable: true
-        description:
-          title: String
-          type: string
-          nullable: true
-        allowedFileTypes:
-          title: String
-          type: string
-          nullable: true
-          deprecated: true
-        acceptedFileTypes:
-          title: String[]
-          type: array
-          items:
-            title: String
-            type: string
-          nullable: true
-      additionalProperties: false
-    ConditionalRule:
-      title: ConditionalRule
-      type: object
-      properties:
-        fieldId:
-          title: String
-          type: string
-          nullable: true
-        isChecked:
-          title: Boolean
-          type: boolean
-        value:
-          title: String
-          type: string
-          nullable: true
-      additionalProperties: false
-    SignerAuthenticationSettings:
-      title: SignerAuthenticationSettings
-      type: object
-      properties:
-        authenticationFrequency:
-          title: String
-          type: string
-          nullable: true
-        status:
-          title: String
-          type: string
-          nullable: true
-      additionalProperties: false
-    DocumentCreated:
-      title: DocumentCreated
-      type: object
-      properties:
-        documentId:
-          title: String
-          type: string
-          nullable: true
-      additionalProperties: false
-    Removed:
-      title: Removed
-      type: object
-      properties:
-        signerName:
-          title: String
-          type: string
-          nullable: true
-        signerEmail:
-          title: String
-          type: string
-          nullable: true
-        signerPhoneNumber:
-          title: String
-          type: string
-          nullable: true
-      additionalProperties: false
-    Document:
-      title: Document
-      type: object
-      properties:
-        documentId:
-          title: String
-          type: string
-          nullable: true
-        senderDetail:
-          $ref: '#/components/schemas/DocumentSenderDetail'
-        ccDetails:
-          title: DocumentCcDetails[]
-          type: array
-          items:
-            $ref: '#/components/schemas/DocumentCcDetails'
-          nullable: true
-        createdDate:
-          title: Int64
-          type: integer
-          format: int64
-        activityDate:
-          title: Int64
-          type: integer
-          format: int64
-        activityBy:
-          title: String
-          type: string
-          nullable: true
-        messageTitle:
-          title: String
-          type: string
-          nullable: true
-        status:
-          title: DocumentStatus
-          enum:
-          - InProgress
-          - Completed
-          - Declined
-          - Expired
-          - Revoked
-          - Draft
-          - Scheduled
-          type: string
-        signerDetails:
-          title: DocumentSignerDetails[]
-          type: array
-          items:
-            $ref: '#/components/schemas/DocumentSignerDetails'
-          nullable: true
-        expiryDate:
-          title: Int64
-          type: integer
-          format: int64
-        enableSigningOrder:
-          title: Boolean
-          type: boolean
-        isDeleted:
-          title: Boolean
-          type: boolean
-        labels:
-          title: List`1
-          type: array
-          items:
-            title: String
-            type: string
-          nullable: true
-        cursor:
-          title: Int64
-          type: integer
-          format: int64
-        brandId:
-          title: String
-          type: string
-          nullable: true
-        scheduledSendTime:
-          title: Nullable`1
-          type: integer
-          format: int64
-          nullable: true
-        inEditingMode:
-          title: Boolean
-          type: boolean
-        displayStatus:
-          title: String
-          type: string
-          nullable: true
-      additionalProperties: false
-    BehalfDocument:
-      title: BehalfDocument
-      type: object
-      properties:
-        behalfOf:
-          $ref: '#/components/schemas/BehalfOf'
-        documentId:
-          title: String
-          type: string
-          nullable: true
-        senderDetail:
-          $ref: '#/components/schemas/DocumentSenderDetail'
-        ccDetails:
-          title: DocumentCcDetails[]
-          type: array
-          items:
-            $ref: '#/components/schemas/DocumentCcDetails'
-          nullable: true
-        createdDate:
-          title: Int64
-          type: integer
-          format: int64
-        activityDate:
-          title: Int64
-          type: integer
-          format: int64
-        activityBy:
-          title: String
-          type: string
-          nullable: true
-        messageTitle:
-          title: String
-          type: string
-          nullable: true
-        status:
-          title: DocumentStatus
-          enum:
-          - InProgress
-          - Completed
-          - Declined
-          - Expired
-          - Revoked
-          - Draft
-          - Scheduled
-          type: string
-        signerDetails:
-          title: DocumentSignerDetails[]
-          type: array
-          items:
-            $ref: '#/components/schemas/DocumentSignerDetails'
-          nullable: true
-        expiryDate:
-          title: Int64
-          type: integer
-          format: int64
-        enableSigningOrder:
-          title: Boolean
-          type: boolean
-        isDeleted:
-          title: Boolean
-          type: boolean
-        labels:
-          title: List`1
-          type: array
-          items:
-            title: String
-            type: string
-          nullable: true
-        cursor:
-          title: Int64
-          type: integer
-          format: int64
-        brandId:
-          title: String
-          type: string
-          nullable: true
-        scheduledSendTime:
-          title: Nullable`1
-          type: integer
-          format: int64
-          nullable: true
-        inEditingMode:
-          title: Boolean
-          type: boolean
-        displayStatus:
-          title: String
-          type: string
-          nullable: true
-      additionalProperties: false
     ReminderMessage:
       title: ReminderMessage
       type: object
       properties:
         message:
           title: String
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         onBehalfOf:
           title: String
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         reminderPhoneNumbers:
           title: List`1
-          type: array
+          type:
+          - array
+          - 'null'
           items:
             $ref: '#/components/schemas/PhoneNumber'
-          nullable: true
       additionalProperties: false
-    PrefillFieldRequest:
-      title: PrefillFieldRequest
-      required:
-      - fields
+    EmbeddedDocumentEdited:
+      title: EmbeddedDocumentEdited
       type: object
       properties:
-        fields:
-          title: List`1
-          type: array
-          items:
-            $ref: '#/components/schemas/PrefillField'
-        onBehalfOf:
-          title: String
-          type: string
-          nullable: true
-      additionalProperties: false
-    BehalfDocumentRecords:
-      title: BehalfDocumentRecords
-      type: object
-      properties:
-        pageDetails:
-          $ref: '#/components/schemas/PageDetails'
-        result:
-          title: List`1
-          type: array
-          items:
-            $ref: '#/components/schemas/BehalfDocument'
-          nullable: true
-      additionalProperties: false
-    CollaborationSettings:
-      title: CollaborationSettings
-      type: object
-      properties:
-        isRequired:
-          title: Nullable`1
-          type: boolean
-          nullable: true
-        requireSignerApproval:
-          title: Nullable`1
-          type: boolean
-          nullable: true
-        requireInitial:
-          title: Nullable`1
-          type: boolean
-          nullable: true
-        allowedSigners:
-          title: List`1
-          type: array
-          items:
-            title: String
-            type: string
-          nullable: true
-      additionalProperties: false
-    RevokeDocument:
-      title: RevokeDocument
-      required:
-      - message
-      type: object
-      properties:
-        message:
-          title: String
-          minLength: 1
-          type: string
-        onBehalfOf:
-          title: String
-          type: string
-          nullable: true
-      additionalProperties: false
-    Added:
-      title: Added
-      type: object
-      properties:
-        signerName:
-          title: String
-          type: string
-          nullable: true
-        signerEmail:
-          title: String
-          type: string
-          nullable: true
-        signerPhoneNumber:
-          title: String
-          type: string
-          nullable: true
-      additionalProperties: false
-    SendForSign:
-      title: SendForSign
-      type: object
-      properties:
-        files:
-          title: List`1
-          type: array
-          items:
-            title: IFormFile
-            type: string
-            format: binary
-          nullable: true
-        title:
-          title: String
-          maxLength: 256
-          minLength: 0
-          type: string
-          nullable: true
-        message:
-          title: String
-          maxLength: 5000
-          minLength: 0
-          type: string
-          nullable: true
-        signers:
-          title: IEnumerable`1
-          type: array
-          items:
-            $ref: '#/components/schemas/DocumentSigner'
-          nullable: true
-        cc:
-          title: IEnumerable`1
-          type: array
-          items:
-            $ref: '#/components/schemas/DocumentCC'
-          nullable: true
-        enableSigningOrder:
-          title: Boolean
-          type: boolean
-          default: false
-        expiryDays:
-          title: Int32
-          type: integer
-          format: int32
-          deprecated: true
-        expiryDateType:
-          title: Nullable`1
-          enum:
-          - Days
-          - Hours
-          - SpecificDateTime
-          type: string
-          nullable: true
-        expiryValue:
-          title: Int64
-          type: integer
-          format: int64
-          default: 60
-        reminderSettings:
-          $ref: '#/components/schemas/ReminderSettings'
-        enableEmbeddedSigning:
-          title: Boolean
-          type: boolean
-          default: false
-          deprecated: true
-        disableEmails:
-          title: Boolean
-          type: boolean
-          default: false
-        disableSMS:
-          title: Boolean
-          type: boolean
-          default: false
-        brandId:
-          title: String
-          type: string
-          nullable: true
-        hideDocumentId:
-          title: Nullable`1
-          type: boolean
-          default: false
-          nullable: true
-        labels:
-          title: IEnumerable`1
-          type: array
-          items:
-            title: String
-            type: string
-          nullable: true
-        fileUrls:
-          title: Uri[]
-          type: array
-          items:
-            title: Uri
-            type: string
-            format: uri
-          nullable: true
-        sendLinkValidTill:
-          title: Nullable`1
-          type: string
-          format: date-time
-          nullable: true
-        useTextTags:
-          title: Boolean
-          type: boolean
-          default: false
-        textTagDefinitions:
-          title: List`1
-          type: array
-          items:
-            $ref: '#/components/schemas/TextTagDefinition'
-          nullable: true
-        enablePrintAndSign:
-          title: Boolean
-          type: boolean
-          default: false
-        enableReassign:
-          title: Boolean
-          type: boolean
-          default: true
-        disableExpiryAlert:
-          title: Nullable`1
-          type: boolean
-          nullable: true
-        documentInfo:
-          title: IEnumerable`1
-          type: array
-          items:
-            $ref: '#/components/schemas/DocumentInfo'
-          nullable: true
-        onBehalfOf:
-          title: String
-          type: string
-          nullable: true
-        AutoDetectFields:
-          title: Boolean
-          type: boolean
-          default: false
-        documentDownloadOption:
-          title: Nullable`1
-          enum:
-          - Combined
-          - Individually
-          type: string
-          nullable: true
-        isSandbox:
-          title: Nullable`1
-          type: boolean
-          nullable: true
-        metaData:
-          title: Dictionary`2
-          maxLength: 50
-          type: object
-          additionalProperties:
-            title: String
-            type: string
-            nullable: true
-          nullable: true
-        formGroups:
-          title: List`1
-          type: array
-          items:
-            $ref: '#/components/schemas/FormGroup'
-          nullable: true
-        recipientNotificationSettings:
-          $ref: '#/components/schemas/RecipientNotificationSettings'
-        enableAuditTrailLocalization:
-          title: Nullable`1
-          type: boolean
-          nullable: true
-        downloadFileName:
-          title: String
-          maxLength: 250
-          minLength: 0
-          type: string
-          nullable: true
-        scheduledSendTime:
-          title: Nullable`1
-          type: integer
-          format: int64
-          nullable: true
-        allowScheduledSend:
-          title: Boolean
-          type: boolean
-          default: false
-        allowedSignatureTypes:
-          title: List`1
-          type: array
-          items:
-            title: SignatureType
-            enum:
-            - Text
-            - Draw
-            - Image
-            type: string
-          nullable: true
-        groupSignerSettings:
-          $ref: '#/components/schemas/GroupSignerSettings'
-        enableAllowSignEverywhere:
-          title: Nullable`1
-          type: boolean
-          nullable: true
-        documentTimeZone:
-          title: String
-          type: string
-          nullable: true
-      additionalProperties: false
-    DocumentEdited:
-      title: DocumentEdited
-      type: object
-      properties:
-        status:
-          title: EditProcessStatus
-          enum:
-          - Completed
-          - Queued
-          type: string
-      additionalProperties: false
-    AccessCodeDetail:
-      title: AccessCodeDetail
-      required:
-      - authenticationType
-      type: object
-      properties:
-        emailId:
-          title: String
-          type: string
-          nullable: true
-        order:
-          title: Nullable`1
-          maximum: 50
-          minimum: 1
-          type: integer
-          format: int32
-          nullable: true
-        accessCode:
-          title: String
-          type: string
-          nullable: true
-        authenticationType:
-          title: Nullable`1
-          enum:
-          - None
-          - EmailOTP
-          - AccessCode
-          - SMSOTP
-          - IdVerification
-          type: string
-        onBehalfOf:
-          title: String
-          type: string
-          nullable: true
-        phoneNumber:
-          $ref: '#/components/schemas/PhoneNumber'
-        identityVerificationSettings:
-          $ref: '#/components/schemas/IdentityVerificationSettings'
-        authenticationRetryCount:
-          title: Nullable`1
-          maximum: 10
-          minimum: 1
-          type: integer
-          format: int32
-          nullable: true
-        authenticationSettings:
-          $ref: '#/components/schemas/AuthenticationSettings'
-      additionalProperties: false
-    FileInfo:
-      title: FileInfo
-      type: object
-      properties:
-        fileName:
-          title: String
-          type: string
-          nullable: true
-        fileSize:
-          title: Int32
-          type: integer
-          format: int32
-        contentType:
-          title: String
-          type: string
-          nullable: true
-        extension:
-          title: String
-          type: string
-          nullable: true
-      additionalProperties: false
-    Font:
-      title: Font
-      type: object
-      properties:
-        name:
-          title: Nullable`1
-          enum:
-          - Helvetica
-          - Courier
-          - TimesRoman
-          - NotoSans
-          - Carlito
-          type: string
-          nullable: true
-        color:
-          title: String
-          type: string
-          nullable: true
-        size:
-          title: Nullable`1
-          type: number
-          format: float
-          nullable: true
-        style:
-          title: Nullable`1
-          enum:
-          - Regular
-          - Bold
-          - Italic
-          - Underline
-          type: string
-          nullable: true
-          deprecated: true
-        lineHeight:
-          title: Nullable`1
-          type: integer
-          format: int32
-          nullable: true
-        isBoldFont:
-          title: Boolean
-          type: boolean
-        isItalicFont:
-          title: Boolean
-          type: boolean
-        isUnderLineFont:
-          title: Boolean
-          type: boolean
-      additionalProperties: false
-    RecipientNotificationSettings:
-      title: RecipientNotificationSettings
-      type: object
-      properties:
-        signatureRequest:
-          title: Boolean
-          type: boolean
-          default: true
-        declined:
-          title: Boolean
-          type: boolean
-          default: true
-        revoked:
-          title: Boolean
-          type: boolean
-          default: true
-        signed:
-          title: Boolean
-          type: boolean
-          default: true
-        completed:
-          title: Boolean
-          type: boolean
-          default: true
-        expired:
-          title: Boolean
-          type: boolean
-          default: true
-        reassigned:
-          title: Boolean
-          type: boolean
-          default: true
-        deleted:
-          title: Boolean
-          type: boolean
-          default: true
-        reminders:
-          title: Boolean
-          type: boolean
-          default: true
-        editRecipient:
-          title: Boolean
-          type: boolean
-          default: true
-        editDocument:
-          title: Boolean
-          type: boolean
-          default: true
-        viewed:
-          title: Boolean
-          type: boolean
+        editUrl:
+          title: Uri
+          type:
+          - string
+          - 'null'
+          format: uri
       additionalProperties: false
     EmbeddedSigningLink:
       title: EmbeddedSigningLink
@@ -8192,1623 +10195,10 @@ components:
       properties:
         signLink:
           title: Uri
-          type: string
+          type:
+          - string
+          - 'null'
           format: uri
-          nullable: true
-      additionalProperties: false
-    EmbeddedDocumentEditJsonRequest:
-      title: EmbeddedDocumentEditJsonRequest
-      type: object
-      properties:
-        redirectUrl:
-          title: Uri
-          type: string
-          format: uri
-          nullable: true
-        showToolbar:
-          title: Boolean
-          type: boolean
-          default: false
-        sendViewOption:
-          title: PageViewOption
-          enum:
-          - PreparePage
-          - FillingPage
-          type: string
-          default: PreparePage
-        locale:
-          title: Locales
-          enum:
-          - EN
-          - 'NO'
-          - FR
-          - DE
-          - ES
-          - BG
-          - CS
-          - DA
-          - IT
-          - NL
-          - PL
-          - PT
-          - RO
-          - RU
-          - SV
-          - Default
-          - JA
-          - TH
-          - ZH_CN
-          - ZH_TW
-          - KO
-          type: string
-          default: EN
-        showSendButton:
-          title: Boolean
-          type: boolean
-          default: true
-        showPreviewButton:
-          title: Boolean
-          type: boolean
-          default: true
-        showNavigationButtons:
-          title: Boolean
-          type: boolean
-          default: true
-        linkValidTill:
-          title: Nullable`1
-          type: string
-          format: date-time
-          nullable: true
-        onBehalfOf:
-          title: String
-          type: string
-          nullable: true
-      additionalProperties: false
-    EditableDateFieldSettings:
-      title: EditableDateFieldSettings
-      required:
-      - dateFormat
-      type: object
-      properties:
-        dateFormat:
-          title: String
-          type: string
-          nullable: true
-        minDate:
-          title: Nullable`1
-          type: string
-          format: date-time
-          nullable: true
-        maxDate:
-          title: Nullable`1
-          type: string
-          format: date-time
-          nullable: true
-        timeFormat:
-          title: String
-          type: string
-          nullable: true
-      additionalProperties: false
-    EditFormField:
-      title: EditFormField
-      required:
-      - editAction
-      type: object
-      properties:
-        editAction:
-          title: Nullable`1
-          enum:
-          - Add
-          - Update
-          - Remove
-          type: string
-        id:
-          title: String
-          type: string
-          nullable: true
-        name:
-          title: String
-          type: string
-          nullable: true
-        fieldType:
-          title: Nullable`1
-          enum:
-          - Signature
-          - Initial
-          - CheckBox
-          - TextBox
-          - Label
-          - DateSigned
-          - RadioButton
-          - Image
-          - Attachment
-          - EditableDate
-          - Hyperlink
-          - Dropdown
-          - Title
-          - Company
-          - Formula
-          - Drawing
-          type: string
-          nullable: true
-        pageNumber:
-          title: Nullable`1
-          type: integer
-          format: int32
-          nullable: true
-        bounds:
-          $ref: '#/components/schemas/Rectangle'
-        isRequired:
-          title: Nullable`1
-          type: boolean
-          nullable: true
-        value:
-          title: String
-          type: string
-          nullable: true
-        fontSize:
-          title: Nullable`1
-          minimum: 0
-          type: number
-          format: float
-          nullable: true
-        font:
-          title: Nullable`1
-          enum:
-          - Helvetica
-          - Courier
-          - TimesRoman
-          - NotoSans
-          - Carlito
-          type: string
-          nullable: true
-        fontHexColor:
-          title: String
-          type: string
-          nullable: true
-        isBoldFont:
-          title: Nullable`1
-          type: boolean
-          nullable: true
-        isItalicFont:
-          title: Nullable`1
-          type: boolean
-          nullable: true
-        isUnderLineFont:
-          title: Nullable`1
-          type: boolean
-          nullable: true
-        lineHeight:
-          title: Nullable`1
-          maximum: 2147483647
-          minimum: 0
-          type: integer
-          format: int32
-          nullable: true
-        characterLimit:
-          title: Nullable`1
-          maximum: 2147483647
-          minimum: 0
-          type: integer
-          format: int32
-          nullable: true
-        groupName:
-          title: String
-          type: string
-          nullable: true
-        label:
-          title: String
-          type: string
-          nullable: true
-        placeHolder:
-          title: String
-          type: string
-          nullable: true
-        validationType:
-          title: Nullable`1
-          enum:
-          - None
-          - NumbersOnly
-          - EmailAddress
-          - Currency
-          - CustomRegex
-          type: string
-          nullable: true
-        validationCustomRegex:
-          title: String
-          type: string
-          nullable: true
-        validationCustomRegexMessage:
-          title: String
-          type: string
-          nullable: true
-        dateFormat:
-          title: String
-          type: string
-          nullable: true
-        timeFormat:
-          title: String
-          type: string
-          nullable: true
-        imageInfo:
-          $ref: '#/components/schemas/ImageInfo'
-        attachmentInfo:
-          $ref: '#/components/schemas/AttachmentInfo'
-        editableDateFieldSettings:
-          $ref: '#/components/schemas/EditableDateFieldSettings'
-        conditionalRules:
-          title: IEnumerable`1
-          type: array
-          items:
-            $ref: '#/components/schemas/ConditionalRule'
-          nullable: true
-        hyperlinkText:
-          title: String
-          type: string
-          nullable: true
-        dropdownOptions:
-          title: String[]
-          type: array
-          items:
-            title: String
-            type: string
-          nullable: true
-        isReadOnly:
-          title: Nullable`1
-          type: boolean
-          nullable: true
-        dataSyncTag:
-          title: String
-          type: string
-          nullable: true
-        textAlign:
-          title: Nullable`1
-          enum:
-          - Left
-          - Center
-          - Right
-          type: string
-          nullable: true
-        textDirection:
-          title: Nullable`1
-          enum:
-          - LTR
-          - RTL
-          type: string
-          nullable: true
-        characterSpacing:
-          title: Nullable`1
-          type: number
-          format: float
-          nullable: true
-        backgroundHexColor:
-          title: String
-          type: string
-          nullable: true
-        tabIndex:
-          title: Nullable`1
-          maximum: 2147483647
-          minimum: -1
-          type: integer
-          format: int32
-          nullable: true
-          readOnly: true
-        formulaFieldSettings:
-          $ref: '#/components/schemas/FormulaFieldSettings'
-        resizeOption:
-          title: Nullable`1
-          enum:
-          - GrowVertically
-          - GrowHorizontally
-          - GrowBoth
-          - Fixed
-          - AutoResizeFont
-          type: string
-          nullable: true
-        allowEditFormField:
-          title: Nullable`1
-          type: boolean
-          nullable: true
-        allowDeleteFormField:
-          title: Nullable`1
-          type: boolean
-          nullable: true
-        isMasked:
-          title: Nullable`1
-          type: boolean
-          default: false
-          nullable: true
-      additionalProperties: false
-    ImageInfo:
-      title: ImageInfo
-      required:
-      - allowedFileExtensions
-      - title
-      type: object
-      properties:
-        title:
-          title: String
-          type: string
-          nullable: true
-        description:
-          title: String
-          type: string
-          nullable: true
-        allowedFileExtensions:
-          title: String
-          type: string
-          nullable: true
-      additionalProperties: false
-    BehalfOf:
-      title: BehalfOf
-      type: object
-      properties:
-        name:
-          title: String
-          type: string
-          nullable: true
-        emailAddress:
-          title: String
-          type: string
-          nullable: true
-      additionalProperties: false
-    Validation:
-      title: Validation
-      required:
-      - type
-      type: object
-      properties:
-        type:
-          title: Nullable`1
-          enum:
-          - NumberOnly
-          - Email
-          - Currency
-          - Regex
-          - None
-          type: string
-        regex:
-          title: String
-          type: string
-          nullable: true
-        regexMessage:
-          title: String
-          type: string
-          nullable: true
-      additionalProperties: false
-    TeamDocumentRecords:
-      title: TeamDocumentRecords
-      type: object
-      properties:
-        pageDetails:
-          $ref: '#/components/schemas/PageDetails'
-        result:
-          title: List`1
-          type: array
-          items:
-            $ref: '#/components/schemas/Document'
-          nullable: true
-      additionalProperties: false
-    DocumentSigner:
-      title: DocumentSigner
-      type: object
-      properties:
-        id:
-          title: String
-          type: string
-          nullable: true
-        name:
-          title: String
-          type: string
-          nullable: true
-        emailAddress:
-          title: String
-          type: string
-          nullable: true
-        privateMessage:
-          title: String
-          maxLength: 5000
-          type: string
-          nullable: true
-        authenticationType:
-          title: AuthenticationType
-          enum:
-          - None
-          - EmailOTP
-          - AccessCode
-          - SMSOTP
-          - IdVerification
-          type: string
-        phoneNumber:
-          $ref: '#/components/schemas/PhoneNumber'
-        deliveryMode:
-          title: DeliveryMode
-          enum:
-          - Email
-          - SMS
-          - EmailAndSMS
-          - WhatsApp
-          type: string
-        authenticationCode:
-          title: String
-          maxLength: 50
-          type: string
-          nullable: true
-        identityVerificationSettings:
-          $ref: '#/components/schemas/IdentityVerificationSettings'
-        signerOrder:
-          title: Int32
-          type: integer
-          format: int32
-        enableEmailOTP:
-          title: Boolean
-          type: boolean
-        signerType:
-          title: SignerType
-          enum:
-          - Signer
-          - Reviewer
-          - InPersonSigner
-          type: string
-        hostEmail:
-          title: String
-          type: string
-          nullable: true
-        signerRole:
-          title: String
-          type: string
-          nullable: true
-        allowFieldConfiguration:
-          title: Boolean
-          type: boolean
-        formFields:
-          title: IEnumerable`1
-          type: array
-          items:
-            $ref: '#/components/schemas/FormField'
-          nullable: true
-        language:
-          title: Languages
-          enum:
-          - 0
-          - 1
-          - 2
-          - 3
-          - 4
-          - 5
-          - 6
-          - 7
-          - 8
-          - 9
-          - 10
-          - 11
-          - 12
-          - 13
-          - 14
-          - 15
-          - 16
-          - 17
-          - 18
-          - 19
-          - 20
-          type: integer
-          description: <p>Description:</p><ul><li><i>0</i> - None</li><li><i>1</i> - English</li><li><i>2</i> - Spanish</li><li><i>3</i> - German</li><li><i>4</i> - French</li><li><i>5</i> - Romanian</li><li><i>6</i> - Norwegian</li><li><i>7</i> - Bulgarian</li><li><i>8</i> - Italian</li><li><i>9</i> - Danish</li><li><i>10</i> - Polish</li><li><i>11</i> - Portuguese</li><li><i>12</i> - Czech</li><li><i>13</i> - Dutch</li><li><i>14</i> - Swedish</li><li><i>15</i> - Russian</li><li><i>16</i> - Japanese</li><li><i>17</i> - Thai</li><li><i>18</i> - SimplifiedChinese</li><li><i>19</i> - TraditionalChinese</li><li><i>20</i> - Korean</li></ul>
-          format: int32
-        locale:
-          title: Locales
-          enum:
-          - EN
-          - 'NO'
-          - FR
-          - DE
-          - ES
-          - BG
-          - CS
-          - DA
-          - IT
-          - NL
-          - PL
-          - PT
-          - RO
-          - RU
-          - SV
-          - Default
-          - JA
-          - TH
-          - ZH_CN
-          - ZH_TW
-          - KO
-          type: string
-        signType:
-          title: SignType
-          enum:
-          - Single
-          - Group
-          type: string
-        groupId:
-          title: String
-          type: string
-          nullable: true
-        recipientNotificationSettings:
-          $ref: '#/components/schemas/RecipientNotificationSettings'
-        authenticationRetryCount:
-          title: Nullable`1
-          maximum: 10
-          minimum: 1
-          type: integer
-          format: int32
-          nullable: true
-        enableQes:
-          title: Nullable`1
-          type: boolean
-          nullable: true
-        authenticationSettings:
-          $ref: '#/components/schemas/AuthenticationSettings'
-      additionalProperties: false
-    DocumentInfo:
-      title: DocumentInfo
-      required:
-      - locale
-      - title
-      type: object
-      properties:
-        language:
-          title: Languages
-          enum:
-          - 0
-          - 1
-          - 2
-          - 3
-          - 4
-          - 5
-          - 6
-          - 7
-          - 8
-          - 9
-          - 10
-          - 11
-          - 12
-          - 13
-          - 14
-          - 15
-          - 16
-          - 17
-          - 18
-          - 19
-          - 20
-          type: integer
-          description: <p>Description:</p><ul><li><i>0</i> - None</li><li><i>1</i> - English</li><li><i>2</i> - Spanish</li><li><i>3</i> - German</li><li><i>4</i> - French</li><li><i>5</i> - Romanian</li><li><i>6</i> - Norwegian</li><li><i>7</i> - Bulgarian</li><li><i>8</i> - Italian</li><li><i>9</i> - Danish</li><li><i>10</i> - Polish</li><li><i>11</i> - Portuguese</li><li><i>12</i> - Czech</li><li><i>13</i> - Dutch</li><li><i>14</i> - Swedish</li><li><i>15</i> - Russian</li><li><i>16</i> - Japanese</li><li><i>17</i> - Thai</li><li><i>18</i> - SimplifiedChinese</li><li><i>19</i> - TraditionalChinese</li><li><i>20</i> - Korean</li></ul>
-          format: int32
-        locale:
-          title: Locales
-          enum:
-          - EN
-          - 'NO'
-          - FR
-          - DE
-          - ES
-          - BG
-          - CS
-          - DA
-          - IT
-          - NL
-          - PL
-          - PT
-          - RO
-          - RU
-          - SV
-          - Default
-          - JA
-          - TH
-          - ZH_CN
-          - ZH_TW
-          - KO
-          type: string
-        title:
-          title: String
-          minLength: 1
-          type: string
-        description:
-          title: String
-          type: string
-          nullable: true
-      additionalProperties: false
-    ErrorResult:
-      title: ErrorResult
-      type: object
-      properties:
-        error:
-          title: String
-          type: string
-          nullable: true
-      additionalProperties: false
-    EditDocumentRequest:
-      title: EditDocumentRequest
-      type: object
-      properties:
-        files:
-          title: IEnumerable`1
-          type: array
-          items:
-            $ref: '#/components/schemas/EditDocumentFile'
-          nullable: true
-        title:
-          title: String
-          maxLength: 256
-          minLength: 0
-          type: string
-          nullable: true
-        message:
-          title: String
-          maxLength: 5000
-          minLength: 0
-          type: string
-          nullable: true
-        signers:
-          title: IEnumerable`1
-          type: array
-          items:
-            $ref: '#/components/schemas/EditDocumentSigner'
-          nullable: true
-        cc:
-          title: IEnumerable`1
-          type: array
-          items:
-            $ref: '#/components/schemas/DocumentCC'
-          nullable: true
-        enableSigningOrder:
-          title: Nullable`1
-          type: boolean
-          nullable: true
-        enableAuditTrailLocalization:
-          title: Nullable`1
-          type: boolean
-          nullable: true
-        expiryDateType:
-          title: Nullable`1
-          enum:
-          - Days
-          - Hours
-          - SpecificDateTime
-          type: string
-          nullable: true
-        expiryValue:
-          title: Nullable`1
-          type: integer
-          format: int64
-          nullable: true
-        reminderSettings:
-          $ref: '#/components/schemas/ReminderSettings'
-        disableEmails:
-          title: Nullable`1
-          type: boolean
-          nullable: true
-        disableSMS:
-          title: Nullable`1
-          type: boolean
-          nullable: true
-        brandId:
-          title: String
-          type: string
-          nullable: true
-        hideDocumentId:
-          title: Nullable`1
-          type: boolean
-          nullable: true
-        labels:
-          title: IEnumerable`1
-          type: array
-          items:
-            title: String
-            type: string
-          nullable: true
-        disableExpiryAlert:
-          title: Nullable`1
-          type: boolean
-          nullable: true
-        enablePrintAndSign:
-          title: Nullable`1
-          type: boolean
-          nullable: true
-        enableReassign:
-          title: Nullable`1
-          type: boolean
-          nullable: true
-        useTextTags:
-          title: Boolean
-          type: boolean
-        textTagDefinitions:
-          title: List`1
-          type: array
-          items:
-            $ref: '#/components/schemas/TextTagDefinition'
-          nullable: true
-        documentInfo:
-          title: IEnumerable`1
-          type: array
-          items:
-            $ref: '#/components/schemas/DocumentInfo'
-          nullable: true
-        onBehalfOf:
-          title: String
-          type: string
-          nullable: true
-        documentDownloadOption:
-          title: Nullable`1
-          enum:
-          - Combined
-          - Individually
-          type: string
-          nullable: true
-        metaData:
-          title: Dictionary`2
-          maxLength: 50
-          type: object
-          additionalProperties:
-            title: String
-            type: string
-            nullable: true
-          nullable: true
-        recipientNotificationSettings:
-          $ref: '#/components/schemas/RecipientNotificationSettings'
-        formGroups:
-          title: List`1
-          type: array
-          items:
-            $ref: '#/components/schemas/FormGroup'
-          nullable: true
-        downloadFileName:
-          title: String
-          maxLength: 250
-          minLength: 0
-          type: string
-          nullable: true
-        scheduledSendTime:
-          title: Nullable`1
-          type: integer
-          format: int64
-          nullable: true
-        allowedSignatureTypes:
-          title: List`1
-          type: array
-          items:
-            title: SignatureType
-            enum:
-            - Text
-            - Draw
-            - Image
-            type: string
-          nullable: true
-        groupSignerSettings:
-          $ref: '#/components/schemas/GroupSignerSettings'
-        enableAllowSignEverywhere:
-          title: Nullable`1
-          type: boolean
-          nullable: true
-        documentTimeZone:
-          title: String
-          type: string
-          nullable: true
-      additionalProperties: false
-    EditDocumentSigner:
-      title: EditDocumentSigner
-      required:
-      - editAction
-      type: object
-      properties:
-        editAction:
-          title: Nullable`1
-          enum:
-          - Add
-          - Update
-          - Remove
-          type: string
-        id:
-          title: String
-          type: string
-          nullable: true
-        name:
-          title: String
-          type: string
-          nullable: true
-        emailAddress:
-          title: String
-          type: string
-          nullable: true
-        privateMessage:
-          title: String
-          maxLength: 5000
-          type: string
-          nullable: true
-        authenticationType:
-          title: Nullable`1
-          enum:
-          - None
-          - EmailOTP
-          - AccessCode
-          - SMSOTP
-          - IdVerification
-          type: string
-          nullable: true
-        phoneNumber:
-          $ref: '#/components/schemas/PhoneNumber'
-        deliveryMode:
-          title: Nullable`1
-          enum:
-          - Email
-          - SMS
-          - EmailAndSMS
-          - WhatsApp
-          type: string
-          nullable: true
-        authenticationCode:
-          title: String
-          maxLength: 50
-          type: string
-          nullable: true
-        identityVerificationSettings:
-          $ref: '#/components/schemas/IdentityVerificationSettings'
-        signerOrder:
-          title: Nullable`1
-          type: integer
-          format: int32
-          nullable: true
-        enableEmailOTP:
-          title: Nullable`1
-          type: boolean
-          nullable: true
-        signerType:
-          title: Nullable`1
-          enum:
-          - Signer
-          - Reviewer
-          - InPersonSigner
-          type: string
-          nullable: true
-        hostEmail:
-          title: String
-          type: string
-          nullable: true
-        signerRole:
-          title: String
-          type: string
-          nullable: true
-        allowFieldConfiguration:
-          title: Nullable`1
-          type: boolean
-          nullable: true
-        formFields:
-          title: IEnumerable`1
-          type: array
-          items:
-            $ref: '#/components/schemas/EditFormField'
-          nullable: true
-        language:
-          title: Nullable`1
-          enum:
-          - 0
-          - 1
-          - 2
-          - 3
-          - 4
-          - 5
-          - 6
-          - 7
-          - 8
-          - 9
-          - 10
-          - 11
-          - 12
-          - 13
-          - 14
-          - 15
-          - 16
-          - 17
-          - 18
-          - 19
-          - 20
-          type: integer
-          format: int32
-          nullable: true
-        locale:
-          title: Nullable`1
-          enum:
-          - EN
-          - 'NO'
-          - FR
-          - DE
-          - ES
-          - BG
-          - CS
-          - DA
-          - IT
-          - NL
-          - PL
-          - PT
-          - RO
-          - RU
-          - SV
-          - Default
-          - JA
-          - TH
-          - ZH_CN
-          - ZH_TW
-          - KO
-          type: string
-          nullable: true
-        signType:
-          title: Nullable`1
-          enum:
-          - Single
-          - Group
-          type: string
-          nullable: true
-        groupId:
-          title: String
-          type: string
-          nullable: true
-        recipientNotificationSettings:
-          $ref: '#/components/schemas/RecipientNotificationSettings'
-        authenticationRetryCount:
-          title: Nullable`1
-          maximum: 10
-          minimum: 1
-          type: integer
-          format: int32
-          nullable: true
-        enableQes:
-          title: Nullable`1
-          type: boolean
-          nullable: true
-        authenticationSettings:
-          $ref: '#/components/schemas/AuthenticationSettings'
-      additionalProperties: false
-    TextTagDefinition:
-      title: TextTagDefinition
-      required:
-      - definitionId
-      - signerIndex
-      - type
-      type: object
-      properties:
-        definitionId:
-          title: String
-          minLength: 1
-          type: string
-        type:
-          title: Nullable`1
-          enum:
-          - Signature
-          - Initial
-          - CheckBox
-          - TextBox
-          - Label
-          - DateSigned
-          - RadioButton
-          - Image
-          - Attachment
-          - EditableDate
-          - Hyperlink
-          - Dropdown
-          - Title
-          - Company
-          - Formula
-          - Drawing
-          type: string
-        signerIndex:
-          title: Int32
-          maximum: 50
-          minimum: 1
-          type: integer
-          format: int32
-        isRequired:
-          title: Boolean
-          type: boolean
-        placeholder:
-          title: String
-          type: string
-          nullable: true
-        fieldId:
-          title: String
-          type: string
-          nullable: true
-        font:
-          $ref: '#/components/schemas/Font'
-        validation:
-          $ref: '#/components/schemas/Validation'
-        size:
-          $ref: '#/components/schemas/Size'
-        dateFormat:
-          title: String
-          type: string
-          nullable: true
-        timeFormat:
-          title: String
-          type: string
-          nullable: true
-        radioGroupName:
-          title: String
-          type: string
-          nullable: true
-        groupName:
-          title: String
-          type: string
-          nullable: true
-        value:
-          title: String
-          type: string
-          nullable: true
-        dropdownOptions:
-          title: String[]
-          type: array
-          items:
-            title: String
-            type: string
-          nullable: true
-        imageInfo:
-          $ref: '#/components/schemas/ImageInfo'
-        hyperlinkText:
-          title: String
-          type: string
-          nullable: true
-        attachmentInfo:
-          $ref: '#/components/schemas/AttachmentInfo'
-        backgroundHexColor:
-          title: String
-          type: string
-          nullable: true
-        isReadOnly:
-          title: Boolean
-          type: boolean
-        offset:
-          $ref: '#/components/schemas/TextTagOffset'
-        label:
-          title: String
-          type: string
-          nullable: true
-        tabIndex:
-          title: Nullable`1
-          maximum: 2147483647
-          minimum: -1
-          type: integer
-          format: int32
-          nullable: true
-        dataSyncTag:
-          title: String
-          type: string
-          nullable: true
-        textAlign:
-          title: TextAlign
-          enum:
-          - Left
-          - Center
-          - Right
-          type: string
-        textDirection:
-          title: TextDirection
-          enum:
-          - LTR
-          - RTL
-          type: string
-        characterSpacing:
-          title: Single
-          type: number
-          format: float
-        characterLimit:
-          title: Int32
-          maximum: 2147483647
-          minimum: 0
-          type: integer
-          format: int32
-        formulaFieldSettings:
-          $ref: '#/components/schemas/FormulaFieldSettings'
-        resizeOption:
-          title: Nullable`1
-          enum:
-          - GrowVertically
-          - GrowHorizontally
-          - GrowBoth
-          - Fixed
-          - AutoResizeFont
-          type: string
-          nullable: true
-        collaborationSettings:
-          $ref: '#/components/schemas/CollaborationSettings'
-        isMasked:
-          title: Nullable`1
-          type: boolean
-          default: false
-          nullable: true
-        conditionalRules:
-          title: IEnumerable`1
-          type: array
-          items:
-            $ref: '#/components/schemas/ConditionalRule'
-          nullable: true
-      additionalProperties: false
-    IdVerificationDetails:
-      title: IdVerificationDetails
-      type: object
-      properties:
-        type:
-          title: String
-          type: string
-          nullable: true
-        maximumRetryCount:
-          title: Nullable`1
-          type: integer
-          format: int32
-          nullable: true
-        status:
-          title: String
-          type: string
-          nullable: true
-        nameMatcher:
-          title: String
-          type: string
-          nullable: true
-        requireLiveCapture:
-          title: Nullable`1
-          type: boolean
-          nullable: true
-        requireMatchingSelfie:
-          title: Nullable`1
-          type: boolean
-          nullable: true
-        holdForPrefill:
-          title: Nullable`1
-          type: boolean
-          nullable: true
-        prefillCompleted:
-          title: Nullable`1
-          type: boolean
-          nullable: true
-        allowedDocumentTypes:
-          title: List`1
-          type: array
-          items:
-            title: String
-            type: string
-          nullable: true
-        allowedCountries:
-          title: List`1
-          type: array
-          items:
-            title: String
-            type: string
-          nullable: true
-      additionalProperties: false
-    IdentityVerificationSettings:
-      title: IdentityVerificationSettings
-      type: object
-      properties:
-        type:
-          title: Nullable`1
-          enum:
-          - EveryAccess
-          - UntilSignCompleted
-          - OncePerDocument
-          type: string
-          nullable: true
-        maximumRetryCount:
-          title: Nullable`1
-          maximum: 10
-          minimum: 1
-          type: integer
-          format: int32
-          nullable: true
-        requireLiveCapture:
-          title: Nullable`1
-          type: boolean
-          nullable: true
-        requireMatchingSelfie:
-          title: Nullable`1
-          type: boolean
-          nullable: true
-        nameMatcher:
-          title: Nullable`1
-          enum:
-          - Strict
-          - Moderate
-          - Lenient
-          type: string
-          nullable: true
-        holdForPrefill:
-          title: Nullable`1
-          type: boolean
-          nullable: true
-        allowedDocumentTypes:
-          title: List`1
-          type: array
-          items:
-            title: AllowedDocumentType
-            enum:
-            - Passport
-            - IDCard
-            - DriverLicense
-            type: string
-          nullable: true
-      additionalProperties: false
-    RemoveAuthentication:
-      title: RemoveAuthentication
-      type: object
-      properties:
-        emailId:
-          title: String
-          type: string
-          nullable: true
-        zOrder:
-          title: Nullable`1
-          type: integer
-          format: int32
-          nullable: true
-        phoneNumber:
-          $ref: '#/components/schemas/PhoneNumber'
-        onBehalfOf:
-          title: String
-          type: string
-          nullable: true
-      additionalProperties: false
-    GroupSignerSettings:
-      title: GroupSignerSettings
-      type: object
-      properties:
-        enabled:
-          title: Boolean
-          type: boolean
-        allowedDirectories:
-          title: List`1
-          type: array
-          items:
-            title: String
-            type: string
-          nullable: true
-      additionalProperties: false
-    Size:
-      title: Size
-      type: object
-      properties:
-        width:
-          title: Single
-          minimum: 0
-          type: number
-          format: float
-          default: 0
-        height:
-          title: Single
-          minimum: 0
-          type: number
-          format: float
-          default: 0
-      additionalProperties: false
-    EmbeddedSendCreated:
-      title: EmbeddedSendCreated
-      type: object
-      properties:
-        documentId:
-          title: String
-          type: string
-          nullable: true
-        sendUrl:
-          title: Uri
-          type: string
-          format: uri
-          nullable: true
-      additionalProperties: false
-    FormGroup:
-      title: FormGroup
-      required:
-      - groupNames
-      - groupValidation
-      type: object
-      properties:
-        minimumCount:
-          title: Nullable`1
-          maximum: 2147483647
-          minimum: 0
-          type: integer
-          format: int32
-          nullable: true
-        maximumCount:
-          title: Nullable`1
-          maximum: 2147483647
-          minimum: 0
-          type: integer
-          format: int32
-          nullable: true
-        dataSyncTag:
-          title: String
-          type: string
-          nullable: true
-        groupNames:
-          title: IEnumerable`1
-          type: array
-          items:
-            title: String
-            type: string
-        groupValidation:
-          title: GroupValidation
-          enum:
-          - Minimum
-          - Maximum
-          - Absolute
-          - Range
-          type: string
-          format: Enumeration
-      additionalProperties: false
-    EmbeddedDocumentRequest:
-      title: EmbeddedDocumentRequest
-      type: object
-      properties:
-        redirectUrl:
-          title: Uri
-          type: string
-          format: uri
-          nullable: true
-        showToolbar:
-          title: Boolean
-          type: boolean
-          default: false
-        sendViewOption:
-          title: PageViewOption
-          enum:
-          - PreparePage
-          - FillingPage
-          type: string
-          default: PreparePage
-        showSaveButton:
-          title: Boolean
-          type: boolean
-          default: true
-        locale:
-          title: Locales
-          enum:
-          - EN
-          - 'NO'
-          - FR
-          - DE
-          - ES
-          - BG
-          - CS
-          - DA
-          - IT
-          - NL
-          - PL
-          - PT
-          - RO
-          - RU
-          - SV
-          - Default
-          - JA
-          - TH
-          - ZH_CN
-          - ZH_TW
-          - KO
-          type: string
-          default: EN
-        showSendButton:
-          title: Boolean
-          type: boolean
-          default: true
-        showPreviewButton:
-          title: Boolean
-          type: boolean
-          default: true
-        showNavigationButtons:
-          title: Boolean
-          type: boolean
-          default: true
-        showTooltip:
-          title: Boolean
-          type: boolean
-          default: false
-        embeddedSendLinkValidTill:
-          title: Nullable`1
-          type: string
-          format: date-time
-          nullable: true
-        files:
-          title: List`1
-          type: array
-          items:
-            title: IFormFile
-            type: string
-            format: binary
-          nullable: true
-        title:
-          title: String
-          maxLength: 256
-          minLength: 0
-          type: string
-          nullable: true
-        message:
-          title: String
-          maxLength: 5000
-          minLength: 0
-          type: string
-          nullable: true
-        signers:
-          title: IEnumerable`1
-          type: array
-          items:
-            $ref: '#/components/schemas/DocumentSigner'
-          nullable: true
-        cc:
-          title: IEnumerable`1
-          type: array
-          items:
-            $ref: '#/components/schemas/DocumentCC'
-          nullable: true
-        enableSigningOrder:
-          title: Boolean
-          type: boolean
-          default: false
-        expiryDays:
-          title: Int32
-          type: integer
-          format: int32
-          deprecated: true
-        expiryDateType:
-          title: Nullable`1
-          enum:
-          - Days
-          - Hours
-          - SpecificDateTime
-          type: string
-          nullable: true
-        expiryValue:
-          title: Int64
-          type: integer
-          format: int64
-          default: 60
-        reminderSettings:
-          $ref: '#/components/schemas/ReminderSettings'
-        enableEmbeddedSigning:
-          title: Boolean
-          type: boolean
-          default: false
-          deprecated: true
-        disableEmails:
-          title: Boolean
-          type: boolean
-          default: false
-        disableSMS:
-          title: Boolean
-          type: boolean
-          default: false
-        brandId:
-          title: String
-          type: string
-          nullable: true
-        hideDocumentId:
-          title: Nullable`1
-          type: boolean
-          default: false
-          nullable: true
-        labels:
-          title: IEnumerable`1
-          type: array
-          items:
-            title: String
-            type: string
-          nullable: true
-        fileUrls:
-          title: Uri[]
-          type: array
-          items:
-            title: Uri
-            type: string
-            format: uri
-          nullable: true
-        sendLinkValidTill:
-          title: Nullable`1
-          type: string
-          format: date-time
-          nullable: true
-        useTextTags:
-          title: Boolean
-          type: boolean
-          default: false
-        textTagDefinitions:
-          title: List`1
-          type: array
-          items:
-            $ref: '#/components/schemas/TextTagDefinition'
-          nullable: true
-        enablePrintAndSign:
-          title: Boolean
-          type: boolean
-          default: false
-        enableReassign:
-          title: Boolean
-          type: boolean
-          default: true
-        disableExpiryAlert:
-          title: Nullable`1
-          type: boolean
-          nullable: true
-        documentInfo:
-          title: IEnumerable`1
-          type: array
-          items:
-            $ref: '#/components/schemas/DocumentInfo'
-          nullable: true
-        onBehalfOf:
-          title: String
-          type: string
-          nullable: true
-        AutoDetectFields:
-          title: Boolean
-          type: boolean
-          default: false
-        documentDownloadOption:
-          title: Nullable`1
-          enum:
-          - Combined
-          - Individually
-          type: string
-          nullable: true
-        isSandbox:
-          title: Nullable`1
-          type: boolean
-          nullable: true
-        metaData:
-          title: Dictionary`2
-          maxLength: 50
-          type: object
-          additionalProperties:
-            title: String
-            type: string
-            nullable: true
-          nullable: true
-        formGroups:
-          title: List`1
-          type: array
-          items:
-            $ref: '#/components/schemas/FormGroup'
-          nullable: true
-        recipientNotificationSettings:
-          $ref: '#/components/schemas/RecipientNotificationSettings'
-        enableAuditTrailLocalization:
-          title: Nullable`1
-          type: boolean
-          nullable: true
-        downloadFileName:
-          title: String
-          maxLength: 250
-          minLength: 0
-          type: string
-          nullable: true
-        scheduledSendTime:
-          title: Nullable`1
-          type: integer
-          format: int64
-          nullable: true
-        allowScheduledSend:
-          title: Boolean
-          type: boolean
-          default: false
-        allowedSignatureTypes:
-          title: List`1
-          type: array
-          items:
-            title: SignatureType
-            enum:
-            - Text
-            - Draw
-            - Image
-            type: string
-          nullable: true
-        groupSignerSettings:
-          $ref: '#/components/schemas/GroupSignerSettings'
-        enableAllowSignEverywhere:
-          title: Nullable`1
-          type: boolean
-          nullable: true
-        documentTimeZone:
-          title: String
-          type: string
-          nullable: true
       additionalProperties: false
   securitySchemes:
     Bearer:

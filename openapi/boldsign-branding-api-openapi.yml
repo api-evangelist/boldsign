@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: BoldSign Branding API
   version: '1'
@@ -30,7 +30,7 @@ paths:
     post:
       tags:
       - Branding
-      summary: Create the brand.
+      summary: Create the brand
       operationId: CreateBrand
       requestBody:
         content:
@@ -739,7 +739,7 @@ paths:
     post:
       tags:
       - Branding
-      summary: Edit the brand.
+      summary: Edit the brand
       operationId: EditBrand
       parameters:
       - name: brandId
@@ -1452,7 +1452,7 @@ paths:
     get:
       tags:
       - Branding
-      summary: Get the specific brand details.
+      summary: Get the specific brand details
       operationId: GetBrand
       parameters:
       - name: brandId
@@ -1490,7 +1490,7 @@ paths:
     delete:
       tags:
       - Branding
-      summary: Delete the brand.
+      summary: Delete the brand
       operationId: DeleteBrand
       parameters:
       - name: brandId
@@ -1873,7 +1873,7 @@ paths:
     post:
       tags:
       - Branding
-      summary: Reset default brand.
+      summary: Reset default brand
       operationId: ResetDefaultBrand
       parameters:
       - name: brandId
@@ -2256,7 +2256,7 @@ paths:
     get:
       tags:
       - Branding
-      summary: List all the brands.
+      summary: List all the brands
       operationId: BrandList
       responses:
         '200':
@@ -2279,57 +2279,27 @@ paths:
                 $ref: '#/components/schemas/ErrorResult'
 components:
   schemas:
-    CustomDomainSettings:
-      title: CustomDomainSettings
+    BrandingRecords:
+      title: BrandingRecords
       type: object
       properties:
-        domainName:
-          title: String
-          type: string
-          nullable: true
-        fromName:
-          title: String
-          type: string
-          nullable: true
+        result:
+          title: List`1
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ViewBrandDetails'
       additionalProperties: false
-    DocumentExpirySettings:
-      title: DocumentExpirySettings
+    BrandCreated:
+      title: BrandCreated
       type: object
       properties:
-        expiryDateType:
-          title: Nullable`1
-          enum:
-          - Days
-          - Hours
-          - SpecificDateTime
-          type: string
-          format: Enumeration
-          nullable: true
-        expiryValue:
-          title: Nullable`1
-          type: integer
-          format: int32
-          nullable: true
-        enableDefaultExpiryAlert:
-          title: Nullable`1
-          type: boolean
-          nullable: true
-        enableAutoReminder:
-          title: Nullable`1
-          type: boolean
-          nullable: true
-        reminderDays:
-          title: Nullable`1
-          maximum: 180
-          minimum: 1
-          type: integer
-          format: int32
-          nullable: true
-        reminderCount:
-          title: Nullable`1
-          type: integer
-          format: int32
-          nullable: true
+        brandId:
+          title: String
+          type:
+          - string
+          - 'null'
       additionalProperties: false
     SignatureFrameSettings:
       title: SignatureFrameSettings
@@ -2352,34 +2322,85 @@ components:
           type: boolean
           default: false
       additionalProperties: false
-    ErrorResult:
-      title: ErrorResult
-      type: object
-      properties:
-        error:
-          title: String
-          type: string
-          nullable: true
-      additionalProperties: false
-    BrandingRecords:
-      title: BrandingRecords
-      type: object
-      properties:
-        result:
-          title: List`1
-          type: array
-          items:
-            $ref: '#/components/schemas/ViewBrandDetails'
-          nullable: true
-      additionalProperties: false
     BrandingMessage:
       title: BrandingMessage
       type: object
       properties:
         message:
           title: String
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    ErrorResult:
+      title: ErrorResult
+      type: object
+      properties:
+        error:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    DocumentExpirySettings:
+      title: DocumentExpirySettings
+      type: object
+      properties:
+        expiryDateType:
+          title: Nullable`1
+          enum:
+          - Days
+          - Hours
+          - SpecificDateTime
+          type:
+          - string
+          - 'null'
+          format: Enumeration
+        expiryValue:
+          title: Nullable`1
+          type:
+          - integer
+          - 'null'
+          format: int32
+        enableDefaultExpiryAlert:
+          title: Nullable`1
+          type:
+          - boolean
+          - 'null'
+        enableAutoReminder:
+          title: Nullable`1
+          type:
+          - boolean
+          - 'null'
+        reminderDays:
+          title: Nullable`1
+          maximum: 180
+          minimum: 1
+          type:
+          - integer
+          - 'null'
+          format: int32
+        reminderCount:
+          title: Nullable`1
+          type:
+          - integer
+          - 'null'
+          format: int32
+      additionalProperties: false
+    CustomDomainSettings:
+      title: CustomDomainSettings
+      type: object
+      properties:
+        domainName:
+          title: String
+          type:
+          - string
+          - 'null'
+        fromName:
+          title: String
+          type:
+          - string
+          - 'null'
       additionalProperties: false
     ViewBrandDetails:
       title: ViewBrandDetails
@@ -2387,44 +2408,54 @@ components:
       properties:
         brandId:
           title: String
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         brandLogo:
           title: String
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         brandName:
           title: String
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         backgroundColor:
           title: String
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         buttonColor:
           title: String
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         buttonTextColor:
           title: String
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         emailDisplayName:
           title: String
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         disclaimerTitle:
           title: String
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         disclaimerDescription:
           title: String
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         redirectUrl:
           title: String
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         isDefault:
           title: Boolean
           type: boolean
@@ -2448,8 +2479,9 @@ components:
           type: string
         documentTimeZone:
           title: String
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         showBuiltInFormFields:
           title: Boolean
           type: boolean
@@ -2474,15 +2506,6 @@ components:
           type: boolean
         signatureFrameSettings:
           $ref: '#/components/schemas/SignatureFrameSettings'
-      additionalProperties: false
-    BrandCreated:
-      title: BrandCreated
-      type: object
-      properties:
-        brandId:
-          title: String
-          type: string
-          nullable: true
       additionalProperties: false
   securitySchemes:
     Bearer:

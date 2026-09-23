@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: BoldSign Branding GroupContacts API
+  title: BoldSign Group Contacts API
   version: '1'
   description: BoldSign eSignature REST API for sending documents for electronic signature, managing reusable templates, tracking envelope status, embedding signing and requesting workflows into third-party applications. Supports API key and OAuth 2.0 authentication. Regional endpoints available for US, EU, CA, and AU.
   contact:
@@ -30,7 +30,7 @@ paths:
     get:
       tags:
       - GroupContacts
-      summary: List Group Contacts.
+      summary: List Group Contacts
       operationId: GroupContactList
       parameters:
       - name: PageSize
@@ -91,7 +91,7 @@ paths:
     post:
       tags:
       - GroupContacts
-      summary: Create a new Group Contact.
+      summary: Create a new Group Contact
       operationId: CreateGroupContact
       requestBody:
         description: The group contact details.
@@ -242,7 +242,7 @@ paths:
     put:
       tags:
       - GroupContacts
-      summary: Update the Group Contact.
+      summary: Update the Group Contact
       operationId: UpdateGroupContact
       parameters:
       - name: groupId
@@ -397,7 +397,7 @@ paths:
     get:
       tags:
       - GroupContacts
-      summary: Get Summary of the Group Contact.
+      summary: Get Summary of the Group Contact
       operationId: GetGroupContact
       parameters:
       - name: groupId
@@ -429,7 +429,7 @@ paths:
     delete:
       tags:
       - GroupContacts
-      summary: Deletes a Group Contact.
+      summary: Deletes a Group Contact
       operationId: DeleteGroupContact
       parameters:
       - name: groupId
@@ -455,18 +455,127 @@ paths:
                 $ref: '#/components/schemas/ErrorResult'
 components:
   schemas:
+    GroupContactDetails:
+      title: GroupContactDetails
+      required:
+      - contacts
+      - groupName
+      type: object
+      properties:
+        groupName:
+          title: String
+          minLength: 1
+          type: string
+        directories:
+          title: List`1
+          type:
+          - array
+          - 'null'
+          items:
+            title: String
+            type: string
+        contacts:
+          title: List`1
+          type: array
+          items:
+            $ref: '#/components/schemas/GroupUser'
+      additionalProperties: false
     Creators:
       title: Creators
       type: object
       properties:
         userId:
           title: String
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         createdBy:
           title: String
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    UpdateGroupContact:
+      title: UpdateGroupContact
+      type: object
+      properties:
+        groupName:
+          title: String
+          type:
+          - string
+          - 'null'
+        directories:
+          title: List`1
+          type:
+          - array
+          - 'null'
+          items:
+            title: String
+            type: string
+        contacts:
+          title: List`1
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/GroupUser'
+      additionalProperties: false
+    GetGroupContactDetails:
+      title: GetGroupContactDetails
+      type: object
+      properties:
+        groupName:
+          title: String
+          type:
+          - string
+          - 'null'
+        groupId:
+          title: String
+          type:
+          - string
+          - 'null'
+        contacts:
+          title: List`1
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/GroupUser'
+        creator:
+          $ref: '#/components/schemas/Creators'
+        directories:
+          title: List`1
+          type:
+          - array
+          - 'null'
+          items:
+            title: String
+            type: string
+      additionalProperties: false
+    CreateGroupContactResponse:
+      title: CreateGroupContactResponse
+      type: object
+      properties:
+        groupId:
+          title: String
+          type:
+          - string
+          - 'null'
+        groupName:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    ErrorResult:
+      title: ErrorResult
+      type: object
+      properties:
+        error:
+          title: String
+          type:
+          - string
+          - 'null'
       additionalProperties: false
     ContactPageDetails:
       title: ContactPageDetails
@@ -485,91 +594,6 @@ components:
           type: integer
           format: int32
       additionalProperties: false
-    GetGroupContactDetails:
-      title: GetGroupContactDetails
-      type: object
-      properties:
-        groupName:
-          title: String
-          type: string
-          nullable: true
-        groupId:
-          title: String
-          type: string
-          nullable: true
-        contacts:
-          title: List`1
-          type: array
-          items:
-            $ref: '#/components/schemas/GroupUser'
-          nullable: true
-        creator:
-          $ref: '#/components/schemas/Creators'
-        directories:
-          title: List`1
-          type: array
-          items:
-            title: String
-            type: string
-          nullable: true
-      additionalProperties: false
-    ErrorResult:
-      title: ErrorResult
-      type: object
-      properties:
-        error:
-          title: String
-          type: string
-          nullable: true
-      additionalProperties: false
-    UpdateGroupContact:
-      title: UpdateGroupContact
-      type: object
-      properties:
-        groupName:
-          title: String
-          type: string
-          nullable: true
-        directories:
-          title: List`1
-          type: array
-          items:
-            title: String
-            type: string
-          nullable: true
-        contacts:
-          title: List`1
-          type: array
-          items:
-            $ref: '#/components/schemas/GroupUser'
-          nullable: true
-      additionalProperties: false
-    GroupContact:
-      title: GroupContact
-      type: object
-      properties:
-        groupName:
-          title: String
-          type: string
-          nullable: true
-        groupId:
-          title: String
-          type: string
-          nullable: true
-        contacts:
-          title: List`1
-          type: array
-          items:
-            $ref: '#/components/schemas/GroupUser'
-          nullable: true
-        directories:
-          title: List`1
-          type: array
-          items:
-            title: String
-            type: string
-          nullable: true
-      additionalProperties: false
     GroupContactsList:
       title: GroupContactsList
       type: object
@@ -578,47 +602,41 @@ components:
           $ref: '#/components/schemas/ContactPageDetails'
         result:
           title: List`1
-          type: array
+          type:
+          - array
+          - 'null'
           items:
             $ref: '#/components/schemas/GroupContact'
-          nullable: true
       additionalProperties: false
-    GroupContactDetails:
-      title: GroupContactDetails
-      required:
-      - contacts
-      - groupName
+    GroupContact:
+      title: GroupContact
       type: object
       properties:
         groupName:
           title: String
-          minLength: 1
-          type: string
+          type:
+          - string
+          - 'null'
+        groupId:
+          title: String
+          type:
+          - string
+          - 'null'
+        contacts:
+          title: List`1
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/GroupUser'
         directories:
           title: List`1
-          type: array
+          type:
+          - array
+          - 'null'
           items:
             title: String
             type: string
-          nullable: true
-        contacts:
-          title: List`1
-          type: array
-          items:
-            $ref: '#/components/schemas/GroupUser'
-      additionalProperties: false
-    CreateGroupContactResponse:
-      title: CreateGroupContactResponse
-      type: object
-      properties:
-        groupId:
-          title: String
-          type: string
-          nullable: true
-        groupName:
-          title: String
-          type: string
-          nullable: true
       additionalProperties: false
     GroupUser:
       title: GroupUser

@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: BoldSign Branding Teams API
+  title: BoldSign Teams API
   version: '1'
   description: BoldSign eSignature REST API for sending documents for electronic signature, managing reusable templates, tracking envelope status, embedding signing and requesting workflows into third-party applications. Supports API key and OAuth 2.0 authentication. Regional endpoints available for US, EU, CA, and AU.
   contact:
@@ -30,7 +30,7 @@ paths:
     get:
       tags:
       - Teams
-      summary: Get Team details.
+      summary: Get Team details
       operationId: GetTeam
       parameters:
       - name: teamId
@@ -62,7 +62,7 @@ paths:
     get:
       tags:
       - Teams
-      summary: List Teams.
+      summary: List Teams
       operationId: ListTeams
       parameters:
       - name: Page
@@ -111,7 +111,7 @@ paths:
     post:
       tags:
       - Teams
-      summary: Create Team.
+      summary: Create Team
       operationId: CreateTeam
       requestBody:
         description: team creation.
@@ -263,7 +263,7 @@ paths:
     put:
       tags:
       - Teams
-      summary: Update Team.
+      summary: Update Team
       operationId: UpdateTeam
       requestBody:
         description: update team.
@@ -409,27 +409,45 @@ paths:
                 $ref: '#/components/schemas/ErrorResult'
 components:
   schemas:
-    TeamPageDetails:
-      title: TeamPageDetails
+    TeamResponse:
+      title: TeamResponse
       type: object
       properties:
-        pageSize:
-          title: Int32
-          type: integer
-          format: int32
-        page:
-          title: Int32
-          type: integer
-          format: int32
-      additionalProperties: false
-    ErrorResult:
-      title: ErrorResult
-      type: object
-      properties:
-        error:
+        teamId:
           title: String
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
+        teamName:
+          title: String
+          type:
+          - string
+          - 'null'
+        users:
+          title: List`1
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/TeamUsers'
+        createdDate:
+          title: Int64
+          type: integer
+          format: int64
+        modifiedDate:
+          title: Int64
+          type: integer
+          format: int64
+      additionalProperties: false
+    TeamCreated:
+      title: TeamCreated
+      type: object
+      properties:
+        teamId:
+          title: String
+          type:
+          - string
+          - 'null'
       additionalProperties: false
     TeamUsers:
       title: TeamUsers
@@ -437,20 +455,24 @@ components:
       properties:
         userId:
           title: String
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         email:
           title: String
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         firstName:
           title: String
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         lastName:
           title: String
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         userRole:
           title: UserRole
           enum:
@@ -483,19 +505,6 @@ components:
           minLength: 0
           type: string
       additionalProperties: false
-    TeamListResponse:
-      title: TeamListResponse
-      type: object
-      properties:
-        pageDetails:
-          $ref: '#/components/schemas/TeamPageDetails'
-        results:
-          title: List`1
-          type: array
-          items:
-            $ref: '#/components/schemas/Teams'
-          nullable: true
-      additionalProperties: false
     CreateTeamRequest:
       title: CreateTeamRequest
       required:
@@ -508,41 +517,42 @@ components:
           minLength: 0
           type: string
       additionalProperties: false
-    TeamCreated:
-      title: TeamCreated
+    TeamPageDetails:
+      title: TeamPageDetails
       type: object
       properties:
-        teamId:
-          title: String
-          type: string
-          nullable: true
+        pageSize:
+          title: Int32
+          type: integer
+          format: int32
+        page:
+          title: Int32
+          type: integer
+          format: int32
       additionalProperties: false
-    TeamResponse:
-      title: TeamResponse
+    ErrorResult:
+      title: ErrorResult
       type: object
       properties:
-        teamId:
+        error:
           title: String
-          type: string
-          nullable: true
-        teamName:
-          title: String
-          type: string
-          nullable: true
-        users:
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    TeamListResponse:
+      title: TeamListResponse
+      type: object
+      properties:
+        pageDetails:
+          $ref: '#/components/schemas/TeamPageDetails'
+        results:
           title: List`1
-          type: array
+          type:
+          - array
+          - 'null'
           items:
-            $ref: '#/components/schemas/TeamUsers'
-          nullable: true
-        createdDate:
-          title: Int64
-          type: integer
-          format: int64
-        modifiedDate:
-          title: Int64
-          type: integer
-          format: int64
+            $ref: '#/components/schemas/Teams'
       additionalProperties: false
     Teams:
       title: Teams
@@ -550,12 +560,14 @@ components:
       properties:
         teamName:
           title: String
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         teamId:
           title: String
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         createdDate:
           title: Int64
           type: integer

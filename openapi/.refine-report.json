@@ -1,17 +1,7 @@
 {
   "provider": "boldsign",
   "sources": [
-    "boldsign-branding-api-openapi.yml",
-    "boldsign-contacts-api-openapi.yml",
-    "boldsign-custom-field-api-openapi.yml",
-    "boldsign-document-api-openapi.yml",
-    "boldsign-groupcontacts-api-openapi.yml",
-    "boldsign-identity-verification-api-openapi.yml",
-    "boldsign-plan-api-openapi.yml",
-    "boldsign-sender-identities-api-openapi.yml",
-    "boldsign-teams-api-openapi.yml",
-    "boldsign-template-api-openapi.yml",
-    "boldsign-user-api-openapi.yml"
+    "_original/boldsign-esignature-openapi.yml"
   ],
   "outputs": [
     "boldsign-branding-api-openapi.yml",
@@ -29,6 +19,22 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "boldsign-esignature-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "boldsign-branding-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "boldsign-contacts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "boldsign-custom-field-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "boldsign-document-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "boldsign-groupcontacts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "boldsign-identity-verification-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "boldsign-plan-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "boldsign-sender-identities-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "boldsign-teams-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "boldsign-template-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "boldsign-user-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

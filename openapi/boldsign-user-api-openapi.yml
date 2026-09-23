@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: BoldSign Branding User API
+  title: BoldSign User API
   version: '1'
   description: BoldSign eSignature REST API for sending documents for electronic signature, managing reusable templates, tracking envelope status, embedding signing and requesting workflows into third-party applications. Supports API key and OAuth 2.0 authentication. Regional endpoints available for US, EU, CA, and AU.
   contact:
@@ -30,7 +30,7 @@ paths:
     post:
       tags:
       - User
-      summary: Create the user.
+      summary: Create the user
       operationId: CreateUser
       requestBody:
         description: The create user.
@@ -300,7 +300,7 @@ paths:
     put:
       tags:
       - User
-      summary: Update new User role.
+      summary: Update new User role
       operationId: UpdateUser
       requestBody:
         description: update query.
@@ -447,7 +447,7 @@ paths:
     post:
       tags:
       - User
-      summary: Resend the users invitation.
+      summary: Resend the users invitation
       operationId: ResendInvitation
       parameters:
       - name: UserId
@@ -475,7 +475,7 @@ paths:
     post:
       tags:
       - User
-      summary: Cancel the users invitation.
+      summary: Cancel the users invitation
       operationId: CancelInvitation
       parameters:
       - name: UserId
@@ -503,7 +503,7 @@ paths:
     get:
       tags:
       - User
-      summary: List user documents.
+      summary: List user documents
       operationId: ListUsers
       parameters:
       - name: PageSize
@@ -555,7 +555,7 @@ paths:
     get:
       tags:
       - User
-      summary: Get summary of the user.
+      summary: Get summary of the user
       operationId: GetUser
       parameters:
       - name: userId
@@ -587,7 +587,7 @@ paths:
     put:
       tags:
       - User
-      summary: Update new User meta data details.
+      summary: Update new User meta data details
       operationId: updateMetaData
       requestBody:
         description: update query.
@@ -734,7 +734,7 @@ paths:
     put:
       tags:
       - User
-      summary: Change users to other team.
+      summary: Change users to other team
       operationId: ChangeTeam
       parameters:
       - name: userId
@@ -886,6 +886,81 @@ paths:
                 $ref: '#/components/schemas/ErrorResult'
 components:
   schemas:
+    UserRecords:
+      title: UserRecords
+      type: object
+      properties:
+        pageDetails:
+          $ref: '#/components/schemas/UserPageDetails'
+        result:
+          title: List`1
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/UsersDetails'
+      additionalProperties: false
+    UsersDetails:
+      title: UsersDetails
+      type: object
+      properties:
+        userId:
+          title: Guid
+          type: string
+          format: uuid
+        email:
+          title: String
+          type:
+          - string
+          - 'null'
+        firstName:
+          title: String
+          type:
+          - string
+          - 'null'
+        lastName:
+          title: String
+          type:
+          - string
+          - 'null'
+        teamId:
+          title: Guid
+          type: string
+          format: uuid
+        teamName:
+          title: String
+          type:
+          - string
+          - 'null'
+        role:
+          title: String
+          type:
+          - string
+          - 'null'
+        userStatus:
+          title: String
+          type:
+          - string
+          - 'null'
+        createdDate:
+          title: Int64
+          type: integer
+          format: int64
+        modifiedDate:
+          title: Int64
+          type: integer
+          format: int64
+        metaData:
+          title: Dictionary`2
+          type:
+          - object
+          - 'null'
+          additionalProperties:
+            title: String
+            type:
+            - string
+            - 'null'
+      additionalProperties: false
     UpdateUser:
       title: UpdateUser
       required:
@@ -911,30 +986,25 @@ components:
           type: string
         toUserId:
           title: String
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
       additionalProperties: false
-    UserRecords:
-      title: UserRecords
+    ChangeTeamRequest:
+      title: ChangeTeamRequest
+      required:
+      - toTeamId
       type: object
       properties:
-        pageDetails:
-          $ref: '#/components/schemas/UserPageDetails'
-        result:
-          title: List`1
-          type: array
-          items:
-            $ref: '#/components/schemas/UsersDetails'
-          nullable: true
-      additionalProperties: false
-    ErrorResult:
-      title: ErrorResult
-      type: object
-      properties:
-        error:
+        toTeamId:
           title: String
+          minLength: 1
           type: string
-          nullable: true
+        transferDocumentsToUserId:
+          title: String
+          type:
+          - string
+          - 'null'
       additionalProperties: false
     UpdateUserMetaData:
       title: UpdateUserMetaData
@@ -953,8 +1023,19 @@ components:
           type: object
           additionalProperties:
             title: String
-            type: string
-            nullable: true
+            type:
+            - string
+            - 'null'
+      additionalProperties: false
+    ErrorResult:
+      title: ErrorResult
+      type: object
+      properties:
+        error:
+          title: String
+          type:
+          - string
+          - 'null'
       additionalProperties: false
     CreateUser:
       title: CreateUser
@@ -968,8 +1049,9 @@ components:
           type: string
         teamId:
           title: String
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         userRole:
           title: UserRoleType
           enum:
@@ -980,65 +1062,14 @@ components:
         metaData:
           title: Dictionary`2
           maxLength: 50
-          type: object
+          type:
+          - object
+          - 'null'
           additionalProperties:
             title: String
-            type: string
-            nullable: true
-          nullable: true
-      additionalProperties: false
-    UsersDetails:
-      title: UsersDetails
-      type: object
-      properties:
-        userId:
-          title: Guid
-          type: string
-          format: uuid
-        email:
-          title: String
-          type: string
-          nullable: true
-        firstName:
-          title: String
-          type: string
-          nullable: true
-        lastName:
-          title: String
-          type: string
-          nullable: true
-        teamId:
-          title: Guid
-          type: string
-          format: uuid
-        teamName:
-          title: String
-          type: string
-          nullable: true
-        role:
-          title: String
-          type: string
-          nullable: true
-        userStatus:
-          title: String
-          type: string
-          nullable: true
-        createdDate:
-          title: Int64
-          type: integer
-          format: int64
-        modifiedDate:
-          title: Int64
-          type: integer
-          format: int64
-        metaData:
-          title: Dictionary`2
-          type: object
-          additionalProperties:
-            title: String
-            type: string
-            nullable: true
-          nullable: true
+            type:
+            - string
+            - 'null'
       additionalProperties: false
     UserPageDetails:
       title: UserPageDetails
@@ -1053,57 +1084,50 @@ components:
           type: integer
           format: int32
       additionalProperties: false
-    ChangeTeamRequest:
-      title: ChangeTeamRequest
-      required:
-      - toTeamId
-      type: object
-      properties:
-        toTeamId:
-          title: String
-          minLength: 1
-          type: string
-        transferDocumentsToUserId:
-          title: String
-          type: string
-          nullable: true
-      additionalProperties: false
     UserProperties:
       title: UserProperties
       type: object
       properties:
         userId:
           title: String
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         email:
           title: String
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         firstName:
           title: String
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         lastName:
           title: String
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         teamId:
           title: String
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         teamName:
           title: String
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         role:
           title: String
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         userStatus:
           title: String
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         createdDate:
           title: Int64
           type: integer
@@ -1114,12 +1138,14 @@ components:
           format: int64
         metaData:
           title: Dictionary`2
-          type: object
+          type:
+          - object
+          - 'null'
           additionalProperties:
             title: String
-            type: string
-            nullable: true
-          nullable: true
+            type:
+            - string
+            - 'null'
       additionalProperties: false
   securitySchemes:
     Bearer:

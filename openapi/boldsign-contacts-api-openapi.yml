@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: BoldSign Branding Contacts API
+  title: BoldSign Contacts API
   version: '1'
   description: BoldSign eSignature REST API for sending documents for electronic signature, managing reusable templates, tracking envelope status, embedding signing and requesting workflows into third-party applications. Supports API key and OAuth 2.0 authentication. Regional endpoints available for US, EU, CA, and AU.
   contact:
@@ -30,7 +30,7 @@ paths:
     get:
       tags:
       - Contacts
-      summary: List Contact document.
+      summary: List Contact document
       operationId: ContactUserList
       parameters:
       - name: PageSize
@@ -88,7 +88,7 @@ paths:
     delete:
       tags:
       - Contacts
-      summary: Deletes a contact.
+      summary: Deletes a contact
       operationId: DeleteContacts
       parameters:
       - name: id
@@ -116,7 +116,7 @@ paths:
     post:
       tags:
       - Contacts
-      summary: Create the new Contact.
+      summary: Create the new Contact
       operationId: CreateContact
       requestBody:
         description: The contact details.
@@ -390,7 +390,7 @@ paths:
     put:
       tags:
       - Contacts
-      summary: Update the contact.
+      summary: Update the contact
       operationId: UpdateContact
       parameters:
       - name: id
@@ -543,7 +543,7 @@ paths:
     get:
       tags:
       - Contacts
-      summary: Get summary of the contact.
+      summary: Get summary of the contact
       operationId: GetContact
       parameters:
       - name: id
@@ -573,55 +573,51 @@ paths:
                 $ref: '#/components/schemas/ErrorResult'
 components:
   schemas:
-    PhoneNumber:
-      title: PhoneNumber
+    ContactsDetails:
+      title: ContactsDetails
       type: object
       properties:
-        countryCode:
+        id:
           title: String
-          type: string
-          nullable: true
-        number:
+          type:
+          - string
+          - 'null'
+        name:
           title: String
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
+        email:
+          title: String
+          type:
+          - string
+          - 'null'
+        companyName:
+          title: String
+          type:
+          - string
+          - 'null'
+        jobTitle:
+          title: String
+          type:
+          - string
+          - 'null'
+        phoneNumber:
+          $ref: '#/components/schemas/PhoneNumber'
       additionalProperties: false
-    CreateContactResponse:
-      title: CreateContactResponse
+    ContactsList:
+      title: ContactsList
       type: object
       properties:
-        createdContacts:
+        pageDetails:
+          $ref: '#/components/schemas/ContactPageDetails'
+        result:
           title: List`1
-          type: array
+          type:
+          - array
+          - 'null'
           items:
-            $ref: '#/components/schemas/ContactCreated'
-          nullable: true
-      additionalProperties: false
-    ContactPageDetails:
-      title: ContactPageDetails
-      type: object
-      properties:
-        pageSize:
-          title: Int32
-          type: integer
-          format: int32
-        page:
-          title: Int32
-          type: integer
-          format: int32
-        totalRecordsCount:
-          title: Int32
-          type: integer
-          format: int32
-      additionalProperties: false
-    ErrorResult:
-      title: ErrorResult
-      type: object
-      properties:
-        error:
-          title: String
-          type: string
-          nullable: true
+            $ref: '#/components/schemas/ContactsDetails'
       additionalProperties: false
     ContactDetails:
       title: ContactDetails
@@ -642,12 +638,51 @@ components:
           $ref: '#/components/schemas/PhoneNumber'
         jobTitle:
           title: String
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         companyName:
           title: String
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    PhoneNumber:
+      title: PhoneNumber
+      type: object
+      properties:
+        countryCode:
+          title: String
+          type:
+          - string
+          - 'null'
+        number:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    CreateContactResponse:
+      title: CreateContactResponse
+      type: object
+      properties:
+        createdContacts:
+          title: List`1
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ContactCreated'
+      additionalProperties: false
+    ErrorResult:
+      title: ErrorResult
+      type: object
+      properties:
+        error:
+          title: String
+          type:
+          - string
+          - 'null'
       additionalProperties: false
     ContactCreated:
       title: ContactCreated
@@ -655,52 +690,31 @@ components:
       properties:
         id:
           title: String
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         email:
           title: String
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
       additionalProperties: false
-    ContactsDetails:
-      title: ContactsDetails
+    ContactPageDetails:
+      title: ContactPageDetails
       type: object
       properties:
-        id:
-          title: String
-          type: string
-          nullable: true
-        name:
-          title: String
-          type: string
-          nullable: true
-        email:
-          title: String
-          type: string
-          nullable: true
-        companyName:
-          title: String
-          type: string
-          nullable: true
-        jobTitle:
-          title: String
-          type: string
-          nullable: true
-        phoneNumber:
-          $ref: '#/components/schemas/PhoneNumber'
-      additionalProperties: false
-    ContactsList:
-      title: ContactsList
-      type: object
-      properties:
-        pageDetails:
-          $ref: '#/components/schemas/ContactPageDetails'
-        result:
-          title: List`1
-          type: array
-          items:
-            $ref: '#/components/schemas/ContactsDetails'
-          nullable: true
+        pageSize:
+          title: Int32
+          type: integer
+          format: int32
+        page:
+          title: Int32
+          type: integer
+          format: int32
+        totalRecordsCount:
+          title: Int32
+          type: integer
+          format: int32
       additionalProperties: false
   securitySchemes:
     Bearer:

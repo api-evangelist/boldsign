@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: BoldSign Branding Custom Field API
+  title: BoldSign Custom Field API
   version: '1'
   description: BoldSign eSignature REST API for sending documents for electronic signature, managing reusable templates, tracking envelope status, embedding signing and requesting workflows into third-party applications. Supports API key and OAuth 2.0 authentication. Regional endpoints available for US, EU, CA, and AU.
   contact:
@@ -30,7 +30,7 @@ paths:
     post:
       tags:
       - Custom Field
-      summary: Create the custom field.
+      summary: Create the custom field
       operationId: CreateCustomField
       requestBody:
         description: The custom field details.
@@ -656,7 +656,7 @@ paths:
     post:
       tags:
       - Custom Field
-      summary: Edit the custom field.
+      summary: Edit the custom field
       operationId: EditCustomField
       parameters:
       - name: customFieldId
@@ -1289,7 +1289,7 @@ paths:
     delete:
       tags:
       - Custom Field
-      summary: Delete the custom field.
+      summary: Delete the custom field
       operationId: DeleteCustomField
       parameters:
       - name: customFieldId
@@ -1795,7 +1795,7 @@ paths:
     get:
       tags:
       - Custom Field
-      summary: List the custom fields respective to the brand id.
+      summary: List the custom fields respective to the brand id
       operationId: CustomFieldsList
       parameters:
       - name: brandId
@@ -1827,7 +1827,7 @@ paths:
     post:
       tags:
       - Custom Field
-      summary: Generates a URL for creating or modifying custom fields within your application's embedded Designer.
+      summary: Generates a URL for creating or modifying custom fields within your…
       operationId: EmbedCustomField
       parameters:
       - name: BrandId
@@ -1865,54 +1865,20 @@ paths:
                 $ref: '#/components/schemas/ErrorResult'
 components:
   schemas:
-    BrandCustomFieldDetails:
-      title: BrandCustomFieldDetails
-      type: object
-      properties:
-        fieldName:
-          title: String
-          type: string
-          nullable: true
-        fieldDescription:
-          title: String
-          type: string
-          nullable: true
-        fieldOrder:
-          title: Int32
-          type: integer
-          format: int32
-          default: 1
-        brandId:
-          title: String
-          type: string
-          nullable: true
-        sharedField:
-          title: Boolean
-          type: boolean
-        formField:
-          $ref: '#/components/schemas/CustomFormField'
-      additionalProperties: false
-    ErrorResult:
-      title: ErrorResult
-      type: object
-      properties:
-        error:
-          title: String
-          type: string
-          nullable: true
-      additionalProperties: false
     CustomFieldMessage:
       title: CustomFieldMessage
       type: object
       properties:
         customFieldId:
           title: String
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         message:
           title: String
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
       additionalProperties: false
     AttachmentInfo:
       title: AttachmentInfo
@@ -1923,35 +1889,28 @@ components:
       properties:
         title:
           title: String
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         description:
           title: String
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         allowedFileTypes:
           title: String
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
           deprecated: true
         acceptedFileTypes:
           title: String[]
-          type: array
+          type:
+          - array
+          - 'null'
           items:
             title: String
             type: string
-          nullable: true
-      additionalProperties: false
-    CustomFieldCollection:
-      title: CustomFieldCollection
-      type: object
-      properties:
-        result:
-          title: List`1
-          type: array
-          items:
-            $ref: '#/components/schemas/ViewCustomFieldDetails'
-          nullable: true
       additionalProperties: false
     ImageInfo:
       title: ImageInfo
@@ -1962,16 +1921,19 @@ components:
       properties:
         title:
           title: String
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         description:
           title: String
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         allowedFileExtensions:
           title: String
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
       additionalProperties: false
     CustomFormField:
       title: CustomFormField
@@ -2015,8 +1977,9 @@ components:
           type: boolean
         value:
           title: String
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         fontSize:
           title: Single
           minimum: 0
@@ -2034,8 +1997,9 @@ components:
           type: string
         fontHexColor:
           title: String
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         isBoldFont:
           title: Boolean
           type: boolean
@@ -2061,8 +2025,9 @@ components:
           default: 0
         placeHolder:
           title: String
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         validationType:
           title: ValidationType
           enum:
@@ -2074,20 +2039,24 @@ components:
           type: string
         validationCustomRegex:
           title: String
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         validationCustomRegexMessage:
           title: String
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         dateFormat:
           title: String
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         timeFormat:
           title: String
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         imageInfo:
           $ref: '#/components/schemas/ImageInfo'
         attachmentInfo:
@@ -2096,19 +2065,22 @@ components:
           $ref: '#/components/schemas/EditableDateFieldSettings'
         hyperlinkText:
           title: String
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         dataSyncTag:
           title: String
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         dropdownOptions:
           title: String[]
-          type: array
+          type:
+          - array
+          - 'null'
           items:
             title: String
             type: string
-          nullable: true
         textAlign:
           title: TextAlign
           enum:
@@ -2128,16 +2100,18 @@ components:
           format: float
         idPrefix:
           title: String
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         restrictIdPrefixChange:
           title: Boolean
           type: boolean
           default: false
         backgroundHexColor:
           title: String
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         resizeOption:
           title: Nullable`1
           enum:
@@ -2146,62 +2120,25 @@ components:
           - GrowBoth
           - Fixed
           - AutoResizeFont
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         isMasked:
           title: Nullable`1
-          type: boolean
+          type:
+          - boolean
+          - 'null'
           default: false
-          nullable: true
       additionalProperties: false
-    DeleteCustomFieldReply:
-      title: DeleteCustomFieldReply
+    ErrorResult:
+      title: ErrorResult
       type: object
       properties:
-        message:
+        error:
           title: String
-          type: string
-          nullable: true
-      additionalProperties: false
-    ViewCustomFieldDetails:
-      title: ViewCustomFieldDetails
-      type: object
-      properties:
-        customFieldId:
-          title: String
-          type: string
-          nullable: true
-        fieldName:
-          title: String
-          type: string
-          nullable: true
-        fieldDescription:
-          title: String
-          type: string
-          nullable: true
-        fieldOrder:
-          title: Int32
-          type: integer
-          format: int32
-        brandId:
-          title: String
-          type: string
-          nullable: true
-        sharedField:
-          title: Boolean
-          type: boolean
-        formField:
-          $ref: '#/components/schemas/CustomFormField'
-      additionalProperties: false
-    EmbeddedCustomFieldCreated:
-      title: EmbeddedCustomFieldCreated
-      type: object
-      properties:
-        createUrl:
-          title: Uri
-          type: string
-          format: uri
-          nullable: true
+          type:
+          - string
+          - 'null'
       additionalProperties: false
     EditableDateFieldSettings:
       title: EditableDateFieldSettings
@@ -2211,22 +2148,123 @@ components:
       properties:
         dateFormat:
           title: String
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         minDate:
           title: Nullable`1
-          type: string
+          type:
+          - string
+          - 'null'
           format: date-time
-          nullable: true
         maxDate:
           title: Nullable`1
-          type: string
+          type:
+          - string
+          - 'null'
           format: date-time
-          nullable: true
         timeFormat:
           title: String
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    DeleteCustomFieldReply:
+      title: DeleteCustomFieldReply
+      type: object
+      properties:
+        message:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    BrandCustomFieldDetails:
+      title: BrandCustomFieldDetails
+      type: object
+      properties:
+        fieldName:
+          title: String
+          type:
+          - string
+          - 'null'
+        fieldDescription:
+          title: String
+          type:
+          - string
+          - 'null'
+        fieldOrder:
+          title: Int32
+          type: integer
+          format: int32
+          default: 1
+        brandId:
+          title: String
+          type:
+          - string
+          - 'null'
+        sharedField:
+          title: Boolean
+          type: boolean
+        formField:
+          $ref: '#/components/schemas/CustomFormField'
+      additionalProperties: false
+    ViewCustomFieldDetails:
+      title: ViewCustomFieldDetails
+      type: object
+      properties:
+        customFieldId:
+          title: String
+          type:
+          - string
+          - 'null'
+        fieldName:
+          title: String
+          type:
+          - string
+          - 'null'
+        fieldDescription:
+          title: String
+          type:
+          - string
+          - 'null'
+        fieldOrder:
+          title: Int32
+          type: integer
+          format: int32
+        brandId:
+          title: String
+          type:
+          - string
+          - 'null'
+        sharedField:
+          title: Boolean
+          type: boolean
+        formField:
+          $ref: '#/components/schemas/CustomFormField'
+      additionalProperties: false
+    CustomFieldCollection:
+      title: CustomFieldCollection
+      type: object
+      properties:
+        result:
+          title: List`1
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ViewCustomFieldDetails'
+      additionalProperties: false
+    EmbeddedCustomFieldCreated:
+      title: EmbeddedCustomFieldCreated
+      type: object
+      properties:
+        createUrl:
+          title: Uri
+          type:
+          - string
+          - 'null'
+          format: uri
       additionalProperties: false
   securitySchemes:
     Bearer:

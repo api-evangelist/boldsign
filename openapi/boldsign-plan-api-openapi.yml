@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: BoldSign Branding Plan API
+  title: BoldSign Plan API
   version: '1'
   description: BoldSign eSignature REST API for sending documents for electronic signature, managing reusable templates, tracking envelope status, embedding signing and requesting workflows into third-party applications. Supports API key and OAuth 2.0 authentication. Regional endpoints available for US, EU, CA, and AU.
   contact:
@@ -30,7 +30,7 @@ paths:
     get:
       tags:
       - Plan
-      summary: Gets the Api credits details.
+      summary: Gets the Api credits details
       operationId: ApiCreditsCount
       responses:
         '200':
@@ -47,6 +47,16 @@ paths:
                 $ref: '#/components/schemas/ErrorResult'
 components:
   schemas:
+    ErrorResult:
+      title: ErrorResult
+      type: object
+      properties:
+        error:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
     BillingViewModel:
       title: BillingViewModel
       type: object
@@ -55,15 +65,6 @@ components:
           title: Double
           type: number
           format: double
-      additionalProperties: false
-    ErrorResult:
-      title: ErrorResult
-      type: object
-      properties:
-        error:
-          title: String
-          type: string
-          nullable: true
       additionalProperties: false
   securitySchemes:
     Bearer:

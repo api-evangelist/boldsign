@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: BoldSign Branding Identity Verification API
+  title: BoldSign Identity Verification API
   version: '1'
   description: BoldSign eSignature REST API for sending documents for electronic signature, managing reusable templates, tracking envelope status, embedding signing and requesting workflows into third-party applications. Supports API key and OAuth 2.0 authentication. Regional endpoints available for US, EU, CA, and AU.
   contact:
@@ -30,7 +30,7 @@ paths:
     post:
       tags:
       - Identity Verification
-      summary: Retrieve the ID verification report for the specified document signer.
+      summary: Retrieve the ID verification report for the specified document signer
       operationId: Report
       parameters:
       - name: documentId
@@ -196,7 +196,7 @@ paths:
     post:
       tags:
       - Identity Verification
-      summary: Retrieve the uploaded ID verification document or selfie image for the specified document signer using the file ID.
+      summary: Retrieve the uploaded ID verification document or selfie image for the…
       operationId: Image
       parameters:
       - name: documentId
@@ -910,7 +910,7 @@ paths:
     post:
       tags:
       - Identity Verification
-      summary: Generate a URL that embeds manual ID verification for the specified document signer into your application.
+      summary: Generate a URL that embeds manual ID verification for the specified document…
       operationId: Create Embedded Verification Url
       parameters:
       - name: documentId
@@ -1067,30 +1067,146 @@ paths:
                 $ref: '#/components/schemas/ErrorResult'
 components:
   schemas:
+    VerificationDataRequest:
+      title: VerificationDataRequest
+      type: object
+      properties:
+        emailId:
+          title: String
+          type:
+          - string
+          - 'null'
+        countryCode:
+          title: String
+          type:
+          - string
+          - 'null'
+        phoneNumber:
+          title: String
+          type:
+          - string
+          - 'null'
+        order:
+          title: Int32
+          type: integer
+          format: int32
+        onBehalfOf:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    EmbeddedFileDetails:
+      title: EmbeddedFileDetails
+      type: object
+      properties:
+        emailId:
+          title: String
+          type:
+          - string
+          - 'null'
+        countryCode:
+          title: String
+          type:
+          - string
+          - 'null'
+        phoneNumber:
+          title: String
+          type:
+          - string
+          - 'null'
+        redirectUrl:
+          title: String
+          type:
+          - string
+          - 'null'
+        order:
+          title: Int32
+          type: integer
+          format: int32
+        onBehalfOf:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    Date:
+      title: Date
+      type: object
+      properties:
+        day:
+          title: Nullable`1
+          type:
+          - integer
+          - 'null'
+          format: int64
+        month:
+          title: Nullable`1
+          type:
+          - integer
+          - 'null'
+          format: int64
+        year:
+          title: Nullable`1
+          type:
+          - integer
+          - 'null'
+          format: int64
+      additionalProperties: false
+    ErrorResult:
+      title: ErrorResult
+      type: object
+      properties:
+        error:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    Error:
+      title: Error
+      type: object
+      properties:
+        code:
+          title: String
+          type:
+          - string
+          - 'null'
+        message:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
     IdDocument:
       title: IdDocument
       type: object
       properties:
         type:
           title: String
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         firstName:
           title: String
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         lastName:
           title: String
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         country:
           title: String
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         documentNumber:
           title: String
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         address:
           $ref: '#/components/schemas/Address'
         dob:
@@ -1101,179 +1217,17 @@ components:
           $ref: '#/components/schemas/Date'
         documentFiles:
           title: List`1
-          type: array
+          type:
+          - array
+          - 'null'
           items:
             title: String
             type: string
-          nullable: true
         selfieFile:
           title: String
-          type: string
-          nullable: true
-      additionalProperties: false
-    EmbeddedFileLink:
-      title: EmbeddedFileLink
-      type: object
-      properties:
-        url:
-          title: Uri
-          type: string
-          format: uri
-          nullable: true
-      additionalProperties: false
-    Address:
-      title: Address
-      type: object
-      properties:
-        city:
-          title: String
-          type: string
-          nullable: true
-        country:
-          title: String
-          type: string
-          nullable: true
-        line1:
-          title: String
-          type: string
-          nullable: true
-        line2:
-          title: String
-          type: string
-          nullable: true
-        postalCode:
-          title: String
-          type: string
-          nullable: true
-        state:
-          title: String
-          type: string
-          nullable: true
-      additionalProperties: false
-    EmbeddedFileDetails:
-      title: EmbeddedFileDetails
-      type: object
-      properties:
-        emailId:
-          title: String
-          type: string
-          nullable: true
-        countryCode:
-          title: String
-          type: string
-          nullable: true
-        phoneNumber:
-          title: String
-          type: string
-          nullable: true
-        redirectUrl:
-          title: String
-          type: string
-          nullable: true
-        order:
-          title: Int32
-          type: integer
-          format: int32
-        onBehalfOf:
-          title: String
-          type: string
-          nullable: true
-      additionalProperties: false
-    ErrorResult:
-      title: ErrorResult
-      type: object
-      properties:
-        error:
-          title: String
-          type: string
-          nullable: true
-      additionalProperties: false
-    Date:
-      title: Date
-      type: object
-      properties:
-        day:
-          title: Nullable`1
-          type: integer
-          format: int64
-          nullable: true
-        month:
-          title: Nullable`1
-          type: integer
-          format: int64
-          nullable: true
-        year:
-          title: Nullable`1
-          type: integer
-          format: int64
-          nullable: true
-      additionalProperties: false
-    VerificationDataRequest:
-      title: VerificationDataRequest
-      type: object
-      properties:
-        emailId:
-          title: String
-          type: string
-          nullable: true
-        countryCode:
-          title: String
-          type: string
-          nullable: true
-        phoneNumber:
-          title: String
-          type: string
-          nullable: true
-        order:
-          title: Int32
-          type: integer
-          format: int32
-        onBehalfOf:
-          title: String
-          type: string
-          nullable: true
-      additionalProperties: false
-    DownloadImageRequest:
-      title: DownloadImageRequest
-      type: object
-      properties:
-        emailId:
-          title: String
-          type: string
-          nullable: true
-        countryCode:
-          title: String
-          type: string
-          nullable: true
-        phoneNumber:
-          title: String
-          type: string
-          nullable: true
-        order:
-          title: Int32
-          type: integer
-          format: int32
-        fileId:
-          title: String
-          type: string
-          nullable: true
-        onBehalfOf:
-          title: String
-          type: string
-          nullable: true
-      additionalProperties: false
-    Error:
-      title: Error
-      type: object
-      properties:
-        code:
-          title: String
-          type: string
-          nullable: true
-        message:
-          title: String
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
       additionalProperties: false
     IdReport:
       title: IdReport
@@ -1281,17 +1235,99 @@ components:
       properties:
         verificationResult:
           title: String
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         verifiedDate:
           title: Nullable`1
-          type: string
+          type:
+          - string
+          - 'null'
           format: date-time
-          nullable: true
         error:
           $ref: '#/components/schemas/Error'
         document:
           $ref: '#/components/schemas/IdDocument'
+      additionalProperties: false
+    Address:
+      title: Address
+      type: object
+      properties:
+        city:
+          title: String
+          type:
+          - string
+          - 'null'
+        country:
+          title: String
+          type:
+          - string
+          - 'null'
+        line1:
+          title: String
+          type:
+          - string
+          - 'null'
+        line2:
+          title: String
+          type:
+          - string
+          - 'null'
+        postalCode:
+          title: String
+          type:
+          - string
+          - 'null'
+        state:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    DownloadImageRequest:
+      title: DownloadImageRequest
+      type: object
+      properties:
+        emailId:
+          title: String
+          type:
+          - string
+          - 'null'
+        countryCode:
+          title: String
+          type:
+          - string
+          - 'null'
+        phoneNumber:
+          title: String
+          type:
+          - string
+          - 'null'
+        order:
+          title: Int32
+          type: integer
+          format: int32
+        fileId:
+          title: String
+          type:
+          - string
+          - 'null'
+        onBehalfOf:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    EmbeddedFileLink:
+      title: EmbeddedFileLink
+      type: object
+      properties:
+        url:
+          title: Uri
+          type:
+          - string
+          - 'null'
+          format: uri
       additionalProperties: false
   securitySchemes:
     Bearer:
