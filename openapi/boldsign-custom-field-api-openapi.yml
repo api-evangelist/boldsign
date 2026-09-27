@@ -1865,6 +1865,80 @@ paths:
                 $ref: '#/components/schemas/ErrorResult'
 components:
   schemas:
+    DeleteCustomFieldReply:
+      title: DeleteCustomFieldReply
+      type: object
+      properties:
+        message:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    BrandCustomFieldDetails:
+      title: BrandCustomFieldDetails
+      type: object
+      properties:
+        fieldName:
+          title: String
+          type:
+          - string
+          - 'null'
+        fieldDescription:
+          title: String
+          type:
+          - string
+          - 'null'
+        fieldOrder:
+          title: Int32
+          type: integer
+          format: int32
+          default: 1
+        brandId:
+          title: String
+          type:
+          - string
+          - 'null'
+        sharedField:
+          title: Boolean
+          type: boolean
+        formField:
+          $ref: '#/components/schemas/CustomFormField'
+      additionalProperties: false
+    ViewCustomFieldDetails:
+      title: ViewCustomFieldDetails
+      type: object
+      properties:
+        customFieldId:
+          title: String
+          type:
+          - string
+          - 'null'
+        fieldName:
+          title: String
+          type:
+          - string
+          - 'null'
+        fieldDescription:
+          title: String
+          type:
+          - string
+          - 'null'
+        fieldOrder:
+          title: Int32
+          type: integer
+          format: int32
+        brandId:
+          title: String
+          type:
+          - string
+          - 'null'
+        sharedField:
+          title: Boolean
+          type: boolean
+        formField:
+          $ref: '#/components/schemas/CustomFormField'
+      additionalProperties: false
     CustomFieldMessage:
       title: CustomFieldMessage
       type: object
@@ -1875,61 +1949,6 @@ components:
           - string
           - 'null'
         message:
-          title: String
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    AttachmentInfo:
-      title: AttachmentInfo
-      required:
-      - acceptedFileTypes
-      - title
-      type: object
-      properties:
-        title:
-          title: String
-          type:
-          - string
-          - 'null'
-        description:
-          title: String
-          type:
-          - string
-          - 'null'
-        allowedFileTypes:
-          title: String
-          type:
-          - string
-          - 'null'
-          deprecated: true
-        acceptedFileTypes:
-          title: String[]
-          type:
-          - array
-          - 'null'
-          items:
-            title: String
-            type: string
-      additionalProperties: false
-    ImageInfo:
-      title: ImageInfo
-      required:
-      - allowedFileExtensions
-      - title
-      type: object
-      properties:
-        title:
-          title: String
-          type:
-          - string
-          - 'null'
-        description:
-          title: String
-          type:
-          - string
-          - 'null'
-        allowedFileExtensions:
           title: String
           type:
           - string
@@ -2130,6 +2149,17 @@ components:
           - 'null'
           default: false
       additionalProperties: false
+    EmbeddedCustomFieldCreated:
+      title: EmbeddedCustomFieldCreated
+      type: object
+      properties:
+        createUrl:
+          title: Uri
+          type:
+          - string
+          - 'null'
+          format: uri
+      additionalProperties: false
     ErrorResult:
       title: ErrorResult
       type: object
@@ -2139,6 +2169,18 @@ components:
           type:
           - string
           - 'null'
+      additionalProperties: false
+    CustomFieldCollection:
+      title: CustomFieldCollection
+      type: object
+      properties:
+        result:
+          title: List`1
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ViewCustomFieldDetails'
       additionalProperties: false
     EditableDateFieldSettings:
       title: EditableDateFieldSettings
@@ -2169,102 +2211,60 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    DeleteCustomFieldReply:
-      title: DeleteCustomFieldReply
+    AttachmentInfo:
+      title: AttachmentInfo
+      required:
+      - acceptedFileTypes
+      - title
       type: object
       properties:
-        message:
+        title:
           title: String
           type:
           - string
           - 'null'
-      additionalProperties: false
-    BrandCustomFieldDetails:
-      title: BrandCustomFieldDetails
-      type: object
-      properties:
-        fieldName:
+        description:
           title: String
           type:
           - string
           - 'null'
-        fieldDescription:
+        allowedFileTypes:
           title: String
           type:
           - string
           - 'null'
-        fieldOrder:
-          title: Int32
-          type: integer
-          format: int32
-          default: 1
-        brandId:
-          title: String
-          type:
-          - string
-          - 'null'
-        sharedField:
-          title: Boolean
-          type: boolean
-        formField:
-          $ref: '#/components/schemas/CustomFormField'
-      additionalProperties: false
-    ViewCustomFieldDetails:
-      title: ViewCustomFieldDetails
-      type: object
-      properties:
-        customFieldId:
-          title: String
-          type:
-          - string
-          - 'null'
-        fieldName:
-          title: String
-          type:
-          - string
-          - 'null'
-        fieldDescription:
-          title: String
-          type:
-          - string
-          - 'null'
-        fieldOrder:
-          title: Int32
-          type: integer
-          format: int32
-        brandId:
-          title: String
-          type:
-          - string
-          - 'null'
-        sharedField:
-          title: Boolean
-          type: boolean
-        formField:
-          $ref: '#/components/schemas/CustomFormField'
-      additionalProperties: false
-    CustomFieldCollection:
-      title: CustomFieldCollection
-      type: object
-      properties:
-        result:
-          title: List`1
+          deprecated: true
+        acceptedFileTypes:
+          title: String[]
           type:
           - array
           - 'null'
           items:
-            $ref: '#/components/schemas/ViewCustomFieldDetails'
+            title: String
+            type: string
       additionalProperties: false
-    EmbeddedCustomFieldCreated:
-      title: EmbeddedCustomFieldCreated
+    ImageInfo:
+      title: ImageInfo
+      required:
+      - allowedFileExtensions
+      - title
       type: object
       properties:
-        createUrl:
-          title: Uri
+        title:
+          title: String
           type:
           - string
           - 'null'
-          format: uri
+        description:
+          title: String
+          type:
+          - string
+          - 'null'
+        allowedFileExtensions:
+          title: String
+          type:
+          - string
+          - 'null'
       additionalProperties: false
   securitySchemes:
     Bearer:

@@ -2279,129 +2279,6 @@ paths:
                 $ref: '#/components/schemas/ErrorResult'
 components:
   schemas:
-    BrandingRecords:
-      title: BrandingRecords
-      type: object
-      properties:
-        result:
-          title: List`1
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/ViewBrandDetails'
-      additionalProperties: false
-    BrandCreated:
-      title: BrandCreated
-      type: object
-      properties:
-        brandId:
-          title: String
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    SignatureFrameSettings:
-      title: SignatureFrameSettings
-      type: object
-      properties:
-        enableSignatureFrame:
-          title: Boolean
-          type: boolean
-          default: false
-        showRecipientName:
-          title: Boolean
-          type: boolean
-          default: false
-        showRecipientEmail:
-          title: Boolean
-          type: boolean
-          default: false
-        showTimeStamp:
-          title: Boolean
-          type: boolean
-          default: false
-      additionalProperties: false
-    BrandingMessage:
-      title: BrandingMessage
-      type: object
-      properties:
-        message:
-          title: String
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    ErrorResult:
-      title: ErrorResult
-      type: object
-      properties:
-        error:
-          title: String
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    DocumentExpirySettings:
-      title: DocumentExpirySettings
-      type: object
-      properties:
-        expiryDateType:
-          title: Nullable`1
-          enum:
-          - Days
-          - Hours
-          - SpecificDateTime
-          type:
-          - string
-          - 'null'
-          format: Enumeration
-        expiryValue:
-          title: Nullable`1
-          type:
-          - integer
-          - 'null'
-          format: int32
-        enableDefaultExpiryAlert:
-          title: Nullable`1
-          type:
-          - boolean
-          - 'null'
-        enableAutoReminder:
-          title: Nullable`1
-          type:
-          - boolean
-          - 'null'
-        reminderDays:
-          title: Nullable`1
-          maximum: 180
-          minimum: 1
-          type:
-          - integer
-          - 'null'
-          format: int32
-        reminderCount:
-          title: Nullable`1
-          type:
-          - integer
-          - 'null'
-          format: int32
-      additionalProperties: false
-    CustomDomainSettings:
-      title: CustomDomainSettings
-      type: object
-      properties:
-        domainName:
-          title: String
-          type:
-          - string
-          - 'null'
-        fromName:
-          title: String
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
     ViewBrandDetails:
       title: ViewBrandDetails
       type: object
@@ -2506,6 +2383,129 @@ components:
           type: boolean
         signatureFrameSettings:
           $ref: '#/components/schemas/SignatureFrameSettings'
+      additionalProperties: false
+    BrandCreated:
+      title: BrandCreated
+      type: object
+      properties:
+        brandId:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    ErrorResult:
+      title: ErrorResult
+      type: object
+      properties:
+        error:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    CustomDomainSettings:
+      title: CustomDomainSettings
+      type: object
+      properties:
+        domainName:
+          title: String
+          type:
+          - string
+          - 'null'
+        fromName:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    SignatureFrameSettings:
+      title: SignatureFrameSettings
+      type: object
+      properties:
+        enableSignatureFrame:
+          title: Boolean
+          type: boolean
+          default: false
+        showRecipientName:
+          title: Boolean
+          type: boolean
+          default: false
+        showRecipientEmail:
+          title: Boolean
+          type: boolean
+          default: false
+        showTimeStamp:
+          title: Boolean
+          type: boolean
+          default: false
+      additionalProperties: false
+    BrandingMessage:
+      title: BrandingMessage
+      type: object
+      properties:
+        message:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    BrandingRecords:
+      title: BrandingRecords
+      type: object
+      properties:
+        result:
+          title: List`1
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ViewBrandDetails'
+      additionalProperties: false
+    DocumentExpirySettings:
+      title: DocumentExpirySettings
+      type: object
+      properties:
+        expiryDateType:
+          title: Nullable`1
+          enum:
+          - Days
+          - Hours
+          - SpecificDateTime
+          type:
+          - string
+          - 'null'
+          format: Enumeration
+        expiryValue:
+          title: Nullable`1
+          type:
+          - integer
+          - 'null'
+          format: int32
+        enableDefaultExpiryAlert:
+          title: Nullable`1
+          type:
+          - boolean
+          - 'null'
+        enableAutoReminder:
+          title: Nullable`1
+          type:
+          - boolean
+          - 'null'
+        reminderDays:
+          title: Nullable`1
+          maximum: 180
+          minimum: 1
+          type:
+          - integer
+          - 'null'
+          format: int32
+        reminderCount:
+          title: Nullable`1
+          type:
+          - integer
+          - 'null'
+          format: int32
       additionalProperties: false
   securitySchemes:
     Bearer:

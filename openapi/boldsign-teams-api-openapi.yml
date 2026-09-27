@@ -439,11 +439,46 @@ components:
           type: integer
           format: int64
       additionalProperties: false
+    CreateTeamRequest:
+      title: CreateTeamRequest
+      required:
+      - teamName
+      type: object
+      properties:
+        teamName:
+          title: String
+          maxLength: 255
+          minLength: 0
+          type: string
+      additionalProperties: false
+    TeamPageDetails:
+      title: TeamPageDetails
+      type: object
+      properties:
+        pageSize:
+          title: Int32
+          type: integer
+          format: int32
+        page:
+          title: Int32
+          type: integer
+          format: int32
+      additionalProperties: false
     TeamCreated:
       title: TeamCreated
       type: object
       properties:
         teamId:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    ErrorResult:
+      title: ErrorResult
+      type: object
+      properties:
+        error:
           title: String
           type:
           - string
@@ -488,58 +523,6 @@ components:
           - Deactivated
           type: string
       additionalProperties: false
-    TeamUpdateRequest:
-      title: TeamUpdateRequest
-      required:
-      - teamId
-      - teamName
-      type: object
-      properties:
-        teamId:
-          title: String
-          minLength: 1
-          type: string
-        teamName:
-          title: String
-          maxLength: 255
-          minLength: 0
-          type: string
-      additionalProperties: false
-    CreateTeamRequest:
-      title: CreateTeamRequest
-      required:
-      - teamName
-      type: object
-      properties:
-        teamName:
-          title: String
-          maxLength: 255
-          minLength: 0
-          type: string
-      additionalProperties: false
-    TeamPageDetails:
-      title: TeamPageDetails
-      type: object
-      properties:
-        pageSize:
-          title: Int32
-          type: integer
-          format: int32
-        page:
-          title: Int32
-          type: integer
-          format: int32
-      additionalProperties: false
-    ErrorResult:
-      title: ErrorResult
-      type: object
-      properties:
-        error:
-          title: String
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
     TeamListResponse:
       title: TeamListResponse
       type: object
@@ -576,6 +559,23 @@ components:
           title: Int64
           type: integer
           format: int64
+      additionalProperties: false
+    TeamUpdateRequest:
+      title: TeamUpdateRequest
+      required:
+      - teamId
+      - teamName
+      type: object
+      properties:
+        teamId:
+          title: String
+          minLength: 1
+          type: string
+        teamName:
+          title: String
+          maxLength: 255
+          minLength: 0
+          type: string
       additionalProperties: false
   securitySchemes:
     Bearer:

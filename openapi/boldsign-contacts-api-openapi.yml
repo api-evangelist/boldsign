@@ -573,6 +573,23 @@ paths:
                 $ref: '#/components/schemas/ErrorResult'
 components:
   schemas:
+    ContactPageDetails:
+      title: ContactPageDetails
+      type: object
+      properties:
+        pageSize:
+          title: Int32
+          type: integer
+          format: int32
+        page:
+          title: Int32
+          type: integer
+          format: int32
+        totalRecordsCount:
+          title: Int32
+          type: integer
+          format: int32
+      additionalProperties: false
     ContactsDetails:
       title: ContactsDetails
       type: object
@@ -605,20 +622,6 @@ components:
         phoneNumber:
           $ref: '#/components/schemas/PhoneNumber'
       additionalProperties: false
-    ContactsList:
-      title: ContactsList
-      type: object
-      properties:
-        pageDetails:
-          $ref: '#/components/schemas/ContactPageDetails'
-        result:
-          title: List`1
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/ContactsDetails'
-      additionalProperties: false
     ContactDetails:
       title: ContactDetails
       required:
@@ -647,6 +650,30 @@ components:
           - string
           - 'null'
       additionalProperties: false
+    ContactsList:
+      title: ContactsList
+      type: object
+      properties:
+        pageDetails:
+          $ref: '#/components/schemas/ContactPageDetails'
+        result:
+          title: List`1
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ContactsDetails'
+      additionalProperties: false
+    ErrorResult:
+      title: ErrorResult
+      type: object
+      properties:
+        error:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
     PhoneNumber:
       title: PhoneNumber
       type: object
@@ -657,28 +684,6 @@ components:
           - string
           - 'null'
         number:
-          title: String
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    CreateContactResponse:
-      title: CreateContactResponse
-      type: object
-      properties:
-        createdContacts:
-          title: List`1
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/ContactCreated'
-      additionalProperties: false
-    ErrorResult:
-      title: ErrorResult
-      type: object
-      properties:
-        error:
           title: String
           type:
           - string
@@ -699,22 +704,17 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    ContactPageDetails:
-      title: ContactPageDetails
+    CreateContactResponse:
+      title: CreateContactResponse
       type: object
       properties:
-        pageSize:
-          title: Int32
-          type: integer
-          format: int32
-        page:
-          title: Int32
-          type: integer
-          format: int32
-        totalRecordsCount:
-          title: Int32
-          type: integer
-          format: int32
+        createdContacts:
+          title: List`1
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ContactCreated'
       additionalProperties: false
   securitySchemes:
     Bearer:

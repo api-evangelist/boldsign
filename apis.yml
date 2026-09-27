@@ -44,7 +44,7 @@ description: >
 tags:
   - E-Signature
   - Electronic Signature
-  - Document-Management
+  - Document Management
   - Embedded Signing
   - Webhook
   - Templates
@@ -59,6 +59,7 @@ tags_raw:
   - Templates
   - Identity Verification
   - Compliance
+  - Document-Management
 apis:
 - aid: boldsign:boldsign-branding-api
   name: BoldSign Branding API
