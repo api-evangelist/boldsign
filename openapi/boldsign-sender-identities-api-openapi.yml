@@ -519,32 +519,83 @@ paths:
                 $ref: '#/components/schemas/ErrorResult'
 components:
   schemas:
-    PageDetails:
-      title: PageDetails
+    ErrorResult:
+      title: ErrorResult
       type: object
       properties:
-        pageSize:
-          title: Int32
-          type: integer
-          format: int32
-        page:
-          title: Int32
-          type: integer
-          format: int32
-        totalRecordsCount:
-          title: Int32
-          type: integer
-          format: int32
-        totalPages:
-          title: Int32
-          type: integer
-          format: int32
-        sortedColumn:
+        error:
           title: String
           type:
           - string
           - 'null'
-        sortDirection:
+      additionalProperties: false
+    SenderIdentityViewModel:
+      title: SenderIdentityViewModel
+      type: object
+      properties:
+        id:
+          title: String
+          type:
+          - string
+          - 'null'
+        name:
+          title: String
+          type:
+          - string
+          - 'null'
+        email:
+          title: String
+          type:
+          - string
+          - 'null'
+        status:
+          title: String
+          type:
+          - string
+          - 'null'
+        createdBy:
+          title: String
+          type:
+          - string
+          - 'null'
+        approvedDate:
+          title: String
+          type:
+          - string
+          - 'null'
+        notificationSettings:
+          $ref: '#/components/schemas/NotificationSettings'
+        brandId:
+          title: String
+          type:
+          - string
+          - 'null'
+        redirectUrl:
+          title: String
+          type:
+          - string
+          - 'null'
+        metaData:
+          title: Dictionary`2
+          type:
+          - object
+          - 'null'
+          additionalProperties:
+            title: String
+            type:
+            - string
+            - 'null'
+        locale:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    SenderIdentityCreated:
+      title: SenderIdentityCreated
+      type: object
+      properties:
+        senderIdentityId:
           title: String
           type:
           - string
@@ -608,68 +659,36 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    ErrorResult:
-      title: ErrorResult
+    PageDetails:
+      title: PageDetails
       type: object
       properties:
-        error:
+        pageSize:
+          title: Int32
+          type: integer
+          format: int32
+        page:
+          title: Int32
+          type: integer
+          format: int32
+        totalRecordsCount:
+          title: Int32
+          type: integer
+          format: int32
+        totalPages:
+          title: Int32
+          type: integer
+          format: int32
+        sortedColumn:
           title: String
           type:
           - string
           - 'null'
-      additionalProperties: false
-    NotificationSettings:
-      title: NotificationSettings
-      type: object
-      properties:
-        viewed:
-          title: Boolean
-          type: boolean
-          default: true
-        sent:
-          title: Boolean
-          type: boolean
-          default: false
-        deliveryFailed:
-          title: Boolean
-          type: boolean
-          default: true
-        declined:
-          title: Boolean
-          type: boolean
-          default: true
-        revoked:
-          title: Boolean
-          type: boolean
-          default: true
-        reassigned:
-          title: Boolean
-          type: boolean
-          default: true
-        completed:
-          title: Boolean
-          type: boolean
-          default: true
-        signed:
-          title: Boolean
-          type: boolean
-          default: true
-        expired:
-          title: Boolean
-          type: boolean
-          default: true
-        authenticationFailed:
-          title: Boolean
-          type: boolean
-          default: true
-        reminders:
-          title: Boolean
-          type: boolean
-          default: true
-        attachSignedDocument:
-          title: Boolean
-          type: boolean
-          default: false
+        sortDirection:
+          title: String
+          type:
+          - string
+          - 'null'
       additionalProperties: false
     CreateSenderIdentityRequest:
       title: CreateSenderIdentityRequest
@@ -739,16 +758,6 @@ components:
           - KO
           type: string
       additionalProperties: false
-    SenderIdentityCreated:
-      title: SenderIdentityCreated
-      type: object
-      properties:
-        senderIdentityId:
-          title: String
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
     SenderIdentityList:
       title: SenderIdentityList
       type: object
@@ -763,67 +772,58 @@ components:
         pageDetails:
           $ref: '#/components/schemas/PageDetails'
       additionalProperties: false
-    SenderIdentityViewModel:
-      title: SenderIdentityViewModel
+    NotificationSettings:
+      title: NotificationSettings
       type: object
       properties:
-        id:
-          title: String
-          type:
-          - string
-          - 'null'
-        name:
-          title: String
-          type:
-          - string
-          - 'null'
-        email:
-          title: String
-          type:
-          - string
-          - 'null'
-        status:
-          title: String
-          type:
-          - string
-          - 'null'
-        createdBy:
-          title: String
-          type:
-          - string
-          - 'null'
-        approvedDate:
-          title: String
-          type:
-          - string
-          - 'null'
-        notificationSettings:
-          $ref: '#/components/schemas/NotificationSettings'
-        brandId:
-          title: String
-          type:
-          - string
-          - 'null'
-        redirectUrl:
-          title: String
-          type:
-          - string
-          - 'null'
-        metaData:
-          title: Dictionary`2
-          type:
-          - object
-          - 'null'
-          additionalProperties:
-            title: String
-            type:
-            - string
-            - 'null'
-        locale:
-          title: String
-          type:
-          - string
-          - 'null'
+        viewed:
+          title: Boolean
+          type: boolean
+          default: true
+        sent:
+          title: Boolean
+          type: boolean
+          default: false
+        deliveryFailed:
+          title: Boolean
+          type: boolean
+          default: true
+        declined:
+          title: Boolean
+          type: boolean
+          default: true
+        revoked:
+          title: Boolean
+          type: boolean
+          default: true
+        reassigned:
+          title: Boolean
+          type: boolean
+          default: true
+        completed:
+          title: Boolean
+          type: boolean
+          default: true
+        signed:
+          title: Boolean
+          type: boolean
+          default: true
+        expired:
+          title: Boolean
+          type: boolean
+          default: true
+        authenticationFailed:
+          title: Boolean
+          type: boolean
+          default: true
+        reminders:
+          title: Boolean
+          type: boolean
+          default: true
+        attachSignedDocument:
+          title: Boolean
+          type: boolean
+          default: false
       additionalProperties: false
   securitySchemes:
     Bearer:

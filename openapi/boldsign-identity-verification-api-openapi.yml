@@ -1155,19 +1155,8 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    EmbeddedFileLink:
-      title: EmbeddedFileLink
-      type: object
-      properties:
-        url:
-          title: Uri
-          type:
-          - string
-          - 'null'
-          format: uri
-      additionalProperties: false
-    DownloadImageRequest:
-      title: DownloadImageRequest
+    EmbeddedFileDetails:
+      title: EmbeddedFileDetails
       type: object
       properties:
         emailId:
@@ -1185,15 +1174,15 @@ components:
           type:
           - string
           - 'null'
-        order:
-          title: Int32
-          type: integer
-          format: int32
-        fileId:
+        redirectUrl:
           title: String
           type:
           - string
           - 'null'
+        order:
+          title: Int32
+          type: integer
+          format: int32
         onBehalfOf:
           title: String
           type:
@@ -1230,28 +1219,39 @@ components:
         document:
           $ref: '#/components/schemas/IdDocument'
       additionalProperties: false
-    Date:
-      title: Date
+    DownloadImageRequest:
+      title: DownloadImageRequest
       type: object
       properties:
-        day:
-          title: Nullable`1
+        emailId:
+          title: String
           type:
-          - integer
+          - string
           - 'null'
-          format: int64
-        month:
-          title: Nullable`1
+        countryCode:
+          title: String
           type:
-          - integer
+          - string
           - 'null'
-          format: int64
-        year:
-          title: Nullable`1
+        phoneNumber:
+          title: String
           type:
-          - integer
+          - string
           - 'null'
-          format: int64
+        order:
+          title: Int32
+          type: integer
+          format: int32
+        fileId:
+          title: String
+          type:
+          - string
+          - 'null'
+        onBehalfOf:
+          title: String
+          type:
+          - string
+          - 'null'
       additionalProperties: false
     VerificationDataRequest:
       title: VerificationDataRequest
@@ -1282,39 +1282,16 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    EmbeddedFileDetails:
-      title: EmbeddedFileDetails
+    EmbeddedFileLink:
+      title: EmbeddedFileLink
       type: object
       properties:
-        emailId:
-          title: String
+        url:
+          title: Uri
           type:
           - string
           - 'null'
-        countryCode:
-          title: String
-          type:
-          - string
-          - 'null'
-        phoneNumber:
-          title: String
-          type:
-          - string
-          - 'null'
-        redirectUrl:
-          title: String
-          type:
-          - string
-          - 'null'
-        order:
-          title: Int32
-          type: integer
-          format: int32
-        onBehalfOf:
-          title: String
-          type:
-          - string
-          - 'null'
+          format: uri
       additionalProperties: false
     Error:
       title: Error
@@ -1330,6 +1307,29 @@ components:
           type:
           - string
           - 'null'
+      additionalProperties: false
+    Date:
+      title: Date
+      type: object
+      properties:
+        day:
+          title: Nullable`1
+          type:
+          - integer
+          - 'null'
+          format: int64
+        month:
+          title: Nullable`1
+          type:
+          - integer
+          - 'null'
+          format: int64
+        year:
+          title: Nullable`1
+          type:
+          - integer
+          - 'null'
+          format: int64
       additionalProperties: false
   securitySchemes:
     Bearer:

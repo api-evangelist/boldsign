@@ -2279,6 +2279,42 @@ paths:
                 $ref: '#/components/schemas/ErrorResult'
 components:
   schemas:
+    CustomDomainSettings:
+      title: CustomDomainSettings
+      type: object
+      properties:
+        domainName:
+          title: String
+          type:
+          - string
+          - 'null'
+        fromName:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    SignatureFrameSettings:
+      title: SignatureFrameSettings
+      type: object
+      properties:
+        enableSignatureFrame:
+          title: Boolean
+          type: boolean
+          default: false
+        showRecipientName:
+          title: Boolean
+          type: boolean
+          default: false
+        showRecipientEmail:
+          title: Boolean
+          type: boolean
+          default: false
+        showTimeStamp:
+          title: Boolean
+          type: boolean
+          default: false
+      additionalProperties: false
     ViewBrandDetails:
       title: ViewBrandDetails
       type: object
@@ -2384,84 +2420,6 @@ components:
         signatureFrameSettings:
           $ref: '#/components/schemas/SignatureFrameSettings'
       additionalProperties: false
-    BrandCreated:
-      title: BrandCreated
-      type: object
-      properties:
-        brandId:
-          title: String
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    ErrorResult:
-      title: ErrorResult
-      type: object
-      properties:
-        error:
-          title: String
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    CustomDomainSettings:
-      title: CustomDomainSettings
-      type: object
-      properties:
-        domainName:
-          title: String
-          type:
-          - string
-          - 'null'
-        fromName:
-          title: String
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    SignatureFrameSettings:
-      title: SignatureFrameSettings
-      type: object
-      properties:
-        enableSignatureFrame:
-          title: Boolean
-          type: boolean
-          default: false
-        showRecipientName:
-          title: Boolean
-          type: boolean
-          default: false
-        showRecipientEmail:
-          title: Boolean
-          type: boolean
-          default: false
-        showTimeStamp:
-          title: Boolean
-          type: boolean
-          default: false
-      additionalProperties: false
-    BrandingMessage:
-      title: BrandingMessage
-      type: object
-      properties:
-        message:
-          title: String
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    BrandingRecords:
-      title: BrandingRecords
-      type: object
-      properties:
-        result:
-          title: List`1
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/ViewBrandDetails'
-      additionalProperties: false
     DocumentExpirySettings:
       title: DocumentExpirySettings
       type: object
@@ -2506,6 +2464,48 @@ components:
           - integer
           - 'null'
           format: int32
+      additionalProperties: false
+    ErrorResult:
+      title: ErrorResult
+      type: object
+      properties:
+        error:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    BrandingMessage:
+      title: BrandingMessage
+      type: object
+      properties:
+        message:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    BrandCreated:
+      title: BrandCreated
+      type: object
+      properties:
+        brandId:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    BrandingRecords:
+      title: BrandingRecords
+      type: object
+      properties:
+        result:
+          title: List`1
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ViewBrandDetails'
       additionalProperties: false
   securitySchemes:
     Bearer:

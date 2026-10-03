@@ -573,22 +573,29 @@ paths:
                 $ref: '#/components/schemas/ErrorResult'
 components:
   schemas:
-    ContactPageDetails:
-      title: ContactPageDetails
+    ErrorResult:
+      title: ErrorResult
       type: object
       properties:
-        pageSize:
-          title: Int32
-          type: integer
-          format: int32
-        page:
-          title: Int32
-          type: integer
-          format: int32
-        totalRecordsCount:
-          title: Int32
-          type: integer
-          format: int32
+        error:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    ContactsList:
+      title: ContactsList
+      type: object
+      properties:
+        pageDetails:
+          $ref: '#/components/schemas/ContactPageDetails'
+        result:
+          title: List`1
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ContactsDetails'
       additionalProperties: false
     ContactsDetails:
       title: ContactsDetails
@@ -650,25 +657,45 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    ContactsList:
-      title: ContactsList
+    ContactPageDetails:
+      title: ContactPageDetails
       type: object
       properties:
-        pageDetails:
-          $ref: '#/components/schemas/ContactPageDetails'
-        result:
+        pageSize:
+          title: Int32
+          type: integer
+          format: int32
+        page:
+          title: Int32
+          type: integer
+          format: int32
+        totalRecordsCount:
+          title: Int32
+          type: integer
+          format: int32
+      additionalProperties: false
+    CreateContactResponse:
+      title: CreateContactResponse
+      type: object
+      properties:
+        createdContacts:
           title: List`1
           type:
           - array
           - 'null'
           items:
-            $ref: '#/components/schemas/ContactsDetails'
+            $ref: '#/components/schemas/ContactCreated'
       additionalProperties: false
-    ErrorResult:
-      title: ErrorResult
+    ContactCreated:
+      title: ContactCreated
       type: object
       properties:
-        error:
+        id:
+          title: String
+          type:
+          - string
+          - 'null'
+        email:
           title: String
           type:
           - string
@@ -688,33 +715,6 @@ components:
           type:
           - string
           - 'null'
-      additionalProperties: false
-    ContactCreated:
-      title: ContactCreated
-      type: object
-      properties:
-        id:
-          title: String
-          type:
-          - string
-          - 'null'
-        email:
-          title: String
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    CreateContactResponse:
-      title: CreateContactResponse
-      type: object
-      properties:
-        createdContacts:
-          title: List`1
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/ContactCreated'
       additionalProperties: false
   securitySchemes:
     Bearer:

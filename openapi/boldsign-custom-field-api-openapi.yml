@@ -1865,46 +1865,6 @@ paths:
                 $ref: '#/components/schemas/ErrorResult'
 components:
   schemas:
-    DeleteCustomFieldReply:
-      title: DeleteCustomFieldReply
-      type: object
-      properties:
-        message:
-          title: String
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    BrandCustomFieldDetails:
-      title: BrandCustomFieldDetails
-      type: object
-      properties:
-        fieldName:
-          title: String
-          type:
-          - string
-          - 'null'
-        fieldDescription:
-          title: String
-          type:
-          - string
-          - 'null'
-        fieldOrder:
-          title: Int32
-          type: integer
-          format: int32
-          default: 1
-        brandId:
-          title: String
-          type:
-          - string
-          - 'null'
-        sharedField:
-          title: Boolean
-          type: boolean
-        formField:
-          $ref: '#/components/schemas/CustomFormField'
-      additionalProperties: false
     ViewCustomFieldDetails:
       title: ViewCustomFieldDetails
       type: object
@@ -1939,20 +1899,67 @@ components:
         formField:
           $ref: '#/components/schemas/CustomFormField'
       additionalProperties: false
-    CustomFieldMessage:
-      title: CustomFieldMessage
+    DeleteCustomFieldReply:
+      title: DeleteCustomFieldReply
       type: object
       properties:
-        customFieldId:
-          title: String
-          type:
-          - string
-          - 'null'
         message:
           title: String
           type:
           - string
           - 'null'
+      additionalProperties: false
+    CustomFieldCollection:
+      title: CustomFieldCollection
+      type: object
+      properties:
+        result:
+          title: List`1
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ViewCustomFieldDetails'
+      additionalProperties: false
+    ErrorResult:
+      title: ErrorResult
+      type: object
+      properties:
+        error:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    BrandCustomFieldDetails:
+      title: BrandCustomFieldDetails
+      type: object
+      properties:
+        fieldName:
+          title: String
+          type:
+          - string
+          - 'null'
+        fieldDescription:
+          title: String
+          type:
+          - string
+          - 'null'
+        fieldOrder:
+          title: Int32
+          type: integer
+          format: int32
+          default: 1
+        brandId:
+          title: String
+          type:
+          - string
+          - 'null'
+        sharedField:
+          title: Boolean
+          type: boolean
+        formField:
+          $ref: '#/components/schemas/CustomFormField'
       additionalProperties: false
     CustomFormField:
       title: CustomFormField
@@ -2149,68 +2156,6 @@ components:
           - 'null'
           default: false
       additionalProperties: false
-    EmbeddedCustomFieldCreated:
-      title: EmbeddedCustomFieldCreated
-      type: object
-      properties:
-        createUrl:
-          title: Uri
-          type:
-          - string
-          - 'null'
-          format: uri
-      additionalProperties: false
-    ErrorResult:
-      title: ErrorResult
-      type: object
-      properties:
-        error:
-          title: String
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    CustomFieldCollection:
-      title: CustomFieldCollection
-      type: object
-      properties:
-        result:
-          title: List`1
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/ViewCustomFieldDetails'
-      additionalProperties: false
-    EditableDateFieldSettings:
-      title: EditableDateFieldSettings
-      required:
-      - dateFormat
-      type: object
-      properties:
-        dateFormat:
-          title: String
-          type:
-          - string
-          - 'null'
-        minDate:
-          title: Nullable`1
-          type:
-          - string
-          - 'null'
-          format: date-time
-        maxDate:
-          title: Nullable`1
-          type:
-          - string
-          - 'null'
-          format: date-time
-        timeFormat:
-          title: String
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
     AttachmentInfo:
       title: AttachmentInfo
       required:
@@ -2243,6 +2188,46 @@ components:
             title: String
             type: string
       additionalProperties: false
+    EditableDateFieldSettings:
+      title: EditableDateFieldSettings
+      required:
+      - dateFormat
+      type: object
+      properties:
+        dateFormat:
+          title: String
+          type:
+          - string
+          - 'null'
+        minDate:
+          title: Nullable`1
+          type:
+          - string
+          - 'null'
+          format: date-time
+        maxDate:
+          title: Nullable`1
+          type:
+          - string
+          - 'null'
+          format: date-time
+        timeFormat:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    EmbeddedCustomFieldCreated:
+      title: EmbeddedCustomFieldCreated
+      type: object
+      properties:
+        createUrl:
+          title: Uri
+          type:
+          - string
+          - 'null'
+          format: uri
+      additionalProperties: false
     ImageInfo:
       title: ImageInfo
       required:
@@ -2261,6 +2246,21 @@ components:
           - string
           - 'null'
         allowedFileExtensions:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    CustomFieldMessage:
+      title: CustomFieldMessage
+      type: object
+      properties:
+        customFieldId:
+          title: String
+          type:
+          - string
+          - 'null'
+        message:
           title: String
           type:
           - string

@@ -409,6 +409,81 @@ paths:
                 $ref: '#/components/schemas/ErrorResult'
 components:
   schemas:
+    TeamUpdateRequest:
+      title: TeamUpdateRequest
+      required:
+      - teamId
+      - teamName
+      type: object
+      properties:
+        teamId:
+          title: String
+          minLength: 1
+          type: string
+        teamName:
+          title: String
+          maxLength: 255
+          minLength: 0
+          type: string
+      additionalProperties: false
+    ErrorResult:
+      title: ErrorResult
+      type: object
+      properties:
+        error:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    CreateTeamRequest:
+      title: CreateTeamRequest
+      required:
+      - teamName
+      type: object
+      properties:
+        teamName:
+          title: String
+          maxLength: 255
+          minLength: 0
+          type: string
+      additionalProperties: false
+    TeamPageDetails:
+      title: TeamPageDetails
+      type: object
+      properties:
+        pageSize:
+          title: Int32
+          type: integer
+          format: int32
+        page:
+          title: Int32
+          type: integer
+          format: int32
+      additionalProperties: false
+    Teams:
+      title: Teams
+      type: object
+      properties:
+        teamName:
+          title: String
+          type:
+          - string
+          - 'null'
+        teamId:
+          title: String
+          type:
+          - string
+          - 'null'
+        createdDate:
+          title: Int64
+          type: integer
+          format: int64
+        modifiedDate:
+          title: Int64
+          type: integer
+          format: int64
+      additionalProperties: false
     TeamResponse:
       title: TeamResponse
       type: object
@@ -438,51 +513,6 @@ components:
           title: Int64
           type: integer
           format: int64
-      additionalProperties: false
-    CreateTeamRequest:
-      title: CreateTeamRequest
-      required:
-      - teamName
-      type: object
-      properties:
-        teamName:
-          title: String
-          maxLength: 255
-          minLength: 0
-          type: string
-      additionalProperties: false
-    TeamPageDetails:
-      title: TeamPageDetails
-      type: object
-      properties:
-        pageSize:
-          title: Int32
-          type: integer
-          format: int32
-        page:
-          title: Int32
-          type: integer
-          format: int32
-      additionalProperties: false
-    TeamCreated:
-      title: TeamCreated
-      type: object
-      properties:
-        teamId:
-          title: String
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    ErrorResult:
-      title: ErrorResult
-      type: object
-      properties:
-        error:
-          title: String
-          type:
-          - string
-          - 'null'
       additionalProperties: false
     TeamUsers:
       title: TeamUsers
@@ -537,45 +567,15 @@ components:
           items:
             $ref: '#/components/schemas/Teams'
       additionalProperties: false
-    Teams:
-      title: Teams
+    TeamCreated:
+      title: TeamCreated
       type: object
       properties:
-        teamName:
-          title: String
-          type:
-          - string
-          - 'null'
         teamId:
           title: String
           type:
           - string
           - 'null'
-        createdDate:
-          title: Int64
-          type: integer
-          format: int64
-        modifiedDate:
-          title: Int64
-          type: integer
-          format: int64
-      additionalProperties: false
-    TeamUpdateRequest:
-      title: TeamUpdateRequest
-      required:
-      - teamId
-      - teamName
-      type: object
-      properties:
-        teamId:
-          title: String
-          minLength: 1
-          type: string
-        teamName:
-          title: String
-          maxLength: 255
-          minLength: 0
-          type: string
       additionalProperties: false
   securitySchemes:
     Bearer:
