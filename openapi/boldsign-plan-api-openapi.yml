@@ -47,15 +47,6 @@ paths:
                 $ref: '#/components/schemas/ErrorResult'
 components:
   schemas:
-    BillingViewModel:
-      title: BillingViewModel
-      type: object
-      properties:
-        BalanceCredits:
-          title: Double
-          type: number
-          format: double
-      additionalProperties: false
     ErrorResult:
       title: ErrorResult
       type: object
@@ -65,6 +56,15 @@ components:
           type:
           - string
           - 'null'
+      additionalProperties: false
+    BillingViewModel:
+      title: BillingViewModel
+      type: object
+      properties:
+        BalanceCredits:
+          title: Double
+          type: number
+          format: double
       additionalProperties: false
   securitySchemes:
     Bearer:

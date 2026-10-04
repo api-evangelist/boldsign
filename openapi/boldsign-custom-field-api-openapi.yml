@@ -1865,15 +1865,10 @@ paths:
                 $ref: '#/components/schemas/ErrorResult'
 components:
   schemas:
-    ViewCustomFieldDetails:
-      title: ViewCustomFieldDetails
+    BrandCustomFieldDetails:
+      title: BrandCustomFieldDetails
       type: object
       properties:
-        customFieldId:
-          title: String
-          type:
-          - string
-          - 'null'
         fieldName:
           title: String
           type:
@@ -1888,6 +1883,7 @@ components:
           title: Int32
           type: integer
           format: int32
+          default: 1
         brandId:
           title: String
           type:
@@ -1898,6 +1894,84 @@ components:
           type: boolean
         formField:
           $ref: '#/components/schemas/CustomFormField'
+      additionalProperties: false
+    EmbeddedCustomFieldCreated:
+      title: EmbeddedCustomFieldCreated
+      type: object
+      properties:
+        createUrl:
+          title: Uri
+          type:
+          - string
+          - 'null'
+          format: uri
+      additionalProperties: false
+    EditableDateFieldSettings:
+      title: EditableDateFieldSettings
+      required:
+      - dateFormat
+      type: object
+      properties:
+        dateFormat:
+          title: String
+          type:
+          - string
+          - 'null'
+        minDate:
+          title: Nullable`1
+          type:
+          - string
+          - 'null'
+          format: date-time
+        maxDate:
+          title: Nullable`1
+          type:
+          - string
+          - 'null'
+          format: date-time
+        timeFormat:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    ImageInfo:
+      title: ImageInfo
+      required:
+      - allowedFileExtensions
+      - title
+      type: object
+      properties:
+        title:
+          title: String
+          type:
+          - string
+          - 'null'
+        description:
+          title: String
+          type:
+          - string
+          - 'null'
+        allowedFileExtensions:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    CustomFieldMessage:
+      title: CustomFieldMessage
+      type: object
+      properties:
+        customFieldId:
+          title: String
+          type:
+          - string
+          - 'null'
+        message:
+          title: String
+          type:
+          - string
+          - 'null'
       additionalProperties: false
     DeleteCustomFieldReply:
       title: DeleteCustomFieldReply
@@ -1931,35 +2005,37 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    BrandCustomFieldDetails:
-      title: BrandCustomFieldDetails
+    AttachmentInfo:
+      title: AttachmentInfo
+      required:
+      - acceptedFileTypes
+      - title
       type: object
       properties:
-        fieldName:
+        title:
           title: String
           type:
           - string
           - 'null'
-        fieldDescription:
+        description:
           title: String
           type:
           - string
           - 'null'
-        fieldOrder:
-          title: Int32
-          type: integer
-          format: int32
-          default: 1
-        brandId:
+        allowedFileTypes:
           title: String
           type:
           - string
           - 'null'
-        sharedField:
-          title: Boolean
-          type: boolean
-        formField:
-          $ref: '#/components/schemas/CustomFormField'
+          deprecated: true
+        acceptedFileTypes:
+          title: String[]
+          type:
+          - array
+          - 'null'
+          items:
+            title: String
+            type: string
       additionalProperties: false
     CustomFormField:
       title: CustomFormField
@@ -2156,103 +2232,8 @@ components:
           - 'null'
           default: false
       additionalProperties: false
-    AttachmentInfo:
-      title: AttachmentInfo
-      required:
-      - acceptedFileTypes
-      - title
-      type: object
-      properties:
-        title:
-          title: String
-          type:
-          - string
-          - 'null'
-        description:
-          title: String
-          type:
-          - string
-          - 'null'
-        allowedFileTypes:
-          title: String
-          type:
-          - string
-          - 'null'
-          deprecated: true
-        acceptedFileTypes:
-          title: String[]
-          type:
-          - array
-          - 'null'
-          items:
-            title: String
-            type: string
-      additionalProperties: false
-    EditableDateFieldSettings:
-      title: EditableDateFieldSettings
-      required:
-      - dateFormat
-      type: object
-      properties:
-        dateFormat:
-          title: String
-          type:
-          - string
-          - 'null'
-        minDate:
-          title: Nullable`1
-          type:
-          - string
-          - 'null'
-          format: date-time
-        maxDate:
-          title: Nullable`1
-          type:
-          - string
-          - 'null'
-          format: date-time
-        timeFormat:
-          title: String
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    EmbeddedCustomFieldCreated:
-      title: EmbeddedCustomFieldCreated
-      type: object
-      properties:
-        createUrl:
-          title: Uri
-          type:
-          - string
-          - 'null'
-          format: uri
-      additionalProperties: false
-    ImageInfo:
-      title: ImageInfo
-      required:
-      - allowedFileExtensions
-      - title
-      type: object
-      properties:
-        title:
-          title: String
-          type:
-          - string
-          - 'null'
-        description:
-          title: String
-          type:
-          - string
-          - 'null'
-        allowedFileExtensions:
-          title: String
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    CustomFieldMessage:
-      title: CustomFieldMessage
+    ViewCustomFieldDetails:
+      title: ViewCustomFieldDetails
       type: object
       properties:
         customFieldId:
@@ -2260,11 +2241,30 @@ components:
           type:
           - string
           - 'null'
-        message:
+        fieldName:
           title: String
           type:
           - string
           - 'null'
+        fieldDescription:
+          title: String
+          type:
+          - string
+          - 'null'
+        fieldOrder:
+          title: Int32
+          type: integer
+          format: int32
+        brandId:
+          title: String
+          type:
+          - string
+          - 'null'
+        sharedField:
+          title: Boolean
+          type: boolean
+        formField:
+          $ref: '#/components/schemas/CustomFormField'
       additionalProperties: false
   securitySchemes:
     Bearer:

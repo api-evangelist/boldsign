@@ -519,11 +519,32 @@ paths:
                 $ref: '#/components/schemas/ErrorResult'
 components:
   schemas:
-    ErrorResult:
-      title: ErrorResult
+    PageDetails:
+      title: PageDetails
       type: object
       properties:
-        error:
+        pageSize:
+          title: Int32
+          type: integer
+          format: int32
+        page:
+          title: Int32
+          type: integer
+          format: int32
+        totalRecordsCount:
+          title: Int32
+          type: integer
+          format: int32
+        totalPages:
+          title: Int32
+          type: integer
+          format: int32
+        sortedColumn:
+          title: String
+          type:
+          - string
+          - 'null'
+        sortDirection:
           title: String
           type:
           - string
@@ -586,105 +607,6 @@ components:
             - string
             - 'null'
         locale:
-          title: String
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    SenderIdentityCreated:
-      title: SenderIdentityCreated
-      type: object
-      properties:
-        senderIdentityId:
-          title: String
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    EditSenderIdentityRequest:
-      title: EditSenderIdentityRequest
-      type: object
-      properties:
-        name:
-          title: String
-          maxLength: 80
-          minLength: 0
-          type:
-          - string
-          - 'null'
-        notificationSettings:
-          $ref: '#/components/schemas/NotificationSettings'
-        redirectUrl:
-          title: Uri
-          type:
-          - string
-          - 'null'
-          format: uri
-        metaData:
-          title: Dictionary`2
-          maxLength: 50
-          type:
-          - object
-          - 'null'
-          additionalProperties:
-            title: String
-            type:
-            - string
-            - 'null'
-        locale:
-          title: Nullable`1
-          enum:
-          - EN
-          - 'NO'
-          - FR
-          - DE
-          - ES
-          - BG
-          - CS
-          - DA
-          - IT
-          - NL
-          - PL
-          - PT
-          - RO
-          - RU
-          - SV
-          - Default
-          - JA
-          - TH
-          - ZH_CN
-          - ZH_TW
-          - KO
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    PageDetails:
-      title: PageDetails
-      type: object
-      properties:
-        pageSize:
-          title: Int32
-          type: integer
-          format: int32
-        page:
-          title: Int32
-          type: integer
-          format: int32
-        totalRecordsCount:
-          title: Int32
-          type: integer
-          format: int32
-        totalPages:
-          title: Int32
-          type: integer
-          format: int32
-        sortedColumn:
-          title: String
-          type:
-          - string
-          - 'null'
-        sortDirection:
           title: String
           type:
           - string
@@ -758,6 +680,74 @@ components:
           - KO
           type: string
       additionalProperties: false
+    EditSenderIdentityRequest:
+      title: EditSenderIdentityRequest
+      type: object
+      properties:
+        name:
+          title: String
+          maxLength: 80
+          minLength: 0
+          type:
+          - string
+          - 'null'
+        notificationSettings:
+          $ref: '#/components/schemas/NotificationSettings'
+        redirectUrl:
+          title: Uri
+          type:
+          - string
+          - 'null'
+          format: uri
+        metaData:
+          title: Dictionary`2
+          maxLength: 50
+          type:
+          - object
+          - 'null'
+          additionalProperties:
+            title: String
+            type:
+            - string
+            - 'null'
+        locale:
+          title: Nullable`1
+          enum:
+          - EN
+          - 'NO'
+          - FR
+          - DE
+          - ES
+          - BG
+          - CS
+          - DA
+          - IT
+          - NL
+          - PL
+          - PT
+          - RO
+          - RU
+          - SV
+          - Default
+          - JA
+          - TH
+          - ZH_CN
+          - ZH_TW
+          - KO
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    ErrorResult:
+      title: ErrorResult
+      type: object
+      properties:
+        error:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
     SenderIdentityList:
       title: SenderIdentityList
       type: object
@@ -824,6 +814,16 @@ components:
           title: Boolean
           type: boolean
           default: false
+      additionalProperties: false
+    SenderIdentityCreated:
+      title: SenderIdentityCreated
+      type: object
+      properties:
+        senderIdentityId:
+          title: String
+          type:
+          - string
+          - 'null'
       additionalProperties: false
   securitySchemes:
     Bearer:

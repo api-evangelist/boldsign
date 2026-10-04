@@ -573,11 +573,16 @@ paths:
                 $ref: '#/components/schemas/ErrorResult'
 components:
   schemas:
-    ErrorResult:
-      title: ErrorResult
+    ContactCreated:
+      title: ContactCreated
       type: object
       properties:
-        error:
+        id:
+          title: String
+          type:
+          - string
+          - 'null'
+        email:
           title: String
           type:
           - string
@@ -596,38 +601,6 @@ components:
           - 'null'
           items:
             $ref: '#/components/schemas/ContactsDetails'
-      additionalProperties: false
-    ContactsDetails:
-      title: ContactsDetails
-      type: object
-      properties:
-        id:
-          title: String
-          type:
-          - string
-          - 'null'
-        name:
-          title: String
-          type:
-          - string
-          - 'null'
-        email:
-          title: String
-          type:
-          - string
-          - 'null'
-        companyName:
-          title: String
-          type:
-          - string
-          - 'null'
-        jobTitle:
-          title: String
-          type:
-          - string
-          - 'null'
-        phoneNumber:
-          $ref: '#/components/schemas/PhoneNumber'
       additionalProperties: false
     ContactDetails:
       title: ContactDetails
@@ -652,6 +625,31 @@ components:
           - string
           - 'null'
         companyName:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    ErrorResult:
+      title: ErrorResult
+      type: object
+      properties:
+        error:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    PhoneNumber:
+      title: PhoneNumber
+      type: object
+      properties:
+        countryCode:
+          title: String
+          type:
+          - string
+          - 'null'
+        number:
           title: String
           type:
           - string
@@ -686,11 +684,16 @@ components:
           items:
             $ref: '#/components/schemas/ContactCreated'
       additionalProperties: false
-    ContactCreated:
-      title: ContactCreated
+    ContactsDetails:
+      title: ContactsDetails
       type: object
       properties:
         id:
+          title: String
+          type:
+          - string
+          - 'null'
+        name:
           title: String
           type:
           - string
@@ -700,21 +703,18 @@ components:
           type:
           - string
           - 'null'
-      additionalProperties: false
-    PhoneNumber:
-      title: PhoneNumber
-      type: object
-      properties:
-        countryCode:
+        companyName:
           title: String
           type:
           - string
           - 'null'
-        number:
+        jobTitle:
           title: String
           type:
           - string
           - 'null'
+        phoneNumber:
+          $ref: '#/components/schemas/PhoneNumber'
       additionalProperties: false
   securitySchemes:
     Bearer:

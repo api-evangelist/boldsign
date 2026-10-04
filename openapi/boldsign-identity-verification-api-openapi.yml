@@ -1069,156 +1069,6 @@ paths:
       x-operation-id-original: Create Embedded Verification Url
 components:
   schemas:
-    IdDocument:
-      title: IdDocument
-      type: object
-      properties:
-        type:
-          title: String
-          type:
-          - string
-          - 'null'
-        firstName:
-          title: String
-          type:
-          - string
-          - 'null'
-        lastName:
-          title: String
-          type:
-          - string
-          - 'null'
-        country:
-          title: String
-          type:
-          - string
-          - 'null'
-        documentNumber:
-          title: String
-          type:
-          - string
-          - 'null'
-        address:
-          $ref: '#/components/schemas/Address'
-        dob:
-          $ref: '#/components/schemas/Date'
-        issuedDate:
-          $ref: '#/components/schemas/Date'
-        expirationDate:
-          $ref: '#/components/schemas/Date'
-        documentFiles:
-          title: List`1
-          type:
-          - array
-          - 'null'
-          items:
-            title: String
-            type: string
-        selfieFile:
-          title: String
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    Address:
-      title: Address
-      type: object
-      properties:
-        city:
-          title: String
-          type:
-          - string
-          - 'null'
-        country:
-          title: String
-          type:
-          - string
-          - 'null'
-        line1:
-          title: String
-          type:
-          - string
-          - 'null'
-        line2:
-          title: String
-          type:
-          - string
-          - 'null'
-        postalCode:
-          title: String
-          type:
-          - string
-          - 'null'
-        state:
-          title: String
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    EmbeddedFileDetails:
-      title: EmbeddedFileDetails
-      type: object
-      properties:
-        emailId:
-          title: String
-          type:
-          - string
-          - 'null'
-        countryCode:
-          title: String
-          type:
-          - string
-          - 'null'
-        phoneNumber:
-          title: String
-          type:
-          - string
-          - 'null'
-        redirectUrl:
-          title: String
-          type:
-          - string
-          - 'null'
-        order:
-          title: Int32
-          type: integer
-          format: int32
-        onBehalfOf:
-          title: String
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    ErrorResult:
-      title: ErrorResult
-      type: object
-      properties:
-        error:
-          title: String
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    IdReport:
-      title: IdReport
-      type: object
-      properties:
-        verificationResult:
-          title: String
-          type:
-          - string
-          - 'null'
-        verifiedDate:
-          title: Nullable`1
-          type:
-          - string
-          - 'null'
-          format: date-time
-        error:
-          $ref: '#/components/schemas/Error'
-        document:
-          $ref: '#/components/schemas/IdDocument'
-      additionalProperties: false
     DownloadImageRequest:
       title: DownloadImageRequest
       type: object
@@ -1293,16 +1143,70 @@ components:
           - 'null'
           format: uri
       additionalProperties: false
-    Error:
-      title: Error
+    Address:
+      title: Address
       type: object
       properties:
-        code:
+        city:
           title: String
           type:
           - string
           - 'null'
-        message:
+        country:
+          title: String
+          type:
+          - string
+          - 'null'
+        line1:
+          title: String
+          type:
+          - string
+          - 'null'
+        line2:
+          title: String
+          type:
+          - string
+          - 'null'
+        postalCode:
+          title: String
+          type:
+          - string
+          - 'null'
+        state:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    EmbeddedFileDetails:
+      title: EmbeddedFileDetails
+      type: object
+      properties:
+        emailId:
+          title: String
+          type:
+          - string
+          - 'null'
+        countryCode:
+          title: String
+          type:
+          - string
+          - 'null'
+        phoneNumber:
+          title: String
+          type:
+          - string
+          - 'null'
+        redirectUrl:
+          title: String
+          type:
+          - string
+          - 'null'
+        order:
+          title: Int32
+          type: integer
+          format: int32
+        onBehalfOf:
           title: String
           type:
           - string
@@ -1330,6 +1234,102 @@ components:
           - integer
           - 'null'
           format: int64
+      additionalProperties: false
+    Error:
+      title: Error
+      type: object
+      properties:
+        code:
+          title: String
+          type:
+          - string
+          - 'null'
+        message:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    IdDocument:
+      title: IdDocument
+      type: object
+      properties:
+        type:
+          title: String
+          type:
+          - string
+          - 'null'
+        firstName:
+          title: String
+          type:
+          - string
+          - 'null'
+        lastName:
+          title: String
+          type:
+          - string
+          - 'null'
+        country:
+          title: String
+          type:
+          - string
+          - 'null'
+        documentNumber:
+          title: String
+          type:
+          - string
+          - 'null'
+        address:
+          $ref: '#/components/schemas/Address'
+        dob:
+          $ref: '#/components/schemas/Date'
+        issuedDate:
+          $ref: '#/components/schemas/Date'
+        expirationDate:
+          $ref: '#/components/schemas/Date'
+        documentFiles:
+          title: List`1
+          type:
+          - array
+          - 'null'
+          items:
+            title: String
+            type: string
+        selfieFile:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    ErrorResult:
+      title: ErrorResult
+      type: object
+      properties:
+        error:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    IdReport:
+      title: IdReport
+      type: object
+      properties:
+        verificationResult:
+          title: String
+          type:
+          - string
+          - 'null'
+        verifiedDate:
+          title: Nullable`1
+          type:
+          - string
+          - 'null'
+          format: date-time
+        error:
+          $ref: '#/components/schemas/Error'
+        document:
+          $ref: '#/components/schemas/IdDocument'
       additionalProperties: false
   securitySchemes:
     Bearer:

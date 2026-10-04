@@ -455,31 +455,6 @@ paths:
                 $ref: '#/components/schemas/ErrorResult'
 components:
   schemas:
-    UpdateGroupContact:
-      title: UpdateGroupContact
-      type: object
-      properties:
-        groupName:
-          title: String
-          type:
-          - string
-          - 'null'
-        directories:
-          title: List`1
-          type:
-          - array
-          - 'null'
-          items:
-            title: String
-            type: string
-        contacts:
-          title: List`1
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/GroupUser'
-      additionalProperties: false
     GroupUser:
       title: GroupUser
       required:
@@ -495,46 +470,6 @@ components:
           title: String
           minLength: 1
           type: string
-      additionalProperties: false
-    GroupContactDetails:
-      title: GroupContactDetails
-      required:
-      - contacts
-      - groupName
-      type: object
-      properties:
-        groupName:
-          title: String
-          minLength: 1
-          type: string
-        directories:
-          title: List`1
-          type:
-          - array
-          - 'null'
-          items:
-            title: String
-            type: string
-        contacts:
-          title: List`1
-          type: array
-          items:
-            $ref: '#/components/schemas/GroupUser'
-      additionalProperties: false
-    Creators:
-      title: Creators
-      type: object
-      properties:
-        userId:
-          title: String
-          type:
-          - string
-          - 'null'
-        createdBy:
-          title: String
-          type:
-          - string
-          - 'null'
       additionalProperties: false
     GroupContact:
       title: GroupContact
@@ -566,46 +501,45 @@ components:
             title: String
             type: string
       additionalProperties: false
-    ErrorResult:
-      title: ErrorResult
+    Creators:
+      title: Creators
       type: object
       properties:
-        error:
+        userId:
+          title: String
+          type:
+          - string
+          - 'null'
+        createdBy:
           title: String
           type:
           - string
           - 'null'
       additionalProperties: false
-    ContactPageDetails:
-      title: ContactPageDetails
+    UpdateGroupContact:
+      title: UpdateGroupContact
       type: object
       properties:
-        pageSize:
-          title: Int32
-          type: integer
-          format: int32
-        page:
-          title: Int32
-          type: integer
-          format: int32
-        totalRecordsCount:
-          title: Int32
-          type: integer
-          format: int32
-      additionalProperties: false
-    GroupContactsList:
-      title: GroupContactsList
-      type: object
-      properties:
-        pageDetails:
-          $ref: '#/components/schemas/ContactPageDetails'
-        result:
+        groupName:
+          title: String
+          type:
+          - string
+          - 'null'
+        directories:
           title: List`1
           type:
           - array
           - 'null'
           items:
-            $ref: '#/components/schemas/GroupContact'
+            title: String
+            type: string
+        contacts:
+          title: List`1
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/GroupUser'
       additionalProperties: false
     GetGroupContactDetails:
       title: GetGroupContactDetails
@@ -639,6 +573,58 @@ components:
             title: String
             type: string
       additionalProperties: false
+    ErrorResult:
+      title: ErrorResult
+      type: object
+      properties:
+        error:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    GroupContactDetails:
+      title: GroupContactDetails
+      required:
+      - contacts
+      - groupName
+      type: object
+      properties:
+        groupName:
+          title: String
+          minLength: 1
+          type: string
+        directories:
+          title: List`1
+          type:
+          - array
+          - 'null'
+          items:
+            title: String
+            type: string
+        contacts:
+          title: List`1
+          type: array
+          items:
+            $ref: '#/components/schemas/GroupUser'
+      additionalProperties: false
+    ContactPageDetails:
+      title: ContactPageDetails
+      type: object
+      properties:
+        pageSize:
+          title: Int32
+          type: integer
+          format: int32
+        page:
+          title: Int32
+          type: integer
+          format: int32
+        totalRecordsCount:
+          title: Int32
+          type: integer
+          format: int32
+      additionalProperties: false
     CreateGroupContactResponse:
       title: CreateGroupContactResponse
       type: object
@@ -653,6 +639,20 @@ components:
           type:
           - string
           - 'null'
+      additionalProperties: false
+    GroupContactsList:
+      title: GroupContactsList
+      type: object
+      properties:
+        pageDetails:
+          $ref: '#/components/schemas/ContactPageDetails'
+        result:
+          title: List`1
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/GroupContact'
       additionalProperties: false
   securitySchemes:
     Bearer:

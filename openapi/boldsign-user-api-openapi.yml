@@ -886,170 +886,6 @@ paths:
                 $ref: '#/components/schemas/ErrorResult'
 components:
   schemas:
-    ChangeTeamRequest:
-      title: ChangeTeamRequest
-      required:
-      - toTeamId
-      type: object
-      properties:
-        toTeamId:
-          title: String
-          minLength: 1
-          type: string
-        transferDocumentsToUserId:
-          title: String
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    UpdateUser:
-      title: UpdateUser
-      required:
-      - userId
-      type: object
-      properties:
-        userId:
-          title: String
-          minLength: 1
-          type: string
-        userRole:
-          title: UserRoleType
-          enum:
-          - Admin
-          - TeamAdmin
-          - Member
-          type: string
-        userStatus:
-          title: UserStatusOption
-          enum:
-          - Activate
-          - Deactivate
-          type: string
-        toUserId:
-          title: String
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    CreateUser:
-      title: CreateUser
-      required:
-      - emailId
-      type: object
-      properties:
-        emailId:
-          title: String
-          minLength: 1
-          type: string
-        teamId:
-          title: String
-          type:
-          - string
-          - 'null'
-        userRole:
-          title: UserRoleType
-          enum:
-          - Admin
-          - TeamAdmin
-          - Member
-          type: string
-        metaData:
-          title: Dictionary`2
-          maxLength: 50
-          type:
-          - object
-          - 'null'
-          additionalProperties:
-            title: String
-            type:
-            - string
-            - 'null'
-      additionalProperties: false
-    UsersDetails:
-      title: UsersDetails
-      type: object
-      properties:
-        userId:
-          title: Guid
-          type: string
-          format: uuid
-        email:
-          title: String
-          type:
-          - string
-          - 'null'
-        firstName:
-          title: String
-          type:
-          - string
-          - 'null'
-        lastName:
-          title: String
-          type:
-          - string
-          - 'null'
-        teamId:
-          title: Guid
-          type: string
-          format: uuid
-        teamName:
-          title: String
-          type:
-          - string
-          - 'null'
-        role:
-          title: String
-          type:
-          - string
-          - 'null'
-        userStatus:
-          title: String
-          type:
-          - string
-          - 'null'
-        createdDate:
-          title: Int64
-          type: integer
-          format: int64
-        modifiedDate:
-          title: Int64
-          type: integer
-          format: int64
-        metaData:
-          title: Dictionary`2
-          type:
-          - object
-          - 'null'
-          additionalProperties:
-            title: String
-            type:
-            - string
-            - 'null'
-      additionalProperties: false
-    UserRecords:
-      title: UserRecords
-      type: object
-      properties:
-        pageDetails:
-          $ref: '#/components/schemas/UserPageDetails'
-        result:
-          title: List`1
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/UsersDetails'
-      additionalProperties: false
-    ErrorResult:
-      title: ErrorResult
-      type: object
-      properties:
-        error:
-          title: String
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
     UpdateUserMetaData:
       title: UpdateUserMetaData
       required:
@@ -1070,6 +906,20 @@ components:
             type:
             - string
             - 'null'
+      additionalProperties: false
+    UserRecords:
+      title: UserRecords
+      type: object
+      properties:
+        pageDetails:
+          $ref: '#/components/schemas/UserPageDetails'
+        result:
+          title: List`1
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/UsersDetails'
       additionalProperties: false
     UserProperties:
       title: UserProperties
@@ -1134,6 +984,95 @@ components:
             - string
             - 'null'
       additionalProperties: false
+    UpdateUser:
+      title: UpdateUser
+      required:
+      - userId
+      type: object
+      properties:
+        userId:
+          title: String
+          minLength: 1
+          type: string
+        userRole:
+          title: UserRoleType
+          enum:
+          - Admin
+          - TeamAdmin
+          - Member
+          type: string
+        userStatus:
+          title: UserStatusOption
+          enum:
+          - Activate
+          - Deactivate
+          type: string
+        toUserId:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    CreateUser:
+      title: CreateUser
+      required:
+      - emailId
+      type: object
+      properties:
+        emailId:
+          title: String
+          minLength: 1
+          type: string
+        teamId:
+          title: String
+          type:
+          - string
+          - 'null'
+        userRole:
+          title: UserRoleType
+          enum:
+          - Admin
+          - TeamAdmin
+          - Member
+          type: string
+        metaData:
+          title: Dictionary`2
+          maxLength: 50
+          type:
+          - object
+          - 'null'
+          additionalProperties:
+            title: String
+            type:
+            - string
+            - 'null'
+      additionalProperties: false
+    ChangeTeamRequest:
+      title: ChangeTeamRequest
+      required:
+      - toTeamId
+      type: object
+      properties:
+        toTeamId:
+          title: String
+          minLength: 1
+          type: string
+        transferDocumentsToUserId:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    ErrorResult:
+      title: ErrorResult
+      type: object
+      properties:
+        error:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
     UserPageDetails:
       title: UserPageDetails
       type: object
@@ -1146,6 +1085,67 @@ components:
           title: Int32
           type: integer
           format: int32
+      additionalProperties: false
+    UsersDetails:
+      title: UsersDetails
+      type: object
+      properties:
+        userId:
+          title: Guid
+          type: string
+          format: uuid
+        email:
+          title: String
+          type:
+          - string
+          - 'null'
+        firstName:
+          title: String
+          type:
+          - string
+          - 'null'
+        lastName:
+          title: String
+          type:
+          - string
+          - 'null'
+        teamId:
+          title: Guid
+          type: string
+          format: uuid
+        teamName:
+          title: String
+          type:
+          - string
+          - 'null'
+        role:
+          title: String
+          type:
+          - string
+          - 'null'
+        userStatus:
+          title: String
+          type:
+          - string
+          - 'null'
+        createdDate:
+          title: Int64
+          type: integer
+          format: int64
+        modifiedDate:
+          title: Int64
+          type: integer
+          format: int64
+        metaData:
+          title: Dictionary`2
+          type:
+          - object
+          - 'null'
+          additionalProperties:
+            title: String
+            type:
+            - string
+            - 'null'
       additionalProperties: false
   securitySchemes:
     Bearer:
