@@ -1,0 +1,12 @@
+{
+ "url": "https://api.boldsign.com/swagger/v1/swagger.json",
+ "requested_url": "https://api.boldsign.com/swagger/v1/swagger.json",
+ "status": 200,
+ "content_type": "application/json;charset=utf-8",
+ "bytes": 1254393,
+ "sha256": "316b71bdaa94ed3abf05125b605749bd1d27eff348bd87d51beccd7efe07ed56",
+ "fetched_at": "2026-10-04",
+ "fetched_by": "APIEvangelist-Harvest/1.0 (+https://apievangelist.com)",
+ "match": "equivalent",
+ "note": "Re-fetched from the provider by verify-openapi-sources.py; the provider's current document describes the same operations (Jaccard 0.977), but the bytes differ, so the archive is an earlier or reformatted copy."
+}
