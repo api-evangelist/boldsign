@@ -1,19 +1,23 @@
-generated: '2026-07-15'
+generated: '2026-09-23'
 method: generated
-source: openapi/boldsign-esignature-openapi.yml
+source: openapi/boldsign-branding-api-openapi.yml, openapi/boldsign-contacts-api-openapi.yml,
+  openapi/boldsign-custom-field-api-openapi.yml, openapi/boldsign-document-api-openapi.yml,
+  openapi/boldsign-groupcontacts-api-openapi.yml, openapi/boldsign-identity-verification-api-openapi.yml,
+  openapi/boldsign-plan-api-openapi.yml, openapi/boldsign-sender-identities-api-openapi.yml,
+  openapi/boldsign-teams-api-openapi.yml, openapi/boldsign-template-api-openapi.yml, openapi/boldsign-user-api-openapi.yml
 description: Recommended x-agentic-access execution contracts, classified heuristically from
   the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
   audience per deployment. See research/curity/agentic-governance/.
 summary:
   operations: 85
   by_action_class:
-    acting: 60
-    connected: 25
+    acting: 59
+    connected: 26
   by_consequence:
     write: 44
-    read: 25
+    read: 26
     safety-critical: 2
-    physical: 14
+    physical: 13
   human_in_the_loop_required: 2
 operations:
 - path: /v1/brand/create
@@ -674,18 +678,12 @@ operations:
   method: post
   operationId: Report
   x-agentic-access:
-    action-class: acting
-    consequence: write
-    subject: required
-    audience: null
+    action-class: connected
+    consequence: read
+    subject: optional
     token:
-      max-ttl: 900
-    escalation:
-      human-in-the-loop: conditional
-      triggers:
-      - abnormal
-      - high-value
-    audit: required
+      max-ttl: 3600
+    audit: none
 - path: /v1/identityVerification/image
   method: post
   operationId: Image
@@ -1023,13 +1021,11 @@ operations:
   operationId: MergeCreateEmbeddedRequestUrlTemplate
   x-agentic-access:
     action-class: acting
-    consequence: physical
+    consequence: write
     subject: required
     audience: null
     token:
-      max-ttl: 300
-      exchange: true
-      purpose-required: true
+      max-ttl: 900
     escalation:
       human-in-the-loop: conditional
       triggers:

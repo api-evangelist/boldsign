@@ -1,3 +1,8 @@
+# Provenance stamped 2026-10-07 (roadmap#943): written by an API Evangelist sweep (dated 2026-06-12 by the file itself), not
+# harvested from the provider. `method: generated` so the economics campaign may replace it with a
+# dated, verbatim transcription; every figure below is unverified until it does.
+method: generated
+generated: '2026-06-12'
 specification: API Commons Plans 0.1
 provider: BoldSign
 providerId: boldsign
@@ -147,3 +152,46 @@ plans:
       - Documents watermarked as test
       - Documents auto-deleted after 14 days
       - No credit card required
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - metered
+  units: []
+  plans:
+  - name: Essential
+    access: free
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
+  - name: Growth
+    access: paid
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
+  - name: Business
+    access: paid
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
+  - name: Premium
+    access: paid
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
+  - name: Enterprise API
+    access: other
+    model: metered
+    model_how: stated
+    units: []
+    periods: []
+  - name: Free Sandbox
+    access: free
+    model: unstated
+    model_how: derived
+    units: []
+    periods: []
