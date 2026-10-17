@@ -573,63 +573,6 @@ paths:
                 $ref: '#/components/schemas/ErrorResult'
 components:
   schemas:
-    ContactCreated:
-      title: ContactCreated
-      type: object
-      properties:
-        id:
-          title: String
-          type:
-          - string
-          - 'null'
-        email:
-          title: String
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    ContactsList:
-      title: ContactsList
-      type: object
-      properties:
-        pageDetails:
-          $ref: '#/components/schemas/ContactPageDetails'
-        result:
-          title: List`1
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/ContactsDetails'
-      additionalProperties: false
-    ContactDetails:
-      title: ContactDetails
-      required:
-      - email
-      - name
-      type: object
-      properties:
-        email:
-          title: String
-          minLength: 1
-          type: string
-        name:
-          title: String
-          minLength: 1
-          type: string
-        phoneNumber:
-          $ref: '#/components/schemas/PhoneNumber'
-        jobTitle:
-          title: String
-          type:
-          - string
-          - 'null'
-        companyName:
-          title: String
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
     ErrorResult:
       title: ErrorResult
       type: object
@@ -640,20 +583,17 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    PhoneNumber:
-      title: PhoneNumber
+    CreateContactResponse:
+      title: CreateContactResponse
       type: object
       properties:
-        countryCode:
-          title: String
+        createdContacts:
+          title: List`1
           type:
-          - string
+          - array
           - 'null'
-        number:
-          title: String
-          type:
-          - string
-          - 'null'
+          items:
+            $ref: '#/components/schemas/ContactCreated'
       additionalProperties: false
     ContactPageDetails:
       title: ContactPageDetails
@@ -672,17 +612,20 @@ components:
           type: integer
           format: int32
       additionalProperties: false
-    CreateContactResponse:
-      title: CreateContactResponse
+    PhoneNumber:
+      title: PhoneNumber
       type: object
       properties:
-        createdContacts:
-          title: List`1
+        countryCode:
+          title: String
           type:
-          - array
+          - string
           - 'null'
-          items:
-            $ref: '#/components/schemas/ContactCreated'
+        number:
+          title: String
+          type:
+          - string
+          - 'null'
       additionalProperties: false
     ContactsDetails:
       title: ContactsDetails
@@ -715,6 +658,63 @@ components:
           - 'null'
         phoneNumber:
           $ref: '#/components/schemas/PhoneNumber'
+      additionalProperties: false
+    ContactsList:
+      title: ContactsList
+      type: object
+      properties:
+        pageDetails:
+          $ref: '#/components/schemas/ContactPageDetails'
+        result:
+          title: List`1
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ContactsDetails'
+      additionalProperties: false
+    ContactCreated:
+      title: ContactCreated
+      type: object
+      properties:
+        id:
+          title: String
+          type:
+          - string
+          - 'null'
+        email:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    ContactDetails:
+      title: ContactDetails
+      required:
+      - email
+      - name
+      type: object
+      properties:
+        email:
+          title: String
+          minLength: 1
+          type: string
+        name:
+          title: String
+          minLength: 1
+          type: string
+        phoneNumber:
+          $ref: '#/components/schemas/PhoneNumber'
+        jobTitle:
+          title: String
+          type:
+          - string
+          - 'null'
+        companyName:
+          title: String
+          type:
+          - string
+          - 'null'
       additionalProperties: false
   securitySchemes:
     Bearer:

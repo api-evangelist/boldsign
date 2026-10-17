@@ -409,6 +409,53 @@ paths:
                 $ref: '#/components/schemas/ErrorResult'
 components:
   schemas:
+    TeamListResponse:
+      title: TeamListResponse
+      type: object
+      properties:
+        pageDetails:
+          $ref: '#/components/schemas/TeamPageDetails'
+        results:
+          title: List`1
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Teams'
+      additionalProperties: false
+    Teams:
+      title: Teams
+      type: object
+      properties:
+        teamName:
+          title: String
+          type:
+          - string
+          - 'null'
+        teamId:
+          title: String
+          type:
+          - string
+          - 'null'
+        createdDate:
+          title: Int64
+          type: integer
+          format: int64
+        modifiedDate:
+          title: Int64
+          type: integer
+          format: int64
+      additionalProperties: false
+    ErrorResult:
+      title: ErrorResult
+      type: object
+      properties:
+        error:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
     TeamUpdateRequest:
       title: TeamUpdateRequest
       required:
@@ -456,16 +503,6 @@ components:
           type: integer
           format: int64
       additionalProperties: false
-    TeamCreated:
-      title: TeamCreated
-      type: object
-      properties:
-        teamId:
-          title: String
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
     CreateTeamRequest:
       title: CreateTeamRequest
       required:
@@ -478,15 +515,28 @@ components:
           minLength: 0
           type: string
       additionalProperties: false
-    ErrorResult:
-      title: ErrorResult
+    TeamCreated:
+      title: TeamCreated
       type: object
       properties:
-        error:
+        teamId:
           title: String
           type:
           - string
           - 'null'
+      additionalProperties: false
+    TeamPageDetails:
+      title: TeamPageDetails
+      type: object
+      properties:
+        pageSize:
+          title: Int32
+          type: integer
+          format: int32
+        page:
+          title: Int32
+          type: integer
+          format: int32
       additionalProperties: false
     TeamUsers:
       title: TeamUsers
@@ -526,56 +576,6 @@ components:
           - InvitationPending
           - Deactivated
           type: string
-      additionalProperties: false
-    TeamListResponse:
-      title: TeamListResponse
-      type: object
-      properties:
-        pageDetails:
-          $ref: '#/components/schemas/TeamPageDetails'
-        results:
-          title: List`1
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/Teams'
-      additionalProperties: false
-    Teams:
-      title: Teams
-      type: object
-      properties:
-        teamName:
-          title: String
-          type:
-          - string
-          - 'null'
-        teamId:
-          title: String
-          type:
-          - string
-          - 'null'
-        createdDate:
-          title: Int64
-          type: integer
-          format: int64
-        modifiedDate:
-          title: Int64
-          type: integer
-          format: int64
-      additionalProperties: false
-    TeamPageDetails:
-      title: TeamPageDetails
-      type: object
-      properties:
-        pageSize:
-          title: Int32
-          type: integer
-          format: int32
-        page:
-          title: Int32
-          type: integer
-          format: int32
       additionalProperties: false
   securitySchemes:
     Bearer:

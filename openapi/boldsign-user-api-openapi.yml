@@ -886,26 +886,15 @@ paths:
                 $ref: '#/components/schemas/ErrorResult'
 components:
   schemas:
-    UpdateUserMetaData:
-      title: UpdateUserMetaData
-      required:
-      - metaData
-      - userId
+    ErrorResult:
+      title: ErrorResult
       type: object
       properties:
-        userId:
+        error:
           title: String
-          minLength: 1
-          type: string
-        metaData:
-          title: Dictionary`2
-          maxLength: 50
-          type: object
-          additionalProperties:
-            title: String
-            type:
-            - string
-            - 'null'
+          type:
+          - string
+          - 'null'
       additionalProperties: false
     UserRecords:
       title: UserRecords
@@ -920,6 +909,56 @@ components:
           - 'null'
           items:
             $ref: '#/components/schemas/UsersDetails'
+      additionalProperties: false
+    ChangeTeamRequest:
+      title: ChangeTeamRequest
+      required:
+      - toTeamId
+      type: object
+      properties:
+        toTeamId:
+          title: String
+          minLength: 1
+          type: string
+        transferDocumentsToUserId:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    CreateUser:
+      title: CreateUser
+      required:
+      - emailId
+      type: object
+      properties:
+        emailId:
+          title: String
+          minLength: 1
+          type: string
+        teamId:
+          title: String
+          type:
+          - string
+          - 'null'
+        userRole:
+          title: UserRoleType
+          enum:
+          - Admin
+          - TeamAdmin
+          - Member
+          type: string
+        metaData:
+          title: Dictionary`2
+          maxLength: 50
+          type:
+          - object
+          - 'null'
+          additionalProperties:
+            title: String
+            type:
+            - string
+            - 'null'
       additionalProperties: false
     UserProperties:
       title: UserProperties
@@ -984,9 +1023,10 @@ components:
             - string
             - 'null'
       additionalProperties: false
-    UpdateUser:
-      title: UpdateUser
+    UpdateUserMetaData:
+      title: UpdateUserMetaData
       required:
+      - metaData
       - userId
       type: object
       properties:
@@ -994,84 +1034,15 @@ components:
           title: String
           minLength: 1
           type: string
-        userRole:
-          title: UserRoleType
-          enum:
-          - Admin
-          - TeamAdmin
-          - Member
-          type: string
-        userStatus:
-          title: UserStatusOption
-          enum:
-          - Activate
-          - Deactivate
-          type: string
-        toUserId:
-          title: String
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    CreateUser:
-      title: CreateUser
-      required:
-      - emailId
-      type: object
-      properties:
-        emailId:
-          title: String
-          minLength: 1
-          type: string
-        teamId:
-          title: String
-          type:
-          - string
-          - 'null'
-        userRole:
-          title: UserRoleType
-          enum:
-          - Admin
-          - TeamAdmin
-          - Member
-          type: string
         metaData:
           title: Dictionary`2
           maxLength: 50
-          type:
-          - object
-          - 'null'
+          type: object
           additionalProperties:
             title: String
             type:
             - string
             - 'null'
-      additionalProperties: false
-    ChangeTeamRequest:
-      title: ChangeTeamRequest
-      required:
-      - toTeamId
-      type: object
-      properties:
-        toTeamId:
-          title: String
-          minLength: 1
-          type: string
-        transferDocumentsToUserId:
-          title: String
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    ErrorResult:
-      title: ErrorResult
-      type: object
-      properties:
-        error:
-          title: String
-          type:
-          - string
-          - 'null'
       additionalProperties: false
     UserPageDetails:
       title: UserPageDetails
@@ -1146,6 +1117,35 @@ components:
             type:
             - string
             - 'null'
+      additionalProperties: false
+    UpdateUser:
+      title: UpdateUser
+      required:
+      - userId
+      type: object
+      properties:
+        userId:
+          title: String
+          minLength: 1
+          type: string
+        userRole:
+          title: UserRoleType
+          enum:
+          - Admin
+          - TeamAdmin
+          - Member
+          type: string
+        userStatus:
+          title: UserStatusOption
+          enum:
+          - Activate
+          - Deactivate
+          type: string
+        toUserId:
+          title: String
+          type:
+          - string
+          - 'null'
       additionalProperties: false
   securitySchemes:
     Bearer:

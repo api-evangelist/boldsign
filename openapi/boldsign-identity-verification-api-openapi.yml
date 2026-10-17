@@ -1069,6 +1069,27 @@ paths:
       x-operation-id-original: Create Embedded Verification Url
 components:
   schemas:
+    ErrorResult:
+      title: ErrorResult
+      type: object
+      properties:
+        error:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    EmbeddedFileLink:
+      title: EmbeddedFileLink
+      type: object
+      properties:
+        url:
+          title: Uri
+          type:
+          - string
+          - 'null'
+          format: uri
+      additionalProperties: false
     DownloadImageRequest:
       title: DownloadImageRequest
       type: object
@@ -1103,76 +1124,16 @@ components:
           - string
           - 'null'
       additionalProperties: false
-    VerificationDataRequest:
-      title: VerificationDataRequest
+    Error:
+      title: Error
       type: object
       properties:
-        emailId:
+        code:
           title: String
           type:
           - string
           - 'null'
-        countryCode:
-          title: String
-          type:
-          - string
-          - 'null'
-        phoneNumber:
-          title: String
-          type:
-          - string
-          - 'null'
-        order:
-          title: Int32
-          type: integer
-          format: int32
-        onBehalfOf:
-          title: String
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    EmbeddedFileLink:
-      title: EmbeddedFileLink
-      type: object
-      properties:
-        url:
-          title: Uri
-          type:
-          - string
-          - 'null'
-          format: uri
-      additionalProperties: false
-    Address:
-      title: Address
-      type: object
-      properties:
-        city:
-          title: String
-          type:
-          - string
-          - 'null'
-        country:
-          title: String
-          type:
-          - string
-          - 'null'
-        line1:
-          title: String
-          type:
-          - string
-          - 'null'
-        line2:
-          title: String
-          type:
-          - string
-          - 'null'
-        postalCode:
-          title: String
-          type:
-          - string
-          - 'null'
-        state:
+        message:
           title: String
           type:
           - string
@@ -1235,16 +1196,85 @@ components:
           - 'null'
           format: int64
       additionalProperties: false
-    Error:
-      title: Error
+    IdReport:
+      title: IdReport
       type: object
       properties:
-        code:
+        verificationResult:
           title: String
           type:
           - string
           - 'null'
-        message:
+        verifiedDate:
+          title: Nullable`1
+          type:
+          - string
+          - 'null'
+          format: date-time
+        error:
+          $ref: '#/components/schemas/Error'
+        document:
+          $ref: '#/components/schemas/IdDocument'
+      additionalProperties: false
+    VerificationDataRequest:
+      title: VerificationDataRequest
+      type: object
+      properties:
+        emailId:
+          title: String
+          type:
+          - string
+          - 'null'
+        countryCode:
+          title: String
+          type:
+          - string
+          - 'null'
+        phoneNumber:
+          title: String
+          type:
+          - string
+          - 'null'
+        order:
+          title: Int32
+          type: integer
+          format: int32
+        onBehalfOf:
+          title: String
+          type:
+          - string
+          - 'null'
+      additionalProperties: false
+    Address:
+      title: Address
+      type: object
+      properties:
+        city:
+          title: String
+          type:
+          - string
+          - 'null'
+        country:
+          title: String
+          type:
+          - string
+          - 'null'
+        line1:
+          title: String
+          type:
+          - string
+          - 'null'
+        line2:
+          title: String
+          type:
+          - string
+          - 'null'
+        postalCode:
+          title: String
+          type:
+          - string
+          - 'null'
+        state:
           title: String
           type:
           - string
@@ -1300,36 +1330,6 @@ components:
           type:
           - string
           - 'null'
-      additionalProperties: false
-    ErrorResult:
-      title: ErrorResult
-      type: object
-      properties:
-        error:
-          title: String
-          type:
-          - string
-          - 'null'
-      additionalProperties: false
-    IdReport:
-      title: IdReport
-      type: object
-      properties:
-        verificationResult:
-          title: String
-          type:
-          - string
-          - 'null'
-        verifiedDate:
-          title: Nullable`1
-          type:
-          - string
-          - 'null'
-          format: date-time
-        error:
-          $ref: '#/components/schemas/Error'
-        document:
-          $ref: '#/components/schemas/IdDocument'
       additionalProperties: false
   securitySchemes:
     Bearer:
