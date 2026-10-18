@@ -43,7 +43,6 @@ description: >
   HIPAA, GDPR, and eIDAS compliant, and supports webhooks for real-time event notifications.
 tags:
   - E-Signature
-  - Electronic Signature
   - Document Management
   - Embedded Signing
   - Webhook
