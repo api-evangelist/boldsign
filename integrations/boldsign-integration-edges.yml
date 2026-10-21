@@ -135,6 +135,23 @@ edges:
   detected: '2026-10-21'
   detected_by: mirror-platform-listings.py
   category: contractManagement
+- partner_name: HubSpot (own)
+  partner: hubspot
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://ecosystem.hubspot.com/marketplace/listing/boldsign
+  mirror_of: hubspot/integrations/hubspot-integration-edges.yml
+  apps:
+  - BoldSign
+  listing_count: 1
+  detected: '2026-10-21'
+  detected_by: mirror-platform-listings.py
+  category: E_SIGNATURE
 method: searched
 checked:
 - https://connectors.airbyte.com/files/registries/v0/cloud_registry.json
@@ -149,6 +166,7 @@ checked:
 - https://developer.salesforce.com/docs/atlas.en-us.packagingGuide.meta/packagingGuide/security_review_overview.htm
 - https://slack.com/marketplace
 - salesforce/integrations/salesforce-integration-edges.yml
+- hubspot/integrations/hubspot-integration-edges.yml
 source:
 - https://github.com/PipedreamHQ/pipedream/tree/94800dd6de6640b942c65ea7ee655f71ac56d438/components/
 - https://zapier.com/api/v4/apps/
